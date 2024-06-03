@@ -1,0 +1,69 @@
+{
+  "identity": {
+    "file_name": "identity.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "alpaca_en_demo": {
+    "file_name": "alpaca_en_demo.json"
+  }, 
+ "alpaca_en": {
+    "hf_hub_url": "llamafactory/alpaca_en"
+  },
+  "alpaca_gpt4_en": {
+    "hf_hub_url": "llamafactory/alpaca_gpt4_en"
+  },    
+  "taiwan_e_hospital": {
+    "hf_hub_url": "c00cjz00/taiwan_e_hospital"
+  },       
+  "b8.3patch1": {
+    "hf_hub_url": "c00cjz00/b8.3-patch1",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"  
+    }
+  },
+  "b8.3patch2": {
+    "hf_hub_url": "c00cjz00/b8.3patch2",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"  
+    }
+  },
+  "taiwan_song": {
+    "hf_hub_url": "c00cjz00/ft-taiwan-song",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
+  },
+  "c4_demo": {
+    "file_name": "c4_demo.json",
+    "columns": {
+      "prompt": "text"
+    }
+  }   
+}

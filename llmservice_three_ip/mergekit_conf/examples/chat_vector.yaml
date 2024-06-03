@@ -1,0 +1,10 @@
+merge_method: task_arithmetic
+base_model: NousResearch/Llama-2-7b-hf
+models:
+   - model: taide/TAIDE-LX-7B
+     parameters:
+        weight: 1.0
+   - model: NousResearch/Llama-2-7b-chat-hf
+     parameters:
+        weight: 1.0
+dtype: bfloat16
