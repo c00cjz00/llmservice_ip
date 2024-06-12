@@ -10,6 +10,18 @@ sudo apt update
 sudo apt install php7.4-cli jq
 ```
 
+## OPTION Build llama-factory
+```bash
+git clone https://github.com/hiyouga/LLaMA-Factory.git
+cd LLaMA-Factory
+docker build -f ./Dockerfile \
+    --build-arg INSTALL_BNB=true \
+    --build-arg INSTALL_VLLM=true \
+    --build-arg INSTALL_DEEPSPEED=true \
+    --build-arg PIP_INDEX=https://pypi.org/simple \
+    -t llamafactory:latest .	
+```
+
 ## GIT 下載套件
 ```
 git clone https://github.com/c00cjz00/llmservice_ip.git
