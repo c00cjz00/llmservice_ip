@@ -1,6 +1,7 @@
 # nchc service
 
 ## DOCKER 安裝
+- https://hackmd.io/@whYPD8MBSHWRZV6y-ymFwQ/r1Wbg9DrA (請用此版本)
 - https://hackmd.io/@whYPD8MBSHWRZV6y-ymFwQ/Hk8pJ95eA
 - https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 
