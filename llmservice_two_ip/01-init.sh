@@ -28,6 +28,7 @@ mkdir -p storage/openwebui_data
 mkdir -p storage/hf_cache 
 mkdir -p storage/postgres
 mkdir -p storage/pgadmin
+mkdir -p storage/qdrant_data
 chmod 777 storage/pgadmin
  
 if ! [ -f ./storage/anythingllm_env.txt ]; then

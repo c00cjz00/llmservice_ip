@@ -23,6 +23,8 @@ mkdir -p storage/anythingllm_outputs
 mkdir -p storage/ollama_data 
 mkdir -p storage/openwebui_data 
 mkdir -p storage/hf_cache 
+mkdir -p storage/qdrant_data
+
  
 if ! [ -f ./storage/anythingllm_env.txt ]; then
 	touch ./storage/anythingllm_env.txt

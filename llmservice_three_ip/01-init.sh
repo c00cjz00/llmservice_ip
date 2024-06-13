@@ -32,6 +32,7 @@ chmod 777 storage/pgadmin
 mkdir -p storage/factory_data storage/factory_saves storage/factory_cache storage/jupyter_data
 mkdir -p storage/output
 mkdir -p storage/mergekit_tmp
+mkdir -p storage/qdrant_data
 cp factory_conf/data/dataset_info.json storage/factory_data/
 cp factory_conf/data/identity.json storage/factory_data/
 cp factory_conf/data/alpaca_en_demo.json storage/factory_data/
