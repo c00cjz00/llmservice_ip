@@ -37,7 +37,7 @@ cp factory_conf/data/dataset_info.json storage/factory_data/
 cp factory_conf/data/identity.json storage/factory_data/
 cp factory_conf/data/alpaca_en_demo.json storage/factory_data/
 cp factory_conf/data/c4_demo.json storage/factory_data/
-rsync -avHS factory/ factory
+rsync -avHS factory_conf/ factory
 rsync -avHS factory_conf/examples/ storage/factory_examples
 rsync -avHS notebook_conf/ storage/jupyter_data/notebook
 rsync -avHS mergekit_conf/ mergekit
