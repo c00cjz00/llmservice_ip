@@ -8,6 +8,20 @@ networks:
     
 services:
 
+  nchc_qdrant:
+    container_name: nchc_qdrant
+    image: qdrant/qdrant:v1.8.4
+    pull_policy: always    
+    ports:
+      - ${nchc_qdrant}:6333
+    volumes:
+      - ./storage/qdrant_data:/qdrant_data
+    environment:
+      - QDRANT__SERVICE__API_KEY=${SYSTEM_KEY}
+    restart: always
+    networks:
+      - nchc 
+
   nchc_factory:
     container_name: nchc_factory
     image: c00cjz00/factory:latest
