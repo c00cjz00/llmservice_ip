@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, Dict, List, Optional, Sequence, Tuple, Union
 
 from ..extras.logging import get_logger
+from .data_utils import Role, infer_max_len
 from .formatter import EmptyFormatter, FunctionFormatter, StringFormatter, ToolFormatter
-from .utils import Role, infer_max_len
 
 
 if TYPE_CHECKING:
@@ -26,6 +26,7 @@ class Template:
     format_separator: "Formatter"
     default_system: str
     stop_words: List[str]
+    image_token: str
     efficient_eos: bool
     replace_eos: bool
     force_system: bool
@@ -68,8 +69,8 @@ class Template:
         self,
         tokenizer: "PreTrainedTokenizer",
         messages: List[Dict[str, str]],
-        system: str,
-        tools: str,
+        system: Optional[str],
+        tools: Optional[str],
         cutoff_len: int,
         reserved_label_len: int,
     ) -> Sequence[Tuple[List[int], List[int]]]:
@@ -195,7 +196,7 @@ class Llama2Template(Template):
         return self._make_pairs(encoded_messages, cutoff_len, reserved_label_len)
 
 
-templates: Dict[str, Template] = {}
+TEMPLATES: Dict[str, Template] = {}
 
 
 def _register_template(
@@ -209,6 +210,7 @@ def _register_template(
     format_separator: Optional["Formatter"] = None,
     default_system: str = "",
     stop_words: List[str] = [],
+    image_token: str = "<image>",
     efficient_eos: bool = False,
     replace_eos: bool = False,
     force_system: bool = False,
@@ -246,7 +248,7 @@ def _register_template(
     default_function_formatter = FunctionFormatter(slots=["Action: {{name}}\nAction Input: {{arguments}}"] + eos_slots)
     default_tool_formatter = ToolFormatter(tool_format="default")
     default_separator_formatter = EmptyFormatter()
-    templates[name] = template_class(
+    TEMPLATES[name] = template_class(
         format_user=format_user or default_user_formatter,
         format_assistant=format_assistant or default_assistant_formatter,
         format_system=format_system or default_user_formatter,
@@ -256,6 +258,7 @@ def _register_template(
         format_separator=format_separator or default_separator_formatter,
         default_system=default_system,
         stop_words=stop_words,
+        image_token=image_token,
         efficient_eos=efficient_eos,
         replace_eos=replace_eos,
         force_system=force_system,
@@ -276,7 +279,7 @@ def _add_or_replace_eos_token(tokenizer: "PreTrainedTokenizer", eos_token: str) 
 
 
 def _jinja_escape(content: str) -> str:
-    return content.replace("\n", r"\n").replace("'", r"\'")
+    return content.replace("'", r"\'")
 
 
 def _convert_slots_to_jinja(slots: "SLOTS", tokenizer: "PreTrainedTokenizer", placeholder: str = "content") -> str:
@@ -290,10 +293,10 @@ def _convert_slots_to_jinja(slots: "SLOTS", tokenizer: "PreTrainedTokenizer", pl
                 slot_items.append(placeholder)
                 if slot_pieces[1]:
                     slot_items.append("'" + _jinja_escape(slot_pieces[1]) + "'")
-        elif isinstance(slot, set):
-            if "bos_token" in slot:
+        elif isinstance(slot, set):  # do not use {{ eos_token }} since it may be replaced
+            if "bos_token" in slot and tokenizer.bos_token_id is not None:
                 slot_items.append("'" + tokenizer.bos_token + "'")
-            elif "eos_token" in slot:  # do not use {{ eos_token }} since it may be replaced
+            elif "eos_token" in slot and tokenizer.eos_token_id is not None:
                 slot_items.append("'" + tokenizer.eos_token + "'")
         elif isinstance(slot, dict):
             raise ValueError("Dict is not supported.")
@@ -325,9 +328,11 @@ def _get_jinja_template(template: "Template", tokenizer: "PreTrainedTokenizer") 
         jinja_template += "{% if loop.index0 == 0 and system_message is defined %}"
         jinja_template += "{% set content = " + system_message + " + message['content'] %}"
         jinja_template += "{% endif %}"
+
     jinja_template += "{% if message['role'] == 'user' %}"
     user_message = _convert_slots_to_jinja(template.format_user.apply(), tokenizer)
     jinja_template += "{{ " + user_message + " }}"
+
     jinja_template += "{% elif message['role'] == 'assistant' %}"
     assistant_message = _convert_slots_to_jinja(
         template.format_assistant.apply() + template.format_separator.apply(), tokenizer
@@ -343,9 +348,9 @@ def get_template_and_fix_tokenizer(
     name: Optional[str] = None,
 ) -> Template:
     if name is None:
-        template = templates["empty"]  # placeholder
+        template = TEMPLATES["empty"]  # placeholder
     else:
-        template = templates.get(name, None)
+        template = TEMPLATES.get(name, None)
         if template is None:
             raise ValueError("Template {} does not exist.".format(name))
 
@@ -539,8 +544,13 @@ _register_template(
             )
         ]
     ),
-    format_system=EmptyFormatter(slots=[{"bos_token"}]),
-    force_system=True,
+    format_system=StringFormatter(
+        slots=[{"bos_token"}, "<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>{{content}}<|END_OF_TURN_TOKEN|>"]
+    ),
+    default_system=(
+        "You are Command-R, a brilliant, sophisticated, AI-assistant trained to assist human users "
+        "by providing thorough responses. You are trained by Cohere."
+    ),
 )
 
 
@@ -614,6 +624,9 @@ _register_template(
     name="empty",
     format_user=StringFormatter(slots=["{{content}}"]),
     format_assistant=StringFormatter(slots=["{{content}}"]),
+    format_system=StringFormatter(slots=[{"bos_token"}, "{{content}}"]),
+    efficient_eos=True,
+    force_system=True,
 )
 
 
@@ -646,6 +659,19 @@ _register_template(
 
 
 _register_template(
+    name="glm4",
+    format_user=StringFormatter(slots=["<|user|>\n{{content}}<|assistant|>"]),
+    format_assistant=StringFormatter(slots=["\n{{content}}"]),
+    format_system=StringFormatter(slots=["[gMASK]<sop>{{content}}"]),
+    format_function=FunctionFormatter(slots=["{{name}}\n{{arguments}}"]),
+    format_observation=StringFormatter(slots=["<|observation|>\n{{content}}<|assistant|>"]),
+    stop_words=["<|user|>", "<|observation|>"],
+    efficient_eos=True,
+    force_system=True,
+)
+
+
+_register_template(
     name="intern",
     format_user=StringFormatter(slots=["<|User|>:{{content}}", {"token": "<eoh>"}, "\n<|Bot|>:"]),
     format_separator=EmptyFormatter(slots=[{"token": "<eoa>"}, "\n"]),
@@ -660,10 +686,10 @@ _register_template(
     format_system=StringFormatter(slots=[{"bos_token"}, "<|im_start|>system\n{{content}}<|im_end|>\n"]),
     format_separator=EmptyFormatter(slots=["\n"]),
     default_system=(
-        "You are an AI assistant whose name is InternLM (书生·浦语).\n"
-        "- InternLM (书生·浦语) is a conversational language model that is developed "
-        "by Shanghai AI Laboratory (上海人工智能实验室). It is designed to be helpful, honest, and harmless.\n"
-        "- InternLM (书生·浦语) can understand and communicate fluently in the language chosen "
+        "You are an AI assistant whose name is InternLM (書生·浦語).\n"
+        "- InternLM (書生·浦語) is a conversational language model that is developed "
+        "by Shanghai AI Laboratory (上海人工智慧實驗室). It is designed to be helpful, honest, and harmless.\n"
+        "- InternLM (書生·浦語) can understand and communicate fluently in the language chosen "
         "by the user such as English and 中文."
     ),
     stop_words=["<|im_end|>"],
@@ -674,17 +700,8 @@ _register_template(
 _register_template(
     name="llama2",
     format_user=StringFormatter(slots=[{"bos_token"}, "[INST] {{content}} [/INST]"]),
+    format_assistant=StringFormatter(slots=[" {{content}} ", {"eos_token"}]),
     format_system=StringFormatter(slots=["<<SYS>>\n{{content}}\n<</SYS>>\n\n"]),
-    default_system=(
-        "You are a helpful, respectful and honest assistant. "
-        "Always answer as helpfully as possible, while being safe. "
-        "Your answers should not include any harmful, unethical, "
-        "racist, sexist, toxic, dangerous, or illegal content. "
-        "Please ensure that your responses are socially unbiased and positive in nature.\n\n"
-        "If a question does not make any sense, or is not factually coherent, "
-        "explain why instead of answering something not correct. "
-        "If you don't know the answer to a question, please don't share false information."
-    ),
 )
 
 
@@ -692,7 +709,7 @@ _register_template(
     name="llama2_zh",
     format_user=StringFormatter(slots=[{"bos_token"}, "[INST] {{content}} [/INST]"]),
     format_system=StringFormatter(slots=["<<SYS>>\n{{content}}\n<</SYS>>\n\n"]),
-    default_system="You are a helpful assistant. 你是一个乐于助人的助手。",
+    default_system="You are a helpful assistant. 你是個樂於助人的助手。",
 )
 
 
@@ -725,7 +742,7 @@ _register_template(
 
 _register_template(
     name="mistral",
-    format_user=StringFormatter(slots=[" [INST] {{content}} [/INST]"]),
+    format_user=StringFormatter(slots=["[INST] {{content}} [/INST]"]),
     format_system=StringFormatter(slots=[{"bos_token"}, "{{content}}"]),
     force_system=True,
 )
@@ -733,8 +750,7 @@ _register_template(
 
 _register_template(
     name="olmo",
-    format_user=StringFormatter(slots=["<|user|>\n{{content}}<|assistant|>"]),
-    format_assistant=StringFormatter(slots=["{{content}}", {"eos_token"}]),
+    format_user=StringFormatter(slots=["<|user|>\n{{content}}<|assistant|>\n"]),
     format_system=StringFormatter(slots=[{"eos_token"}, "{{content}}"]),
     force_system=True,
 )
@@ -743,8 +759,24 @@ _register_template(
 _register_template(
     name="openchat",
     format_user=StringFormatter(slots=["GPT4 Correct User: {{content}}", {"eos_token"}, "GPT4 Correct Assistant:"]),
-    format_assistant=StringFormatter(slots=["{{content}}", {"eos_token"}]),
     format_system=StringFormatter(slots=[{"bos_token"}, "{{content}}"]),
+    force_system=True,
+)
+
+
+_register_template(
+    name="openchat-3.6",
+    format_user=StringFormatter(
+        slots=[
+            (
+                "<|start_header_id|>GPT4 Correct User<|end_header_id|>\n\n{{content}}<|eot_id|>"
+                "<|start_header_id|>GPT4 Correct Assistant<|end_header_id|>\n\n"
+            )
+        ]
+    ),
+    format_system=StringFormatter(slots=[{"bos_token"}, "{{content}}"]),
+    stop_words=["<|eot_id|>"],
+    replace_eos=True,
     force_system=True,
 )
 
@@ -761,7 +793,6 @@ _register_template(
     name="phi",
     format_user=StringFormatter(slots=["<|user|>\n{{content}}<|end|>\n<|assistant|>\n"]),
     format_system=StringFormatter(slots=[{"bos_token"}, "<|system|>\n{{content}}<|end|>\n"]),
-    format_observation=StringFormatter(slots=["<|function_output|>\n{{content}}<|end|>\n<|assistant|>\n"]),
     format_separator=EmptyFormatter(slots=["\n"]),
     default_system="You are a helpful AI assistant.",
     stop_words=["<|end|>"],
@@ -801,6 +832,15 @@ _register_template(
 
 
 _register_template(
+    name="telechat",
+    format_user=StringFormatter(slots=["<_user>{{content}}<_bot>"]),
+    format_system=StringFormatter(slots=["<_system>{{content}}<_end>"]),
+    stop_words=["<_end>"],
+    replace_eos=True,
+)
+
+
+_register_template(
     name="vicuna",
     format_user=StringFormatter(slots=["USER: {{content}} ASSISTANT:"]),
     default_system=(
@@ -814,9 +854,9 @@ _register_template(
     name="xuanyuan",
     format_user=StringFormatter(slots=["Human: {{content}} Assistant:"]),
     default_system=(
-        "以下是用户和人工智能助手之间的对话。用户以Human开头，人工智能助手以Assistant开头，"
-        "会对人类提出的问题给出有帮助、高质量、详细和礼貌的回答，并且总是拒绝参与与不道德、"
-        "不安全、有争议、政治敏感等相关的话题、问题和指示。\n"
+        "以下是用戶和人工智慧助理之間的對話。用戶以Human開頭，人工智慧助理以Assistant開頭，"
+        "會對人類提出的問題給予有幫助、高品質、詳細和禮貌的回答，並且總是拒絕參與與不道德、"
+        "不安全、有爭議、政治敏感等相關的話題、問題和指示。\n"
     ),
 )
 
@@ -850,6 +890,7 @@ _register_template(
 _register_template(
     name="yi",
     format_user=StringFormatter(slots=["<|im_start|>user\n{{content}}<|im_end|>\n<|im_start|>assistant\n"]),
+    format_system=StringFormatter(slots=["<|im_start|>system\n{{content}}<|im_end|>\n"]),
     format_separator=EmptyFormatter(slots=["\n"]),
     stop_words=["<|im_end|>"],
     replace_eos=True,
@@ -864,8 +905,8 @@ _register_template(
         "This is a chat between an inquisitive human and an AI assistant. "
         "Assume the role of the AI assistant. Read all the images carefully, "
         "and respond to the human's questions with informative, helpful, detailed and polite answers. "
-        "这是一个好奇的人类和一个人工智能助手之间的对话。假设你扮演这个AI助手的角色。"
-        "仔细阅读所有的图像，并对人类的问题做出信息丰富、有帮助、详细的和礼貌的回答。\n\n"
+        "這是人類和人工智慧助理之間令人好奇的對話。假設你扮演這個AI助理的角色。"
+        "仔細閱讀所有的圖像、客觀的問題可以得到豐富的、有幫助的、詳細的和禮儀的答案。\n\n"
     ),
     stop_words=["###"],
     efficient_eos=True,
