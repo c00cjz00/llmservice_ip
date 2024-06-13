@@ -143,6 +143,18 @@
                   </div>
                   <div class="post-more"><a class="more-link" href="http://<?=$_SERVER['HTTP_HOST'];?>:5080">Links</a></div>
                 </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="post mb-20">
+                  <div class="post-thumbnail"><a href="http://<?=$_SERVER['HTTP_HOST'];?>:6333"><img src="assets/images/portfolio/masonry-portfolio8.jpg" alt="GenAI 向量資料庫"/></a></div>
+                  <div class="post-header font-alt">
+                    <h2 class="post-title"><a href="http://<?=$_SERVER['HTTP_HOST'];?>:6333">GenAI 向量資料庫</a></h2>
+                  </div>
+                  <div class="post-entry">
+                    <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                  </div>
+                  <div class="post-more"><a class="more-link" href="http://<?=$_SERVER['HTTP_HOST'];?>:6333">Links</a></div>
+                </div>
               </div>				  
             </div>
           </div>
