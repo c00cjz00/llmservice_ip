@@ -8,7 +8,7 @@
 ## 更新套件
 ```
 sudo apt update
-sudo apt install php7.4-cli jq
+sudo apt install php-cli jq
 ```
 
 ## GIT 下載套件
