@@ -11,7 +11,7 @@ services:
   nchc_qdrant:
     container_name: nchc_qdrant
     image: qdrant/qdrant:v1.8.4
-    pull_policy: always    
+    #pull_policy: always    
     ports:
       - ${nchc_qdrant}:6333
     volumes:
@@ -25,7 +25,7 @@ services:
   nchc_ollama:
     container_name: nchc_ollama
     image: ollama/ollama:latest
-    pull_policy: always
+    #pull_policy: always
     ports:
       - ${nchc_ollama}:11434    
     volumes:
@@ -39,7 +39,7 @@ services:
   nchc_openwebui:
     container_name: nchc_openwebui
     image: ghcr.io/open-webui/open-webui:main
-    pull_policy: always
+    #pull_policy: always
     ports:
       - ${nchc_openwebui}:8080
     volumes:
@@ -60,7 +60,7 @@ services:
   nchc_anythingllm:
     container_name: nchc_anythingllm
     image: mintplexlabs/anythingllm
-    pull_policy: always
+    #pull_policy: always
     ports:
       - ${nchc_anythingllm}:3001    
     volumes:
@@ -92,7 +92,7 @@ services:
     container_name: nchc_litellm
     #image: ghcr.io/berriai/litellm:main-latest
     image: c00cjz00/litellm:v1 
-    pull_policy: always    
+    #pull_policy: always    
     ports:
       - ${nchc_litellm}:4000
     volumes:
@@ -134,7 +134,7 @@ services:
   nchc_pgadmin4:
     container_name: nchc_pgadmin4
     image: dpage/pgadmin4:latest
-    pull_policy: always    
+    #pull_policy: always    
     ports:
       - ${nchc_pgadmin4}:5080
     volumes:
@@ -154,7 +154,7 @@ services:
   nchc_php:
     container_name: nchc_php
     image: php:8.0-fpm
-    pull_policy: always    
+    #pull_policy: always    
     ports:
       - ${nchc_php}:9000
     volumes:
@@ -180,3 +180,13 @@ services:
       - nchc_openwebui         
     extra_hosts:
       - host.docker.internal:host-gateway
+
+  autoheal:
+    container_name: autoheal
+    image: willfarrell/autoheal
+    restart: always
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+

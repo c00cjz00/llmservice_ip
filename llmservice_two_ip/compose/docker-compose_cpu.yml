@@ -180,3 +180,13 @@ services:
       - nchc_openwebui         
     extra_hosts:
       - host.docker.internal:host-gateway
+
+  autoheal:
+    container_name: autoheal
+    image: willfarrell/autoheal
+    restart: always
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
