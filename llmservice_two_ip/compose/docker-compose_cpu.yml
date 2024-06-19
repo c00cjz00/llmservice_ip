@@ -68,6 +68,13 @@ services:
       - ./storage/anythingllm_hotdir:/app/collector/hotdir
       - ./storage/anythingllm_outputs:/app/collector/outputs
       - ./storage/anythingllm_env.txt:/app/server/.env
+    restart: always
+    healthcheck:
+      test: curl -fs http://localhost:3001/ || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     cap_add:
       - SYS_ADMIN
     user: "${UID:-1000}:${GID:-1000}"
@@ -83,13 +90,20 @@ services:
 
   nchc_litellm:
     container_name: nchc_litellm
-    image: ghcr.io/berriai/litellm:main-latest
+    #image: ghcr.io/berriai/litellm:main-latest
+    image: c00cjz00/litellm:v1 
     pull_policy: always    
     ports:
       - ${nchc_litellm}:4000
     volumes:
       - ./litellm/litellm-config.yaml:/app/config.yaml 
-    restart: unless-stopped
+    restart: always
+    healthcheck:
+      test: curl -fs http://localhost:4000/ || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s 
     networks:
       - nchc
     depends_on:
