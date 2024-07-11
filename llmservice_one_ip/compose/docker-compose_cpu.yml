@@ -68,6 +68,13 @@ services:
       - ./storage/anythingllm_hotdir:/app/collector/hotdir
       - ./storage/anythingllm_outputs:/app/collector/outputs
       - ./storage/anythingllm_env.txt:/app/server/.env
+    restart: always
+    healthcheck:
+      test: curl -fs http://localhost:3001/ || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     cap_add:
       - SYS_ADMIN
     user: "${UID:-1000}:${GID:-1000}"
@@ -83,7 +90,7 @@ services:
 
   nchc_php:
     container_name: nchc_php
-    image: php:8.0-fpm
+    image: php:8.3-fpm
     pull_policy: always    
     ports:
       - ${nchc_php}:9000
@@ -110,3 +117,12 @@ services:
       - nchc_openwebui         
     extra_hosts:
       - host.docker.internal:host-gateway
+
+  autoheal:
+    container_name: autoheal
+    image: willfarrell/autoheal
+    restart: always
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
