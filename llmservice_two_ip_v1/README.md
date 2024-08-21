@@ -1,15 +1,17 @@
 # nchc service
 
-## DOCKER 安裝
-- https://hackmd.io/@whYPD8MBSHWRZV6y-ymFwQ/r1Wbg9DrA 
+## 初始設定
+1. DOCKER 安裝
+請參考以下連結
+https://hackmd.io/@whYPD8MBSHWRZV6y-ymFwQ/r1Wbg9DrA 
 
-## 更新套件
+2. 更新套件
 ```
 sudo apt update
 sudo apt install php7.4-cli jq
 ```
 
-## GIT 下載套件
+## Step 1: GIT 下載套件
 ```
 git clone https://github.com/c00cjz00/llmservice_ip.git
 cd llmservice_ip/llmservice_two_ip_v1
