@@ -1,8 +1,7 @@
 # nchc service
 
 ## DOCKER 安裝
-- https://hackmd.io/@whYPD8MBSHWRZV6y-ymFwQ/Hk8pJ95eA
-- https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+- https://hackmd.io/@whYPD8MBSHWRZV6y-ymFwQ/r1Wbg9DrA 
 
 ## 更新套件
 ```
@@ -13,7 +12,7 @@ sudo apt install php7.4-cli jq
 ## GIT 下載套件
 ```
 git clone https://github.com/c00cjz00/llmservice_ip.git
-cd llmservice_ip/llmservice_two_ip
+cd llmservice_ip/llmservice_two_ip_v1
 ```
 
 ## Step 2: 編輯env.sample
@@ -30,9 +29,9 @@ vi  env.sample
 ## Step 4: 啟動服務
 - activate
 ```
-docker compose up -d && docker restart nchc_litellm
+docker compose up -d 
 ```
-- check 
+- check nchc_litellm
 ```
 docker logs -f nchc_litellm
 ```
