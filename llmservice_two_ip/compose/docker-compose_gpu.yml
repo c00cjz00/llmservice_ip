@@ -54,16 +54,20 @@ services:
       - ${nchc_openwebui}:8080
     volumes:
       - ./storage/openwebui_data:/app/backend/data
+      - ./openwebui_conf/static:/app/backend/static:ro
+      #- ./openwebui_conf/main.py:/app/backend/main.py
+      - ./openwebui_conf/config.py:/app/backend/config.py
     restart: unless-stopped
     networks:
       - nchc
     depends_on:
-      - nchc_ollama      
+      - nchc_ollama
     environment:
       - '/ollama/api=http://nchc_ollama:11434/api'
       - 'OLLAMA_BASE_URL=${OLLAMA_BASE_URL}'
       - 'OPENAI_API_BASE_URLS=${OPENAI_API_BASE_URLS}'
-      - 'OPENAI_API_KEYS=${OPENAI_API_KEYS}'      
+      - 'OPENAI_API_KEYS=${OPENAI_API_KEYS}'
+      - 'WEBUI_NAME=國網中心'
     extra_hosts:
       - host.docker.internal:host-gateway
               
