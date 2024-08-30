@@ -45,8 +45,7 @@ services:
     volumes:
       - ./storage/openwebui_data:/app/backend/data
       - ./openwebui_conf/static:/app/backend/static:ro
-      #- ./openwebui_conf/main.py:/app/backend/main.py
-      - ./openwebui_conf/config.py:/app/backend/config.py
+       - ./openwebui_conf/env.py:/app/backend/env.py
     restart: unless-stopped
     networks:
       - nchc
