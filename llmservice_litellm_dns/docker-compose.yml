@@ -8,7 +8,22 @@ networks:
     
 services:
 
-
+  # nchc_nvflare:
+    # container_name: nchc_nvflare
+    # image: nvflare/nvflare
+    # ports:
+      # - 80:80
+      # - 8003:8003
+    # volumes:
+      # - ./workspace:/workspace
+      # - ./NVFlare-2.3:/NVFlare    
+    # restart: always
+    # networks:
+      # - nchc    
+    # extra_hosts:
+      # - host.docker.internal:host-gateway
+    # command: [ "sleep", "infinity" ]
+    
   nchc_litellm:
     container_name: nchc_litellm
     #image: ghcr.io/berriai/litellm:main-latest
