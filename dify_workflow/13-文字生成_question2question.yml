@@ -1,0 +1,87 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: completion
+  name: 13-文字生成_question2question
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: true
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    allowed_file_types:
+    - image
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: Llama3-TAIDE-LX-70B-Chat
+    provider: openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: null
+  pre_prompt: 基於問題『{{questuon}}』，生成{{number}}個相關問題，著重於該銀行政策的實施挑戰、成效評估及潛在改進空間。這些問題應著眼於政策的實際操作和社會反饋。
+    請使用 JSON 格式提供，鍵值為：question, 不需要輸出其他的想法或建議
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: 問題內容
+      required: true
+      variable: questuon
+  - text-input:
+      default: ''
+      label: 幾個問題
+      required: true
+      variable: number
+version: 0.1.2

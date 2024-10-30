@@ -1,0 +1,598 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 09-聊天助手_工作流_翻譯聊天(檔案).yml
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables:
+  - description: 'Text to be translated. '
+    id: e520bb9f-da6f-49a3-9da6-a3c74f1d68d6
+    name: text
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1727235780030-true-1727235420145-target
+      selected: false
+      source: '1727235780030'
+      sourceHandle: 'true'
+      target: '1727235420145'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: assigner
+        targetType: answer
+      id: 1727243290238-source-1727243331745-target
+      selected: false
+      source: '1727243290238'
+      sourceHandle: source
+      target: '1727243331745'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1727244691213-source-1727244764225-target
+      selected: false
+      source: '1727244691213'
+      sourceHandle: source
+      target: '1727244764225'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1727234055352-source-1727235780030-target
+      selected: false
+      source: '1727234055352'
+      sourceHandle: source
+      target: '1727235780030'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: assigner
+      id: 1727235420145-source-1727243290238-target
+      selected: false
+      source: '1727235420145'
+      sourceHandle: source
+      target: '1727243290238'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: llm
+      id: 1727243331745-source-1727244691213-target
+      selected: false
+      source: '1727243331745'
+      sourceHandle: source
+      target: '1727244691213'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1727235780030-d8e58cc8-8c7c-4426-a596-32178b8fc6df-1730255553267-target
+      source: '1727235780030'
+      sourceHandle: d8e58cc8-8c7c-4426-a596-32178b8fc6df
+      target: '1730255553267'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1730255553267-source-1730255556247-target
+      source: '1730255553267'
+      sourceHandle: source
+      target: '1730255556247'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: Document to translate
+          max_length: 5
+          options: []
+          required: true
+          type: file
+          variable: text
+        - label: 'Language to be translated in: '
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: target_language
+      height: 115
+      id: '1727234055352'
+      position:
+        x: 30
+        y: 286.5
+      positionAbsolute:
+        x: 30
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1727234055352'
+        - text
+      height: 93
+      id: '1727235420145'
+      position:
+        x: 638
+        y: 286.5
+      positionAbsolute:
+        x: 638
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '='
+            id: aedd7231-30bc-450e-830f-068697835bc5
+            value: '1'
+            varType: number
+            variable_selector:
+            - sys
+            - dialogue_count
+          id: 'true'
+          logical_operator: and
+        - case_id: d8e58cc8-8c7c-4426-a596-32178b8fc6df
+          conditions:
+          - comparison_operator: '>'
+            id: 6f2dfa0d-f898-49d6-9d10-cd61ce884bed
+            value: '1'
+            varType: number
+            variable_selector:
+            - sys
+            - dialogue_count
+          id: d8e58cc8-8c7c-4426-a596-32178b8fc6df
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 173
+      id: '1727235780030'
+      position:
+        x: 334
+        y: 286.5
+      positionAbsolute:
+        x: 334
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        assigned_variable_selector:
+        - conversation
+        - text
+        desc: ''
+        input_variable_selector:
+        - '1727235420145'
+        - text
+        selected: false
+        title: Variable Assigner
+        type: assigner
+        write_mode: over-write
+      height: 131
+      id: '1727243290238'
+      position:
+        x: 942
+        y: 286.5
+      positionAbsolute:
+        x: 942
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: "Document Processed!\n\n "
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 99
+      id: '1727243331745'
+      position:
+        x: 1246
+        y: 286.5
+      positionAbsolute:
+        x: 1246
+        y: 286.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 28742294-85bb-4612-8e4e-6e590bb48c99
+          role: system
+          text: 'You are a translator capable of translating multiple languages. Your
+            task is to accurately translate the given text from the source language
+            to {{#1727234055352.target_language#}}. Follow these steps to complete
+            the task:
+
+
+            1. Identify the source language of the input text.
+
+            2. Translate the text into {{#1727234055352.target_language#}}.
+
+            3. Ensure that the translation maintains the original meaning and context.
+
+            4. Use proper grammar, punctuation, and syntax in the translated text.
+
+
+            Make sure to handle idiomatic expressions and cultural nuances appropriately.
+            If the input text contains any specialized terminology or jargon, ensure
+            that the translation reflects the correct terms in the target language.
+
+            '
+        - id: 90c836a7-2dd0-4221-99b5-220ee47395fd
+          role: user
+          text: '{{#1727235420145.text#}}'
+        selected: false
+        title: LLM Translate
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1727244691213'
+      position:
+        x: 1548.5714285714287
+        y: 286.5
+      positionAbsolute:
+        x: 1548.5714285714287
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1727244691213.text#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 102
+      id: '1727244764225'
+      position:
+        x: 1854
+        y: 286.5
+      positionAbsolute:
+        x: 1854
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: 'Dify '
+        desc: ''
+        height: 134
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          is where the workflow begins. The user is prompted to upload a document
+          and select the target language for translation.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 244
+      height: 134
+      id: '1729515577873'
+      position:
+        x: 30
+        y: 121.42857142857143
+      positionAbsolute:
+        x: 30
+        y: 121.42857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 244
+    - data:
+        author: 'Dify '
+        desc: ''
+        height: 137
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Takes
+          the extracted text and assigns it to the ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"conversation.text","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          variable for further processing.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 137
+      id: '1729515609896'
+      position:
+        x: 942
+        y: 120
+      positionAbsolute:
+        x: 942
+        y: 120
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: 'Dify '
+        desc: ''
+        height: 116
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Extracts
+          text from the uploaded document, preparing it for translation.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 116
+      id: '1729515625400'
+      position:
+        x: 638
+        y: 121.42857142857143
+      positionAbsolute:
+        x: 638
+        y: 121.42857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: 'Dify '
+        desc: ''
+        height: 139
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          node handles the translation of the extracted text using an AI language
+          model, based on the user''s selected target language.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 242
+      height: 139
+      id: '1729515638942'
+      position:
+        x: 1548.5714285714287
+        y: 121.42857142857143
+      positionAbsolute:
+        x: 1548.5714285714287
+        y: 121.42857142857143
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 242
+    - data:
+        author: 'Dify '
+        desc: ''
+        height: 103
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Displays
+          the translated text to the user as the final output.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 241
+      height: 103
+      id: '1729515841384'
+      position:
+        x: 1246
+        y: 121.42857142857143
+      positionAbsolute:
+        x: 1246
+        y: 121.42857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 241
+    - data:
+        author: 'Dify '
+        desc: ''
+        height: 117
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Provides
+          the final translated output after refinement, completing the workflow.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 117
+      id: '1729515935481'
+      position:
+        x: 1854
+        y: 121.42857142857143
+      positionAbsolute:
+        x: 1854
+        y: 121.42857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 4cc3d2ed-9a63-4cfe-b6e3-93f6f4cf6c6d
+          role: system
+          text: ''
+        - id: 50b3e85c-a2c3-4b7d-8979-56e23691c5a7
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730255553267'
+      position:
+        x: 638
+        y: 419.5
+      positionAbsolute:
+        x: 638
+        y: 419.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1730255553267.text#}}'
+        desc: ''
+        selected: false
+        title: 聊天問答
+        type: answer
+        variables: []
+      height: 102
+      id: '1730255556247'
+      position:
+        x: 942
+        y: 438.1546549277741
+      positionAbsolute:
+        x: 942
+        y: 438.1546549277741
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 51.44946519820837
+      y: 73.17619678172656
+      zoom: 0.8040888484979245

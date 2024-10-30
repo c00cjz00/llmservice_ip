@@ -1,0 +1,384 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 15-工作流_question2answer
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - remote_url
+        - local_file
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      configs: []
+      enabled: false
+      type: ''
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: start-llm
+      source: start
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1730288192751-target
+      source: llm
+      sourceHandle: source
+      target: '1730288192751'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1730288192751-source-1730288654247-target
+      source: '1730288192751'
+      sourceHandle: source
+      target: '1730288654247'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1730288654247'
+        sourceType: iteration-start
+        targetType: llm
+      id: 1730288654247start-source-1730288776666-target
+      source: 1730288654247start
+      sourceHandle: source
+      target: '1730288776666'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1730288654247-source-1730288994584-target
+      source: '1730288654247'
+      sourceHandle: source
+      target: '1730288994584'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1730288994584-source-1730289052374-target
+      source: '1730288994584'
+      sourceHandle: source
+      target: '1730289052374'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: START
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types: []
+          allowed_file_upload_methods: []
+          description: ''
+          label: 問題內容
+          max_length: null
+          options: []
+          required: true
+          type: text-input
+          variable: question
+        - allowed_file_extensions: []
+          allowed_file_types: []
+          allowed_file_upload_methods: []
+          description: ''
+          label: 幾個問題
+          max_length: null
+          options: []
+          required: true
+          type: text-input
+          variable: number
+      height: 115
+      id: start
+      position:
+        x: 30
+        y: 292.5
+      positionAbsolute:
+        x: 30
+        y: 292.5
+      selected: false
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: null
+        memory: null
+        model:
+          completion_params:
+            stop: []
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 987b98a3-bc07-4046-b8b8-977b8a3d155f
+          role: user
+          text: '基於問題『{{#start.question#}}』，生成{{#start.number#}}個相關問題，著重於該銀行政策的實施挑戰、成效評估及潛在改進空間。這些問題應著眼於政策的實際操作和社會反饋。
+            請使用 JSON 格式提供，鍵值為：question, 不需要輸出其他的想法或建議
+
+            '
+        selected: true
+        title: LLM
+        type: llm
+        vision:
+          configs: null
+          enabled: false
+          variable_selector: null
+      height: 97
+      id: llm
+      position:
+        x: 334
+        y: 292.5
+      positionAbsolute:
+        x: 334
+        y: 292.5
+      selected: true
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> dict:\n    import json\n\n    # 將輸入資料中的換行符號移除並解析成\
+          \ JSON\n    data = json.loads(arg1.replace(\"\\n\", \"\"))\n    \n    #\
+          \ 構建包含每個問題的結果\n    result = [{'question': item[\"question\"]} for item in\
+          \ data]\n    \n    return {\n        'result': result\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[object]
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          variable: arg1
+      height: 53
+      id: '1730288192751'
+      position:
+        x: 638
+        y: 292.5
+      positionAbsolute:
+        x: 638
+        y: 292.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        height: 185
+        iterator_selector:
+        - '1730288192751'
+        - result
+        output_selector:
+        - '1730288776666'
+        - text
+        output_type: array[string]
+        selected: false
+        start_node_id: 1730288654247start
+        title: Iteration
+        type: iteration
+        width: 388
+      height: 185
+      id: '1730288654247'
+      position:
+        x: 942
+        y: 292.5
+      positionAbsolute:
+        x: 942
+        y: 292.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 388
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1730288654247start
+      parentId: '1730288654247'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 966
+        y: 360.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730288654247'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 4ed4c856-0f78-4ddf-b585-990f64d4894d
+          role: system
+          text: "你是回答氣象問題專家 \n"
+        - id: 6fc0f8c0-6e53-4d5c-b87f-9e8a1fe35a0d
+          role: user
+          text: answer question {{#1730288654247.item#}}
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730288776666'
+      parentId: '1730288654247'
+      position:
+        x: 128
+        y: 68
+      positionAbsolute:
+        x: 1070
+        y: 360.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "def main(input_list: list, output_list: list) -> dict:\n    # 將每個問題與答案配對為單一字串，並格式化為\
+          \ JSON 風格的鍵值\n    result = \"\\n\\n\".join(\n        f'{{\"question\": \"\
+          {item[\"question\"]}\", \"answer\": \"{output_list[i]}\"}}'\n        for\
+          \ i, item in enumerate(input_list)\n    )\n\n    return {\n        \"result\"\
+          : result\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Code 2
+        type: code
+        variables:
+        - value_selector:
+          - '1730288654247'
+          - output
+          variable: output_list
+        - value_selector:
+          - '1730288192751'
+          - result
+          variable: input_list
+      height: 53
+      id: '1730288994584'
+      position:
+        x: 1390
+        y: 292.5
+      positionAbsolute:
+        x: 1390
+        y: 292.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1730288994584'
+          - result
+          variable: result
+        selected: false
+        title: End
+        type: end
+      height: 89
+      id: '1730289052374'
+      position:
+        x: 1694
+        y: 292.5
+      positionAbsolute:
+        x: 1694
+        y: 292.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 28.297664558381086
+      y: 61.79031414955267
+      zoom: 0.8595914916941924

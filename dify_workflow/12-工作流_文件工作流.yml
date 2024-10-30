@@ -1,0 +1,342 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 12-工作流_文件工作流
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1730270525648-source-llm-target
+      selected: false
+      source: '1730270525648'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1730270519987-source-1730270828668-target
+      selected: false
+      source: '1730270519987'
+      sourceHandle: source
+      target: '1730270828668'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1730270828668-c9fca777-a959-46e6-8d53-e8fc3e78fefa-1730270525648-target
+      source: '1730270828668'
+      sourceHandle: c9fca777-a959-46e6-8d53-e8fc3e78fefa
+      target: '1730270525648'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1730270828668-6640a8bb-6fff-45d6-ae24-88db1afc9083-1730271034921-target
+      source: '1730270828668'
+      sourceHandle: 6640a8bb-6fff-45d6-ae24-88db1afc9083
+      target: '1730271034921'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1730271034921-source-1730271106900-target
+      source: '1730271034921'
+      sourceHandle: source
+      target: '1730271106900'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: ff
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: f
+      height: 89
+      id: '1730270519987'
+      position:
+        x: 50
+        y: 412
+      positionAbsolute:
+        x: 50
+        y: 412
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 40275373-0a52-476b-82fd-b93982b9302a
+          role: system
+          text: '手上的文件如下
+
+            {{#1730270525648.text#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: llm
+      position:
+        x: 822
+        y: 303
+      positionAbsolute:
+        x: 822
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回覆
+        type: answer
+        variables: []
+      height: 102
+      id: answer
+      position:
+        x: 1197
+        y: 303
+      positionAbsolute:
+        x: 1197
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文件提取器
+        type: document-extractor
+        variable_selector:
+        - '1730270519987'
+        - f
+      height: 93
+      id: '1730270525648'
+      position:
+        x: 462
+        y: 241
+      positionAbsolute:
+        x: 462
+        y: 241
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: c9fca777-a959-46e6-8d53-e8fc3e78fefa
+          conditions:
+          - comparison_operator: '='
+            id: 96c1878f-b825-430c-a2ba-54a50c4d1729
+            value: '1'
+            varType: number
+            variable_selector:
+            - sys
+            - dialogue_count
+          logical_operator: and
+        - case_id: 6640a8bb-6fff-45d6-ae24-88db1afc9083
+          conditions:
+          - comparison_operator: '>'
+            id: 7fd1879e-3ec7-4f46-9374-0f176bb7db54
+            value: '1'
+            varType: number
+            variable_selector:
+            - sys
+            - dialogue_count
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 173
+      id: '1730270828668'
+      position:
+        x: 381
+        y: 552
+      positionAbsolute:
+        x: 381
+        y: 552
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}/'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 1c3e5df4-2ebd-4dbc-8d77-7bf6339ccf94
+          role: system
+          text: 手上的文件如下
+        - id: 618eed13-a39b-4527-8db5-e226b311b3c6
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730271034921'
+      position:
+        x: 839
+        y: 609
+      positionAbsolute:
+        x: 839
+        y: 609
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1730271034921.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回覆 2
+        type: answer
+        variables: []
+      height: 102
+      id: '1730271106900'
+      position:
+        x: 1143
+        y: 609
+      positionAbsolute:
+        x: 1143
+        y: 609
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 105.96877799425897
+      y: -15.739226984025208
+      zoom: 0.7937005707555265

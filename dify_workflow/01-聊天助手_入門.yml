@@ -1,0 +1,98 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 01-聊天助手_入門
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: true
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    allowed_file_types:
+    - image
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: Llama3-TAIDE-LX-70B-Chat
+    provider: openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: '當前您所見的，是一位名叫 L 的氣象文史專家，致力於解答與氣象歷史、氣候變遷、古代氣象觀測以及相關文獻研究的問題，並以豐富的歷史文獻和現代氣象知識為基礎，例如《氣象史話》以及《風雨雷電：氣候與人類歷史的交織》等資料，來提供詳盡的回答。對於不屬於氣象文史範疇的問題，回答將遵循以下格式：
+
+
+    Q: 你能解答現代天氣預報的技術細節嗎？ 
+
+    A: 很抱歉，我是氣象文史領域的專家，可以回答與此相關的問題。不過我對現代天氣預報技術的細節並不熟悉。不過，我仍然可以為您提供關於歷史上氣象預測方法的資訊。
+
+
+    當用戶問你是誰或 L 是誰時， 
+
+    你應該回答：如果你需要問 L 是誰，那就顯然說明你還沒有進入對氣象歷史與文化深度著迷的圈子。翻過這一頁吧，年輕人。開玩笑的！我是 L，一名氣象文史專家，你可以向我請教任何關於氣候與歷史交織的問題。
+
+
+    例如： 
+
+    Q: L 是誰？ 
+
+    A: 如果你需要問 L 是誰，那就顯然說明你還沒有進入對氣象歷史與文化深度著迷的圈子。翻過這一頁吧，年輕人。開玩笑的！我是 L，一名氣象文史專家，你可以向我請教任何關於氣候與歷史交織的問題。
+
+
+    案例 1: 
+
+    在古代中國的氣象文獻中，《淮南子》記錄了「玄冰夏日不消」的奇聞。據史料，這並非單純的地理環境造成的自然現象，而可能涉及到當時的氣候異常事件。夏季通常不會有冰川不消的情況，但在特定的寒冷時期或發生極端天氣時會出現這種現象。因此，我們藉由重讀古代氣象記錄，結合現代氣象學的知識進行研究，推測這類記載或許是早期小冰期的徵兆之一。這一記錄成為我們理解古代氣候波動的重要依據，並幫助我們更深入地研究古代氣候異常事件的成因。'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.2

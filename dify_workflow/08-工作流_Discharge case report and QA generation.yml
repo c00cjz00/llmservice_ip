@@ -1,0 +1,1016 @@
+app:
+  description: Discharge case report and QA generation
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 08-工作流_Discharge case report and QA generation
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1711529033302-source-1727008900112-target
+      source: '1711529033302'
+      sourceHandle: source
+      target: '1727008900112'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727008900112-source-1727009179892-target
+      source: '1727008900112'
+      sourceHandle: source
+      target: '1727009179892'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727009179892-source-1727009482263-target
+      source: '1727009179892'
+      sourceHandle: source
+      target: '1727009482263'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727009482263-source-1727009695335-target
+      source: '1727009482263'
+      sourceHandle: source
+      target: '1727009695335'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727009482263-source-1727009969701-target
+      source: '1727009482263'
+      sourceHandle: source
+      target: '1727009969701'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727009482263-source-1727009973211-target
+      source: '1727009482263'
+      sourceHandle: source
+      target: '1727009973211'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727009695335-source-1727010092639-target
+      source: '1727009695335'
+      sourceHandle: source
+      target: '1727010092639'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727009969701-source-1727010092639-target
+      source: '1727009969701'
+      sourceHandle: source
+      target: '1727010092639'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727009973211-source-1727010092639-target
+      source: '1727009973211'
+      sourceHandle: source
+      target: '1727010092639'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1727010092639-source-1727010495007-target
+      source: '1727010092639'
+      sourceHandle: source
+      target: '1727010495007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1727010495007-source-1727012091572-target
+      source: '1727010495007'
+      sourceHandle: source
+      target: '1727012091572'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1727012091572-source-1727010716552-target
+      source: '1727012091572'
+      sourceHandle: source
+      target: '1727010716552'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 病例描述
+        type: start
+        variables:
+        - label: Customer Review
+          max_length: 8192
+          options: []
+          required: true
+          type: paragraph
+          variable: review
+      dragging: false
+      height: 89
+      id: '1711529033302'
+      position:
+        x: 30
+        y: 248.5
+      positionAbsolute:
+        x: 30
+        y: 248.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Dify
+        desc: ''
+        height: 486
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":3,"mode":"normal","style":"font-size:
+          16px;","text":"Detailed Process","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"paragraph","version":1,"textFormat":3},{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"User
+          Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":11},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"User
+          inputs the customer review in the start node.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":12},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Initial
+          Classification","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":12},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"The
+          review is classified as either positive or negative.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":13},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Positive
+          Review Handling","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":13},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Positive
+          reviews are sent to the brand marketing department.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":14},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Negative
+          Review Handling","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":14},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Negative
+          reviews are further classified into after-sales or transportation issues.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":15},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"After-sales
+          Issues Handling","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":15},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Negative
+          after-sales feedback is sent to the after-sales department.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":16},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Transportation
+          Issues Handling","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":16},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Negative
+          transportation feedback is sent to the transportation department and the
+          product experience department.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":17},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Variable
+          Assignment","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":17},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Responses
+          from HTTP requests are assigned to variables.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":18},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Workflow
+          Completion","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":18},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"The
+          workflow is marked as complete, and the final output is generated.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":19}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"number","start":11,"tag":"ol"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 640
+      height: 486
+      id: '1718995287039'
+      position:
+        x: 489.3997033572796
+        y: 2672.3438791911353
+      positionAbsolute:
+        x: 489.3997033572796
+        y: 2672.3438791911353
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 640
+    - data:
+        author: Dify
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Use
+          HTTP Request to send feedback to internal systems. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1718995305162'
+      position:
+        x: 1229.082890943888
+        y: 2473.1984056101255
+      positionAbsolute:
+        x: 1229.082890943888
+        y: 2473.1984056101255
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-90b-text-preview
+          provider: groq
+        prompt_template:
+        - id: e8fc79d8-a3a1-4fcf-a671-b9af8e398242
+          role: system
+          text: "Read the prompts inside the <prompts></prompts> XML tags provided\
+            \ by the user and understand their meaning. Then, further adjust this\
+            \ prompt by placing the adjusted prompt between [The start of case report]\
+            \ and [The end of case report] to make the prompts clearer. \nPlease maintain\
+            \ the original structure of the prompts and ensure that the difference\
+            \ between the before and after paragraphs is less than 20%, while the\
+            \ word count of the modified text increases by approximately 5%~10%. \n\
+            As long as you output the adjustment content, do not generate any additional\
+            \ questions or content, and do not provide any explanatory information."
+        - id: 2469b2aa-3d09-495c-90f3-7840b6889a48
+          role: user
+          text: '<prompts>
+
+            {{#1711529033302.review#}}
+
+            <prompts>'
+        selected: false
+        title: 病例描述校正器
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1727008900112'
+      position:
+        x: 333
+        y: 248.5
+      positionAbsolute:
+        x: 333
+        y: 248.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-90b-text-preview
+          provider: groq
+        prompt_template:
+        - id: f15e3e94-d517-4f1b-a13e-f59a83e095d7
+          role: system
+          text: You are an intelligent clinical model.
+        - id: 9d21aa24-10e5-4a50-b4f3-2e0b116ca583
+          role: user
+          text: '{{#1727008900112.text#}}
+
+
+            Based on the patient’s case report provided, please
+
+            generate a synthetic discharge summary in the style
+
+            of an Electronic Health Record (EHR).
+
+            Please follow these requirements:
+
+            1. Generate only the discharge summary. Do not
+
+            generate any other phrases such as notification.
+
+            2. If there are any standard clinical terms used in
+
+            the case report, they should be replaced with their
+
+            commonly used non-standardized equivalents in the
+
+            discharge summary. For example, "hypercholesterolemia" can be rewritten
+            as "high cholesterol".
+
+            3. The discharge summary includes abbreviations
+
+            that are not defined in the context.
+
+            4. The discharge summary may contain minor grammatical errors.
+
+            5. Ensure that the discharge summary does not contain any clinical information
+            or details (such as medication names, dosages, treatment plans, diagnoses,
+
+            procedures, test results, etc.) that are not explicitly
+
+            mentioned or defined within the given case report.
+
+            6. While preserving the structure of the EHR and
+
+            maintaining medical consistency, generate a detailed
+
+            and comprehensive discharge summary.
+
+            7. The discharge summary is a comprehensive document that can be organized
+            using several distinct
+
+            headings.
+
+            8. For patients who have not yet been discharged, create a section in
+            the discharge summary summarizing
+
+            their medical progression'
+        selected: false
+        title: 病例描述轉換成EHR格式
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1727009179892'
+      position:
+        x: 636
+        y: 248.5
+      positionAbsolute:
+        x: 636
+        y: 248.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-90b-text-preview
+          provider: groq
+        prompt_template:
+        - id: 1da5028e-236e-433d-aa4e-2cfa767e0bf2
+          role: system
+          text: "You are a healthcare professional who often uses an advanced clinical\
+            \ language model that can analyze clinical notes. You ask the questions\
+            \ and use the outputs from this model to aid in your decision-making process.\n\
+            Let’s suppose you want to ask a question about \nthe task of \"{Task}\"\
+            \ related to the given discharge\nsummary. How would you frame your question?"
+        - id: c3a0a24a-330f-4986-9c10-bd596cbf52d0
+          role: user
+          text: '[Discharge Summary Begin]
+
+            {{#1727009179892.text#}}
+
+            [Discharge Summary End]
+
+
+            We also offer five example questions related to the task for your reference.
+            Although you can refer to these samples, try to create a distinct query.
+            The crucial aspect of your question is that it should be answerable using
+            only the information available in the discharge summary. Also, try to
+            keep your question as brief and straightforward as possible.
+
+            [Example Questions Begin]
+
+            "Can you identify and categorize all the medical conditions"
+
+            "Could you extract all medications prescribed and
+
+            their corresponding dosages?"
+
+            "What were the diagnostic tests and their results?"
+
+            "Identify all the medical procedures"
+
+            "Can you recognize and list any lifestyle factors such
+
+            as smoking, alcohol consumption, or exercise habits"
+
+            [Example Questions End]
+
+
+            Please output solely a question.'
+        selected: false
+        title: EHR病例產出問題
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1727009482263'
+      position:
+        x: 939
+        y: 248.5
+      positionAbsolute:
+        x: 939
+        y: 248.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-1b-preview
+          provider: groq
+        prompt_template:
+        - id: 236297c8-53a4-4fd7-94df-085a2d9358ed
+          role: system
+          text: 'You are an intelligent clinical language model.
+
+            '
+        - id: 0a8c548b-7091-4a71-ade0-f1d86f205981
+          role: user
+          text: '[Discharge Summary Begin]
+
+            {{#1727009179892.text#}}
+
+            [Discharge Summary End]
+
+
+            [Instruction Begin]
+
+            {{#1727009482263.text#}}
+
+            [Instruction End]
+
+
+            Above, we provide you with a part of the discharge
+
+            summary and the instruction that the healthcare professional gave about
+            it. Generate a response to the
+
+            healthcare professional’s instruction using the given
+
+            discharge summary.
+
+            Here are the requirements:
+
+            - Your response must be accurate and concise to the
+
+            instruction.
+
+            - If the instruction is not fully answerable within the
+
+            given discharge summary, explain the reason why it
+
+            is unanswerable using the given information.
+
+            - Do not say that you cannot respond as an AI model.
+
+            - Do not ask back nor rephrase the instruction.
+
+            Response:'
+        selected: false
+        title: 1B回答結果
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1727009695335'
+      position:
+        x: 1242
+        y: 248.5
+      positionAbsolute:
+        x: 1242
+        y: 248.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-3b-preview
+          provider: groq
+        prompt_template:
+        - id: 4167a98c-1add-471c-acd6-fba910ca23fa
+          role: system
+          text: 'You are an intelligent clinical language model.
+
+            '
+        - id: 014f3dbc-5526-4c6c-af40-e8ac22ec524f
+          role: user
+          text: '[Discharge Summary Begin]
+
+            {{#1727009179892.text#}}
+
+            [Discharge Summary End]
+
+
+            [Instruction Begin]
+
+            {{#1727009482263.text#}}
+
+            [Instruction End]
+
+
+            Above, we provide you with a part of the discharge
+
+            summary and the instruction that the healthcare professional gave about
+            it. Generate a response to the
+
+            healthcare professional’s instruction using the given
+
+            discharge summary.
+
+            Here are the requirements:
+
+            - Your response must be accurate and concise to the
+
+            instruction.
+
+            - If the instruction is not fully answerable within the
+
+            given discharge summary, explain the reason why it
+
+            is unanswerable using the given information.
+
+            - Do not say that you cannot respond as an AI model.
+
+            - Do not ask back nor rephrase the instruction.
+
+            Response:'
+        selected: false
+        title: 3B回答結果
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1727009969701'
+      position:
+        x: 1242
+        y: 385.5
+      positionAbsolute:
+        x: 1242
+        y: 385.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-11b-vision-preview
+          provider: groq
+        prompt_template:
+        - id: cc6027aa-383c-4665-9131-d4b0afc5a0e9
+          role: system
+          text: 'You are an intelligent clinical language model.
+
+            '
+        - id: 23d7e0e7-9c00-4169-aaa3-b44960d9e579
+          role: user
+          text: '[Discharge Summary Begin]
+
+            {{#1727009179892.text#}}
+
+            [Discharge Summary End]
+
+
+            [Instruction Begin]
+
+            {{#1727009482263.text#}}
+
+            [Instruction End]
+
+
+            Above, we provide you with a part of the discharge
+
+            summary and the instruction that the healthcare professional gave about
+            it. Generate a response to the
+
+            healthcare professional’s instruction using the given
+
+            discharge summary.
+
+            Here are the requirements:
+
+            - Your response must be accurate and concise to the
+
+            instruction.
+
+            - If the instruction is not fully answerable within the
+
+            given discharge summary, explain the reason why it
+
+            is unanswerable using the given information.
+
+            - Do not say that you cannot respond as an AI model.
+
+            - Do not ask back nor rephrase the instruction.
+
+            Response:'
+        selected: false
+        title: 11B回答結果
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1727009973211'
+      position:
+        x: 1242
+        y: 524.1317556538247
+      positionAbsolute:
+        x: 1242
+        y: 524.1317556538247
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-90b-text-preview
+          provider: groq
+        prompt_template:
+        - id: d4779add-c615-45cf-8682-63c8c35bc0d1
+          role: system
+          text: 'You are an intelligent clinical language model.
+
+            '
+        - id: 46129068-cadb-420c-bcf0-5890bb10dcb6
+          role: user
+          text: '[Discharge Summary Begin]
+
+            [Discharge Summary End]
+
+
+            [Instruction Begin]
+
+            [Instruction End]
+
+            [Agent A’s Answer Begin]
+
+            {{#1727009695335.text#}}
+
+            [Agent A’s Answer End]
+
+            [Agent B’s Answer Begin]
+
+            {{#1727009969701.text#}}
+
+            [Agent B’s Answer End]
+
+            [Agent C’s Answer Begin]
+
+            {{#1727009973211.text#}}
+
+            [Agent C’s Answer End]
+
+
+            Above, we provide you with a discharge summary
+
+            and the instruction that the healthcare professional
+
+            gave about the discharge summary. You are also
+
+            provided with 3 corresponding responses from 3 different
+
+            clinical models. Your task is to read the discharge
+
+            summary and the instruction carefully, then find the
+
+            answer to the instruction. Then, compare your answer with each model’s
+            response and evaluate the
+
+            response based on the following criteria.
+
+            Criteria :
+
+            1. Unacceptable (1 point): The model’s response
+
+            includes any incorrect or irrelevant content. If the
+
+            instruction was unanswerable, the model did not acknowledge this and outputs
+            the wrong answer.
+
+            2. Poor (2 points): The model’s response does not
+
+            contain any incorrect or irrelevant content but omits
+
+            significant or crucial content that the instruction is
+
+            required for.
+
+            3. Satisfactory (3 points): The model’s response
+
+            does not contain any incorrect or irrelevant contents
+
+            but omits minor or insignificant contents that the
+
+            instruction is required for.
+
+            4. Excellent (4 points): The model’s response contains all the necessary
+            information that the instruction
+
+            is requiring for. If the instruction was unanswerable,
+
+            the model correctly acknowledged this and says that
+
+            it was unanswerable.
+
+            When evaluating each score based on the above criteria, ensure that each
+            judgment is not affected by the
+
+            other model’s response.
+
+            The first line must contain only {Number of Samples} values, which indicate
+            the score for each model,
+
+            respectively. The {Number of Samples} scores are
+
+            separated by a space. Output scores without explanation.'
+        selected: false
+        title: 90B評斷三個模型回答結果
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector: []
+          enabled: false
+      height: 97
+      id: '1727010092639'
+      position:
+        x: 1544.5
+        y: 385.5
+      positionAbsolute:
+        x: 1544.5
+        y: 385.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(q: str, a1: str, a2: str, a3: str, score: str, report: str)\
+          \ -> dict:\n    return {\n        \"result\": \"Report:\\n\"+report+\"\\\
+          n\\n\\nQuestion:\\n\"+q+\"\\n\\nAnswer1:\\n\"+a1+\"\\n\\nAnswer2:\\n\"+a2+\"\
+          \\n\\nAnswer3:\\n\"+a3+\"\\n\\nScore:\\n\"+score,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 結果彙整
+        type: code
+        variables:
+        - value_selector:
+          - '1727009482263'
+          - text
+          variable: q
+        - value_selector:
+          - '1727009695335'
+          - text
+          variable: a1
+        - value_selector:
+          - '1727009969701'
+          - text
+          variable: a2
+        - value_selector:
+          - '1727009973211'
+          - text
+          variable: a3
+        - value_selector:
+          - '1727010092639'
+          - text
+          variable: score
+        - value_selector:
+          - '1727009179892'
+          - text
+          variable: report
+      height: 53
+      id: '1727010495007'
+      position:
+        x: 1848
+        y: 385.5
+      positionAbsolute:
+        x: 1848
+        y: 385.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1727012091572'
+          - text
+          variable: result
+        selected: false
+        title: 輸出小結結果
+        type: end
+      height: 89
+      id: '1727010716552'
+      position:
+        x: 2454
+        y: 385.5
+      positionAbsolute:
+        x: 2454
+        y: 385.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 6ca064f3-c61a-4d11-a2a9-32f00eafd749
+          role: system
+          text: Translate the following English text to Chinese (zh-TW)
+        - id: 6dea21c9-70ce-4ee4-803d-a6718f4a1faa
+          role: user
+          text: '{{#1727010495007.result#}}'
+        selected: false
+        title: TAIDE翻譯成中文
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1727012091572'
+      position:
+        x: 2149.7400789501053
+        y: 385.5
+      positionAbsolute:
+        x: 2149.7400789501053
+        y: 385.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: 國網中心
+        desc: ''
+        height: 185
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"https://huggingface.co/datasets/zhengyun21/PMC-Patients/viewer?row=0","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          60-year-old male was hospitalized due to moderate ARDS from COVID-19 with
+          symptoms of fever, dry cough, and dyspnea. We encountered several difficulties
+          during physical therapy on the acute ward. First, any change of position
+          or deep breathing triggered coughing attacks that induced oxygen desaturation
+          and dyspnea. To avoid rapid deterioration and respiratory failure, we instructed
+          and performed position changes very slowly and step-by-step. In this way,
+          a position change to the 135° prone position () took around 30 minutes.
+          This approach was well tolerated and increased oxygen saturation, for example,
+          on day 5 with 6 L/min of oxygen from 93% to 97%. Second, we had to adapt
+          the breathing exercises to avoid prolonged coughing and oxygen desaturation.
+          Accordingly, we instructed the patient to stop every deep breath before
+          the need to cough and to hold inspiration for better air distribution. In
+          this manner, the patient performed the breathing exercises well and managed
+          to increase his oxygen saturation. Third, the patient had difficulty maintaining
+          sufficient oxygen saturation during physical activity. However, with close
+          monitoring and frequent breaks, he managed to perform strength and walking
+          exercises at a low level without any significant deoxygenation. Exercise
+          progression was low on days 1 to 5, but then increased daily until hospital
+          discharge to a rehabilitation clinic on day 10.","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 261
+      height: 185
+      id: '1730258975068'
+      position:
+        x: 30
+        y: 353.1159252015995
+      positionAbsolute:
+        x: 30
+        y: 353.1159252015995
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 261
+    viewport:
+      x: 511.8242953279514
+      y: 86.10562408982918
+      zoom: 0.7937005259840997
