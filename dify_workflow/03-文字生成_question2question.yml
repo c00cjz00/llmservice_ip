@@ -50,13 +50,13 @@ model_config:
     completion_params:
       stop: []
     mode: chat
-    name: Llama3-TAIDE-LX-70B-Chat
-    provider: openai_api_compatible
+    name: llama-3.2-90b-text-preview
+    provider: groq
   more_like_this:
     enabled: false
   opening_statement: null
-  pre_prompt: 基於問題『{{questuon}}』，生成{{number}}個相關問題，著重於該銀行政策的實施挑戰、成效評估及潛在改進空間。這些問題應著眼於政策的實際操作和社會反饋。
-    請使用 JSON 格式提供，鍵值為：question, 不需要輸出其他的想法或建議
+  pre_prompt: 基於問題『{{question}}』，生成{{question_number}}個相關問題，著重於颱風期間的降雨量監測、預測挑戰、成效評估及潛在改進空間。這些問題應著眼於氣象監測的實際操作和社會反饋。請使用
+    JSON 格式提供，鍵值為：question，不需要輸出其他的想法或建議。
   prompt_type: simple
   retriever_resource:
     enabled: true
@@ -76,12 +76,12 @@ model_config:
   user_input_form:
   - text-input:
       default: ''
-      label: 問題內容
-      required: true
-      variable: questuon
-  - text-input:
-      default: ''
       label: 幾個問題
       required: true
-      variable: number
+      variable: question_number
+  - text-input:
+      default: ''
+      label: 問題
+      required: true
+      variable: question
 version: 0.1.2
