@@ -1,0 +1,400 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 18-檔案文章分段處理
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1717916867969-source-1730763963450-target
+      source: '1717916867969'
+      sourceHandle: source
+      target: '1730763963450'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1730763963450'
+        sourceType: iteration-start
+        targetType: template-transform
+      id: 1730763963450start-source-1730764002509-target
+      source: 1730763963450start
+      sourceHandle: source
+      target: '1730764002509'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: end
+      id: 1730763963450-source-1730763825728-target
+      source: '1730763963450'
+      sourceHandle: source
+      target: '1730763825728'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1711067409646-source-1730764267007-target
+      source: '1711067409646'
+      sourceHandle: source
+      target: '1730764267007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1730764267007-source-1717916867969-target
+      source: '1730764267007'
+      sourceHandle: source
+      target: '1717916867969'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 上傳PDF
+          max_length: null
+          options: []
+          required: true
+          type: file
+          variable: input_file
+      dragging: false
+      height: 88
+      id: '1711067409646'
+      position:
+        x: 4.3198879008384665
+        y: 258.497198725972
+      positionAbsolute:
+        x: 4.3198879008384665
+        y: 258.497198725972
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "\ndef main(input_text: str) -> str:\n    token_limit = 100\n    overlap\
+          \ = 10\n    chunk_size = int(token_limit * 6 * (4/3))\n\n        # Initialize\
+          \ variables\n    chunks = []\n    start_index = 0\n    text_length = len(input_text)\n\
+          \n    # Loop until the end of the text is reached\n    while start_index\
+          \ < text_length:\n        # If we are not at the beginning, adjust the start_index\
+          \ to ensure overlap\n        if start_index > 0:\n            start_index\
+          \ -= overlap\n\n        # Calculate end index for the current chunk\n  \
+          \      end_index = start_index + chunk_size\n        if end_index > text_length:\n\
+          \            end_index = text_length\n\n        # Add the current chunk\
+          \ to the list\n        chunks.append(input_text[start_index:end_index])\n\
+          \n        # Update the start_index for the next chunk\n        start_index\
+          \ += chunk_size\n\n    return {\n        \"chunks\": chunks,\n    }\n"
+        code_language: python3
+        dependencies: []
+        desc: 'token_limit = 1000
+
+          overlap = 100'
+        outputs:
+          chunks:
+            children: null
+            type: array[string]
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '1730764267007'
+          - text
+          variable: input_text
+      height: 96
+      id: '1717916867969'
+      position:
+        x: 637.466106452028
+        y: 258.497198725972
+      positionAbsolute:
+        x: 637.466106452028
+        y: 258.497198725972
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: Dify
+        desc: ''
+        height: 186
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Code
+          node separates the input_text into chunks with length of token_limit. Each
+          chunk overlap with each other to make sure the texts are consistent.  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"The
+          code node outputs an array of segmented texts of input_texts. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 340
+      height: 186
+      id: '1718990593686'
+      position:
+        x: 259.3026056936437
+        y: 451.6924912936374
+      positionAbsolute:
+        x: 259.3026056936437
+        y: 451.6924912936374
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 340
+    - data:
+        author: Dify
+        desc: ''
+        height: 128
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Iterate
+          through all the elements in output of the code node and translate each chunk
+          using a three steps translation workflow. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 355
+      height: 128
+      id: '1718991836605'
+      position:
+        x: 764.3891977435923
+        y: 530.8917807505335
+      positionAbsolute:
+        x: 764.3891977435923
+        y: 530.8917807505335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 355
+    - data:
+        author: Dify
+        desc: ''
+        height: 126
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Avoid
+          using a high token_limit, LLM''s performance decreases with longer context
+          length for gpt-4o. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Recommend
+          to use less than or equal to 1000 tokens. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: yellow
+        title: ''
+        type: ''
+        width: 351
+      height: 126
+      id: '1718991882984'
+      position:
+        x: 304.49115824454367
+        y: 148.4042994607805
+      positionAbsolute:
+        x: 304.49115824454367
+        y: 148.4042994607805
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 351
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1730763963450'
+          - output
+          variable: result
+        selected: false
+        title: 結束
+        type: end
+      height: 88
+      id: '1730763825728'
+      position:
+        x: 1373.9927170490305
+        y: 258.497198725972
+      positionAbsolute:
+        x: 1373.9927170490305
+        y: 258.497198725972
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        height: 184
+        iterator_selector:
+        - '1717916867969'
+        - chunks
+        output_selector:
+        - '1730764002509'
+        - output
+        output_type: array[string]
+        selected: false
+        start_node_id: 1730763963450start
+        title: 迭代
+        type: iteration
+        width: 387
+      height: 184
+      id: '1730763963450'
+      position:
+        x: 946.5266105970023
+        y: 264.0798317910071
+      positionAbsolute:
+        x: 946.5266105970023
+        y: 264.0798317910071
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 387
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1730763963450start
+      parentId: '1730763963450'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 970.5266105970023
+        y: 332.0798317910071
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730763963450'
+        selected: false
+        template: "第一個: {{ item }}\r\n\r\n接下來"
+        title: 模板轉換
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1730763963450'
+          - index
+          variable: arg1
+        - value_selector:
+          - '1730763963450'
+          - item
+          variable: item
+      height: 52
+      id: '1730764002509'
+      parentId: '1730763963450'
+      position:
+        x: 128
+        y: 68
+      positionAbsolute:
+        x: 1074.5266105970022
+        y: 332.0798317910071
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文件提取器
+        type: document-extractor
+        variable_selector:
+        - '1711067409646'
+        - input_file
+      height: 92
+      id: '1730764267007'
+      position:
+        x: 330.76694677398586
+        y: 287.5268906641546
+      positionAbsolute:
+        x: 330.76694677398586
+        y: 287.5268906641546
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 58.85223543879465
+      y: 178.1698458218567
+      zoom: 0.8956347196300184
