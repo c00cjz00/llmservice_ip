@@ -1,0 +1,390 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 30-工作流_書本翻譯
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1717916867969-source-1717916955547-target
+      source: '1717916867969'
+      sourceHandle: source
+      target: '1717916955547'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: template-transform
+      id: 1717916955547-source-1717917057450-target
+      source: '1717916955547'
+      sourceHandle: source
+      target: '1717917057450'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1717917057450-source-1711068257370-target
+      source: '1717917057450'
+      sourceHandle: source
+      target: '1711068257370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1717916955547'
+        sourceType: iteration-start
+        targetType: llm
+      id: 1717916955547start0-source-1717916991709-target
+      source: 1717916955547start0
+      sourceHandle: source
+      target: '1717916991709'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1711067409646-source-1731252874084-target
+      source: '1711067409646'
+      sourceHandle: source
+      target: '1731252874084'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1731252874084-source-1717916867969-target
+      source: '1731252874084'
+      sourceHandle: source
+      target: '1717916867969'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 文本檔案
+          max_length: null
+          options: []
+          required: true
+          type: file
+          variable: source_file
+        - label: source_lang
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: source_lang
+        - label: target_lang
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: target_lang
+      dragging: false
+      height: 141
+      id: '1711067409646'
+      position:
+        x: 30
+        y: 306
+      positionAbsolute:
+        x: 30
+        y: 306
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1717917057450'
+          - output
+          variable: final
+        selected: false
+        title: 结束
+        type: end
+      height: 89
+      id: '1711068257370'
+      position:
+        x: 1932
+        y: 306
+      positionAbsolute:
+        x: 1932
+        y: 306
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "\ndef main(input_text: str) -> str:\n    token_limit = 1000\n    overlap\
+          \ = 100\n    chunk_size = int(token_limit * 6 * (4/3))\n\n        # Initialize\
+          \ variables\n    chunks = []\n    start_index = 0\n    text_length = len(input_text)\n\
+          \n    # Loop until the end of the text is reached\n    while start_index\
+          \ < text_length:\n        # If we are not at the beginning, adjust the start_index\
+          \ to ensure overlap\n        if start_index > 0:\n            start_index\
+          \ -= overlap\n\n        # Calculate end index for the current chunk\n  \
+          \      end_index = start_index + chunk_size\n        if end_index > text_length:\n\
+          \            end_index = text_length\n\n        # Add the current chunk\
+          \ to the list\n        chunks.append(input_text[start_index:end_index])\n\
+          \n        # Update the start_index for the next chunk\n        start_index\
+          \ += chunk_size\n\n    return {\n        \"chunks\": chunks,\n    }\n"
+        code_language: python3
+        dependencies: []
+        desc: 'token_limit = 1000
+
+          overlap = 100'
+        outputs:
+          chunks:
+            children: null
+            type: array[string]
+        selected: false
+        title: 程式碼
+        type: code
+        variables:
+        - value_selector:
+          - '1731252874084'
+          - text
+          variable: input_text
+      height: 97
+      id: '1717916867969'
+      position:
+        x: 636
+        y: 306
+      positionAbsolute:
+        x: 636
+        y: 306
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        height: 212
+        iterator_selector:
+        - '1717916867969'
+        - chunks
+        output_selector:
+        - '1717916991709'
+        - text
+        output_type: array[string]
+        selected: false
+        startNodeType: llm
+        start_node_id: 1717916955547start0
+        title: 迭代
+        type: iteration
+        width: 630
+      height: 212
+      id: '1717916955547'
+      position:
+        x: 939
+        y: 306
+      positionAbsolute:
+        x: 939
+        y: 306
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 630
+      zIndex: 1
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1717916955547'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 4d7ae758-2d7b-4404-ad9f-d6748ee64439
+          role: system
+          text: 您是語言專家，專門從事從 {{#1711067409646.source_lang#}} 到 {{#1711067409646.target_lang#}}的翻譯。
+        - id: 94291c6b-3611-449e-b17d-a52d20395674
+          role: user
+          text: '這是從 {{#1711067409646.source_lang#}}到 {{#1711067409646.target_lang#}}
+            的翻譯，請將此文本的翻譯成 {{#1711067409646.target_lang#}}。除翻譯外，請勿提供任何解釋或文字。
+
+
+            {{#1711067409646.source_lang#}}：{{#1717916955547.item#}}
+
+
+            {{#1711067409646.target_lang#}}:
+
+            '
+        selected: false
+        title: 翻譯
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector: []
+          enabled: false
+      extent: parent
+      height: 97
+      id: '1717916991709'
+      parentId: '1717916955547'
+      position:
+        x: 289.59674108540344
+        y: 70.95144506678338
+      positionAbsolute:
+        x: 1228.5967410854034
+        y: 376.9514450667834
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        desc: 聚合所有分段翻译
+        selected: false
+        template: '{{ translated_text | join('' '') }}'
+        title: 模板
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1717916955547'
+          - output
+          variable: translated_text
+      height: 81
+      id: '1717917057450'
+      position:
+        x: 1629
+        y: 306
+      positionAbsolute:
+        x: 1629
+        y: 306
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1717916955547start0
+      parentId: '1717916955547'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 963
+        y: 374
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文件提取器
+        type: document-extractor
+        variable_selector:
+        - '1711067409646'
+        - source_file
+      height: 93
+      id: '1731252874084'
+      position:
+        x: 333
+        y: 306
+      positionAbsolute:
+        x: 333
+        y: 306
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 141.70000000000005
+      y: 184.10000000000002
+      zoom: 0.7
