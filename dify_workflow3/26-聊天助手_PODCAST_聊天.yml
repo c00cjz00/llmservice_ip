@@ -1,0 +1,526 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 26-聊天助手_PODCAST_聊天
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: 'Click the button to start generating the podcast after uploading
+      the file👇
+
+      And choose the corresponding podcast length, tone, as well as the language of
+      the podcast and the name of the host.'
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - click me！
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      autoPlay: enabled
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1727675554894-source-1727591530544-target
+      selected: false
+      source: '1727675554894'
+      sourceHandle: source
+      target: '1727591530544'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1727578865729-source-1727580169317-target
+      selected: false
+      source: '1727578865729'
+      sourceHandle: source
+      target: '1727580169317'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1727580169317-source-1727591428555-target
+      selected: false
+      source: '1727580169317'
+      sourceHandle: source
+      target: '1727591428555'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1729056119524-source-1729056149073-target
+      selected: false
+      source: '1729056119524'
+      sourceHandle: source
+      target: '1729056149073'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727591428555-source-1727675554894-target
+      selected: false
+      source: '1727591428555'
+      sourceHandle: source
+      target: '1727675554894'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1729055989670-source-1729097333550-target
+      selected: false
+      source: '1729055989670'
+      sourceHandle: source
+      target: '1729097333550'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: tool
+      id: 1729097333550-source-1729056119524-target
+      selected: false
+      source: '1729097333550'
+      sourceHandle: source
+      target: '1729056119524'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: template-transform
+      id: 1727591530544-source-1729055989670-target
+      source: '1727591530544'
+      sourceHandle: source
+      target: '1729055989670'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+        - label: tone
+          max_length: 48
+          options:
+          - 'CASUAL = "TONE: The tone of the podcast should be casual and conversational"'
+          - 'FORMAL = "TONE: The tone of the podcast should be formal and professional"'
+          - 'HUMOROUS = "TONE: The tone of the podcast should be humorous and light-hearted"'
+          - 'SERIOUS = "TONE: The tone of the podcast should be serious and informative"'
+          - 'EDUCATIONAL = "TONE: The tone of the podcast should be educational and
+            instructive"'
+          - 'INSPIRATIONAL = "TONE: The tone of the podcast should be inspirational
+            and motivational"'
+          - 'CONTROVERSIAL = "TONE: The tone of the podcast should be controversial
+            and thought-provoking"'
+          - 'STORYTELLING = "TONE: The tone of the podcast should be narrative and
+            storytelling"'
+          - ' INVESTIGATIVE = "TONE: The tone of the podcast should be investigative
+            and analytical"'
+          - ' DEBATE = "TONE: The tone of the podcast should be debate-style and argumentative"'
+          required: true
+          type: select
+          variable: tone
+        - label: host_name
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: host_name
+        - label: guest_name
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: guest_name
+        - label: language
+          max_length: 48
+          options:
+          - 繁體中文(zh-tw)
+          - English
+          - 日本語
+          required: true
+          type: select
+          variable: language
+      height: 193
+      id: '1727578865729'
+      position:
+        x: 30
+        y: 296.5
+      positionAbsolute:
+        x: 30
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1727578865729'
+        - file
+      height: 93
+      id: '1727580169317'
+      position:
+        x: 333
+        y: 296.5
+      positionAbsolute:
+        x: 333
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: e77d2b26-44a2-47d6-a64a-37c0d0e4d7b2
+          role: system
+          text: "You are a world-class podcast producer.\nYour task is to transform\
+            \ the provided input text into an engaging and informative podcast script.\n\
+            You will receive as input a text that may be unstructured or messy, sourced\
+            \ from places like PDFs or web pages. Ignore irrelevant information or\
+            \ formatting issues. \nYour focus is on extracting the most interesting\
+            \ and insightful content for a podcast discussion."
+        - id: cafd9e23-9b91-415d-a9a6-b5be7d6c5621
+          role: user
+          text: "context：{{#1727580169317.text#}}\n\n# Steps to Follow:\n\n1. **Analyze\
+            \ the Input:**\n   Carefully examine the text, identifying key topics,\
+            \ points, and interesting facts or anecdotes that could drive an engaging\
+            \ podcast conversation. Disregard irrelevant information or formatting\
+            \ issues.\n\n2. **Brainstorm Ideas:**\n   In the `<scratchpad>`, creatively\
+            \ brainstorm ways to present the key points engagingly. Consider:\n  \
+            \ - Analogies, storytelling techniques, or hypothetical scenarios to make\
+            \ content relatable\n   - Ways to make complex topics accessible to a\
+            \ general audience\n   - Thought-provoking questions to explore during\
+            \ the podcast\n   - Creative approaches to fill any gaps in the information\n\
+            \n"
+        selected: false
+        title: Analyze the Input
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: false
+      height: 97
+      id: '1727591428555'
+      position:
+        x: 636
+        y: 296.5
+      positionAbsolute:
+        x: 636
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1727675554894.text#}}'
+        desc: ''
+        selected: false
+        title: draft
+        type: answer
+        variables: []
+      height: 102
+      id: '1727591530544'
+      position:
+        x: 1242
+        y: 296.5
+      positionAbsolute:
+        x: 1242
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1727580169317'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.8
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 1a516c46-2987-48dc-b8b2-b328cce43e31
+          role: system
+          text: "You are a world-class podcast producer.\nYour task is to transform\
+            \ the provided input text into an engaging and informative podcast script.\n\
+            You will receive as input a text that may be unstructured or messy, sourced\
+            \ from places like PDFs or web pages. Ignore irrelevant information or\
+            \ formatting issues. \nYour focus is on extracting the most interesting\
+            \ and insightful content for a podcast discussion.Aim for a natural, conversational\
+            \ flow between the {{#1727578865729.host_name#}} and {{#1727578865729.guest_name#}}\n\
+            Roles and Dynamics: The instructions define the roles of the host and\
+            \ expert, ensuring they complement each other. The host highlights intriguing\
+            \ points with enthusiasm while the expert provides analysis, context,\
+            \ and a broader perspective\n- Deep Dive: The instructions emphasise going\
+            \ beyond surface-level information to uncover key insights and \"golden\
+            \ nuggets of knowledge\" that leave listeners feeling like they've learned\
+            \ something new\n- Target Audience: The system prompt outlines the ideal\
+            \ listener, characterized by valuing efficiency, appreciating memorable\
+            \ details, and seeking an engaging learning experience .\n- Structure\
+            \ and Delivery: The system prompt stresses the importance of clear structure\
+            \ and engaging delivery, using signposts to guide listeners and avoiding\
+            \ a monotone, robotic tone\n   - Use the best ideas from {{#1727591428555.text#}}\
+            \    Memorable Examples: Real-world examples and relatable    anecdotes\
+            \ are crucial for making information stick. The system prompt emphasizes\
+            \ bringing information to life, fostering engagement, and ensuring the\
+            \ learning extends beyond the episode\n   - Ensure complex topics are\
+            \ explained clearly and simply.\n   - Focus on maintaining an engaging\
+            \ and {{#1727578865729.tone#}}that would captivate listeners.\n   - Rules:\n\
+            \        > The host ALWAYS goes first and is interviewing the guest. The\
+            \ guest is the one who explains the topic.\n        > The host should\
+            \ ask the guest questions.\n        > The host should summarize the key\
+            \ insights at the end.\n        > Include common verbal fillers like \"\
+            uhms\" and \"errs\" in the host and guests response. This is so the script\
+            \ is realistic.\n        > The host and guest can interrupt each other.\n\
+            \        > The guest must NOT include marketing or self-promotional content.\n\
+            \        > The guest must NOT include any material NOT substantiated within\
+            \ the input text.\n        > This is to be a PG conversation.\n      \
+            \  > When the output is nearing its conclusion, there is no need to provide\
+            \ a closing in the script; the closing part will be given in another script.\n"
+        - id: 66bdff46-8857-4c3e-83f4-98d572e24dec
+          role: user
+          text: "Now, develop the podcast dialogue.\nPlease use the designated language\
+            \ for the podcast \n- context：{{#context#}}\n- language：{{#1727578865729.language#}}\n\
+            - host：{{#1727578865729.host_name#}}\n- guest：{{#1727578865729.guest_name#}}\n\
+            - tone：{{#1727578865729.tone#}}\n- The names of the host and guest are\
+            \ not constrained by language.\n- Script Format and Content\n-- Begin\
+            \ the script with the host speaking\n-- Alternate dialogue between the\
+            \ host and guest, one line at a time\n-- Omitspeaker names at the beginning\
+            \ of each line\n-- Include a self-introduction for both host and guest,\
+            \ using provided names\n-- Address each other by first names to create\
+            \ a friendly atmosphere\n-- Focus on creating engaging, back-and-forth\
+            \ conversation\n\n- Output Requirements\n **Script Format**: The script\
+            \ should begin with the host speaking. The dialogue should alternate between\
+            \ the host and the guest, with each speaking one line at a time. Do not\
+            \ include the speaker's name at the beginning of each line.\n**Output\
+            \ Requirements**: The final script should only contain the dialogue content.\
+            \ Avoid including any XML tags or additional formatting in the output.\n\
+            \nBy following these instructions, you will create a high-quality podcast\
+            \ script that is both informative and engaging \n\n"
+        selected: false
+        title: Craft the Dialogue
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: false
+      height: 97
+      id: '1727675554894'
+      position:
+        x: 939
+        y: 296.5
+      positionAbsolute:
+        x: 939
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template conversion
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1727675554894'
+          - text
+          variable: arg1
+      height: 53
+      id: '1729055989670'
+      position:
+        x: 1545
+        y: 296.5
+      positionAbsolute:
+        x: 1545
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        provider_id: podcast_generator
+        provider_name: podcast_generator
+        provider_type: builtin
+        selected: false
+        title: Podcast audio generator
+        tool_configurations:
+          host1_voice: alloy
+          host2_voice: nova
+        tool_label: 播客音频生成器
+        tool_name: podcast_audio_generator
+        tool_parameters:
+          script:
+            type: mixed
+            value: '{{#1729055989670.output#}}'
+        type: tool
+      height: 115
+      id: '1729056119524'
+      position:
+        x: 2151
+        y: 296.5
+      positionAbsolute:
+        x: 2151
+        y: 296.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1729056119524.files#}}'
+        desc: ''
+        selected: false
+        title: podcast
+        type: answer
+        variables: []
+      height: 102
+      id: '1729056149073'
+      position:
+        x: 2454
+        y: 296.5
+      positionAbsolute:
+        x: 2454
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '-----------------------------------
+
+          The podcast is being generated, please be patient...'
+        desc: ''
+        selected: false
+        title: waiting
+        type: answer
+        variables: []
+      height: 131
+      id: '1729097333550'
+      position:
+        x: 1848
+        y: 296.5
+      positionAbsolute:
+        x: 1848
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -699.9720803706152
+      y: 256.73857583817176
+      zoom: 0.6093853932714484
