@@ -1,0 +1,678 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 23-工作流_三輪翻譯(檔案)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 1722481317771-source-1722481746104-target
+      source: '1722481317771'
+      sourceHandle: source
+      target: '1722481746104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1722481746104-true-1722481778723-target
+      source: '1722481746104'
+      sourceHandle: 'true'
+      target: '1722481778723'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1722481746104-false-1722481781237-target
+      source: '1722481746104'
+      sourceHandle: 'false'
+      target: '1722481781237'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1722481778723-source-1722482579761-target
+      source: '1722481778723'
+      sourceHandle: source
+      target: '1722482579761'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1722481781237-source-1722482579761-target
+      source: '1722481781237'
+      sourceHandle: source
+      target: '1722482579761'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1722482579761-source-1722482767100-target
+      source: '1722482579761'
+      sourceHandle: source
+      target: '1722482767100'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1722482767100-source-1722483028357-target
+      source: '1722482767100'
+      sourceHandle: source
+      target: '1722483028357'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1722480946371-source-1731234706777-target
+      source: '1722480946371'
+      sourceHandle: source
+      target: '1731234706777'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1731234706777-source-1722481317771-target
+      source: '1731234706777'
+      sourceHandle: source
+      target: '1722481317771'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: 原文語言
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          - Chinese (zh-CN)
+          - Vietnamese
+          required: true
+          type: select
+          variable: source_lang
+        - label: 目標語言
+          max_length: 48
+          options:
+          - English
+          - Japanese
+          - French
+          - Russian
+          - German
+          - Spanish
+          - Korean
+          - Italian
+          - Chinese (zh-TW)
+          - Chinese (zh-CN)
+          - Vietnamese
+          required: true
+          type: select
+          variable: target_lang
+        - label: 國家地區 (目標語言, 非必要)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: country
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 原文檔案
+          max_length: null
+          options: []
+          required: true
+          type: file
+          variable: source_file
+      height: 166
+      id: '1722480946371'
+      position:
+        x: 30
+        y: 283
+      positionAbsolute:
+        x: 30
+        y: 283
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-11b-text-preview
+          provider: groq
+        prompt_template:
+        - edition_type: basic
+          id: 4214487c-db84-4ef2-91fc-cf368b591a06
+          role: system
+          text: 您是語言專家，專門從事從 {{#1722480946371.source_lang#}} 到 {{#1722480946371.target_lang#}}的翻譯。
+        - id: bb154e72-6ec1-436b-9d0c-ab68511d0713
+          role: user
+          text: '這是從 {{#1722480946371.source_lang#}}到 {{#1722480946371.target_lang#}}
+            的翻譯，請將此文本的翻譯成 {{#1722480946371.target_lang#}}。除翻譯外，請勿提供任何解釋或文字。
+
+
+            {{#1722480946371.source_lang#}}：{{#1731234706777.text#}}
+
+
+            {{#1722480946371.target_lang#}}:
+
+            '
+        selected: false
+        title: LLM_初始翻譯
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1722481317771'
+      position:
+        x: 636
+        y: 283
+      positionAbsolute:
+        x: 636
+        y: 283
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 6fb69760-3e03-4d5b-a50f-a6613d4cef97
+            value: ''
+            varType: string
+            variable_selector:
+            - '1722480946371'
+            - country
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: true
+        title: 判斷是否有輸入國家地區
+        type: if-else
+      height: 124
+      id: '1722481746104'
+      position:
+        x: 939
+        y: 283
+      positionAbsolute:
+        x: 939
+        y: 283
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-90b-text-preview
+          provider: groq
+        prompt_template:
+        - id: f5a1162c-9cea-462c-8d04-f9315ee78553
+          role: system
+          text: '您是語言專家，專門從事從 {{#1722480946371.source_lang#}} 到 {{#1722480946371.target_lang#}}
+            的翻譯。
+
+
+            您將獲得原始文字及其翻譯，您的目標是改進翻譯。'
+        - id: 20e95e73-97be-49c9-84e5-3a8db2a3f5b6
+          role: user
+          text: '您的任務是仔細閱讀原始文字和從 {{#1722480946371.source_lang#}} 到 {{#1722480946371.target_lang#}}
+            的翻譯，然後提出建設性的批評和有用的建議以改進翻譯。
+
+            最終的翻譯風格和語調應該符合{{#1722480946371.target_lang#}}在{{#1722480946371.country#}}的口語風格。
+
+            來源文字和初始翻譯由 XML 標記 <SOURCE_TEXT></SOURCE_TEXT> 和 <TRANSLATION></TRANSLATION>
+            分隔，如下所示：
+
+            <SOURCE_TEXT>
+
+            {{#1731234706777.text#}}
+
+            </SOURCE_TEXT>
+
+            <TRANSLATION>
+
+            {{#1722481317771.text#}}
+
+            </TRANSLATION>
+
+            寫建議時，注意是否有改進翻譯的方法：
+
+            (i) 準確度（透過修正新增、誤譯、遺漏或未翻譯文字的錯誤），
+
+            (ii) 流暢性（透過應用 {{#1722480946371.target_lang#}}語法、拼字和標點符號規則，並確保沒有不必要的重複），
+
+
+            (iii) 風格（確保翻譯反映源文本的風格並考慮任何文化背景），
+
+            (iv) 術語（確保術語使用一致並反映源文本領域；並且僅確保使用等效的習語 {{#1722480946371.target_lang#}}）。
+
+            寫下一系列具體的、有幫助的和建設性的改進翻譯的建議。
+
+            每項建議都應針對翻譯的一個特定部分。
+
+
+            只輸出建議，不輸出其他內容。'
+        selected: false
+        title: LLM_評論初始翻譯_(輸入國家地區)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1722481778723'
+      position:
+        x: 1242
+        y: 283
+      positionAbsolute:
+        x: 1242
+        y: 283
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-90b-text-preview
+          provider: groq
+        prompt_template:
+        - id: 7c86eefd-a37f-484d-82ec-a6350c9e7d28
+          role: system
+          text: '您是語言專家，專門從事從 {{#1722480946371.source_lang#}} 到 {{#1722480946371.target_lang#}}
+            的翻譯。
+
+
+            您將獲得原始文字及其翻譯，您的目標是改進翻譯。'
+        - id: 7f2aec50-05bf-4061-a4cc-a72e81802f73
+          role: user
+          text: '您的任務是仔細閱讀原始文字和從 {{#1722480946371.source_lang#}} 到 {{#1722480946371.target_lang#}}的翻譯，然後提出建設性的批評和有用的建議以改進翻譯。
+
+
+            來源文字和初始翻譯由 XML 標記 <SOURCE_TEXT></SOURCE_TEXT> 和 <TRANSLATION></TRANSLATION>
+            分隔，如下所示：
+
+            <SOURCE_TEXT>
+
+            {{#1731234706777.text#}}
+
+            </SOURCE_TEXT>
+
+            <TRANSLATION>
+
+            {{#1722481317771.text#}}
+
+            </TRANSLATION>
+
+            寫建議時，注意是否有改進翻譯的方法：
+
+            (i) 準確度（透過修正新增、誤譯、遺漏或未翻譯文字的錯誤），
+
+            (ii) 流暢性（透過應用 {{#1722480946371.target_lang#}} 語法、拼字和標點符號規則，並確保沒有不必要的重複），
+
+            (iii) 風格（確保翻譯反映源文本的風格並考慮任何文化背景），
+
+            (iv) 術語（確保術語使用一致並反映源文本領域；並且僅確保使用等效的習語 {{#1722480946371.target_lang#}}）。
+
+            寫下一系列具體的、有幫助的和建設性的改進翻譯的建議。
+
+            每項建議都應針對翻譯的一個特定部分。
+
+            只輸出建議，不輸出其他內容。'
+        selected: false
+        title: LLM_評論初始翻譯_(無國家地區)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1722481781237'
+      position:
+        x: 1242
+        y: 419
+      positionAbsolute:
+        x: 1242
+        y: 419
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 變量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1722481778723'
+          - text
+        - - '1722481781237'
+          - text
+      height: 137
+      id: '1722482579761'
+      position:
+        x: 1545
+        y: 283
+      positionAbsolute:
+        x: 1545
+        y: 283
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-11b-text-preview
+          provider: groq
+        prompt_template:
+        - id: 4624b00c-4d99-4440-b6a6-7d73f1d53116
+          role: system
+          text: 您是語言專家，專門從事從 {{#1722480946371.source_lang#}} 到 {{#1722480946371.target_lang#}}的翻譯。
+        - id: a920830c-675f-4343-a259-f2c540e79a77
+          role: user
+          text: '您的任務是仔細閱讀並編輯從 {{#1722480946371.source_lang#}}到 {{#1722480946371.target_lang#}}
+            的翻譯，同時考慮一系列專家建議和建設性批評。
+
+
+            來源文字、初始翻譯和專家語言學家建議由 XML 標記 <SOURCE_TEXT></SOURCE_TEXT>、<TRANSLATION></TRANSLATION>
+            和 <EXPERT_SUGGESTIONS></EXPERT_SUGGESTIONS> 分隔，如下所示：
+
+            <SOURCE_TEXT>
+
+            {{#1731234706777.text#}}
+
+            </SOURCE_TEXT>
+
+            <TRANSLATION>
+
+            {{#1722481317771.text#}}
+
+            </TRANSLATION>
+
+            <EXPERT_SUGGESTIONS>
+
+            {{#1722482579761.output#}}
+
+            </EXPERT_SUGGESTIONS>
+
+            編輯翻譯時請考慮專家的建議。編輯翻譯，確保：
+
+            (i) 準確度（透過修正新增、誤譯、遺漏或未翻譯文字的錯誤），
+
+            (ii) 流利（透過應用 {{#1722480946371.target_lang#}}語法、拼字和標點符號規則並確保沒有不必要的重複），
+
+            (iii) 風格（確保翻譯反映原文的風格）
+
+            (iv) 術語（不適合上下文、使用不一致），或其他錯誤。
+
+            只輸出新的翻譯，不輸出任何其他內容，不要輸出xml tags，也不要有自己的評論與建議。'
+        selected: false
+        title: LLM_修正翻譯
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1722482767100'
+      position:
+        x: 1848
+        y: 283
+      positionAbsolute:
+        x: 1848
+        y: 283
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1722482767100'
+          - text
+          variable: text
+        selected: false
+        title: 結束
+        type: end
+      height: 88
+      id: '1722483028357'
+      position:
+        x: 2151
+        y: 283
+      positionAbsolute:
+        x: 2151
+        y: 283
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: Dify
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"[JOB]
+          Staff Scientist – Senior Statistician (Biostatistician)  The Center for
+          Cancer Research (CCR), National Cancer Institute (NCI), National Institutes
+          of Health (NIH) invites applications for a senior statistician / biostatistician
+          to work within the Office of Collaborative Biostatistics (OCB) of the Office
+          of the Clinical Director. The CCR is the largest division of the NCI intramural
+          research program and comprises nearly 250 basic and clinical research groups.
+          The OCB is the primary statistical component of the CCR’s clinical research
+          group, performing statistical design and review of clinical trials, data
+          analysis, and consultation on statistical topics. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"About
+          the Position","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"The
+          successful candidate will collaborate with physician investigators as a
+          biostatistician in the clinical branches of the CCR located in Bethesda
+          but may also collaborate with investigators in the basic science area. The
+          statistician will utilize a variety of skills primarily to provide statistical
+          designs, to perform data analyses, and to prepare results for publication.
+          Work is primarily in early phase (phase 1 and 2) clinical trials for novel
+          anti-cancer agents studied in the CCR. The statistician will also complete
+          data analysis for other studies of interest to the investigators. Most of
+          the collaboration will be with physicians, while some will be with PhD-level
+          scientists.  The candidate will also serve on scientific review and/or safety
+          committees that require input from a CCR clinical trials statistician.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"The
+          successful candidate will be able to collaborate on multiple simultaneous
+          projects and, as a Staff Scientist, will work under the general direction
+          of the Head of the OCB, Dr. Laura Yee.   A high degree of independence,
+          ability to work in a team on projects along with medical researchers from
+          many fields, and interest and ability to learn and apply new statistical
+          methods as needed are required. The position is located in Rockville, MD,
+          and there is an in-office expectation of 3 days per week.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"REQUIRED
+          SKILLS: Eligible candidates must have a Ph.D. or equivalent degree in statistics,
+          biostatistics, or a related field. At least 5 years of relevant experience
+          in the design of clinical trials and analysis of a wide variety of biomedical
+          data is highly desirable. Expertise designing and analyzing phase 1 and
+          phase 2 clinical trials in oncology are highly desirable. Skill and expertise
+          in performing statistical analyses using the following methods are required:
+          survival data analysis methods; analysis of longitudinal and repeated measures
+          data, including methods for handling missing data; use of linear and non-linear
+          models; use of published non-parametric and parametric statistical methods.
+          Familiarity with Bayesian methods of design of clinical trials and analysis
+          of data using Bayesian methods, and familiarity with specialized software
+          to determine sample sizes for clinical trials are desirable. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Excellent
+          oral and written communication skills are required, as the position involves
+          independent communication and collaboration with physicians and scientists,
+          typically leading to publications in medical and scientific journals. Interest
+          and ability to perform independent or collaborative methodologic research
+          with other statisticians on topics related to design of clinical trials
+          or other statistical methods relevant to the position are desirable. Expertise
+          performing statistical analyses using a statistical software such as R,
+          Python, or SAS is required and the ability to perform advanced R, Python,
+          or SAS programming is preferred.  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Selection
+          for this position will be based solely on merit, with no discrimination
+          for non-merit reasons such as race, color, religion, gender, sexual orientation,
+          national origin, political affiliation, marital status, disability, age,
+          or membership or non-membership in an employee organization. NIH encourages
+          the application and nomination of qualified women, minorities and individuals
+          with disabilities.  NIH provides reasonable accommodations to applicants
+          with disabilities. If you require reasonable accommodation during any part
+          of the application and hiring process, please notify us. The decision on
+          granting reasonable accommodation will be made on a case-by-case basis.  This
+          position is subject to a background investigation.  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Applicants
+          should submit a cover letter and current curriculum vitae.  Applications
+          will be accepted on a rolling basis.  Submit application to Laura Yee (laura.yee@nih.gov).","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1731232187928'
+      position:
+        x: 31.428571428571388
+        y: 483.9866817744223
+      positionAbsolute:
+        x: 31.428571428571388
+        y: 483.9866817744223
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文件提取器
+        type: document-extractor
+        variable_selector:
+        - '1722480946371'
+        - source_file
+      height: 92
+      id: '1731234706777'
+      position:
+        x: 333
+        y: 283
+      positionAbsolute:
+        x: 333
+        y: 283
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -1.0785979882468837
+      y: 121.74643445949283
+      zoom: 0.5555903688009791
