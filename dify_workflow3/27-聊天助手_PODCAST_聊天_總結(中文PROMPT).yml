@@ -1,0 +1,577 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 27-聊天助手_PODCAST_聊天_總結(中文PROMPT)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: 'Click the button to start generating the podcast after uploading
+      the file👇
+
+      And choose the corresponding podcast length, tone, as well as the language of
+      the podcast and the name of the host.'
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - click me！
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      autoPlay: enabled
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1727675554894-source-1727591530544-target
+      selected: false
+      source: '1727675554894'
+      sourceHandle: source
+      target: '1727591530544'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: llm
+      id: 1727591530544-source-1727675911704-target
+      selected: false
+      source: '1727591530544'
+      sourceHandle: source
+      target: '1727675911704'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1727675911704-source-1727676032290-target
+      selected: false
+      source: '1727675911704'
+      sourceHandle: source
+      target: '1727676032290'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1727578865729-source-1727580169317-target
+      selected: false
+      source: '1727578865729'
+      sourceHandle: source
+      target: '1727580169317'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1727580169317-source-1727591428555-target
+      selected: false
+      source: '1727580169317'
+      sourceHandle: source
+      target: '1727591428555'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: template-transform
+      id: 1727676032290-source-1729055989670-target
+      selected: false
+      source: '1727676032290'
+      sourceHandle: source
+      target: '1729055989670'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1729056119524-source-1729056149073-target
+      selected: false
+      source: '1729056119524'
+      sourceHandle: source
+      target: '1729056149073'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727591428555-source-1727675554894-target
+      selected: false
+      source: '1727591428555'
+      sourceHandle: source
+      target: '1727675554894'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1729055989670-source-1729097333550-target
+      selected: false
+      source: '1729055989670'
+      sourceHandle: source
+      target: '1729097333550'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: tool
+      id: 1729097333550-source-1729056119524-target
+      selected: false
+      source: '1729097333550'
+      sourceHandle: source
+      target: '1729056119524'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+        - label: tone
+          max_length: 48
+          options:
+          - 'CASUAL = "TONE: The tone of the podcast should be casual and conversational"'
+          - 'FORMAL = "TONE: The tone of the podcast should be formal and professional"'
+          - 'HUMOROUS = "TONE: The tone of the podcast should be humorous and light-hearted"'
+          - 'SERIOUS = "TONE: The tone of the podcast should be serious and informative"'
+          - 'EDUCATIONAL = "TONE: The tone of the podcast should be educational and
+            instructive"'
+          - 'INSPIRATIONAL = "TONE: The tone of the podcast should be inspirational
+            and motivational"'
+          - 'CONTROVERSIAL = "TONE: The tone of the podcast should be controversial
+            and thought-provoking"'
+          - 'STORYTELLING = "TONE: The tone of the podcast should be narrative and
+            storytelling"'
+          - ' INVESTIGATIVE = "TONE: The tone of the podcast should be investigative
+            and analytical"'
+          - ' DEBATE = "TONE: The tone of the podcast should be debate-style and argumentative"'
+          required: true
+          type: select
+          variable: tone
+        - label: host_name
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: host_name
+        - label: guest_name
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: guest_name
+        - label: language
+          max_length: 48
+          options:
+          - 繁體中文(zh-tw)
+          - English
+          - 日本語
+          required: true
+          type: select
+          variable: language
+      height: 193
+      id: '1727578865729'
+      position:
+        x: 363.142957965791
+        y: 274.87198362549776
+      positionAbsolute:
+        x: 363.142957965791
+        y: 274.87198362549776
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1727578865729'
+        - file
+      height: 93
+      id: '1727580169317'
+      position:
+        x: 661.7296503826896
+        y: 274.87198362549776
+      positionAbsolute:
+        x: 661.7296503826896
+        y: 274.87198362549776
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: e77d2b26-44a2-47d6-a64a-37c0d0e4d7b2
+          role: system
+          text: "您是一位世界級的播客製作人。  \n您的任務是將提供的文本轉換為引人入勝且具啟發性的播客腳本。  \n您將收到的文本可能來自PDF或網頁等來源，格式不規整或內容雜亂無章。請忽略無關的資訊或格式問題。\
+            \  \n您的重點在於提取出最有趣和富有洞見的內容，以便進行播客討論。"
+        - id: cafd9e23-9b91-415d-a9a6-b5be7d6c5621
+          role: user
+          text: "上下文：{{#1727580169317.text#}}\n\n# 操作步驟：\n\n1. **分析輸入內容：**  \n   仔細檢查文本，找出可促進有趣播客對話的關鍵主題、要點和有趣的事實或軼事。忽略無關信息或格式問題。\n\
+            \n2. **頭腦風暴：**  \n   在 `<scratchpad>` 中創意性地構思如何引人入勝地呈現關鍵內容，考慮以下方法：  \n\
+            \   - 使用類比、敘事技巧或假設情境，使內容更具親和力  \n   - 將複雜話題以易懂方式呈現，適合一般聽眾  \n   - 設計在播客中可探討的發人深省的問題\
+            \  \n   - 創意性地填補信息中的任何空缺"
+        selected: false
+        title: Analyze the Input
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: false
+      height: 97
+      id: '1727591428555'
+      position:
+        x: 661.7296503826896
+        y: 415.73439185131787
+      positionAbsolute:
+        x: 661.7296503826896
+        y: 415.73439185131787
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1727675554894.text#}}'
+        desc: ''
+        selected: false
+        title: draft
+        type: answer
+        variables: []
+      height: 102
+      id: '1727591530544'
+      position:
+        x: 960.0918395763315
+        y: 415.73439185131787
+      positionAbsolute:
+        x: 960.0918395763315
+        y: 415.73439185131787
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1727580169317'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.8
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 1a516c46-2987-48dc-b8b2-b328cce43e31
+          role: system
+          text: "您是一位世界級的播客製作人。  \n您的任務是將提供的文本轉換為引人入勝且富有資訊性的播客腳本。  \n您將收到可能不規整或較混亂的文本，來源可能包括PDF或網頁等。請忽略無關信息或格式問題，專注於提取最有趣且有洞見的內容，並以自然、對話式的風格呈現於{{#1727578865729.host_name#}}和{{#1727578865729.guest_name#}}之間。\n\
+            \n**角色與互動動態**：說明書清晰定義了主持人與專家的角色，以保證彼此相輔相成。主持人以熱情突出有趣的點，專家則提供深入分析、背景及廣闊視角。\
+            \  \n- **深度探索**：說明書強調需深入挖掘關鍵見解和「黃金知識點」，讓聽眾獲得新的學習收穫。  \n- **目標聽眾**：系統提示設定了理想聽眾——他們重視效率、喜愛記憶深刻的細節並追求吸引人的學習體驗。\
+            \  \n- **結構與呈現**：系統提示強調了清晰的結構和引人入勝的呈現方式，使用標記引導聽眾，避免單調或機械化的語調。  \n   -\
+            \ 使用{{#1727591428555.text#}}中的最佳想法  \n   - **難忘的例子**：提供真實案例和可共鳴的軼事，有助於加深信息印象，使信息更具生命力，增強參與感並確保學習體驗延續至整集之外。\
+            \  \n   - 確保複雜主題能夠清晰簡明地解釋。  \n   - 著重保持一種吸引人且符合{{#1727578865729.tone#}}的語氣，以吸引聽眾。\n\
+            \n**規則**：  \n   > 主持人始終先開場，並以訪問嘉賓的形式展開對話，嘉賓負責解釋話題。  \n   > 主持人應向嘉賓提出問題。\
+            \  \n   > 主持人應在最後總結關鍵見解。  \n   > 包含常見口頭語，例如「嗯」或「呃」，使對話更真實自然。  \n   > 主持人和嘉賓可彼此打斷。\
+            \  \n   > 嘉賓不得包含推銷或自我宣傳內容。  \n   > 嘉賓不得包含任何未在輸入文本中得到證實的內容。  \n   > 對話須適合所有年齡層（PG）。\
+            \  \n   > 當對話接近結尾時，無需在腳本中提供結束語；結束部分將在另一腳本中提供。"
+        - id: 66bdff46-8857-4c3e-83f4-98d572e24dec
+          role: user
+          text: "現在，開始撰寫播客對話。\n\n請使用指定的播客語言\n- 上下文：{{#context#}}\n- 語言：{{#1727578865729.language#}}\n\
+            - 主持人：{{#1727578865729.host_name#}}\n- 嘉賓：{{#1727578865729.guest_name#}}\n\
+            - 語氣：{{#1727578865729.tone#}}\n- 主持人和嘉賓的名字不受語言限制。\n\n**腳本格式與內容**  \n-\
+            \ 由主持人開始對話  \n- 主持人和嘉賓交替對話，每次一句  \n- 不要在每句開頭標註說話者名字  \n- 包含主持人和嘉賓的自我介紹，使用提供的名字\
+            \  \n- 以名字互相稱呼，營造親切的氛圍  \n- 專注於創造引人入勝的對話，實現良好的交流互動\n\n**輸出要求**\n**腳本格式**：腳本應從主持人開始說話，對話在主持人和嘉賓之間交替，每次一句，不在句首標註說話者名字。\
+            \  \n**輸出要求**：最終腳本僅包含對話內容，避免包含任何XML標籤或額外格式。\n\n依照這些指示，您將能創建一份既具資訊性又吸引人的高質量播客腳本。"
+        selected: false
+        title: Craft the Dialogue
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: false
+      height: 97
+      id: '1727675554894'
+      position:
+        x: 969.4996611024148
+        y: 274.87198362549776
+      positionAbsolute:
+        x: 969.4996611024148
+        y: 274.87198362549776
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1727675554894'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 4db75ca9-eb9b-4885-b710-a4d860d0c58d
+          role: system
+          text: "在對話的結尾，主持人和來賓應自然地總結主要的見解，讓這部分像是輕鬆的對話，而非正式的回顧，在結束前再次強調主要要點，並自然地過渡到結尾。\n\
+            ** 總結關鍵見解：**\n 將關鍵點的總結自然地融入對話的結尾部分。這應該以輕鬆對話的方式呈現，而非正式回顧，在結束前強化主要要點。\n\n\
+            - 包含簡短的「緩衝」時刻，讓聽眾有時間吸收複雜的信息\n以積極的方式結束，或許可提出發人深省的問題或給聽眾一些行動的建議"
+        - id: 766cc983-8714-4a2f-866a-3a4d82cc0f9b
+          role: user
+          text: "上下文：{{#context#}}  \n主持人：{{#1727578865729.host_name#}}  \n嘉賓：{{#1727578865729.guest_name#}}\
+            \  \n語言：{{#1727578865729.language#}}  \n主持人和嘉賓的名字不受語言限制。  \n你需要根據上下文得出結論，並保持與上下文相同的格式。避免重複性內容或自我介紹，確保與上下文一致。\n\
+            \n**腳本格式**：腳本應從主持人開始說話。對話應在主持人和嘉賓之間交替進行，每次僅限一句話。不要在每行的開頭包含說話者的名字。\n\n\
+            **輸出要求**：最終腳本僅包含對話內容，避免包含任何XML標籤或額外格式。"
+        selected: false
+        title: conclusion
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: false
+      height: 97
+      id: '1727675911704'
+      position:
+        x: 1266.5345574527641
+        y: 280
+      positionAbsolute:
+        x: 1266.5345574527641
+        y: 280
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1727675911704.text#}}'
+        desc: ''
+        selected: false
+        title: conclusion
+        type: answer
+        variables: []
+      height: 102
+      id: '1727676032290'
+      position:
+        x: 1266.5345574527641
+        y: 415.73439185131787
+      positionAbsolute:
+        x: 1266.5345574527641
+        y: 415.73439185131787
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}
+
+          {{ arg2 }}'
+        title: Template conversion
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1727675554894'
+          - text
+          variable: arg1
+        - value_selector:
+          - '1727675911704'
+          - text
+          variable: arg2
+      height: 53
+      id: '1729055989670'
+      position:
+        x: 1555.6184018859815
+        y: 280
+      positionAbsolute:
+        x: 1555.6184018859815
+        y: 280
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        provider_id: podcast_generator
+        provider_name: podcast_generator
+        provider_type: builtin
+        selected: false
+        title: Podcast audio generator
+        tool_configurations:
+          host1_voice: alloy
+          host2_voice: nova
+        tool_label: 播客音频生成器
+        tool_name: podcast_audio_generator
+        tool_parameters:
+          script:
+            type: mixed
+            value: '{{#1729055989670.output#}}'
+        type: tool
+      height: 115
+      id: '1729056119524'
+      position:
+        x: 1867.487997646534
+        y: 274.87198362549776
+      positionAbsolute:
+        x: 1867.487997646534
+        y: 274.87198362549776
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1729056119524.files#}}'
+        desc: ''
+        selected: false
+        title: podcast
+        type: answer
+        variables: []
+      height: 102
+      id: '1729056149073'
+      position:
+        x: 1867.487997646534
+        y: 412.85868830279964
+      positionAbsolute:
+        x: 1867.487997646534
+        y: 412.85868830279964
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '-----------------------------------
+
+          The podcast is being generated, please be patient...'
+        desc: ''
+        selected: false
+        title: waiting
+        type: answer
+        variables: []
+      height: 131
+      id: '1729097333550'
+      position:
+        x: 1555.6184018859815
+        y: 415.73439185131787
+      positionAbsolute:
+        x: 1555.6184018859815
+        y: 415.73439185131787
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -229.10146042925828
+      y: -10.356664977812784
+      zoom: 0.8705505544175083
