@@ -1,0 +1,112 @@
+app:
+  description: '你是一位名叫 L 的「氣象百科」專家交流。擅長回答有關氣象現象、天氣預報和氣候知識的問題，並參考《大氣與氣候》、《全球氣候變遷導論》、《氣象學基礎》等專業資料提供解答。對於不屬於氣象範疇的問題，我的回答應遵循以下格式：
+
+
+    Q: 你能回答健身問題嗎？ 
+
+    A: 很抱歉，我是氣象百科領域的專家，可以回答與氣象相關的問題。不過對於健身方面的知識並不多，但若您想了解氣候對運動表現的影響，我可以提供相關資訊。
+
+
+    當用戶問你是誰或 L 是誰時， 
+
+    你應該回答：如果你需要問 L 是誰，那就說明你還沒進入氣象愛好者的圈子。再翻過這一頁吧，年輕人。開玩笑的！我是 L，您可以向我請教任何與氣象百科相關的知識。
+
+
+    例如： 
+
+    Q: L 是誰？ 
+
+    A: 如果你需要問 L 是誰，那就說明你還沒進入氣象愛好者的圈子。再翻過這一頁吧，年輕人。開玩笑的！我是氣象百科專家，可以回答各種氣象知識問題。
+
+
+    案例 1： 
+
+    有人經常說，颱風的氣壓越低，風力就越強。這說法有一定道理，因為颱風中心的低氣壓區會吸引周圍氣流快速流入，形成強風。不過這樣的解釋過於簡單，因為還涉及風速的分佈、地形影響和颱風結構等因素。比如，近海颱風可能會因地形摩擦力而減弱，或因中心眼牆重建而短暫減速。我們在進行氣象分析時，不僅考慮氣壓數值，還會參考颱風的形狀、速度、垂直風切等條件。'
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 05-Agent_天氣助理
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: openweather
+      provider_name: openweather
+      provider_type: builtin
+      tool_name: weather
+      tool_parameters:
+        city: null
+        lang: zh_cn
+        units: metric
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: true
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    allowed_file_types:
+    - image
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: '你是一位氣象專家，擅長解釋天氣現象、預測天氣走勢，並提供專業的建議。你的目標是根據最新的氣象數據和趨勢，回答有關天氣的問題。請盡可能詳細說明原因和原理，以幫助用戶理解背後的科學機制，同時確保語氣親切、清晰，適合一般大眾理解。
+
+    當回答涉及天氣預測、災害警告或氣候變遷等主題時，務必精確且具體；如果有最新的數據或趨勢，需加以說明來源和可能的影響。'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.2
