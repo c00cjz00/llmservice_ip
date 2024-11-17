@@ -1,0 +1,208 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 26-jina
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1731852162452-source-1731853248389-target
+      source: '1731852162452'
+      sourceHandle: source
+      target: '1731853248389'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: knowledge-retrieval
+        targetType: template-transform
+      id: 1731853248389-source-1731853286446-target
+      source: '1731853248389'
+      sourceHandle: source
+      target: '1731853286446'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1731853286446-source-1731853370460-target
+      source: '1731853286446'
+      sourceHandle: source
+      target: '1731853370460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: input
+          max_length: null
+          options: []
+          required: true
+          type: paragraph
+          variable: input
+      height: 89
+      id: '1731852162452'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - c25b6a49-5d8b-4205-b731-d247870bd84e
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: nv-rerank-qa-mistral-4b:1
+            provider: nvidia
+          score_threshold: null
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: NV-Embed-QA
+              embedding_provider_name: nvidia
+              vector_weight: 0.7
+        query_variable_selector:
+        - '1731852162452'
+        - input
+        retrieval_mode: multiple
+        selected: false
+        title: 知識檢索
+        type: knowledge-retrieval
+      height: 91
+      id: '1731853248389'
+      position:
+        x: 393
+        y: 282
+      positionAbsolute:
+        x: 393
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: "{% for item in chunks %}\r\n### Chunk {{ loop.index }}. \r\n###\
+          \ Similarity: {{ item.metadata.score | default('N/A') }}\r\n\r\n#### {{\
+          \ item.title }}\r\n\r\n##### Content\r\n{{ item.content | replace('\\n',\
+          \ '\\n\\n') }}\r\n\r\n---\r\n{% endfor %}"
+        title: 模板轉換
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1731853248389'
+          - result
+          variable: chunks
+      height: 53
+      id: '1731853286446'
+      position:
+        x: 697
+        y: 282
+      positionAbsolute:
+        x: 697
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1731853286446'
+          - output
+          variable: output
+        selected: false
+        title: 結束
+        type: end
+      height: 89
+      id: '1731853370460'
+      position:
+        x: 1001
+        y: 282
+      positionAbsolute:
+        x: 1001
+        y: 282
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -445.5
+      y: -3
+      zoom: 1
