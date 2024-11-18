@@ -429,7 +429,7 @@ workflow:
     - data:
         desc: ''
         selected: false
-        template: "{{ arg1 }}\r\n{{ arg2 }}"
+        template: '{{ arg1 }}'
         title: 模板轉換
         type: template-transform
         variables:
@@ -444,12 +444,12 @@ workflow:
       height: 53
       id: '1731250183096'
       position:
-        x: 1545
+        x: 1543.5714285714284
         y: 296
       positionAbsolute:
-        x: 1545
+        x: 1543.5714285714284
         y: 296
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -501,14 +501,16 @@ workflow:
             \ which character ({{#1731249545696.host_name#}} or {{#1731249545696.guest_name#}}).\
             \  \n2. Ensure the dialogue order is clear and correct any errors caused\
             \ by improper line breaks.  \n3. Rearrange the cleaned-up dialogue content\
-            \ for better readability while retaining the original meaning.  \n4. Do\
-            \ not include any additional explanations or suggestions.\n5. Output the\
-            \ dialogue in JSON format as shown below, specifying the character names.\
-            \  \n{\n  \"dialogue\": [\n    {\n      \"character\": \"{{#1731249545696.host_name#}}\"\
-            ,\n      \"line\": \"...\"\n    },\n    {\n      \"character\": \"{{#1731249545696.guest_name#}}\"\
-            ,\n      \"line\": \"...\"\n    },\n    {\n      \"character\": \"{{#1731249545696.host_name#}}\"\
-            ,\n      \"line\": \"...\"\n    },\n    {\n      \"character\": \"{{#1731249545696.guest_name#}}\"\
-            ,\n      \"line\": \"...\"\n    },\n...\n}"
+            \ for better readability while retaining the original meaning.  \n4. If\
+            \ any character’s name appears in the script but does not align with the\
+            \ defined roles, the name can be removed.\n5. Do not include any additional\
+            \ explanations or suggestions.\n6. Output the dialogue in JSON format\
+            \ as shown below, specifying the character names.  \n{\n  \"dialogue\"\
+            : [\n    {\n      \"character\": \"host\",\n      \"line\": \"...\"\n\
+            \    },\n    {\n      \"character\": \"guest\",\n      \"line\": \"...\"\
+            \n    },\n    {\n      \"character\": \"host\",\n      \"line\": \"...\"\
+            \n    },\n    {\n      \"character\": \"guest\",\n      \"line\": \"...\"\
+            \n    },\n...\n}"
         - id: 38eda3c0-1f37-43b1-a8e9-22a1ac9076c0
           role: user
           text: '<podcast>
@@ -525,17 +527,17 @@ workflow:
       height: 97
       id: '1731953693313'
       position:
-        x: 1843.7142857142858
+        x: 1838
         y: 296
       positionAbsolute:
-        x: 1843.7142857142858
+        x: 1838
         y: 296
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
     viewport:
-      x: -2312.504638671873
-      y: -75.00463104248047
+      x: -2435.7
+      y: -140.7
       zoom: 1.4
