@@ -135,9 +135,20 @@ workflow:
     - data:
         isInIteration: false
         sourceType: code
-        targetType: end
-      id: 1731965220007-source-1731965237588-target
+        targetType: template-transform
+      id: 1731965220007-source-1731966539426-target
       source: '1731965220007'
+      sourceHandle: source
+      target: '1731966539426'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1731966539426-source-1731965237588-target
+      source: '1731966539426'
       sourceHandle: source
       target: '1731965237588'
       targetHandle: target
@@ -208,10 +219,10 @@ workflow:
       id: '1731249545696'
       position:
         x: 30
-        y: 296
+        y: 296.5
       positionAbsolute:
         x: 30
-        y: 296
+        y: 296.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -229,11 +240,11 @@ workflow:
       height: 93
       id: '1731249814730'
       position:
-        x: 333
-        y: 296
+        x: 334
+        y: 296.5
       positionAbsolute:
-        x: 333
-        y: 296
+        x: 334
+        y: 296.5
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -278,11 +289,11 @@ workflow:
       height: 97
       id: '1731249821080'
       position:
-        x: 636
-        y: 296
+        x: 638
+        y: 296.5
       positionAbsolute:
-        x: 636
-        y: 296
+        x: 638
+        y: 296.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -369,11 +380,11 @@ workflow:
       height: 97
       id: '1731249879315'
       position:
-        x: 939
-        y: 296
+        x: 942
+        y: 296.5
       positionAbsolute:
-        x: 939
-        y: 296
+        x: 942
+        y: 296.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -427,11 +438,11 @@ workflow:
       height: 97
       id: '1731249971127'
       position:
-        x: 1242
-        y: 296
+        x: 1246
+        y: 296.5
       positionAbsolute:
-        x: 1242
-        y: 296
+        x: 1246
+        y: 296.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -455,11 +466,11 @@ workflow:
       height: 53
       id: '1731250183096'
       position:
-        x: 1543.5714285714284
-        y: 296
+        x: 1550
+        y: 296.5
       positionAbsolute:
-        x: 1543.5714285714284
-        y: 296
+        x: 1550
+        y: 296.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -515,11 +526,11 @@ workflow:
       height: 97
       id: '1731953693313'
       position:
-        x: 1838
-        y: 296
+        x: 1854
+        y: 296.5
       positionAbsolute:
-        x: 1838
-        y: 296
+        x: 1854
+        y: 296.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -541,7 +552,7 @@ workflow:
           result:
             children: null
             type: string
-        selected: true
+        selected: false
         title: 代碼執行
         type: code
         variables:
@@ -552,12 +563,12 @@ workflow:
       height: 53
       id: '1731965220007'
       position:
-        x: 2144.5714285714284
-        y: 346.1428571428571
+        x: 2158
+        y: 296.5
       positionAbsolute:
-        x: 2144.5714285714284
-        y: 346.1428571428571
-      selected: true
+        x: 2158
+        y: 296.5
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -566,8 +577,8 @@ workflow:
         desc: ''
         outputs:
         - value_selector:
-          - '1731965220007'
-          - result
+          - '1731966539426'
+          - output
           variable: result
         selected: false
         title: 結束
@@ -575,17 +586,45 @@ workflow:
       height: 89
       id: '1731965237588'
       position:
-        x: 2448.5714285714284
-        y: 346.1428571428571
+        x: 2766
+        y: 296.5
       positionAbsolute:
-        x: 2448.5714285714284
-        y: 346.1428571428571
+        x: 2766
+        y: 296.5
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "JSON輸出:\r\n{{ arg1 }}\r\n\r\n文字輸出:\r\n{{ arg2 }}\r\n"
+        title: 模板轉換 2
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1731953693313'
+          - text
+          variable: arg1
+        - value_selector:
+          - '1731965220007'
+          - result
+          variable: arg2
+      height: 53
+      id: '1731966539426'
+      position:
+        x: 2462
+        y: 296.5
+      positionAbsolute:
+        x: 2462
+        y: 296.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
     viewport:
-      x: -3047.2999999999993
-      y: -201.89999999999986
-      zoom: 1.4
+      x: -1219
+      y: 37.99999999999994
+      zoom: 0.7
