@@ -1,0 +1,805 @@
+app:
+  description: ''
+  icon: face_with_monocle
+  icon_background: '#FFE4E8'
+  mode: workflow
+  name: 34-qa產生器_知識庫
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1730257085761-source-1730257098742-target
+      selected: false
+      source: '1730257085761'
+      sourceHandle: source
+      target: '1730257098742'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1730257098742-source-1730257648212-target
+      selected: false
+      source: '1730257098742'
+      sourceHandle: source
+      target: '1730257648212'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1730257648212-source-1730257830072-target
+      selected: false
+      source: '1730257648212'
+      sourceHandle: source
+      target: '1730257830072'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1730257830072start-source-1730257879652-target
+      selected: false
+      source: 1730257830072start
+      sourceHandle: source
+      target: '1730257879652'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: tool
+        targetType: llm
+      id: 1730257879652-source-1730259235391-target
+      selected: false
+      source: '1730257879652'
+      sourceHandle: source
+      target: '1730259235391'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1730257830072-source-1732047654790-target
+      source: '1730257830072'
+      sourceHandle: source
+      target: '1732047654790'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1732047654790-source-1732047706544-target
+      source: '1732047654790'
+      sourceHandle: source
+      target: '1732047706544'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: llm
+        targetType: llm
+      id: 1730259235391-source-1732049198126-target
+      source: '1730259235391'
+      sourceHandle: source
+      target: '1732049198126'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: iteration-start
+        targetType: knowledge-retrieval
+      id: 1730257830072start-source-1732049786637-target
+      source: 1730257830072start
+      sourceHandle: source
+      target: '1732049786637'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1732049786637-source-1730259235391-target
+      source: '1732049786637'
+      sourceHandle: source
+      target: '1730259235391'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: start
+        type: start
+        variables:
+        - label: title
+          max_length: 100
+          options: []
+          required: true
+          type: text-input
+          variable: title
+        - label: language
+          max_length: 48
+          options:
+          - 台灣繁體中文 (zh-TW)
+          - English
+          - 日本語
+          required: true
+          type: select
+          variable: language
+      height: 115
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 366.5
+      positionAbsolute:
+        x: 30
+        y: 366.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: e18aef50-3449-4259-9559-c4d17101d533
+          role: system
+          text: "<instruction>\n<task_description>\nGenerate a series of appropriate\
+            \ search engine queries to break down questions based on user inquiries\n\
+            </task_description>\n\n<examples>\n<example>\nInput: User asks how to\
+            \ learn programming\nOutput: 'programming learning methods, 'programming\
+            \ tutorials for beginners'\n</example>\n\n<example>\nInput: User wants\
+            \ to understand latest technology trends  \nOutput: 'tech trends 2021',\
+            \ 'latest technology news'\n</example>\n\n<example>\nInput: User seeks\
+            \ healthy eating advice\nOutput: 'healthy eating guide', 'balanced nutrition\
+            \ diet'\n</example>\n</examples>\n\n<instructions>\n1. Take user's question\
+            \ as input.\n2. Identify relevant keywords or phrases based on the topic\
+            \ of user's question.\n3. Use these keywords or phrases to make search\
+            \ engine queries.\n4. Generate a series of appropriate search engine queries\
+            \ to help break down user's question.\n5. Ensure output content does not\
+            \ contain any xml tags.<tag></tag>\n6.The output must be pure and conform\
+            \ to the <example> style without other explanations.\n7.Break down into\
+            \ at least 4-6 subproblems.\n8.Output is separated only by commas.\n</instructions>"
+        - id: b0e446f2-b714-41e9-8eb6-292187a97796
+          role: user
+          text: 'title：{{#1730257085761.title#}}
+
+            language：{{#1730257085761.language#}}
+
+            The output must be pure and conform to the <example> style without other
+            explanations.
+
+            Output is separated only by commas.
+
+            Break down into at least 4-6 subproblems.'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730257098742'
+      position:
+        x: 334
+        y: 366.5
+      positionAbsolute:
+        x: 334
+        y: 366.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(input_str: str) -> dict:\n    if not input_str:\n        return\
+          \ {'result': []}\n    \n    input_str = input_str.strip().strip('\"')\n\
+          \    items = [item.strip() for item in input_str.split(',')]\n    \n   \
+          \ return {'result': items}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: code
+        type: code
+        variables:
+        - value_selector:
+          - '1730257098742'
+          - text
+          variable: input_str
+      height: 53
+      id: '1730257648212'
+      position:
+        x: 638
+        y: 366.5
+      positionAbsolute:
+        x: 638
+        y: 366.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: continue-on-error
+        height: 462
+        is_parallel: true
+        iterator_selector:
+        - '1730257648212'
+        - result
+        output_selector:
+        - '1732049198126'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1730257830072start
+        title: interaction
+        type: iteration
+        width: 980.1699410031715
+      height: 462
+      id: '1730257830072'
+      position:
+        x: 610.5335574996695
+        y: 352.8594056584226
+      positionAbsolute:
+        x: 610.5335574996695
+        y: 352.8594056584226
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 980
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1730257830072start
+      parentId: '1730257830072'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 634.5335574996695
+        y: 420.8594056584226
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: TavilySearch
+        tool_configurations:
+          exclude_domains: null
+          include_answer: null
+          include_domains: null
+          include_images: null
+          include_raw_content: null
+          max_results: 5
+          search_depth: basic
+        tool_label: TavilySearch
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1730257830072.item#}}'
+        type: tool
+      height: 245
+      id: '1730257879652'
+      parentId: '1730257830072'
+      position:
+        x: 125.86252654101145
+        y: 65
+      positionAbsolute:
+        x: 736.396084040681
+        y: 417.8594056584226
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1732049786637'
+          - result
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - edition_type: basic
+          id: d8e18834-ba12-4acb-b376-15340d30a3e3
+          jinja2_text: '"{research_summary}" Using the above information, answer the
+            following question or topic: "{question}" in a detailed report — The report
+            should focus on the answer to the question, should be well structured,
+            informative, in depth, with facts and numbers if available, a minimum
+            of 1,200 words and with markdown syntax and apa format. Write all source
+            urls at the end of the report in apa format. You should write your report
+            only based on the given information and nothing else.'
+          role: system
+          text: "Your goal is to provide answers based on information from the internet.\
+            \ \nYou must use the provided Tavily search API function to find relevant\
+            \ online information. \nYou should never use your own knowledge to answer\
+            \ questions.\nPlease include relevant url sources in the end of your answers"
+        - id: b23ba544-1b25-4d0a-abdf-34a6c22a2c76
+          role: user
+          text: "Use the following context as your learned knowledge, inside <context></context>\
+            \ XML tags.\n\n<context>\n{{#context#}}\n</context>\n\nlanguage：{{#1730257085761.language#}}\n\
+            \ \"{{#1730257879652.text#}}\" Using the above information, answer the\
+            \ following question or topic: \"{{#1730257830072.item#}} \"\n"
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730259235391'
+      parentId: '1730257830072'
+      position:
+        x: 416.1699410031715
+        y: 74.62554586921203
+      positionAbsolute:
+        x: 1026.703498502841
+        y: 427.4849515276346
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        author: Dify
+        desc: ''
+        height: 168
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"GPT-Rasearcher
+          receives two variable inputs. 1. title: the proposition to be studied. 2.
+          language: language preference for the research report.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 168
+      id: '1730387967784'
+      position:
+        x: 28.05097515220939
+        y: 7.975706889733289
+      positionAbsolute:
+        x: 28.05097515220939
+        y: 7.975706889733289
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: Dify
+        desc: ''
+        height: 173
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Step1:
+          First, let the LLM provide a series of search engine queries related to
+          the proposition. Comprehensive research can be conducted through queries
+          from different perspectives.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 242
+      height: 173
+      id: '1730388614165'
+      position:
+        x: 321.6365008011338
+        y: 7.975706889733289
+      positionAbsolute:
+        x: 321.6365008011338
+        y: 7.975706889733289
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 242
+    - data:
+        author: Dify
+        desc: ''
+        height: 188
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Step2:
+          Since the input requirement for iteration is an array, we use a code node
+          to extract subqueries from the string output by the LLM. Here, the new function
+          \"code generator\" can be used to quickly generate the required code.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 188
+      id: '1730388689290'
+      position:
+        x: 635.9314896948702
+        y: 7.975706889733289
+      positionAbsolute:
+        x: 635.9314896948702
+        y: 7.975706889733289
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: Dify
+        desc: ''
+        height: 224
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Step3:
+          We constructed two parallel branches. One is to use the LLM to summarize
+          secondary headings suitable for proposition research based on search engine
+          queries. The other branch uses iteration and simultaneously queries each
+          subquery with Tavily and then conducts inductive research using the LLM.
+          Here, we use the advanced functions of iteration and the parallel mode to
+          accelerate the search.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ' (1)'
+        type: ''
+        width: 281
+      height: 224
+      id: '17303887996700'
+      position:
+        x: 968.506506560585
+        y: 7.975706889733289
+      positionAbsolute:
+        x: 968.506506560585
+        y: 7.975706889733289
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 281
+    - data:
+        author: Dify
+        desc: ''
+        height: 198
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Step
+          4: We use a parameter extractor to extract a total of four sub-titles of
+          the secondary research propositions output by the previous LLM. Then, we
+          use four parallel branches to take the iterative output as the context (now
+          the prompt can support injecting an array [string]) to answer the four questions.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (2)'
+        type: ''
+        width: 289
+      height: 198
+      id: '17303896484860'
+      position:
+        x: 1279.1060058303985
+        y: 7.975706889733289
+      positionAbsolute:
+        x: 1279.1060058303985
+        y: 7.975706889733289
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 289
+    - data:
+        author: Dify
+        desc: ''
+        height: 156
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Finally,
+          we use template nodes to orderly splice the previous first-level headings,
+          second-level headings, and research conclusions to obtain a complete research
+          report. 😃","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (3)'
+        type: ''
+        width: 283
+      height: 156
+      id: '17303898217580'
+      position:
+        x: 1676.1759535081464
+        y: 7.975706889733289
+      positionAbsolute:
+        x: 1676.1759535081464
+        y: 7.975706889733289
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 283
+    - data:
+        author: Dify
+        desc: ''
+        height: 175
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"example
+          title：","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"1.A
+          Study of Florence Art History","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"2.The
+          Complete History of Minecraft","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"3.The
+          Chronicles of OpenAI","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 175
+      id: '1730452566694'
+      position:
+        x: -241.22286003072247
+        y: 6.623354710724881
+      positionAbsolute:
+        x: -241.22286003072247
+        y: 6.623354710724881
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        code: "import json\n\ndef main(questions, answers):\n    # Ensure the input\
+          \ arrays have the same length\n    if len(questions) != len(answers):\n\
+          \        raise ValueError(\"Questions and answers arrays must have the same\
+          \ length.\")\n    \n    # Combine questions and answers into a list of dictionaries\n\
+          \    data = [{\"question\": question, \"answer\": answer} for question,\
+          \ answer in zip(questions, answers)]\n    \n    # Convert the list to JSON\
+          \ format\n    json_data = json.dumps(data, ensure_ascii=False, indent=4)\
+          \    \n    return {\n        \"result\": json_data\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1730257648212'
+          - result
+          variable: questions
+        - value_selector:
+          - '1730257830072'
+          - output
+          variable: answers
+      height: 53
+      id: '1732047654790'
+      position:
+        x: 1583.5335574996695
+        y: 352.8594056584226
+      positionAbsolute:
+        x: 1583.5335574996695
+        y: 352.8594056584226
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732047654790'
+          - result
+          variable: result
+        selected: false
+        title: 結束
+        type: end
+      height: 89
+      id: '1732047706544'
+      position:
+        x: 1887.5335574996695
+        y: 352.8594056584226
+      positionAbsolute:
+        x: 1887.5335574996695
+        y: 352.8594056584226
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: bfe99ab8-17a2-438b-8c69-86d3e7ff2300
+          role: system
+          text: 你是一個擅長於將英文文件翻譯台灣在地中文的專家
+        - id: 99e3b088-bb2e-4dcd-a2ac-7c2cbf97c544
+          role: user
+          text: '請將以下的內容校正成符合台灣的中文用語, 除了翻譯內容外, 請勿提供其他的建議或說明
+
+
+            {{#1730259235391.text#}}
+
+
+            '
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732049198126'
+      parentId: '1730257830072'
+      position:
+        x: 720.1699410031715
+        y: 74.62554586921203
+      positionAbsolute:
+        x: 1330.703498502841
+        y: 427.4849515276346
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        dataset_ids:
+        - 16935ee7-4224-4e31-b8ce-018eeb5d6c64
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: bge-reranker-v2-m3
+            provider: xinference
+          score_threshold: null
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: bge-m3
+              embedding_provider_name: xinference
+              vector_weight: 0.7
+        query_variable_selector:
+        - '1730257830072'
+        - item
+        retrieval_mode: multiple
+        selected: false
+        title: 知識檢索
+        type: knowledge-retrieval
+      height: 91
+      id: '1732049786637'
+      parentId: '1730257830072'
+      position:
+        x: 128
+        y: 351
+      positionAbsolute:
+        x: 738.5335574996695
+        y: 703.8594056584226
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    viewport:
+      x: -184.1443321081216
+      y: 48.59855453997349
+      zoom: 0.4678420664335068
