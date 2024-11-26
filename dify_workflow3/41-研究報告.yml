@@ -311,6 +311,40 @@ workflow:
       targetHandle: target
       type: custom
       zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1730257648212-source-1732599904203-target
+      source: '1730257648212'
+      sourceHandle: source
+      target: '1732599904203'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1732599904203'
+        sourceType: iteration-start
+        targetType: template-transform
+      id: 1732599904203start-source-1732599935958-target
+      source: 1732599904203start
+      sourceHandle: source
+      target: '1732599935958'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: end
+      id: 1732599904203-source-1732600018609-target
+      source: '1732599904203'
+      sourceHandle: source
+      target: '1732600018609'
+      targetHandle: target
+      type: custom
+      zIndex: 0
     nodes:
     - data:
         desc: ''
@@ -428,10 +462,10 @@ workflow:
       height: 53
       id: '1730257648212'
       position:
-        x: 636
+        x: 634.5714285714287
         y: 257.5
       positionAbsolute:
-        x: 636
+        x: 634.5714285714287
         y: 257.5
       selected: false
       sourcePosition: right
@@ -979,11 +1013,11 @@ workflow:
       height: 89
       id: '1732579748973'
       position:
-        x: 3679.714285714286
-        y: 351.6428571428572
+        x: 3730
+        y: 531.5
       positionAbsolute:
-        x: 3679.714285714286
-        y: 351.6428571428572
+        x: 3730
+        y: 531.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1035,10 +1069,10 @@ workflow:
       height: 97
       id: '1732582296184'
       position:
-        x: 2819.5714285714284
+        x: 2821
         y: 394.5
       positionAbsolute:
-        x: 2819.5714285714284
+        x: 2821
         y: 394.5
       selected: false
       sourcePosition: right
@@ -1065,11 +1099,11 @@ workflow:
       height: 125
       id: '1732584513421'
       position:
-        x: 3096.857142857143
-        y: 373.92857142857144
+        x: 3124
+        y: 394.5
       positionAbsolute:
-        x: 3096.857142857143
-        y: 373.92857142857144
+        x: 3124
+        y: 394.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1092,13 +1126,13 @@ workflow:
           text: 你是一個擅長於將文件翻譯及潤飾成台灣在地中文的專家
         - id: b3129e9f-0ace-472d-ba5e-bd5abe778e68
           role: user
-          text: '請將以下的內容校正成符合台灣的中文用語, 除了翻譯及潤飾內容外, 請勿提供其他的建議或說明
+          text: '請將以下的內容翻譯並校正成符合台灣的中文用語, 除了翻譯及潤飾內容外, 請勿提供其他的建議或說明
 
 
             ---
 
             {{#1732582296184.text#}}'
-        selected: true
+        selected: false
         title: LLM 9
         type: llm
         variables: []
@@ -1107,12 +1141,12 @@ workflow:
       height: 97
       id: '1732584537785'
       position:
-        x: 3339.7142857142862
-        y: 718.2142857142858
+        x: 3427
+        y: 394.5
       positionAbsolute:
-        x: 3339.7142857142862
-        y: 718.2142857142858
-      selected: true
+        x: 3427
+        y: 394.5
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1130,11 +1164,11 @@ workflow:
       height: 89
       id: '1732584586619'
       position:
-        x: 3569.857142857143
-        y: 541.0714285714287
+        x: 3730
+        y: 394.5
       positionAbsolute:
-        x: 3569.857142857143
-        y: 541.0714285714287
+        x: 3730
+        y: 394.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1173,11 +1207,11 @@ workflow:
       height: 88
       id: '1732586479123'
       position:
-        x: 2842.8006025041855
-        y: 593.443454197475
+        x: 2828.5148882184712
+        y: 504.8720256260465
       positionAbsolute:
-        x: 2842.8006025041855
-        y: 593.443454197475
+        x: 2828.5148882184712
+        y: 504.8720256260465
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1198,8 +1232,9 @@ workflow:
         - id: ddaeae1f-cb5b-4e67-bbbc-3592bf862475
           role: system
           text: 你是一個擅長於將文件翻譯及潤飾成台灣在地中文的專家
-        - role: user
-          text: '請將以下的內容校正成符合台灣的中文用語, 除了翻譯及潤飾內容外, 請勿提供其他的建議或說明
+        - id: 0601da9a-3f1c-4f57-bb03-e80ae9e2bda7
+          role: user
+          text: '請將以下的內容翻譯並校正成符合台灣的中文用語, 除了翻譯及潤飾內容外, 請勿提供其他的建議或說明
 
 
             ---
@@ -1214,17 +1249,125 @@ workflow:
       height: 97
       id: '1732588429119'
       position:
-        x: 3346.857142857143
-        y: 229.92857142857156
+        x: 3427
+        y: 531.5
       positionAbsolute:
-        x: 3346.857142857143
-        y: 229.92857142857156
+        x: 3427
+        y: 531.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        is_parallel: false
+        iterator_selector:
+        - '1730257648212'
+        - result
+        output_selector:
+        - '1732599935958'
+        - output
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1732599904203start
+        title: 迭代 2
+        type: iteration
+        width: 387
+      height: 147
+      id: '1732599904203'
+      position:
+        x: 939
+        y: 763.6428571428571
+      positionAbsolute:
+        x: 939
+        y: 763.6428571428571
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 387
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1732599904203start
+      parentId: '1732599904203'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 963
+        y: 831.6428571428571
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1732599904203'
+        selected: false
+        template: '{{ index }} -> {{ item }}'
+        title: 模板轉換 2
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1732599904203'
+          - item
+          variable: item
+        - value_selector:
+          - '1732599904203'
+          - index
+          variable: index
+      height: 53
+      id: '1732599935958'
+      parentId: '1732599904203'
+      position:
+        x: 128
+        y: 65
+      positionAbsolute:
+        x: 1067
+        y: 828.6428571428571
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732599904203'
+          - output
+          variable: output
+        selected: false
+        title: 結束 3
+        type: end
+      height: 89
+      id: '1732600018609'
+      position:
+        x: 1401.7142857142858
+        y: 763.6428571428571
+      positionAbsolute:
+        x: 1401.7142857142858
+        y: 763.6428571428571
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 243
     viewport:
-      x: -2014.9499999999998
-      y: -75.40000000000009
+      x: -2204.05
+      y: -81.69999999999993
       zoom: 0.7
