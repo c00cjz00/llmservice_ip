@@ -1,0 +1,1230 @@
+app:
+  description: ''
+  icon: face_with_monocle
+  icon_background: '#FFE4E8'
+  mode: workflow
+  name: 41-研究報告
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1730257085761-source-1730257098742-target
+      selected: false
+      source: '1730257085761'
+      sourceHandle: source
+      target: '1730257098742'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1730257098742-source-1730257648212-target
+      selected: false
+      source: '1730257098742'
+      sourceHandle: source
+      target: '1730257648212'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1730257648212-source-1730257830072-target
+      selected: false
+      source: '1730257648212'
+      sourceHandle: source
+      target: '1730257830072'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1730257830072start-source-1730257879652-target
+      selected: false
+      source: 1730257830072start
+      sourceHandle: source
+      target: '1730257879652'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: tool
+        targetType: llm
+      id: 1730257879652-source-1730259235391-target
+      selected: false
+      source: '1730257879652'
+      sourceHandle: source
+      target: '1730259235391'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1730257648212-source-1730259707121-target
+      selected: false
+      source: '1730257648212'
+      sourceHandle: source
+      target: '1730259707121'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: parameter-extractor
+      id: 1730259707121-source-1730260137415-target
+      selected: false
+      source: '1730259707121'
+      sourceHandle: source
+      target: '1730260137415'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1730260137415-source-1730260569281-target
+      selected: false
+      source: '1730260137415'
+      sourceHandle: source
+      target: '1730260569281'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1730260137415-source-1730260824960-target
+      selected: false
+      source: '1730260137415'
+      sourceHandle: source
+      target: '1730260824960'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: parameter-extractor
+      id: 1730257830072-source-1730260137415-target
+      selected: false
+      source: '1730257830072'
+      sourceHandle: source
+      target: '1730260137415'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1730260137415-source-17302609631470-target
+      selected: false
+      source: '1730260137415'
+      sourceHandle: source
+      target: '17302609631470'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1730260137415-source-17302610163900-target
+      selected: false
+      source: '1730260137415'
+      sourceHandle: source
+      target: '17302610163900'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 17302610163900-source-1732579716194-target
+      source: '17302610163900'
+      sourceHandle: source
+      target: '1732579716194'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 17302609631470-source-1732579716194-target
+      source: '17302609631470'
+      sourceHandle: source
+      target: '1732579716194'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1730260824960-source-1732579716194-target
+      source: '1730260824960'
+      sourceHandle: source
+      target: '1732579716194'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1730260569281-source-1732579716194-target
+      source: '1730260569281'
+      sourceHandle: source
+      target: '1732579716194'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1732579716194-source-1732582296184-target
+      source: '1732579716194'
+      sourceHandle: source
+      target: '1732582296184'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 1732582296184-source-1732584513421-target
+      source: '1732582296184'
+      sourceHandle: source
+      target: '1732584513421'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732584513421-false-1732584537785-target
+      source: '1732584513421'
+      sourceHandle: 'false'
+      target: '1732584537785'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1732584537785-source-1732584586619-target
+      source: '1732584537785'
+      sourceHandle: source
+      target: '1732584586619'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732584513421-true-1732588429119-target
+      source: '1732584513421'
+      sourceHandle: 'true'
+      target: '1732588429119'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1732588429119-source-1732579748973-target
+      source: '1732588429119'
+      sourceHandle: source
+      target: '1732579748973'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: start
+        type: start
+        variables:
+        - label: title
+          max_length: 100
+          options: []
+          required: true
+          type: text-input
+          variable: title
+        - label: language
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+      height: 115
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 257.5
+      positionAbsolute:
+        x: 30
+        y: 257.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: e18aef50-3449-4259-9559-c4d17101d533
+          role: system
+          text: "<instruction>\n<task_description>\nGenerate a series of appropriate\
+            \ search engine queries to break down questions based on user inquiries\n\
+            </task_description>\n\n<examples>\n<example>\nInput: User asks how to\
+            \ learn programming\nOutput: 'programming learning methods, 'programming\
+            \ tutorials for beginners'\n</example>\n\n<example>\nInput: User wants\
+            \ to understand latest technology trends  \nOutput: 'tech trends 2021',\
+            \ 'latest technology news'\n</example>\n\n<example>\nInput: User seeks\
+            \ healthy eating advice\nOutput: 'healthy eating guide', 'balanced nutrition\
+            \ diet'\n</example>\n</examples>\n\n<instructions>\n1. Take user's question\
+            \ as input.\n2. Identify relevant keywords or phrases based on the topic\
+            \ of user's question.\n3. Use these keywords or phrases to make search\
+            \ engine queries.\n4. Generate a series of appropriate search engine queries\
+            \ to help break down user's question.\n5. Ensure output content does not\
+            \ contain any xml tags.\n6.The output must be pure and conform to the\
+            \ <example> style without other explanations.\n7.Break down into at least\
+            \ 4-6 subproblems.\n8.Output is separated only by commas.\n</instructions>"
+        - id: b0e446f2-b714-41e9-8eb6-292187a97796
+          role: user
+          text: 'title：{{#1730257085761.title#}}
+
+            language：{{#1730257085761.language#}}
+
+            The output must be pure and conform to the <example> style without other
+            explanations.
+
+            Output is separated only by commas.
+
+            Break down into at least 4-6 subproblems.'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730257098742'
+      position:
+        x: 333
+        y: 257.5
+      positionAbsolute:
+        x: 333
+        y: 257.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(input_str: str) -> dict:\n    if not input_str:\n        return\
+          \ {'result': []}\n    \n    input_str = input_str.strip().strip('\"')\n\
+          \    items = [item.strip() for item in input_str.split(',')]\n    \n   \
+          \ return {'result': items}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: code
+        type: code
+        variables:
+        - value_selector:
+          - '1730257098742'
+          - text
+          variable: input_str
+      height: 53
+      id: '1730257648212'
+      position:
+        x: 636
+        y: 257.5
+      positionAbsolute:
+        x: 636
+        y: 257.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        error_handle_mode: continue-on-error
+        height: 333
+        is_parallel: true
+        iterator_selector:
+        - '1730257648212'
+        - result
+        output_selector:
+        - '1730259235391'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1730257830072start
+        title: interaction
+        type: iteration
+        width: 913
+      height: 333
+      id: '1730257830072'
+      position:
+        x: 939
+        y: 394.5
+      positionAbsolute:
+        x: 939
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 913
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1730257830072start
+      parentId: '1730257830072'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 963
+        y: 462.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: TavilySearch
+        tool_configurations:
+          exclude_domains: null
+          include_answer: null
+          include_domains: null
+          include_images: null
+          include_raw_content: null
+          max_results: 5
+          search_depth: basic
+        tool_label: TavilySearch
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1730257830072.item#}}'
+        type: tool
+      height: 245
+      id: '1730257879652'
+      parentId: '1730257830072'
+      position:
+        x: 128
+        y: 67
+      positionAbsolute:
+        x: 1067
+        y: 461.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - edition_type: basic
+          id: d8e18834-ba12-4acb-b376-15340d30a3e3
+          jinja2_text: '"{research_summary}" Using the above information, answer the
+            following question or topic: "{question}" in a detailed report — The report
+            should focus on the answer to the question, should be well structured,
+            informative, in depth, with facts and numbers if available, a minimum
+            of 1,200 words and with markdown syntax and apa format. Write all source
+            urls at the end of the report in apa format. You should write your report
+            only based on the given information and nothing else.'
+          role: system
+          text: "Your goal is to provide answers based on information from the internet.\
+            \ \nYou must use the provided Tavily search API function to find relevant\
+            \ online information. \nYou should never use your own knowledge to answer\
+            \ questions.\nPlease include relevant url sources in the end of your answers"
+        - id: b23ba544-1b25-4d0a-abdf-34a6c22a2c76
+          role: user
+          text: "language：{{#1730257085761.language#}}\n \"{{#1730257879652.text#}}\"\
+            \ Using the above information, answer the following question or topic:\
+            \ \"{{#1730257830072.item#}} \"\n"
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730259235391'
+      parentId: '1730257830072'
+      position:
+        x: 416.1699410031715
+        y: 74.62554586921203
+      positionAbsolute:
+        x: 1355.1699410031715
+        y: 469.12554586921203
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 3b248cc7-ce1c-4d24-b20c-aa988aaad672
+          role: system
+          text: 'according{{#1730257648212.result#}}，{{#1730257085761.title#}}Generate
+            3 to 5 sub-titles.
+
+            <instructions>
+
+            Please generate 4 subheadings for the main title following these steps:
+
+            Carefully read the provided main title and related content
+
+            Analyze the core theme and key information points of the main title
+
+            Ensure the generated subheadings maintain consistency and relevance with
+            the main title
+
+            Each subheading should:
+
+            Be concise and appropriate in length
+
+            Highlight a unique angle or key point
+
+            Capture readers'' interest
+
+            Match the overall style and tone of the article
+
+            Between subheadings:
+
+            Content should not overlap
+
+            Logical order should be maintained
+
+            Should collectively support the main title
+
+            Use numerical sequence (1, 2, 3...) to mark each subheading
+
+            Outputformatrequirements:
+
+            Each subheading on a separate line
+
+            No XML tags included
+
+            Output subheadings content only
+
+            </instructions>'
+        - id: 5a7b9e7a-e8f8-4564-a9bf-85861c4fe312
+          role: user
+          text: 'language：{{#1730257085761.language#}}
+
+            Generate a series of appropriate sub-title to help break down {{#1730257085761.title#}}.
+
+            Breaks down complex topics into manageable subtopics'
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730259707121'
+      position:
+        x: 1274
+        y: 257.5
+      positionAbsolute:
+        x: 1274
+        y: 257.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        instruction: '{{#1730259707121.text#}}Extract the return value in the output
+          value as four independent parameters.Avoids redundancy by tracking previously
+          written content'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        parameters:
+        - description: NO.1 sub title
+          name: sub_title1
+          required: false
+          type: string
+        - description: NO.2 sub_title
+          name: sub_title2
+          required: false
+          type: string
+        - description: NO.3 sub_title
+          name: sub_title3
+          required: false
+          type: string
+        - description: NO.4 sub_title
+          name: sub_title4
+          required: false
+          type: string
+        query:
+        - '1730259707121'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: Parameter extractor
+        type: parameter-extractor
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730260137415'
+      position:
+        x: 1912
+        y: 257.5
+      positionAbsolute:
+        x: 1912
+        y: 257.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 3ef1efde-48b7-4f8d-830b-44e92815950f
+          role: system
+          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title1#}}and
+            nothing else.
+        - id: 04881f0e-1a81-4c5c-813a-5123d62689e8
+          role: user
+          text: 'language：{{#1730257085761.language#}}
+
+            context：{{#1730257830072.output#}}
+
+            Provide the research report in the specified language, avoiding small
+            talk.
+
+
+
+            '
+        selected: false
+        title: LLM 5
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730260569281'
+      position:
+        x: 2215
+        y: 668.5
+      positionAbsolute:
+        x: 2215
+        y: 668.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: c059b7a1-a7cb-4d2d-a258-cc4bd122ff7f
+          role: system
+          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title2#}}and
+            nothing else.
+        - id: e494e57c-eff3-434d-bba7-4981a6dfd212
+          role: user
+          text: 'language：{{#1730257085761.language#}}
+
+            context：{{#1730257830072.output#}}
+
+            Provide the research report in the specified language, avoiding small
+            talk.
+
+
+
+            '
+        selected: false
+        title: LLM 6
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730260824960'
+      position:
+        x: 2215
+        y: 531.5
+      positionAbsolute:
+        x: 2215
+        y: 531.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: c059b7a1-a7cb-4d2d-a258-cc4bd122ff7f
+          role: system
+          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title3#}}and
+            nothing else.
+        - id: 53cd6741-f1ef-4480-9778-9e8c1ea2e298
+          role: user
+          text: 'language：{{#1730257085761.language#}}
+
+            context：{{#1730257830072.output#}}
+
+            Provide the research report in the specified language, avoiding small
+            talk.
+
+
+            '
+        selected: false
+        title: LLM 7
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '17302609631470'
+      position:
+        x: 2215
+        y: 394.5
+      positionAbsolute:
+        x: 2215
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: c059b7a1-a7cb-4d2d-a258-cc4bd122ff7f
+          role: system
+          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title4#}}and
+            nothing else.
+        - id: 2773ef9d-37b8-49f8-9455-c2399538407f
+          role: user
+          text: 'language：{{#1730257085761.language#}}
+
+            context：{{#1730257830072.output#}}
+
+            Provide the research report in the specified language, avoiding small
+            talk.
+
+
+
+
+            '
+        selected: false
+        title: LLM 8
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '17302610163900'
+      position:
+        x: 2215
+        y: 257.5
+      positionAbsolute:
+        x: 2215
+        y: 257.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: "Topic: {{ arg0 }}\r\n\r\nTitle 1: {{ arg1 }}\r\nReport 1: {{ arg5\
+          \ }}\r\n\r\nTitle 2: {{ arg2 }}\r\nReport 2: {{ arg6 }}\r\n\r\nTitle 3:\
+          \ {{ arg3 }}\r\nReport 3: {{ arg7 }}\r\n\r\nTitle 4: {{ arg4 }}\r\nReport\
+          \ 4: {{ arg8 }}"
+        title: Template conversion
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1730257085761'
+          - title
+          variable: arg0
+        - value_selector:
+          - '1730260137415'
+          - sub_title1
+          variable: arg1
+        - value_selector:
+          - '1730260137415'
+          - sub_title2
+          variable: arg2
+        - value_selector:
+          - '1730260137415'
+          - sub_title3
+          variable: arg3
+        - value_selector:
+          - '1730260137415'
+          - sub_title4
+          variable: arg4
+        - value_selector:
+          - '1730260569281'
+          - text
+          variable: arg5
+        - value_selector:
+          - '1730260824960'
+          - text
+          variable: arg6
+        - value_selector:
+          - '17302609631470'
+          - text
+          variable: arg7
+        - value_selector:
+          - '17302610163900'
+          - text
+          variable: arg8
+      height: 53
+      id: '1732579716194'
+      position:
+        x: 2518
+        y: 394.5
+      positionAbsolute:
+        x: 2518
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732588429119'
+          - text
+          variable: output
+        selected: false
+        title: OUTPUT_English
+        type: end
+      height: 89
+      id: '1732579748973'
+      position:
+        x: 3679.714285714286
+        y: 351.6428571428572
+      positionAbsolute:
+        x: 3679.714285714286
+        y: 351.6428571428572
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 16384
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: c86a8055-c36d-4044-9eb3-ba17c0bb6b26
+          role: system
+          text: "Based on the content within the <llmreport></llmreport> XML tags,\
+            \ complete the following tasks:\nCreate an Outline: Conduct an in-depth\
+            \ analysis of each specialized report, summarize the themes and core content\
+            \ of each, and integrate their structural characteristics to devise an\
+            \ overarching outline for the full report. This outline should comprehensively\
+            \ present the key research points and their logical connections.\nWrite\
+            \ the Report: Based on the established outline, organize and write a complete\
+            \ and well-structured comprehensive report. The word count should be equivalent\
+            \ to the total word count of the original specialized reports. The language\
+            \ should be professional and the descriptions specific, fully showcasing\
+            \ the research findings and their application value.\nEnsure that the\
+            \ report has a clear structure, rigorous arguments, and effectively highlights\
+            \ the significance and contributions of the research findings within the\
+            \ relevant field.\n\nNotice: \n1. Please focus solely on the content output\
+            \ and refrain from providing any additional suggestions or opinions.\n\
+            2. Please output the content in {{#1730257085761.language#}}.\n"
+        - id: 76f778eb-8814-4c78-894c-55821b45f9fb
+          role: user
+          text: "<llmreport>\n{{#1732579716194.output#}}\n</llmreport>\n\nNotice:\
+            \ \n1. Please focus solely on the content output and refrain from providing\
+            \ any additional suggestions or opinions.\n2. Please output the content\
+            \ in {{#1730257085761.language#}}."
+        selected: false
+        title: LLM 13
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732582296184'
+      position:
+        x: 2819.5714285714284
+        y: 394.5
+      positionAbsolute:
+        x: 2819.5714285714284
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 77bc8630-e77f-4778-880c-aefb87036701
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 125
+      id: '1732584513421'
+      position:
+        x: 3096.857142857143
+        y: 373.92857142857144
+      positionAbsolute:
+        x: 3096.857142857143
+        y: 373.92857142857144
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fd7e1afd-5fa7-42e3-a8e8-278644db07f1
+          role: system
+          text: 你是一個擅長於將文件翻譯及潤飾成台灣在地中文的專家
+        - id: b3129e9f-0ace-472d-ba5e-bd5abe778e68
+          role: user
+          text: '請將以下的內容校正成符合台灣的中文用語, 除了翻譯及潤飾內容外, 請勿提供其他的建議或說明
+
+
+            ---
+
+            {{#1732582296184.text#}}'
+        selected: true
+        title: LLM 9
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732584537785'
+      position:
+        x: 3339.7142857142862
+        y: 718.2142857142858
+      positionAbsolute:
+        x: 3339.7142857142862
+        y: 718.2142857142858
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732584537785'
+          - text
+          variable: text
+        selected: false
+        title: OUTPUT_Chinese
+        type: end
+      height: 89
+      id: '1732584586619'
+      position:
+        x: 3569.857142857143
+        y: 541.0714285714287
+      positionAbsolute:
+        x: 3569.857142857143
+        y: 541.0714285714287
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Please
+          translate the following content into English:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Based
+          on the content within the <llmreport></llmreport> XML tags, complete the
+          following tasks:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Create
+          an Outline: Conduct an in-depth analysis of each specialized report, summarize
+          the themes and core content of each, and integrate their structural characteristics
+          to devise an overarching outline for the full report. This outline should
+          comprehensively present the key research points and their logical connections.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Write
+          the Report: Based on the established outline, organize and write a complete
+          and well-structured comprehensive report. The word count should be equivalent
+          to the total word count of the original specialized reports. The language
+          should be professional and the descriptions specific, fully showcasing the
+          research findings and their application value.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Ensure
+          that the report has a clear structure, rigorous arguments, and effectively
+          highlights the significance and contributions of the research findings within
+          the relevant field.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Notice:
+          ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"1.
+          Please focus solely on the content output and refrain from providing any
+          additional suggestions or opinions.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"2.
+          Please output the content in ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":".","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1732586479123'
+      position:
+        x: 2842.8006025041855
+        y: 593.443454197475
+      positionAbsolute:
+        x: 2842.8006025041855
+        y: 593.443454197475
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: ddaeae1f-cb5b-4e67-bbbc-3592bf862475
+          role: system
+          text: 你是一個擅長於將文件翻譯及潤飾成台灣在地中文的專家
+        - role: user
+          text: '請將以下的內容校正成符合台灣的中文用語, 除了翻譯及潤飾內容外, 請勿提供其他的建議或說明
+
+
+            ---
+
+            {{#1732582296184.text#}}'
+        selected: false
+        title: LLM 10
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732588429119'
+      position:
+        x: 3346.857142857143
+        y: 229.92857142857156
+      positionAbsolute:
+        x: 3346.857142857143
+        y: 229.92857142857156
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -2014.9499999999998
+      y: -75.40000000000009
+      zoom: 0.7
