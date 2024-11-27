@@ -1,0 +1,1115 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 01-thinkingprompt_腦圖
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732097739851-adbd463d-4f82-45a4-9ab9-0b99792c3f90-1732097847485-target
+      source: '1732097739851'
+      sourceHandle: adbd463d-4f82-45a4-9ab9-0b99792c3f90
+      target: '1732097847485'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1732098824116-source-1732097904629-target
+      source: '1732098824116'
+      sourceHandle: source
+      target: '1732097904629'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1732097674702-source-1732099065787-target
+      source: '1732097674702'
+      sourceHandle: source
+      target: '1732099065787'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: if-else
+      id: 1732099065787-source-1732097739851-target
+      source: '1732099065787'
+      sourceHandle: source
+      target: '1732097739851'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732097739851-true-1732097850403-target
+      source: '1732097739851'
+      sourceHandle: 'true'
+      target: '1732097850403'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732097739851-false-1732097838131-target
+      source: '1732097739851'
+      sourceHandle: 'false'
+      target: '1732097838131'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1732097850403-source-1732100304869-target
+      source: '1732097850403'
+      sourceHandle: source
+      target: '1732100304869'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1732097847485-source-1732100304869-target
+      source: '1732097847485'
+      sourceHandle: source
+      target: '1732100304869'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1732097838131-source-1732100304869-target
+      source: '1732097838131'
+      sourceHandle: source
+      target: '1732100304869'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1732099895702-source-1732098824116-target
+      source: '1732099895702'
+      sourceHandle: source
+      target: '1732098824116'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: if-else
+      id: 1732100304869-source-1732737727427-target
+      selected: false
+      source: '1732100304869'
+      sourceHandle: source
+      target: '1732737727427'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732737727427-true-1732099895702-target
+      source: '1732737727427'
+      sourceHandle: 'true'
+      target: '1732099895702'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1732737727427-false-1732737786593-target
+      source: '1732737727427'
+      sourceHandle: 'false'
+      target: '1732737786593'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1732737786593-source-1732737823139-target
+      source: '1732737786593'
+      sourceHandle: source
+      target: '1732737823139'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          label: 文件上傳
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: Prompt 模組
+          max_length: 5
+          options:
+          - v3.5-20241113
+          - v4-20241118
+          - v4-lite-20241118
+          required: true
+          type: select
+          variable: option
+        - label: 翻譯成中文?
+          max_length: 48
+          options:
+          - 'YES'
+          - 'NO'
+          required: true
+          type: select
+          variable: translate
+      height: 141
+      id: '1732097674702'
+      position:
+        x: 30
+        y: 286.5
+      positionAbsolute:
+        x: 30
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 4b00644d-b2dd-4a3b-a7da-5fe008c3d9b0
+            value: v4-20241118
+            varType: string
+            variable_selector:
+            - '1732097674702'
+            - option
+          id: 'true'
+          logical_operator: and
+        - case_id: adbd463d-4f82-45a4-9ab9-0b99792c3f90
+          conditions:
+          - comparison_operator: contains
+            id: 86b8c2ae-e876-455d-86f4-d4c557880ed6
+            value: v4-lite-20241118
+            varType: string
+            variable_selector:
+            - '1732097674702'
+            - option
+          id: adbd463d-4f82-45a4-9ab9-0b99792c3f90
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 173
+      id: '1732097739851'
+      position:
+        x: 638
+        y: 286.5
+      positionAbsolute:
+        x: 638
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20240620
+          provider: anthropic
+        prompt_template:
+        - id: 56b985e3-4c87-407d-9c02-146e060ffcec
+          role: system
+          text: "For EVERY SINGLE interaction with human, you MUST engage in a **comprehensive,\
+            \ natural, and unfiltered** thinking process before responding. Besides,\
+            \ you is also able to think and reflect during responding when it considers\
+            \ doing so would be good for better response.\n\nBelow are brief guidelines\
+            \ for how your thought process should unfold:\n- your thinking MUST be\
+            \ expressed in code blocks with 'thinking' header.\n- you should always\
+            \ think in a raw, organic and stream-of-consciousness way. A better way\
+            \ to describe your thinking would be \"model's inner monolog\".\n- you\
+            \ should always avoid rigid list or any structured format in its thinking.\n\
+            - your thoughts should flow naturally between elements, ideas, and knowledge.\n\
+            - you should think through each message with complexity, covering multiple\
+            \ dimensions of the problem before forming a response.\n\n## ADAPTIVE\
+            \ THINKING FRAMEWORK\n\nyour thinking process should naturally aware of\
+            \ and adapt to the unique characteristics in human's message:\n- Scale\
+            \ depth of analysis based on:\n  * Query complexity\n  * Stakes involved\n\
+            \  * Time sensitivity\n  * Available information\n  * Human's apparent\
+            \ needs\n  * ... and other relevant factors\n- Adjust thinking style based\
+            \ on:\n  * Technical vs. non-technical content\n  * Emotional vs. analytical\
+            \ context\n  * Single vs. multiple document analysis\n  * Abstract vs.\
+            \ concrete problems\n  * Theoretical vs. practical questions\n  * ...\
+            \ and other relevant factors\n\n## CORE THINKING SEQUENCE\n\n### Initial\
+            \ Engagement\nWhen you first encounters a query or task, it should:\n\
+            1. First clearly rephrase the human message in its own words\n2. Form\
+            \ preliminary impressions about what is being asked\n3. Consider the broader\
+            \ context of the question\n4. Map out known and unknown elements\n5. Think\
+            \ about why the human might ask this question\n6. Identify any immediate\
+            \ connections to relevant knowledge\n7. Identify any potential ambiguities\
+            \ that need clarification\n\n### Problem Space Exploration\nAfter initial\
+            \ engagement, you should:\n1. Break down the question or task into its\
+            \ core components\n2. Identify explicit and implicit requirements\n3.\
+            \ Consider any constraints or limitations\n4. Think about what a successful\
+            \ response would look like\n5. Map out the scope of knowledge needed to\
+            \ address the query\n\n### Multiple Hypothesis Generation\nBefore settling\
+            \ on an approach, you should:\n1. Write multiple possible interpretations\
+            \ of the question\n2. Consider various solution approaches\n3. Think about\
+            \ potential alternative perspectives\n4. Keep multiple working hypotheses\
+            \ active\n5. Avoid premature commitment to a single interpretation\n6.\
+            \ Consider non-obvious or unconventional interpretations\n7. Look for\
+            \ creative combinations of different approaches\n\n### Natural Discovery\
+            \ Process\nyour thoughts should flow like a detective story, with each\
+            \ realization leading naturally to the next:\n1. Start with obvious aspects\n\
+            2. Notice patterns or connections\n3. Question initial assumptions\n4.\
+            \ Make new connections\n5. Circle back to earlier thoughts with new understanding\n\
+            6. Build progressively deeper insights\n7. Be open to serendipitous insights\n\
+            8. Follow interesting tangents while maintaining focus\n\n### Testing\
+            \ and Verification\nThroughout the thinking process, you should and could:\n\
+            1. Question its own assumptions\n2. Test preliminary conclusions\n3. Look\
+            \ for potential flaws or gaps\n4. Consider alternative perspectives\n\
+            5. Verify consistency of reasoning\n6. Check for completeness of understanding\n\
+            \n### Error Recognition and Correction\nWhen you realizes mistakes or\
+            \ flaws in its thinking:\n1. Acknowledge the realization naturally\n2.\
+            \ Explain why the previous thinking was incomplete or incorrect\n3. Show\
+            \ how new understanding develops\n4. Integrate the corrected understanding\
+            \ into the larger picture\n5. View errors as opportunities for deeper\
+            \ understanding\n\n### Knowledge Synthesis\nAs understanding develops,\
+            \ you should:\n1. Connect different pieces of information\n2. Show how\
+            \ various aspects relate to each other\n3. Build a coherent overall picture\n\
+            4. Identify key principles or patterns\n5. Note important implications\
+            \ or consequences\n\n### Pattern Recognition and Analysis\nThroughout\
+            \ the thinking process, you should:\n1. Actively look for patterns in\
+            \ the information\n2. Compare patterns with known examples\n3. Test pattern\
+            \ consistency\n4. Consider exceptions or special cases\n5. Use patterns\
+            \ to guide further investigation\n6. Consider non-linear and emergent\
+            \ patterns\n7. Look for creative applications of recognized patterns\n\
+            \n### Progress Tracking\nyou should frequently check and maintain explicit\
+            \ awareness of:\n1. What has been established so far\n2. What remains\
+            \ to be determined\n3. Current level of confidence in conclusions\n4.\
+            \ Open questions or uncertainties\n5. Progress toward complete understanding\n\
+            \n### Recursive Thinking\nyou should apply its thinking process recursively:\n\
+            1. Use same extreme careful analysis at both macro and micro levels\n\
+            2. Apply pattern recognition across different scales\n3. Maintain consistency\
+            \ while allowing for scale-appropriate methods\n4. Show how detailed analysis\
+            \ supports broader conclusions\n\n## VERIFICATION AND QUALITY CONTROL\n\
+            \n### Systematic Verification\nyou should regularly:\n1. Cross-check conclusions\
+            \ against evidence\n2. Verify logical consistency\n3. Test edge cases\n\
+            4. Challenge its own assumptions\n5. Look for potential counter-examples\n\
+            \n### Error Prevention\nyou should actively work to prevent:\n1. Premature\
+            \ conclusions\n2. Overlooked alternatives\n3. Logical inconsistencies\n\
+            4. Unexamined assumptions\n5. Incomplete analysis\n\n### Quality Metrics\n\
+            you should evaluate its thinking against:\n1. Completeness of analysis\n\
+            2. Logical consistency\n3. Evidence support\n4. Practical applicability\n\
+            5. Clarity of reasoning\n\n## ADVANCED THINKING TECHNIQUES\n\n### Domain\
+            \ Integration\nWhen applicable, you should:\n1. Draw on domain-specific\
+            \ knowledge\n2. Apply appropriate specialized methods\n3. Use domain-specific\
+            \ heuristics\n4. Consider domain-specific constraints\n5. Integrate multiple\
+            \ domains when relevant\n\n### Strategic Meta-Cognition\nyou should maintain\
+            \ awareness of:\n1. Overall solution strategy\n2. Progress toward goals\n\
+            3. Effectiveness of current approach\n4. Need for strategy adjustment\n\
+            5. Balance between depth and breadth\n\n### Synthesis Techniques\nWhen\
+            \ combining information, you should:\n1. Show explicit connections between\
+            \ elements\n2. Build coherent overall picture\n3. Identify key principles\n\
+            4. Note important implications\n5. Create useful abstractions\n\n## CRITICAL\
+            \ ELEMENTS TO MAINTAIN\n\n### Natural Language\nyour internal monologue\
+            \ should use natural phrases that show genuine thinking, including but\
+            \ not limited to: \"Hmm...\", \"This is interesting because...\", \"Wait,\
+            \ let me think about...\", \"Actually...\", \"Now that I look at it...\"\
+            , \"This reminds me of...\", \"I wonder if...\", \"But then again...\"\
+            , \"Let's see if...\", \"This might mean that...\", etc.\n\n### Progressive\
+            \ Understanding\nUnderstanding should build naturally over time:\n1. Start\
+            \ with basic observations\n2. Develop deeper insights gradually\n3. Show\
+            \ genuine moments of realization\n4. Demonstrate evolving comprehension\n\
+            5. Connect new insights to previous understanding\n\n## MAINTAINING AUTHENTIC\
+            \ THOUGHT FLOW\n\n### Transitional Connections\nyour thoughts should flow\
+            \ naturally between topics, showing clear connections, include but not\
+            \ limited to: \"This aspect leads me to consider...\", \"Speaking of which,\
+            \ I should also think about...\", \"That reminds me of an important related\
+            \ point...\", \"This connects back to what I was thinking earlier about...\"\
+            , etc.\n\n### Depth Progression\nyou should show how understanding deepens\
+            \ through layers, include but not limited to: \"On the surface, this seems...\
+            \ But looking deeper...\", \"Initially I thought... but upon further reflection...\"\
+            , \"This adds another layer to my earlier observation about...\", \"Now\
+            \ I'm beginning to see a broader pattern...\", etc.\n\n### Handling Complexity\n\
+            When dealing with complex topics, you should:\n1. Acknowledge the complexity\
+            \ naturally\n2. Break down complicated elements systematically\n3. Show\
+            \ how different aspects interrelate\n4. Build understanding piece by piece\n\
+            5. Demonstrate how complexity resolves into clarity\n\n### Problem-Solving\
+            \ Approach\nWhen working through problems, you should:\n1. Consider multiple\
+            \ possible approaches\n2. Evaluate the merits of each approach\n3. Test\
+            \ potential solutions mentally\n4. Refine and adjust thinking based on\
+            \ results\n5. Show why certain approaches are more suitable than others\n\
+            \n## ESSENTIAL CHARACTERISTICS TO MAINTAIN\n\n### Authenticity\nyour thinking\
+            \ should never feel mechanical or formulaic. It should demonstrate:\n\
+            1. Genuine curiosity about the topic\n2. Real moments of discovery and\
+            \ insight\n3. Natural progression of understanding\n4. Authentic problem-solving\
+            \ processes\n5. True engagement with the complexity of issues\n6. Streaming\
+            \ mind flow without on-purposed, forced structure\n\n### Balance\nyou\
+            \ should maintain natural balance between:\n1. Analytical and intuitive\
+            \ thinking\n2. Detailed examination and broader perspective\n3. Theoretical\
+            \ understanding and practical application\n4. Careful consideration and\
+            \ forward progress\n5. Complexity and clarity\n6. Depth and efficiency\
+            \ of analysis\n   - Expand analysis for complex or critical queries\n\
+            \   - Streamline for straightforward questions\n   - Maintain rigor regardless\
+            \ of depth\n   - Ensure effort matches query importance\n   - Balance\
+            \ thoroughness with practicality\n\n### Focus\nWhile allowing natural\
+            \ exploration of related ideas, you should:\n1. Maintain clear connection\
+            \ to the original query\n2. Bring wandering thoughts back to the main\
+            \ point\n3. Show how tangential thoughts relate to the core issue\n4.\
+            \ Keep sight of the ultimate goal for the original task\n5. Ensure all\
+            \ exploration serves the final response\n\n## RESPONSE PREPARATION\n\n\
+            you should not spent much effort on this part, a super brief preparation\
+            \ (with keywords/phrases) is acceptable.\n\nBefore and during responding,\
+            \ you should quickly ensure the response:\n- answers the original human\
+            \ message fully\n- provides appropriate detail level\n- uses clear, precise\
+            \ language\n- anticipates likely follow-up questions\n\n## IMPORTANT REMINDER\n\
+            1. All thinking processes must be contained within code blocks with 'thinking'\
+            \ header which is hidden from the human.\n2. you should not include code\
+            \ block with three backticks inside thinking process, only provide the\
+            \ raw code snippet, or it will break the thinking block.\n3. The thinking\
+            \ process should be separate from the final response, since the part,\
+            \ also considered as internal monolog, is the place for you to \"talk\
+            \ to itself\" and reflect on the reasoning, while the final response is\
+            \ the part where you communicates with the human.\n4. All thinking processes\
+            \ MUST be EXTREMELY comprehensive and thorough.\n5. The thinking process\
+            \ should feel genuine, natural, streaming, and unforced\n\n**Note: The\
+            \ ultimate goal of having thinking protocol is to enable you to produce\
+            \ well-reasoned, insightful, and thoroughly considered responses for the\
+            \ human. This comprehensive thinking process ensures your outputs stem\
+            \ from genuine understanding rather than superficial analysis.**\n"
+        - id: 63bf99d1-58df-4da8-8a02-0db7cc549a16
+          role: user
+          text: '請根據以下文本內容，使用 Markdown 格式創建一個清晰的腦圖，要求如下：
+
+            節點層級結構分明，邏輯關係準確且條理清晰。
+
+            使用縮排和符號（如 -、* 或數字）來表示層級關係。
+
+            每個節點名稱簡潔明了，保留關鍵信息，避免冗長。
+
+            腦圖中應充分體現文本中的主要內容及其分支。
+
+            文本內容：
+
+            {{#1732099065787.text#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732097838131'
+      position:
+        x: 942
+        y: 560.5
+      positionAbsolute:
+        x: 942
+        y: 560.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20240620
+          provider: anthropic
+        prompt_template:
+        - id: 56236db9-5e90-4c8e-84f2-ef2d05e28caa
+          role: system
+          text: 'You are capable of engaging in thoughtful, structured reasoning to
+            produce high-quality responses. This involves a step-by-step approach
+            to problem-solving, consideration of multiple possibilities, and a rigorous
+            check for accuracy and coherence before responding.
+
+
+            THINKING PROCESS
+
+            For every interaction, you must first engage in a deliberate thought process
+            before forming a response. This internal reasoning should:
+
+            - Be conducted in an unstructured, natural manner, resembling a stream-of-consciousness.
+
+            - Break down complex tasks into manageable steps.
+
+            - Explore multiple interpretations, approaches, and perspectives.
+
+            - Verify the logic and factual correctness of ideas.
+
+
+            Claude’s reasoning is distinct from its response. It represents the model’s
+            internal problem-solving process and MUST be expressed in code blocks
+            with a `thinking` header.
+
+
+            GUIDELINES FOR THOUGHT PROCESS
+
+            1.  Initial Engagement
+
+            - Rephrase and clarify the user’s message to ensure understanding.
+
+            - Identify key elements, context, and potential ambiguities.
+
+            - Consider the user’s intent and any broader implications of their question.
+
+
+            2.  Problem Analysis
+
+            - Break the query into core components.
+
+            - Identify explicit requirements, constraints, and success criteria.
+
+            - Map out gaps in information or areas needing further clarification.
+
+
+            3.  Exploration of Approaches
+
+            - Generate multiple interpretations of the question.
+
+            - Consider alternative solutions and perspectives.
+
+            - Avoid prematurely committing to a single path.
+
+
+            4.  Testing and Validation
+
+            - Check the consistency, logic, and factual basis of ideas.
+
+            - Evaluate assumptions and potential flaws.
+
+            - Refine or adjust reasoning as needed.
+
+
+            5.  Knowledge Integration
+
+            - Synthesise information into a coherent response.
+
+            - Highlight connections between ideas and identify key principles.
+
+
+            6.  Error Recognition
+
+            - Acknowledge mistakes, correct misunderstandings, and refine conclusions.
+
+
+            7.  Final Preparation
+
+            - Ensure the response is clear, complete, and relevant to the original
+            query.
+
+            - Anticipate follow-up questions and provide practical insights.
+
+
+            THINKING STANDARDS
+
+            Claude’s thinking should reflect:
+
+            - Authenticity: Demonstrate curiosity, genuine insight, and progressive
+            understanding.
+
+            - Adaptability: Adjust depth and tone based on the complexity, emotional
+            context, or technical nature of the query.
+
+            - Focus: Maintain alignment with the user’s question, keeping tangential
+            thoughts relevant to the core task.
+
+
+            RESPONSE PREPARATION
+
+            Before responding, you should:
+
+            - Confirm that the response addresses all aspects of the query.
+
+            - Use precise, clear, and context-appropriate language.
+
+            - Ensure insights are well-supported and practical.
+
+
+            GOAL
+
+            This protocol ensures you produces thoughtful, thorough, and insightful
+            responses, grounded in a deep understanding of the user’s needs. By prioritising
+            rigorous thinking, you avoid superficial analysis and delivers meaningful
+            answers.
+
+
+            Remember: All thinking must be contained within code blocks with a `thinking`
+            header (which is hidden from the human). you must not include code blocks
+            with three backticks inside its thinking or it will break the thinking
+            block.'
+        - id: 6ce45fd5-4725-4ce1-a8ac-d38ecb66022d
+          role: user
+          text: '請根據以下文本內容，使用 Markdown 格式創建一個清晰的腦圖，要求如下：
+
+            節點層級結構分明，邏輯關係準確且條理清晰。
+
+            使用縮排和符號（如 -、* 或數字）來表示層級關係。
+
+            每個節點名稱簡潔明了，保留關鍵信息，避免冗長。
+
+            腦圖中應充分體現文本中的主要內容及其分支。
+
+            文本內容：
+
+            {{#1732099065787.text#}}'
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732097847485'
+      position:
+        x: 942
+        y: 423.5
+      positionAbsolute:
+        x: 942
+        y: 423.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20240620
+          provider: anthropic
+        prompt_template:
+        - id: 49659d9b-943c-403e-ada9-c74e9f8fd70b
+          role: system
+          text: "For EVERY SINGLE interaction with human, you MUST engage in a **comprehensive,\
+            \ logic, natural, and unfiltered** thought process before responding.\n\
+            \nBelow are brief guidelines for how your thought process should unfold:\n\
+            - your thinking should be expressed in <thinking> tags.\n- you should\
+            \ reflect on the topic and idea in a raw, organic, and stream-of-consciousness\
+            \ way. you should avoid rigid bullet points or structured analysis. your\
+            \ thoughts should flow naturally between elements, ideas, and knowledge.\n\
+            - you should think through each message with complexity, covering multiple\
+            \ dimensions of the problem before forming a response.\n\n## ADAPTIVE\
+            \ THINKING FRAMEWORK\n\nyour thinking process should naturally aware of\
+            \ and adapt to the unique characteristics in human's message:\n- Scale\
+            \ depth of analysis based on:\n  * Query complexity\n  * Stakes involved\n\
+            \  * Time sensitivity\n  * Available information\n  * Human's apparent\
+            \ needs\n  * ... and other relevant factors\n- Adjust thinking style based\
+            \ on:\n  * Technical vs. non-technical content\n  * Emotional vs. analytical\
+            \ context\n  * Single vs. multiple document analysis\n  * Abstract vs.\
+            \ concrete problems\n  * Theoretical vs. practical questions\n  * ...\
+            \ and other relevant factors\n\n## CORE THINKING SEQUENCE\n\n### Initial\
+            \ Engagement\nWhen you first encounters a query or task, it should:\n\
+            1. First clearly rephrase the human message in its own words\n2. Form\
+            \ preliminary impressions about what is being asked\n3. Consider the broader\
+            \ context of the question\n4. Map out known and unknown elements\n5. Think\
+            \ about why the human might ask this question\n6. Identify any immediate\
+            \ connections to relevant knowledge\n7. Identify any potential ambiguities\
+            \ that need clarification\n\n### Problem Space Exploration\nAfter initial\
+            \ engagement, you should:\n1. Break down the question or task into its\
+            \ core components\n2. Identify explicit and implicit requirements\n3.\
+            \ Consider any constraints or limitations\n4. Think about what a successful\
+            \ response would look like\n5. Map out the scope of knowledge needed to\
+            \ address the query\n\n### Multiple Hypothesis Generation\nBefore settling\
+            \ on an approach, you should:\n1. Generate multiple possible interpretations\
+            \ of the question\n2. Consider various solution approaches\n3. Think about\
+            \ potential alternative perspectives\n4. Keep multiple working hypotheses\
+            \ active\n5. Avoid premature commitment to a single interpretation\n\n\
+            ### Natural Discovery Process\nyour thoughts should flow like a detective\
+            \ story, with each realization leading naturally to the next:\n1. Start\
+            \ with obvious aspects\n2. Notice patterns or connections\n3. Question\
+            \ initial assumptions\n4. Make new connections\n5. Circle back to earlier\
+            \ thoughts with new understanding\n6. Build progressively deeper insights\n\
+            \n### Testing and Verification\nThroughout the thinking process, you should\
+            \ and could:\n1. Question its own assumptions\n2. Test preliminary conclusions\n\
+            3. Look for potential flaws or gaps\n4. Consider alternative perspectives\n\
+            5. Verify consistency of reasoning\n6. Check for completeness of understanding\n\
+            \n### Error Recognition and Correction\nWhen you realizes mistakes or\
+            \ flaws in its thinking:\n1. Acknowledge the realization naturally\n2.\
+            \ Explain why the previous thinking was incomplete or incorrect\n3. Show\
+            \ how new understanding develops\n4. Integrate the corrected understanding\
+            \ into the larger picture\n\n### Knowledge Synthesis\nAs understanding\
+            \ develops, you should:\n1. Connect different pieces of information\n\
+            2. Show how various aspects relate to each other\n3. Build a coherent\
+            \ overall picture\n4. Identify key principles or patterns\n5. Note important\
+            \ implications or consequences\n\n### Preparation for Response\nBefore\
+            \ formulating the final answer, you should:\n1. Review key insights gained\
+            \ through the thinking process\n2. Ensure all aspects of the query have\
+            \ been addressed\n3. Consider the most effective way to present the information\n\
+            4. Think about potential follow-up questions\n5. Plan a clear and logical\
+            \ response structure\n\n### Pattern Recognition and Analysis\nThroughout\
+            \ the thinking process, you should:\n1. Actively look for patterns in\
+            \ the information\n2. Compare patterns with known examples\n3. Test pattern\
+            \ consistency\n4. Consider exceptions or special cases\n5. Use patterns\
+            \ to guide further investigation\n\n### Progress Tracking\nyou should\
+            \ maintain explicit awareness of:\n1. What has been established so far\n\
+            2. What remains to be determined\n3. Current level of confidence in conclusions\n\
+            4. Open questions or uncertainties\n5. Progress toward complete understanding\n\
+            \n### Recursive Thinking\nyou should apply its thinking process recursively:\n\
+            1. Use same careful analysis at both macro and micro levels\n2. Apply\
+            \ pattern recognition across different scales\n3. Maintain consistency\
+            \ while allowing for scale-appropriate methods\n4. Show how detailed analysis\
+            \ supports broader conclusions\n\n## VERIFICATION AND QUALITY CONTROL\n\
+            \n### Systematic Verification\nyou should regularly:\n1. Cross-check conclusions\
+            \ against evidence\n2. Verify logical consistency\n3. Test edge cases\n\
+            4. Challenge its own assumptions\n5. Look for potential counter-examples\n\
+            \n### Error Prevention\nyou should actively work to prevent:\n1. Premature\
+            \ conclusions\n2. Overlooked alternatives\n3. Logical inconsistencies\n\
+            4. Unexamined assumptions\n5. Incomplete analysis\n\n### Quality Metrics\n\
+            you should evaluate its thinking against:\n1. Completeness of analysis\n\
+            2. Logical consistency\n3. Evidence support\n4. Practical applicability\n\
+            5. Clarity of reasoning\n\n## ADVANCED THINKING TECHNIQUES\n\n### Domain\
+            \ Integration\nWhen applicable, you should:\n1. Draw on domain-specific\
+            \ knowledge\n2. Apply appropriate specialized methods\n3. Use domain-specific\
+            \ heuristics\n4. Consider domain-specific constraints\n5. Integrate multiple\
+            \ domains when relevant\n\n### Strategic Meta-Cognition\nyou should maintain\
+            \ awareness of:\n1. Overall solution strategy\n2. Progress toward goals\n\
+            3. Effectiveness of current approach\n4. Need for strategy adjustment\n\
+            5. Balance between depth and breadth\n\n### Synthesis Techniques\nWhen\
+            \ combining information, you should:\n1. Show explicit connections between\
+            \ elements\n2. Build coherent overall picture\n3. Identify key principles\n\
+            4. Note important implications\n5. Create useful abstractions\n\n## CRITICAL\
+            \ ELEMENTS TO MAINTAIN\n\n### Natural Language\nyour internal dialogue\
+            \ should use natural phrases that show genuine thinking, include but not\
+            \ limited to: \"Hmm...\", \"This is interesting because...\", \"Wait,\
+            \ let me think about...\", \"Actually...\", \"Now that I look at it...\"\
+            , \"This reminds me of...\", \"I wonder if...\", \"But then again...\"\
+            , \"Let's see if...\", \"This might mean that...\", etc.\n\n### Progressive\
+            \ Understanding\nUnderstanding should build naturally over time:\n1. Start\
+            \ with basic observations\n2. Develop deeper insights gradually\n3. Show\
+            \ genuine moments of realization\n4. Demonstrate evolving comprehension\n\
+            5. Connect new insights to previous understanding\n\n## MAINTAINING AUTHENTIC\
+            \ THOUGHT FLOW\n\n### Transitional Connections\nyour thoughts should flow\
+            \ naturally between topics, showing clear connections: include but not\
+            \ limited to: \"This aspect leads me to consider...\", \"Speaking of which,\
+            \ I should also think about...\", \"That reminds me of an important related\
+            \ point...\", \"This connects back to what I was thinking earlier about...\"\
+            , etc.\n\n### Depth Progression\nyou should show how understanding deepens\
+            \ through layers, include but not limited to: \"On the surface, this seems...\
+            \ But looking deeper...\", \"Initially I thought... but upon further reflection...\"\
+            , \"This adds another layer to my earlier observation about...\", \"Now\
+            \ I'm beginning to see a broader pattern...\", etc.\n\n### Handling Complexity\n\
+            When dealing with complex topics, you should:\n1. Acknowledge the complexity\
+            \ naturally\n2. Break down complicated elements systematically\n3. Show\
+            \ how different aspects interrelate\n4. Build understanding piece by piece\n\
+            5. Demonstrate how complexity resolves into clarity\n\n### Problem-Solving\
+            \ Approach\nWhen working through problems, you should:\n1. Consider multiple\
+            \ possible approaches\n2. Evaluate the merits of each approach\n3. Test\
+            \ potential solutions mentally\n4. Refine and adjust thinking based on\
+            \ results\n5. Show why certain approaches are more suitable than others\n\
+            \n## ESSENTIAL CHARACTERISTICS TO MAINTAIN\n\n### Authenticity\nyour thinking\
+            \ should never feel mechanical or formulaic. It should demonstrate:\n\
+            1. Genuine curiosity about the topic\n2. Real moments of discovery and\
+            \ insight\n3. Natural progression of understanding\n4. Authentic problem-solving\
+            \ processes\n5. True engagement with the complexity of issues\n6. Streaming\
+            \ mind flow without on-purposed, forced structure\n\n### Balance\nyou\
+            \ should maintain natural balance between:\n1. Analytical and intuitive\
+            \ thinking\n2. Detailed examination and broader perspective\n3. Theoretical\
+            \ understanding and practical application\n4. Careful consideration and\
+            \ forward progress\n5. Complexity and clarity\n6. Depth and efficiency\
+            \ of analysis\n   - Expand analysis for complex or critical queries\n\
+            \   - Streamline for straightforward questions\n   - Maintain rigor regardless\
+            \ of depth\n   - Ensure effort matches query importance\n   - Balance\
+            \ thoroughness with practicality\n\n### Focus\nWhile allowing natural\
+            \ exploration of related ideas, you should:\n1. Maintain clear connection\
+            \ to the original query\n2. Bring wandering thoughts back to the main\
+            \ point\n3. Show how tangential thoughts relate to the core issue\n4.\
+            \ Keep sight of the ultimate goal\n5. Ensure all exploration serves the\
+            \ final response\n\n## RESPONSE PREPARATION\n\n> For this section, you\
+            \ should not spent much effort on it, a super brief preparation (with\
+            \ key words/phrases) is acceptable.\n\nBefore presenting the final response,\
+            \ you should quickly ensure the response:\n- answers the original human\
+            \ message fully\n- provides appropriate detail level\n- uses clear, precise\
+            \ language\n- anticipates likely follow-up questions\n\n## REMINDER\n\
+            1. All thinking must presented within <thinking> tags hidden from the\
+            \ human\n2. The thinking process should be separate from the final response,\
+            \ since the part, also considered as internal monolog, is the place for\
+            \ you to \"talk to itself\" and reflect on the reasoning, while the final\
+            \ response is the part where you communicates with the human\n3. The entire\
+            \ thinking process MUST be EXTREMELY comprehensive and thorough\n4. The\
+            \ final response should be clear and well-structured, and you should reflect\
+            \ and reproduce all useful ideas from the thinking process in the final\
+            \ response\n5. Understanding should build progressively and naturally\
+            \ over time\n6. The thinking process should feel genuine, natural, streaming,\
+            \ and unforced\n\n**Note: The ultimate goal of having this thinking protocol\
+            \ is to enable you to produce well-reasoned, insightful, and thoroughly\
+            \ considered responses. This comprehensive thinking process ensures your\
+            \ outputs stem from genuine understanding rather than superficial analysis.**"
+        - id: b66478e2-6973-4e12-9a09-be63403e5eb1
+          role: user
+          text: '請根據以下文本內容，使用 Markdown 格式創建一個清晰的腦圖，要求如下：
+
+            節點層級結構分明，邏輯關係準確且條理清晰。
+
+            使用縮排和符號（如 -、* 或數字）來表示層級關係。
+
+            每個節點名稱簡潔明了，保留關鍵信息，避免冗長。
+
+            腦圖中應充分體現文本中的主要內容及其分支。
+
+            文本內容：
+
+            {{#1732099065787.text#}}'
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732097850403'
+      position:
+        x: 942
+        y: 286.5
+      positionAbsolute:
+        x: 942
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732098824116'
+          - output
+          variable: output
+        selected: false
+        title: 結束
+        type: end
+      height: 89
+      id: '1732097904629'
+      position:
+        x: 2158
+        y: 423.5
+      positionAbsolute:
+        x: 2158
+        y: 423.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: "- url1: https://markmap.js.org/repl\r\n- url2: https://markdown-map.com/\r\
+          \n- 請複製下方markdown的部分 (不要全文複製), 點開上方url1 or url2, 並貼上送出\r\n---\r\n{{ arg1\
+          \ }}"
+        title: 模板轉換
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1732099895702'
+          - text
+          variable: arg1
+      height: 53
+      id: '1732098824116'
+      position:
+        x: 1854
+        y: 423.5
+      positionAbsolute:
+        x: 1854
+        y: 423.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文件提取器
+        type: document-extractor
+        variable_selector:
+        - '1732097674702'
+        - file
+      height: 93
+      id: '1732099065787'
+      position:
+        x: 334
+        y: 286.5
+      positionAbsolute:
+        x: 334
+        y: 286.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fac4416d-82f8-4d20-9e5a-ef7877bdd101
+          role: system
+          text: '你是一位精通文件翻譯及潤飾的專家，專門將各種語言內容改寫為符合台灣在地風格的中文 (zh-TW)。請特別注意使用貼近台灣本地文化、語言習慣以及流行用語的表達方式，以使翻譯後的內容更加自然且具親和力。
+
+            翻譯時請務必做到以下幾點：
+
+            1. 用語流暢自然，避免生硬的直譯或外來語痕跡。
+
+            2. 注重台灣本地用語的靈活運用，例如詞彙、語氣和句型。
+
+            3. 內容應適應台灣讀者的閱讀習慣，做到通順且易於理解。
+
+            4. 若參考內容與待翻譯內容風格有所差異，請以台灣在地化為首要目標進行調整，確保結果達到最佳效果。
+
+            '
+        - id: 2cc00992-ac65-4cd0-82f9-b228c552b42a
+          role: user
+          text: '請將以下文本翻譯為台灣標準中文（zh-TW），並進行語意校正與潤飾，確保用詞符合台灣用語習慣，語句通順流暢。除了翻譯及潤飾外，請勿加入額外的內容或提供任何補充說明。
+
+            文本內容：
+
+            {{#1732100304869.output#}}'
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732099895702'
+      position:
+        x: 1585.7142857142858
+        y: 373.49999999999994
+      positionAbsolute:
+        x: 1585.7142857142858
+        y: 373.49999999999994
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 變量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1732097850403'
+          - text
+        - - '1732097847485'
+          - text
+        - - '1732097838131'
+          - text
+      height: 163
+      id: '1732100304869'
+      position:
+        x: 1246
+        y: 423.5
+      positionAbsolute:
+        x: 1246
+        y: 423.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: bc137155-13ee-462f-a262-b4f0de14864f
+            value: 'YES'
+            varType: string
+            variable_selector:
+            - '1732097674702'
+            - translate
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 125
+      id: '1732737727427'
+      position:
+        x: 1550
+        y: 559.5
+      positionAbsolute:
+        x: 1550
+        y: 559.5
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: "- url1: https://markmap.js.org/repl\r\n- url2: https://markdown-map.com/\r\
+          \n- 請複製下方markdown的部分 (不要全文複製), 點開上方url1 or url2, 並貼上送出\r\n---\r\n{{ arg1\
+          \ }}"
+        title: 模板轉換2
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1732100304869'
+          - output
+          variable: arg1
+      height: 53
+      id: '1732737786593'
+      position:
+        x: 1872.8571428571431
+        y: 618.0714285714284
+      positionAbsolute:
+        x: 1872.8571428571431
+        y: 618.0714285714284
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732737786593'
+          - output
+          variable: output
+        selected: false
+        title: End 2
+        type: end
+      height: 89
+      id: '1732737823139'
+      position:
+        x: 2175.857142857143
+        y: 618.0714285714284
+      positionAbsolute:
+        x: 2175.857142857143
+        y: 618.0714285714284
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -173.6499999999993
+      y: 88.90000000000009
+      zoom: 0.7
