@@ -349,17 +349,6 @@ workflow:
     - data:
         isInIteration: false
         sourceType: if-else
-        targetType: end
-      id: 1732584513421-a52707dc-5fd1-4e44-b938-761b2f13e7e9-1732584586619-target
-      source: '1732584513421'
-      sourceHandle: a52707dc-5fd1-4e44-b938-761b2f13e7e9
-      target: '1732584586619'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInIteration: false
-        sourceType: if-else
         targetType: llm
       id: 1732584513421-39d3cbe5-bdad-4e35-bbcd-0ef9e23154c6-1732663668120-target
       source: '1732584513421'
@@ -376,6 +365,50 @@ workflow:
       source: '1732663668120'
       sourceHandle: source
       target: '1732683749186'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1732584513421-a52707dc-5fd1-4e44-b938-761b2f13e7e9-1732751446301-target
+      source: '1732584513421'
+      sourceHandle: a52707dc-5fd1-4e44-b938-761b2f13e7e9
+      target: '1732751446301'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: end
+      id: 1732751446301-true-1732584586619-target
+      source: '1732751446301'
+      sourceHandle: 'true'
+      target: '1732584586619'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732751446301-false-1732751470716-target
+      source: '1732751446301'
+      sourceHandle: 'false'
+      target: '1732751470716'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1732751470716-source-1732751509579-target
+      source: '1732751470716'
+      sourceHandle: source
+      target: '1732751509579'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -415,7 +448,7 @@ workflow:
           required: true
           type: select
           variable: translate_to
-      height: 141
+      height: 142
       id: '1730257085761'
       position:
         x: 30
@@ -427,7 +460,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -476,7 +509,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1730257098742'
       position:
         x: 333
@@ -488,7 +521,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         code: "def main(input_str: str) -> dict:\n    if not input_str:\n        return\
           \ {'result': []}\n    \n    input_str = input_str.strip().strip('\"')\n\
@@ -508,7 +541,7 @@ workflow:
           - '1730257098742'
           - text
           variable: input_str
-      height: 53
+      height: 54
       id: '1730257648212'
       position:
         x: 636
@@ -520,7 +553,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         error_handle_mode: continue-on-error
@@ -599,7 +632,7 @@ workflow:
             type: mixed
             value: '{{#1730257830072.item#}}'
         type: tool
-      height: 245
+      height: 246
       id: '1730257879652'
       parentId: '1730257830072'
       position:
@@ -612,7 +645,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
       zIndex: 1002
     - data:
         context:
@@ -653,7 +686,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1730259235391'
       parentId: '1730257830072'
       position:
@@ -666,7 +699,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
       zIndex: 1002
     - data:
         context:
@@ -738,7 +771,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1730259707121'
       position:
         x: 1274
@@ -750,7 +783,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         instruction: '{{#1730259707121.text#}}Extract the return value in the output
@@ -789,7 +822,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1730260137415'
       position:
         x: 1912
@@ -801,7 +834,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -841,7 +874,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1730260569281'
       position:
         x: 2215
@@ -853,7 +886,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -892,7 +925,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1730260824960'
       position:
         x: 2215
@@ -904,7 +937,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -943,7 +976,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '17302609631470'
       position:
         x: 2215
@@ -955,7 +988,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -996,7 +1029,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '17302610163900'
       position:
         x: 2215
@@ -1008,7 +1041,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         selected: false
@@ -1055,7 +1088,7 @@ workflow:
           - '17302610163900'
           - text
           variable: arg8
-      height: 53
+      height: 54
       id: '1732579716194'
       position:
         x: 2518
@@ -1067,7 +1100,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         outputs:
@@ -1078,7 +1111,7 @@ workflow:
         selected: false
         title: OUTPUT CHINESE (TAIDE)
         type: end
-      height: 89
+      height: 90
       id: '1732579748973'
       position:
         x: 4033
@@ -1090,7 +1123,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -1135,7 +1168,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1732582296184'
       position:
         x: 2821
@@ -1143,11 +1176,11 @@ workflow:
       positionAbsolute:
         x: 2821
         y: 407.5
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         cases:
         - case_id: a52707dc-5fd1-4e44-b938-761b2f13e7e9
@@ -1163,7 +1196,7 @@ workflow:
           logical_operator: and
         - case_id: 39d3cbe5-bdad-4e35-bbcd-0ef9e23154c6
           conditions:
-          - comparison_operator: contains
+          - comparison_operator: is
             id: 38b89b7b-ae18-442b-a496-ed0b6b265625
             value: Chinese
             varType: string
@@ -1176,7 +1209,7 @@ workflow:
         selected: false
         title: 條件分支
         type: if-else
-      height: 173
+      height: 174
       id: '1732584513421'
       position:
         x: 3124
@@ -1188,7 +1221,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         outputs:
@@ -1199,19 +1232,19 @@ workflow:
         selected: false
         title: OUTPUT ENGLISH
         type: end
-      height: 89
+      height: 90
       id: '1732584586619'
       position:
-        x: 3427
-        y: 407.5
+        x: 3785.5714285714284
+        y: 244.78571428571428
       positionAbsolute:
-        x: 3427
-        y: 407.5
+        x: 3785.5714285714284
+        y: 244.78571428571428
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         author: c00cjz00
         desc: ''
@@ -1302,7 +1335,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1732588429119'
       position:
         x: 3730
@@ -1314,7 +1347,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         error_handle_mode: terminated
@@ -1332,7 +1365,7 @@ workflow:
         title: 迭代 2
         type: iteration
         width: 387
-      height: 147
+      height: 148
       id: '1732599904203'
       position:
         x: 1202
@@ -1385,7 +1418,7 @@ workflow:
           - '1732599904203'
           - index
           variable: index
-      height: 53
+      height: 54
       id: '1732599935958'
       parentId: '1732599904203'
       position:
@@ -1398,7 +1431,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
       zIndex: 1002
     - data:
         desc: ''
@@ -1410,7 +1443,7 @@ workflow:
         selected: false
         title: 結束 3
         type: end
-      height: 89
+      height: 90
       id: '1732600018609'
       position:
         x: 1912
@@ -1422,7 +1455,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -1463,7 +1496,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1732652888501'
       position:
         x: 3427
@@ -1475,7 +1508,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -1516,19 +1549,19 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '1732663668120'
       position:
         x: 3427
-        y: 673.5
+        y: 677.5
       positionAbsolute:
         x: 3427
-        y: 673.5
+        y: 677.5
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         outputs:
@@ -1539,7 +1572,7 @@ workflow:
         selected: false
         title: Output Chinese
         type: end
-      height: 89
+      height: 90
       id: '1732683749186'
       position:
         x: 3730
@@ -1551,8 +1584,114 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: ad43c65a-a608-4a7c-8f24-b1bc38ffea3a
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支 2
+        type: if-else
+      height: 126
+      id: '1732751446301'
+      position:
+        x: 3449.8571428571427
+        y: 233.35714285714272
+      positionAbsolute:
+        x: 3449.8571428571427
+        y: 233.35714285714272
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: ef3d2a57-9b93-45c7-abe0-deebd53cb491
+          role: system
+          text: "You are an expert in document translation and refinement, specializing\
+            \ in adapting content into natural, culturally-appropriate American English.\
+            \ Your focus is on ensuring the translation aligns with American English\
+            \ expressions, cultural nuances, and idiomatic language to make the content\
+            \ engaging and relatable. \n\nWhen translating and refining, please adhere\
+            \ to the following guidelines:  \n1. Ensure the language flows naturally,\
+            \ avoiding stiff literal translations or foreign-sounding phrasing.  \n\
+            2. Skillfully incorporate American English vocabulary, tone, and sentence\
+            \ structures.  \n3. Tailor the content to the reading habits of American\
+            \ English audiences, making it clear, concise, and easy to understand.\
+            \  \n4. When the source content's style differs from the target tone,\
+            \ prioritize localization into American English to achieve the best result.\
+            \  \n"
+        - id: 501614cf-e0ab-44c2-a66e-a016b50985c8
+          role: user
+          text: "Please translate the following text into American English, focusing\
+            \ on semantic accuracy and stylistic refinement to ensure the language\
+            \ is idiomatic and polished. Do not add any additional content or commentary\
+            \ beyond the translation and revision.\n\nText to translate:  \n{{#1732582296184.text#}}\
+            \  "
+        selected: false
+        title: LLM 12
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1732751470716'
+      position:
+        x: 3762.7142857142853
+        y: 399.5
+      positionAbsolute:
+        x: 3762.7142857142853
+        y: 399.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732751470716'
+          - text
+          variable: text
+        selected: false
+        title: 結束 5
+        type: end
+      height: 90
+      id: '1732751509579'
+      position:
+        x: 4065.2857142857138
+        y: 399.5
+      positionAbsolute:
+        x: 4065.2857142857138
+        y: 399.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
     viewport:
-      x: -1170.05
-      y: -30.899999999999864
+      x: -1995.0500000000002
+      y: -72.89999999999998
       zoom: 0.7
