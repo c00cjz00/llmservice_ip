@@ -816,16 +816,21 @@ workflow:
         prompt_template:
         - id: 3ef1efde-48b7-4f8d-830b-44e92815950f
           role: system
-          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title1#}}and
-            nothing else.
+          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title1#}}
+            and nothing else.
         - id: 04881f0e-1a81-4c5c-813a-5123d62689e8
           role: user
           text: 'language：{{#1730257085761.language#}}
 
             context：{{#1730257830072.output#}}
 
-            Provide the research report in the specified language, avoiding small
-            talk.
+
+            1. Provide a comprehensive research report in the specified language,
+            strictly adhering to the given topic and avoiding unnecessary context
+            or small talk.
+
+            2. Ensure the report includes detailed citations and accessible URLs for
+            referenced literature.
 
 
 
@@ -863,17 +868,21 @@ workflow:
         prompt_template:
         - id: c059b7a1-a7cb-4d2d-a258-cc4bd122ff7f
           role: system
-          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title2#}}and
-            nothing else.
+          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title2#}}
+            and nothing else.
         - id: e494e57c-eff3-434d-bba7-4981a6dfd212
           role: user
           text: 'language：{{#1730257085761.language#}}
 
             context：{{#1730257830072.output#}}
 
-            Provide the research report in the specified language, avoiding small
-            talk.
 
+            1. Provide a comprehensive research report in the specified language,
+            strictly adhering to the given topic and avoiding unnecessary context
+            or small talk.
+
+            2. Ensure the report includes detailed citations and accessible URLs for
+            referenced literature.
 
 
             '
@@ -910,16 +919,21 @@ workflow:
         prompt_template:
         - id: c059b7a1-a7cb-4d2d-a258-cc4bd122ff7f
           role: system
-          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title3#}}and
-            nothing else.
+          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title3#}}
+            and nothing else.
         - id: 53cd6741-f1ef-4480-9778-9e8c1ea2e298
           role: user
           text: 'language：{{#1730257085761.language#}}
 
             context：{{#1730257830072.output#}}
 
-            Provide the research report in the specified language, avoiding small
-            talk.
+
+            1. Provide a comprehensive research report in the specified language,
+            strictly adhering to the given topic and avoiding unnecessary context
+            or small talk.
+
+            2. Ensure the report includes detailed citations and accessible URLs for
+            referenced literature.
 
 
             '
@@ -956,16 +970,21 @@ workflow:
         prompt_template:
         - id: c059b7a1-a7cb-4d2d-a258-cc4bd122ff7f
           role: system
-          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title4#}}and
-            nothing else.
+          text: in a detailed report — The report should focus on the answer to {{#1730260137415.sub_title4#}}
+            and nothing else.
         - id: 2773ef9d-37b8-49f8-9455-c2399538407f
           role: user
           text: 'language：{{#1730257085761.language#}}
 
             context：{{#1730257830072.output#}}
 
-            Provide the research report in the specified language, avoiding small
-            talk.
+
+            1. Provide a comprehensive research report in the specified language,
+            strictly adhering to the given topic and avoiding unnecessary context
+            or small talk.
+
+            2. Ensure the report includes detailed citations and accessible URLs for
+            referenced literature.
 
 
 
@@ -985,7 +1004,7 @@ workflow:
       positionAbsolute:
         x: 2215
         y: 270.5
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1108,7 +1127,8 @@ workflow:
           text: "<llmreport>\n{{#1732579716194.output#}}\n</llmreport>\n\nNotice:\
             \ \n1. Please focus solely on the content output and refrain from providing\
             \ any additional suggestions or opinions.\n2. Please output the content\
-            \ in {{#1730257085761.language#}}."
+            \ in {{#1730257085761.language#}}.\n3. Ensure the report includes detailed\
+            \ citations and accessible URLs for referenced literature.\n"
         selected: false
         title: LLM 13
         type: llm
@@ -1123,7 +1143,7 @@ workflow:
       positionAbsolute:
         x: 2821
         y: 407.5
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1533,6 +1553,6 @@ workflow:
       type: custom
       width: 243
     viewport:
-      x: -287.14999999999975
-      y: 51.000000000000014
+      x: -1170.05
+      y: -30.899999999999864
       zoom: 0.7
