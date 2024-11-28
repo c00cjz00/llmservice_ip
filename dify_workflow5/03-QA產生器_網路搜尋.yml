@@ -1,0 +1,1127 @@
+app:
+  description: ''
+  icon: face_with_monocle
+  icon_background: '#FFE4E8'
+  mode: workflow
+  name: 03-QA產生器_網路搜尋
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1730257085761-source-1730257098742-target
+      selected: false
+      source: '1730257085761'
+      sourceHandle: source
+      target: '1730257098742'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1730257098742-source-1730257648212-target
+      selected: false
+      source: '1730257098742'
+      sourceHandle: source
+      target: '1730257648212'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1730257648212-source-1730257830072-target
+      selected: false
+      source: '1730257648212'
+      sourceHandle: source
+      target: '1730257830072'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1730257830072start-source-1730257879652-target
+      selected: false
+      source: 1730257830072start
+      sourceHandle: source
+      target: '1730257879652'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: tool
+        targetType: llm
+      id: 1730257879652-source-1730259235391-target
+      selected: false
+      source: '1730257879652'
+      sourceHandle: source
+      target: '1730259235391'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1730257830072-source-1732047654790-target
+      selected: false
+      source: '1730257830072'
+      sourceHandle: source
+      target: '1732047654790'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1732047654790-source-1732047706544-target
+      selected: false
+      source: '1732047654790'
+      sourceHandle: source
+      target: '1732047706544'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: llm
+        targetType: if-else
+      id: 1730259235391-source-1732759675465-target
+      selected: false
+      source: '1730259235391'
+      sourceHandle: source
+      target: '1732759675465'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: if-else
+        targetType: llm
+      id: 1732759675465-7b9b469a-9feb-461c-8790-65d9e455f5f4-1732772467445-target
+      selected: false
+      source: '1732759675465'
+      sourceHandle: 7b9b469a-9feb-461c-8790-65d9e455f5f4
+      target: '1732772467445'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: if-else
+        targetType: llm
+      id: 1732759675465-93057a78-a69e-43b5-969f-af399fd51f79-1732772512636-target
+      selected: false
+      source: '1732759675465'
+      sourceHandle: 93057a78-a69e-43b5-969f-af399fd51f79
+      target: '1732772512636'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: if-else
+        targetType: llm
+      id: 1732759675465-29f63154-9141-4377-9cb5-d7dad63b0e60-1732772522713-target
+      selected: false
+      source: '1732759675465'
+      sourceHandle: 29f63154-9141-4377-9cb5-d7dad63b0e60
+      target: '1732772522713'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: if-else
+        targetType: code
+      id: 1732759675465-true-1732773321333-target
+      source: '1732759675465'
+      sourceHandle: 'true'
+      target: '1732773321333'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: if-else
+        targetType: code
+      id: 1732759675465-ce23f9cd-30d9-43eb-b7df-3ea91f630b37-1732773454020-target
+      source: '1732759675465'
+      sourceHandle: ce23f9cd-30d9-43eb-b7df-3ea91f630b37
+      target: '1732773454020'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: if-else
+        targetType: llm
+      id: 1732759675465-c34fbdc9-5c7e-41ac-aa1f-68166060ed75-1732773467520-target
+      source: '1732759675465'
+      sourceHandle: c34fbdc9-5c7e-41ac-aa1f-68166060ed75
+      target: '1732773467520'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: code
+        targetType: template-transform
+      id: 1732773321333-source-1732773784121-target
+      source: '1732773321333'
+      sourceHandle: source
+      target: '1732773784121'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: llm
+        targetType: template-transform
+      id: 1732772467445-source-1732773784121-target
+      source: '1732772467445'
+      sourceHandle: source
+      target: '1732773784121'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: llm
+        targetType: template-transform
+      id: 1732772512636-source-1732773784121-target
+      source: '1732772512636'
+      sourceHandle: source
+      target: '1732773784121'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: llm
+        targetType: template-transform
+      id: 1732772522713-source-1732773784121-target
+      source: '1732772522713'
+      sourceHandle: source
+      target: '1732773784121'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: code
+        targetType: template-transform
+      id: 1732773454020-source-1732773784121-target
+      source: '1732773454020'
+      sourceHandle: source
+      target: '1732773784121'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: llm
+        targetType: template-transform
+      id: 1732773467520-source-1732773784121-target
+      source: '1732773467520'
+      sourceHandle: source
+      target: '1732773784121'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: start
+        type: start
+        variables:
+        - label: title
+          max_length: 100
+          options: []
+          required: true
+          type: text-input
+          variable: title
+        - label: 思考語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+        - label: 輸出語系
+          max_length: 48
+          options:
+          - English
+          - Chinese
+          - Chinese_TAIDE
+          required: true
+          type: select
+          variable: translate
+      height: 142
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 644
+      positionAbsolute:
+        x: 30
+        y: 644
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: e18aef50-3449-4259-9559-c4d17101d533
+          role: system
+          text: "<instruction>\n<task_description>\nGenerate a series of appropriate\
+            \ search engine queries to break down questions based on user inquiries\n\
+            </task_description>\n\n<examples>\n<example>\nInput: User asks how to\
+            \ learn programming\nOutput: 'programming learning methods, 'programming\
+            \ tutorials for beginners'\n</example>\n\n<example>\nInput: User wants\
+            \ to understand latest technology trends  \nOutput: 'tech trends 2021',\
+            \ 'latest technology news'\n</example>\n\n<example>\nInput: User seeks\
+            \ healthy eating advice\nOutput: 'healthy eating guide', 'balanced nutrition\
+            \ diet'\n</example>\n</examples>\n\n<instructions>\n1. Take user's question\
+            \ as input.\n2. Identify relevant keywords or phrases based on the topic\
+            \ of user's question.\n3. Use these keywords or phrases to make search\
+            \ engine queries.\n4. Generate a series of appropriate search engine queries\
+            \ to help break down user's question.\n5. Ensure output content does not\
+            \ contain any xml tags.<tag></tag>\n6.The output must be pure and conform\
+            \ to the <example> style without other explanations.\n7.Break down into\
+            \ at least 4-6 subproblems.\n8.Output is separated only by commas.\n</instructions>"
+        - id: b0e446f2-b714-41e9-8eb6-292187a97796
+          role: user
+          text: 'title：{{#1730257085761.title#}}
+
+            language：{{#1730257085761.language#}}
+
+            The output must be pure and conform to the <example> style without other
+            explanations.
+
+            Output is separated only by commas.
+
+            Break down into at least 4-6 subproblems.'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1730257098742'
+      position:
+        x: 334
+        y: 644
+      positionAbsolute:
+        x: 334
+        y: 644
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(input_str: str) -> dict:\n    if not input_str:\n        return\
+          \ {'result': []}\n    \n    input_str = input_str.strip().strip('\"')\n\
+          \    items = [item.strip() for item in input_str.split(',')]\n    \n   \
+          \ return {'result': items}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: code
+        type: code
+        variables:
+        - value_selector:
+          - '1730257098742'
+          - text
+          variable: input_str
+      height: 54
+      id: '1730257648212'
+      position:
+        x: 638
+        y: 644
+      positionAbsolute:
+        x: 638
+        y: 644
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: continue-on-error
+        height: 888
+        is_parallel: true
+        iterator_selector:
+        - '1730257648212'
+        - result
+        output_selector:
+        - '1732773784121'
+        - output
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1730257830072start
+        title: interaction
+        type: iteration
+        width: 1637
+      height: 888
+      id: '1730257830072'
+      position:
+        x: 876.2857142857142
+        y: 569.7142857142857
+      positionAbsolute:
+        x: 876.2857142857142
+        y: 569.7142857142857
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1637
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1730257830072start
+      parentId: '1730257830072'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 900.2857142857142
+        y: 637.7142857142857
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: TavilySearch
+        tool_configurations:
+          exclude_domains: null
+          include_answer: null
+          include_domains: null
+          include_images: null
+          include_raw_content: null
+          max_results: 5
+          search_depth: basic
+        tool_label: TavilySearch
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1730257830072.item#}}'
+        type: tool
+      height: 246
+      id: '1730257879652'
+      parentId: '1730257830072'
+      position:
+        x: 125.86252654101145
+        y: 65
+      positionAbsolute:
+        x: 1002.1482408267257
+        y: 634.7142857142857
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - edition_type: basic
+          id: d8e18834-ba12-4acb-b376-15340d30a3e3
+          jinja2_text: '"{research_summary}" Using the above information, answer the
+            following question or topic: "{question}" in a detailed report — The report
+            should focus on the answer to the question, should be well structured,
+            informative, in depth, with facts and numbers if available, a minimum
+            of 1,200 words and with markdown syntax and apa format. Write all source
+            urls at the end of the report in apa format. You should write your report
+            only based on the given information and nothing else.'
+          role: system
+          text: "Your goal is to provide answers based on information from the internet.\
+            \ \nYou must use the provided Tavily search API function to find relevant\
+            \ online information. \nYou should never use your own knowledge to answer\
+            \ questions.\nPlease include relevant url sources in the end of your answers"
+        - id: b23ba544-1b25-4d0a-abdf-34a6c22a2c76
+          role: user
+          text: "language：{{#1730257085761.language#}}\n \"{{#1730257879652.text#}}\"\
+            \ Using the above information, answer the following question or topic:\
+            \ \"{{#1730257830072.item#}} \"\n"
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1730259235391'
+      parentId: '1730257830072'
+      position:
+        x: 408.070431035444
+        y: 115.12309570784964
+      positionAbsolute:
+        x: 1284.3561453211582
+        y: 684.8373814221353
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(questions, answers):\n    # Ensure the input\
+          \ arrays have the same length\n    if len(questions) != len(answers):\n\
+          \        raise ValueError(\"Questions and answers arrays must have the same\
+          \ length.\")\n    \n    # Combine questions and answers into a list of dictionaries\n\
+          \    data = [{\"question\": question, \"answer\": answer.replace(\"None\"\
+          , \"\")} for question, answer in zip(questions, answers)]\n    \n    # Convert\
+          \ the list to JSON format\n    json_data = json.dumps(data, ensure_ascii=False,\
+          \ indent=4)    \n    return {\n        \"result\": json_data\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1730257648212'
+          - result
+          variable: questions
+        - value_selector:
+          - '1730257830072'
+          - output
+          variable: answers
+      height: 54
+      id: '1732047654790'
+      position:
+        x: 2644
+        y: 644
+      positionAbsolute:
+        x: 2644
+        y: 644
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732047654790'
+          - result
+          variable: result
+        selected: false
+        title: 結束
+        type: end
+      height: 90
+      id: '1732047706544'
+      position:
+        x: 2943
+        y: 644
+      positionAbsolute:
+        x: 2943
+        y: 644
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 239c6673-5a4c-4f2a-833d-bafb0af81135
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate
+          - comparison_operator: contains
+            id: 3b8717e9-8be2-4636-b3a7-d7cd408077a5
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          id: 'true'
+          logical_operator: and
+        - case_id: 7b9b469a-9feb-461c-8790-65d9e455f5f4
+          conditions:
+          - comparison_operator: is
+            id: e2ade646-b7a8-4423-90da-2da00e73668d
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate
+          - comparison_operator: contains
+            id: 89f72dad-c8b2-4bad-87e7-1c8eaba7fa42
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          id: 7b9b469a-9feb-461c-8790-65d9e455f5f4
+          logical_operator: and
+        - case_id: 93057a78-a69e-43b5-969f-af399fd51f79
+          conditions:
+          - comparison_operator: is
+            id: 6aad3371-aa6d-4251-b86e-44b0a0ca83b0
+            value: Chinese_TAIDE
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate
+          - comparison_operator: contains
+            id: 5ced43b3-8a50-4a98-be5a-457990dc991f
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          id: 93057a78-a69e-43b5-969f-af399fd51f79
+          logical_operator: and
+        - case_id: 29f63154-9141-4377-9cb5-d7dad63b0e60
+          conditions:
+          - comparison_operator: is
+            id: d02d828f-5bd7-4ac8-a578-a69e67776a10
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate
+          - comparison_operator: contains
+            id: 8b64e69e-b0b0-4de7-ba7b-9d238b501e82
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          id: 29f63154-9141-4377-9cb5-d7dad63b0e60
+          logical_operator: and
+        - case_id: ce23f9cd-30d9-43eb-b7df-3ea91f630b37
+          conditions:
+          - comparison_operator: is
+            id: 3c2bb29f-d0b2-4874-a253-e594dd413388
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate
+          - comparison_operator: contains
+            id: 4b0ba752-aa0d-4964-961a-a5facc0597b2
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          id: ce23f9cd-30d9-43eb-b7df-3ea91f630b37
+          logical_operator: and
+        - case_id: c34fbdc9-5c7e-41ac-aa1f-68166060ed75
+          conditions:
+          - comparison_operator: is
+            id: e4303132-70b5-4a40-85dd-8da186868f63
+            value: Chinese_TAIDE
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate
+          - comparison_operator: contains
+            id: f0e98fca-0843-40a7-9d6d-d33b2e4fd9a2
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          id: c34fbdc9-5c7e-41ac-aa1f-68166060ed75
+          logical_operator: and
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 522
+      id: '1732759675465'
+      parentId: '1730257830072'
+      position:
+        x: 729.4242228963617
+        y: 93.0999809907114
+      positionAbsolute:
+        x: 1605.709937182076
+        y: 662.8142667049971
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 3b46456d-deb7-4da7-9e1c-fc88eb5cdd79
+          role: system
+          text: '你是一位精通文件翻譯及潤飾的專家，專門將各種語言內容改寫為符合台灣在地風格的中文 (zh-TW)。請特別注意使用貼近台灣本地文化、語言習慣以及流行用語的表達方式，以使翻譯後的內容更加自然且具親和力。
+
+            翻譯時請務必做到以下幾點：
+
+            1. 用語流暢自然，避免生硬的直譯或外來語痕跡。
+
+            2. 注重台灣本地用語的靈活運用，例如詞彙、語氣和句型。
+
+            3. 內容應適應台灣讀者的閱讀習慣，做到通順且易於理解。
+
+            4. 若參考內容與待翻譯內容風格有所差異，請以台灣在地化為首要目標進行調整，確保結果達到最佳效果。
+
+            '
+        - id: f772535c-c36e-437a-8d44-d06a318a009a
+          role: user
+          text: '請將以下文本翻譯為台灣標準中文（zh-TW），並進行語意校正與潤飾，確保用詞符合台灣用語習慣，語句通順流暢。除了翻譯及潤飾外，請勿加入額外的內容或提供任何補充說明。
+
+            文本內容：
+
+            {{#1730259235391.text#}}'
+        selected: false
+        title: LLM 7
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1732772467445'
+      parentId: '1730257830072'
+      position:
+        x: 1026.0161267454241
+        y: 190.51638174839525
+      positionAbsolute:
+        x: 1902.3018410311383
+        y: 760.2306674626809
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 1eaad112-904d-47e3-9939-cba61fda5681
+          role: system
+          text: '你是一位精通文件翻譯及潤飾的專家，專門將各種語言內容改寫為符合台灣在地風格的中文 (zh-TW)。請特別注意使用貼近台灣本地文化、語言習慣以及流行用語的表達方式，以使翻譯後的內容更加自然且具親和力。
+
+            翻譯時請務必做到以下幾點：
+
+            1. 用語流暢自然，避免生硬的直譯或外來語痕跡。
+
+            2. 注重台灣本地用語的靈活運用，例如詞彙、語氣和句型。
+
+            3. 內容應適應台灣讀者的閱讀習慣，做到通順且易於理解。
+
+            4. 若參考內容與待翻譯內容風格有所差異，請以台灣在地化為首要目標進行調整，確保結果達到最佳效果。
+
+            '
+        - id: aac0b712-6433-46e0-a92a-7870e46b4065
+          role: user
+          text: '請將以下文本翻譯為台灣標準中文（zh-TW），並進行語意校正與潤飾，確保用詞符合台灣用語習慣，語句通順流暢。除了翻譯及潤飾外，請勿加入額外的內容或提供任何補充說明。
+
+            文本內容：
+
+            {{#1730259235391.text#}}'
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1732772512636'
+      parentId: '1730257830072'
+      position:
+        x: 1005.6764170640824
+        y: 307.64237100485593
+      positionAbsolute:
+        x: 1881.9621313497967
+        y: 877.3566567191416
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 50f57533-2fb6-450e-b63d-ceb13e6b1e81
+          role: system
+          text: "You are an expert in document translation and refinement, specializing\
+            \ in adapting content into natural, culturally-appropriate American English.\
+            \ Your focus is on ensuring the translation aligns with American English\
+            \ expressions, cultural nuances, and idiomatic language to make the content\
+            \ engaging and relatable. \n\nWhen translating and refining, please adhere\
+            \ to the following guidelines:  \n1. Ensure the language flows naturally,\
+            \ avoiding stiff literal translations or foreign-sounding phrasing.  \n\
+            2. Skillfully incorporate American English vocabulary, tone, and sentence\
+            \ structures.  \n3. Tailor the content to the reading habits of American\
+            \ English audiences, making it clear, concise, and easy to understand.\
+            \  \n4. When the source content's style differs from the target tone,\
+            \ prioritize localization into American English to achieve the best result.\
+            \  \n"
+        - id: a6dbaa0b-968c-443f-9749-f6158638350f
+          role: user
+          text: "Please translate the following text into American English, focusing\
+            \ on semantic accuracy and stylistic refinement to ensure the language\
+            \ is idiomatic and polished. Do not add any additional content or commentary\
+            \ beyond the translation and revision.\n\nText to translate:  \n{{#1730259235391.text#}}"
+        selected: false
+        title: LLM 5
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1732772522713'
+      parentId: '1730257830072'
+      position:
+        x: 1008.2388464029077
+        y: 432.7953579591301
+      positionAbsolute:
+        x: 1884.524560688622
+        y: 1002.5096436734158
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "\ndef main(arg1: str) -> dict:\n    return {\n        \"result\": arg1,\n\
+          \    }\n"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 3
+        type: code
+        variables:
+        - value_selector:
+          - '1730259235391'
+          - text
+          variable: arg1
+      height: 54
+      id: '1732773321333'
+      parentId: '1730257830072'
+      position:
+        x: 1032.524560688622
+        y: 101.50964367341578
+      positionAbsolute:
+        x: 1908.8102749743362
+        y: 671.2239293877014
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "\ndef main(arg1: str) -> dict:\n    return {\n        \"result\": arg1,\n\
+          \    }\n"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 4
+        type: code
+        variables:
+        - value_selector:
+          - '1730259235391'
+          - text
+          variable: arg1
+      height: 54
+      id: '1732773454020'
+      parentId: '1730257830072'
+      position:
+        x: 1019.6674178314793
+        y: 570.0810722448443
+      positionAbsolute:
+        x: 1895.9531321171935
+        y: 1139.79535795913
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: b2eb8638-5b2f-4ee6-9bc6-4845acf79535
+          role: system
+          text: '你是一位精通文件翻譯及潤飾的專家，專門將各種語言內容改寫為符合台灣在地風格的中文 (zh-TW)。請特別注意使用貼近台灣本地文化、語言習慣以及流行用語的表達方式，以使翻譯後的內容更加自然且具親和力。
+
+            翻譯時請務必做到以下幾點：
+
+            1. 用語流暢自然，避免生硬的直譯或外來語痕跡。
+
+            2. 注重台灣本地用語的靈活運用，例如詞彙、語氣和句型。
+
+            3. 內容應適應台灣讀者的閱讀習慣，做到通順且易於理解。
+
+            4. 若參考內容與待翻譯內容風格有所差異，請以台灣在地化為首要目標進行調整，確保結果達到最佳效果。
+
+            '
+        - id: 4bce3a95-05c1-4f95-a727-3695f931ca12
+          role: user
+          text: '請將以下文本翻譯為台灣標準中文（zh-TW），並進行語意校正與潤飾，確保用詞符合台灣用語習慣，語句通順流暢。除了翻譯及潤飾外，請勿加入額外的內容或提供任何補充說明。
+
+            文本內容：
+
+            {{#1730259235391.text#}}'
+        selected: false
+        title: LLM 6
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1732773467520'
+      parentId: '1730257830072'
+      position:
+        x: 1009.6674178314797
+        y: 667.3667865305588
+      positionAbsolute:
+        x: 1885.953132117194
+        y: 1237.0810722448446
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        selected: false
+        template: '{{ arg1 }}{{ arg2 }}{{ arg3 }}{{ arg4 }}{{ arg5 }}{{ arg6 }}'
+        title: 模板轉換
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1732773321333'
+          - result
+          variable: arg1
+        - value_selector:
+          - '1732772467445'
+          - text
+          variable: arg2
+        - value_selector:
+          - '1732772512636'
+          - text
+          variable: arg3
+        - value_selector:
+          - '1732772522713'
+          - text
+          variable: arg4
+        - value_selector:
+          - '1732773454020'
+          - result
+          variable: arg5
+        - value_selector:
+          - '1732773467520'
+          - text
+          variable: arg6
+      height: 54
+      id: '1732773784121'
+      parentId: '1730257830072'
+      position:
+        x: 1355.5714285714282
+        y: 301.50964367341567
+      positionAbsolute:
+        x: 2231.857142857142
+        y: 871.2239293877013
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    viewport:
+      x: -1756.2423076671025
+      y: -129.86344208242537
+      zoom: 0.7857234282763793
