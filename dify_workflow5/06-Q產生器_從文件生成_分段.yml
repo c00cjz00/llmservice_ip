@@ -1,0 +1,793 @@
+app:
+  description: ''
+  icon: face_with_monocle
+  icon_background: '#FFE4E8'
+  mode: workflow
+  name: 06-Q產生器_從文件生成_分段
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1730257085761-source-1732867786345-target
+      selected: false
+      source: '1730257085761'
+      sourceHandle: source
+      target: '1732867786345'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: if-else
+      id: 1730257648212-source-1732920946805-target
+      source: '1730257648212'
+      sourceHandle: source
+      target: '1732920946805'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1732920946805-true-1732921048129-target
+      source: '1732920946805'
+      sourceHandle: 'true'
+      target: '1732921048129'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1732921048129'
+        sourceType: iteration-start
+        targetType: llm
+      id: 1732921048129start-source-1732921057149-target
+      source: 1732921048129start
+      sourceHandle: source
+      target: '1732921057149'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1732921048129-source-1732921968331-target
+      source: '1732921048129'
+      sourceHandle: source
+      target: '1732921968331'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1732921968331-source-1732921121691-target
+      source: '1732921968331'
+      sourceHandle: source
+      target: '1732921121691'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1730257098742-source-1730257648212-target
+      source: '1730257098742'
+      sourceHandle: source
+      target: '1730257648212'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1732920946805-false-1732922918523-target
+      source: '1732920946805'
+      sourceHandle: 'false'
+      target: '1732922918523'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1732922918523-source-1732923011408-target
+      source: '1732922918523'
+      sourceHandle: source
+      target: '1732923011408'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: if-else
+      id: 1732867786345-source-1732927789678-target
+      source: '1732867786345'
+      sourceHandle: source
+      target: '1732927789678'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732927789678-true-1730257098742-target
+      source: '1732927789678'
+      sourceHandle: 'true'
+      target: '1730257098742'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1732927789678-false-1732927810209-target
+      source: '1732927789678'
+      sourceHandle: 'false'
+      target: '1732927810209'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1732927810209-source-1732927890669-target
+      source: '1732927810209'
+      sourceHandle: source
+      target: '1732927890669'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 文件上傳
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+        - label: 思考語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+        - label: 從文件找出最多問題數量 (*3)
+          max_length: 48
+          options: []
+          required: true
+          type: number
+          variable: max_questions
+        - label: 從找出的問題, 拓展出相關的問題
+          max_length: 48
+          options:
+          - 'YES'
+          - 'NO'
+          required: true
+          type: select
+          variable: extend_question
+        - label: 文章分段 (chunk size)
+          max_length: 48
+          options:
+          - 'NO'
+          - '1000'
+          - '2000'
+          - '3000'
+          - '4000'
+          - '5000'
+          - '6000'
+          - '7000'
+          - '8000'
+          - '9000'
+          - '10000'
+          required: true
+          type: select
+          variable: chunk_size
+      height: 193
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 394.5
+      positionAbsolute:
+        x: 30
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: e18aef50-3449-4259-9559-c4d17101d533
+          role: system
+          text: 'You are an expert in generating high-quality, content-specific questions.
+            Based on the text provided in [content][/content], craft precise, highly
+            relevant, and thought-provoking questions designed to stimulate deep thinking
+            in the following three dimensions:
+
+            1. Basic Understanding: Formulate questions that ensure readers can identify
+            and comprehend the core concepts, key information, and fundamental facts
+            within the text, along with its basic structure.
+
+            2. In-depth Analysis: Create questions that encourage readers to analyze
+            the text''s logical structure, explore causal relationships, examine implicit
+            assumptions, and uncover deeper meanings behind the content.
+
+            3. Practical Application or Critical Thinking: Develop questions that
+            inspire readers to connect the content with real-world scenarios or interdisciplinary
+            knowledge, engage in critical reflection, and assess potential applications
+            or challenges.
+
+            '
+        - id: b0e446f2-b714-41e9-8eb6-292187a97796
+          role: user
+          text: "Language: {{#1730257085761.language#}}\n\nInput Text:\n[content]\n\
+            {{#1732867786345.text#}}\n[/content]\n\nRequirements for Questions:\n\
+            - Questions must be precise, highly relevant, and clearly structured to\
+            \ provoke thoughtful engagement.\n- Avoid redundancy or overly similar\
+            \ phrasing across questions.\n- Generate exactly {{#1730257085761.max_questions#}}\
+            \ questions for each dimension.\n- Annotate the specific part of the content\
+            \ each question is based on for clarity.\n\nOutput Format:\nPresent the\
+            \ questions in the following JSON format, ensuring each dimension is distinctly\
+            \ categorized:\n{\n  \"Basic Understanding\": [\n    {\n      \"Question\"\
+            : \"...\",\n      \"Reference Content\": \"...\"\n    },\n    ...\n  ],\n\
+            \  \"In-depth Analysis\": [\n    {\n      \"Question\": \"...\",\n   \
+            \   \"Reference Content\": \"...\"\n    },\n    ...\n  ],\n  \"Practical\
+            \ Application or Critical Thinking\": [\n    {\n      \"Question\": \"\
+            ...\",\n      \"Reference Content\": \"...\"\n    },\n    ...\n  ]\n}\n\
+            \nNotes:\n- Exclude any suggestions, explanations, or commentary in the\
+            \ output.\n- Focus solely on generating questions and their corresponding\
+            \ references."
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730257098742'
+      position:
+        x: 673.6524202090319
+        y: 394.5
+      positionAbsolute:
+        x: 673.6524202090319
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "\nimport json\n\ndef main(json_data: str) -> dict:\n    # 解析 JSON 字串\n\
+          \    json_data = json_data.replace(\"```\", \"\")\n    json_data = json_data.replace(\"\
+          json\", \"\")\n\n    data = json.loads(json_data)\n    \n    # 提取所有 \"問題\"\
+          \n    questions = []\n    for category in data.values():\n        for item\
+          \ in category:\n            questions.append(item['Question'])\n    \n \
+          \   return {\n        \"result\": questions\n    }\n\n\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: code
+        type: code
+        variables:
+        - value_selector:
+          - '1730257098742'
+          - text
+          variable: json_data
+      height: 53
+      id: '1730257648212'
+      position:
+        x: 942
+        y: 394.5
+      positionAbsolute:
+        x: 942
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文件提取器
+        type: document-extractor
+        variable_selector:
+        - '1730257085761'
+        - file
+      height: 93
+      id: '1732867786345'
+      position:
+        x: 334
+        y: 392.5
+      positionAbsolute:
+        x: 334
+        y: 392.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 國網中心
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"你是一位專精於從文本中提取精確答案的專家。請根據[content][/content]中的文本，直接回答下方問題，並確保答案與問題高度相關且結構嚴謹。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"[content]  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"[/content]  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"**答案要求：**  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          完全聚焦於問題核心，排除任何無關資訊。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          條理清晰，表達簡潔明了，便於理解。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          僅提供答案，不需要額外的說明或補充。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"**問題：**  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1732877598335'
+      position:
+        x: 898.5700673564241
+        y: 1145.232232201422
+      positionAbsolute:
+        x: 898.5700673564241
+        y: 1145.232232201422
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 5cba4b20-791f-44d6-9ea0-31d51d60a725
+            value: 'YES'
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - extend_question
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支 4
+        type: if-else
+      height: 125
+      id: '1732920946805'
+      position:
+        x: 1246
+        y: 394.5
+      positionAbsolute:
+        x: 1246
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 185
+        is_parallel: false
+        iterator_selector:
+        - '1730257648212'
+        - result
+        output_selector:
+        - '1732921057149'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1732921048129start
+        title: 迭代 2
+        type: iteration
+        width: 388
+      height: 185
+      id: '1732921048129'
+      position:
+        x: 1550
+        y: 394.5
+      positionAbsolute:
+        x: 1550
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 388
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1732921048129start
+      parentId: '1732921048129'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 1574
+        y: 462.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1732921048129'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: c74ea0d2-d189-43d2-9d12-9a20c8598adb
+          role: system
+          text: "<instruction>\n<task_description>\nGenerate a series of appropriate\
+            \ search engine queries to break down questions based on user inquiries\n\
+            </task_description>\n\n<examples>\n<example>\nInput: User asks how to\
+            \ learn programming\nOutput: 'programming learning methods, 'programming\
+            \ tutorials for beginners'\n</example>\n\n<example>\nInput: User wants\
+            \ to understand latest technology trends  \nOutput: 'tech trends 2021',\
+            \ 'latest technology news'\n</example>\n\n<example>\nInput: User seeks\
+            \ healthy eating advice\nOutput: 'healthy eating guide', 'balanced nutrition\
+            \ diet'\n</example>\n</examples>\n\n<instructions>\n1. Take user's question\
+            \ as input.\n2. Identify relevant keywords or phrases based on the topic\
+            \ of user's question.\n3. Use these keywords or phrases to make search\
+            \ engine queries.\n4. Generate a series of appropriate search engine queries\
+            \ to help break down user's question.\n5. Ensure output content does not\
+            \ contain any xml tags.<tag></tag>\n6.The output must be pure and conform\
+            \ to the <example> style without other explanations.\n7.Break down into\
+            \ at least 4-6 subproblems.\n8.Output is separated only by commas.\n</instructions>"
+        - id: 45a50473-790c-410d-81ae-ce6dd67f9884
+          role: user
+          text: 'title：{{#1732921048129.item#}}
+
+            language：{{#1730257085761.language#}}
+
+            The output must be pure and conform to the <example> style without other
+            explanations.
+
+            Output is separated only by commas.
+
+            Break down into at least 4-6 subproblems.'
+        selected: false
+        title: LLM 9
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732921057149'
+      parentId: '1732921048129'
+      position:
+        x: 128
+        y: 68
+      positionAbsolute:
+        x: 1678
+        y: 462.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732921968331'
+          - result
+          variable: output
+        selected: false
+        title: 結束 2
+        type: end
+      height: 89
+      id: '1732921121691'
+      position:
+        x: 2302
+        y: 394.5
+      positionAbsolute:
+        x: 2302
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "\nimport json\ndef main(output: list[str], result: list[str]) -> dict:\n\
+          \    if not output or not result:\n        return {'combine': []}\n\n  \
+          \  # 檢查輸入是否長度一致\n    if len(output) != len(result):\n        raise ValueError(\"\
+          output 和 result 長度不一致，無法組合。\")\n\n    # 合併兩個結果成指定格式\n    combine = []\n\
+          \    for r_item, o_item in zip(result, output):\n        combined_entry\
+          \ = f\"'{r_item}','{o_item}'\"\n        combine.append(combined_entry)\n\
+          \n    #return {\"result\": combine}\n    return {\"result\": json.dumps(combine,\
+          \ ensure_ascii=False, indent=2)}\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 5
+        type: code
+        variables:
+        - value_selector:
+          - '1730257648212'
+          - result
+          variable: result
+        - value_selector:
+          - '1732921048129'
+          - output
+          variable: output
+      height: 53
+      id: '1732921968331'
+      position:
+        x: 1998
+        y: 394.5
+      positionAbsolute:
+        x: 1998
+        y: 394.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\ndef main(result: list[str]) -> dict:\n\n    return {\"\
+          result\": json.dumps(result, ensure_ascii=False, indent=2)}\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 3
+        type: code
+        variables:
+        - value_selector:
+          - '1730257648212'
+          - result
+          variable: result
+      height: 53
+      id: '1732922918523'
+      position:
+        x: 1744.2857142857144
+        y: 624.2142857142858
+      positionAbsolute:
+        x: 1744.2857142857144
+        y: 624.2142857142858
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732922918523'
+          - result
+          variable: result
+        selected: false
+        title: 結束 2
+        type: end
+      height: 89
+      id: '1732923011408'
+      position:
+        x: 2048.2857142857147
+        y: 624.2142857142858
+      positionAbsolute:
+        x: 2048.2857142857147
+        y: 624.2142857142858
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: a2afa7f7-a4dc-428e-85c8-72f960cfcc8f
+            value: 'NO'
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - chunk_size
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支 2
+        type: if-else
+      height: 125
+      id: '1732927789678'
+      position:
+        x: 483.9306126681124
+        y: 615.8111483573261
+      positionAbsolute:
+        x: 483.9306126681124
+        y: 615.8111483573261
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "\ndef main(input_text: str, chunk_size: str) -> str:\n    #token_limit\
+          \ = 1000\n    token_limit = int(chunk_size) // 8\n    overlap = 50\n   \
+          \ chunk_size = int(token_limit * 6 * (4/3))\n\n        # Initialize variables\n\
+          \    chunks = []\n    start_index = 0\n    text_length = len(input_text)\n\
+          \n    # Loop until the end of the text is reached\n    while start_index\
+          \ < text_length:\n        # If we are not at the beginning, adjust the start_index\
+          \ to ensure overlap\n        if start_index > 0:\n            start_index\
+          \ -= overlap\n\n        # Calculate end index for the current chunk\n  \
+          \      end_index = start_index + chunk_size\n        if end_index > text_length:\n\
+          \            end_index = text_length\n\n        # Add the current chunk\
+          \ to the list\n        chunks.append(input_text[start_index:end_index])\n\
+          \n        # Update the start_index for the next chunk\n        start_index\
+          \ += chunk_size\n\n    return {\n        \"chunks\": chunks,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          chunks:
+            children: null
+            type: array[string]
+        selected: true
+        title: 代碼執行 4
+        type: code
+        variables:
+        - value_selector:
+          - '1732867786345'
+          - text
+          variable: input_text
+        - value_selector:
+          - '1730257085761'
+          - chunk_size
+          variable: chunk_size
+      height: 53
+      id: '1732927810209'
+      position:
+        x: 770.4232750621183
+        y: 678.2028837231318
+      positionAbsolute:
+        x: 770.4232750621183
+        y: 678.2028837231318
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732927810209'
+          - chunks
+          variable: chunks
+        selected: false
+        title: 結束 3
+        type: end
+      height: 89
+      id: '1732927890669'
+      position:
+        x: 1163.8276263064486
+        y: 678.2028837231318
+      positionAbsolute:
+        x: 1163.8276263064486
+        y: 678.2028837231318
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -208.48124518101264
+      y: -231.94575848034754
+      zoom: 0.785360428151432
