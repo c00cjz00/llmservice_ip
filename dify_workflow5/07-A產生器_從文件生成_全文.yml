@@ -135,32 +135,6 @@ workflow:
         title: start
         type: start
         variables:
-        - label: 問題列表 (以分行呈現問題)
-          max_length: null
-          options: []
-          required: true
-          type: paragraph
-          variable: question_list
-        - label: 思考語系
-          max_length: 48
-          options:
-          - English
-          - Chinese (zh-TW)
-          required: true
-          type: select
-          variable: language
-        - allowed_file_extensions: []
-          allowed_file_types:
-          - image
-          allowed_file_upload_methods:
-          - local_file
-          - remote_url
-          label: 批次問題數量 (建議一次10~20個問題)
-          max_length: 48
-          options: []
-          required: true
-          type: number
-          variable: question_num
         - allowed_file_extensions: []
           allowed_file_types:
           - document
@@ -173,14 +147,34 @@ workflow:
           required: true
           type: file
           variable: file
-      height: 166
+        - label: 問題列表 (以分行呈現問題)
+          max_length: null
+          options: []
+          required: true
+          type: paragraph
+          variable: question_list
+        - label: 批次問題數量 (建議一次10~20個問題)
+          max_length: 48
+          options: []
+          required: true
+          type: number
+          variable: question_num
+        - label: 思考語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+      height: 244
       id: '1730257085761'
       position:
-        x: 30
-        y: 407.5
+        x: 31.428571428571445
+        y: 405.5
       positionAbsolute:
-        x: 30
-        y: 407.5
+        x: 31.428571428571445
+        y: 405.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -419,11 +413,11 @@ workflow:
       id: '1732948817229'
       position:
         x: 1386
-        y: 407.5
+        y: 405.5
       positionAbsolute:
         x: 1386
-        y: 407.5
-      selected: false
+        y: 405.5
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -451,6 +445,6 @@ workflow:
       type: custom
       width: 243
     viewport:
-      x: -12.149999999999977
-      y: 2.100000000000051
+      x: -143.1500000000001
+      y: -108.89999999999998
       zoom: 0.7
