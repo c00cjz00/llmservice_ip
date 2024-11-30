@@ -1,0 +1,456 @@
+app:
+  description: ''
+  icon: face_with_monocle
+  icon_background: '#FFE4E8'
+  mode: workflow
+  name: 07-A產生器_從文件生成_全文
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: true
+        iteration_id: '1732945849073'
+        sourceType: iteration-start
+        targetType: llm
+      id: 1732945849073start-source-1732945962135-target
+      selected: false
+      source: 1732945849073start
+      sourceHandle: source
+      target: '1732945962135'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1730257085761-source-1732867786345-target
+      selected: false
+      source: '1730257085761'
+      sourceHandle: source
+      target: '1732867786345'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1732867786345-source-1732944737719-target
+      selected: false
+      source: '1732867786345'
+      sourceHandle: source
+      target: '1732944737719'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1732945849073-source-1732948817229-target
+      selected: false
+      source: '1732945849073'
+      sourceHandle: source
+      target: '1732948817229'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1732948817229-source-1732948971928-target
+      selected: false
+      source: '1732948817229'
+      sourceHandle: source
+      target: '1732948971928'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1732944737719-source-1732945849073-target
+      selected: false
+      source: '1732944737719'
+      sourceHandle: source
+      target: '1732945849073'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: start
+        type: start
+        variables:
+        - label: 問題列表 (以分行呈現問題)
+          max_length: null
+          options: []
+          required: true
+          type: paragraph
+          variable: question_list
+        - label: 思考語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 批次問題數量 (建議一次10~20個問題)
+          max_length: 48
+          options: []
+          required: true
+          type: number
+          variable: question_num
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 參考文件
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 166
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 407.5
+      positionAbsolute:
+        x: 30
+        y: 407.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文件提取器
+        type: document-extractor
+        variable_selector:
+        - '1730257085761'
+        - file
+      height: 92
+      id: '1732867786345'
+      position:
+        x: 333
+        y: 405.5
+      positionAbsolute:
+        x: 333
+        y: 405.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 國網中心
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Your
+          task is to provide answers exclusively based on the given content, without
+          utilizing external knowledge, assumptions, or interpretations.  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Respond
+          succinctly and accurately, addressing only the provided question or topic.
+          Avoid adding commentary, explanations, or additional remarks.  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"**Parameters**:  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          **Language**: `","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"`  ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          **Content**: `","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"`  ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          **Questions**: `","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"`  ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"**Output**:  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Provide
+          answers in a JSON format where each object contains the keys `question`
+          and `answer`.  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"**Example
+          Format**:  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"[","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  {","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"question\":
+          \"Question 1 text here\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"answer\":
+          \"Answer to question 1\"","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  },","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  {","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"question\":
+          \"Question 2 text here\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"answer\":
+          \"Answer to question 2\"","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  }","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"]","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1732877598335'
+      position:
+        x: 736.3699860492351
+        y: 1103.2510346866202
+      positionAbsolute:
+        x: 736.3699860492351
+        y: 1103.2510346866202
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        code: "def main(input_text: str, question_num: int) -> dict:\n    # Split\
+          \ the input text into lines\n    input_text = '\\n'.join([line.strip().strip('\"\
+          ').strip(',') for line in input_text.split('\\n') if line.strip()])\n\n\
+          \    lines = input_text.strip().split('\\n')\n    \n    # Chunk the lines\
+          \ into groups of five\n    chunked_result = [{\"question\": lines[i:i +\
+          \ question_num]} for i in range(0, len(lines), question_num)]\n   \n   \
+          \ return {\n        \"result\": chunked_result\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[object]
+        selected: false
+        title: 代碼執行 5
+        type: code
+        variables:
+        - value_selector:
+          - '1730257085761'
+          - question_list
+          variable: input_text
+        - value_selector:
+          - '1730257085761'
+          - question_num
+          variable: question_num
+      height: 52
+      id: '1732944737719'
+      position:
+        x: 636
+        y: 407.5
+      positionAbsolute:
+        x: 636
+        y: 407.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 185
+        is_parallel: false
+        iterator_selector:
+        - '1732944737719'
+        - result
+        output_selector:
+        - '1732945962135'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1732945849073start
+        title: 迭代 2
+        type: iteration
+        width: 387
+      height: 185
+      id: '1732945849073'
+      position:
+        x: 939
+        y: 407.5
+      positionAbsolute:
+        x: 939
+        y: 407.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 387
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1732945849073start
+      parentId: '1732945849073'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 963
+        y: 475.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1732945849073'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 654af999-afad-4fe3-affc-a9d684128e39
+          role: system
+          text: "\nYour task is to provide answers exclusively based on the given\
+            \ content, without utilizing external knowledge, assumptions, or interpretations.\
+            \  \nRespond thoroughly and comprehensively, addressing all aspects of\
+            \ the provided question or topic in detail. Ensure your answers are well-structured\
+            \ and provide all relevant information derived from the given content.\
+            \ Avoid adding commentary, explanations, or additional remarks.  "
+        - id: 44b66efe-3a01-435c-b4d9-994971ea2283
+          role: user
+          text: "**Parameters**:  \n\n- **Language**: `{{#1730257085761.language#}}`\
+            \  \n\n- **Content**: `{{#1732867786345.text#}}`  \n\n- **Questions**:\
+            \ `{{#1732945849073.item#}}`  \n\n**Output**:  \nProvide answers in a\
+            \ JSON format where each object contains the keys `question` and `answer`.\
+            \  \n\n**Example Format**:  \n[\n  {\n    \"question\": \"Question 1 text\
+            \ here\",\n    \"answer\": \"A detailed and comprehensive answer to question\
+            \ 1, addressing all relevant aspects from the provided content.\"\n  },\n\
+            \  {\n    \"question\": \"Question 2 text here\",\n    \"answer\": \"\
+            A detailed and comprehensive answer to question 2, addressing all relevant\
+            \ aspects from the provided content.\"\n  }\n]  \n"
+        selected: false
+        title: LLM 9
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1732945962135'
+      parentId: '1732945849073'
+      position:
+        x: 128
+        y: 68
+      positionAbsolute:
+        x: 1067
+        y: 475.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(output) -> dict:\n    # 初始化空列表來儲存整合的結果\n  \
+          \  merged_questions = []\n\n    # 遍歷 output，每個項目是 JSON 格式的字串\n    for item\
+          \ in output:\n        # 將字串解析成 Python 列表\n        questions = json.loads(item)\n\
+          \        # 將問題添加到合併列表中\n        merged_questions.extend(questions)\n\n \
+          \   # 返回結果\n    return {\n        \"result\": json.dumps(merged_questions,\
+          \ ensure_ascii=False, indent=2)\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 6
+        type: code
+        variables:
+        - value_selector:
+          - '1732945849073'
+          - output
+          variable: output
+      height: 52
+      id: '1732948817229'
+      position:
+        x: 1386
+        y: 407.5
+      positionAbsolute:
+        x: 1386
+        y: 407.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732948817229'
+          - result
+          variable: result
+        selected: false
+        title: 結束 2
+        type: end
+      height: 88
+      id: '1732948971928'
+      position:
+        x: 1689
+        y: 407.5
+      positionAbsolute:
+        x: 1689
+        y: 407.5
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -12.149999999999977
+      y: 2.100000000000051
+      zoom: 0.7
