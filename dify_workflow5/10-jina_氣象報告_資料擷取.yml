@@ -1,0 +1,306 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 10-jina_氣象報告_資料擷取
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 10
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: tool
+      id: 1733021536759-source-1733021583732-target
+      source: '1733021536759'
+      sourceHandle: source
+      target: '1733021583732'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: code
+      id: 1733021583732-source-1733021859618-target
+      source: '1733021583732'
+      sourceHandle: source
+      target: '1733021859618'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1733021859618-source-1733022213058-target
+      source: '1733021859618'
+      sourceHandle: source
+      target: '1733022213058'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1733022213058-source-1733021887906-target
+      source: '1733022213058'
+      sourceHandle: source
+      target: '1733021887906'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: 'url: https://www.cwa.gov.tw/V8/C/W/index.html'
+          max_length: null
+          options: []
+          required: true
+          type: text-input
+          variable: url
+        - label: 思考語系
+          max_length: 48
+          options:
+          - Chinese (zh-TW)
+          - English
+          required: true
+          type: select
+          variable: language
+      height: 115
+      id: '1733021536759'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        provider_id: jina
+        provider_name: jina
+        provider_type: builtin
+        selected: false
+        title: Fetch Single Page
+        tool_configurations:
+          gather_all_images_at_the_end: 0
+          gather_all_links_at_the_end: 0
+          image_caption: 0
+          max_retries: 3
+          no_cache: 0
+          proxy_server: null
+          summary: 0
+          target_selector: null
+          wait_for_selector: null
+        tool_label: Fetch Single Page
+        tool_name: jina_reader
+        tool_parameters:
+          url:
+            type: mixed
+            value: '{{#1733021536759.url#}}'
+        type: tool
+      height: 297
+      id: '1733021583732'
+      position:
+        x: 383
+        y: 282
+      positionAbsolute:
+        x: 383
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(text: str) -> dict:\n    import json\n    try:\n        #\
+          \ 解析JSON字符串\n        parsed_data = json.loads(text)\n        # 从data字段中提取content\n\
+          \        content = parsed_data.get(\"data\", {}).get(\"content\", \"\")\n\
+          \        return {\n            \"result\": content\n        }\n    except\
+          \ json.JSONDecodeError:\n        return {\n            \"result\": \"\"\n\
+          \        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行
+        type: code
+        variables:
+        - value_selector:
+          - '1733021583732'
+          - text
+          variable: text
+      height: 53
+      id: '1733021859618'
+      position:
+        x: 686
+        y: 282
+      positionAbsolute:
+        x: 686
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1733022213058'
+          - text
+          variable: result
+        selected: false
+        title: 結束
+        type: end
+      height: 89
+      id: '1733021887906'
+      position:
+        x: 1541.5317566706433
+        y: 310.16828563418966
+      positionAbsolute:
+        x: 1541.5317566706433
+        y: 310.16828563418966
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: a1b77b50-7cfc-4695-b591-4651a9805c9b
+          role: system
+          text: "你是一位專業的氣象報告數據整理專家，擅長將非結構化的氣象資料轉化為精確的 JSON 格式數據。\n你的任務是閱讀以下提供的氣象報告，並提取其中的關鍵資訊（如地點、日期、時間、天氣狀況、氣溫、風速、降水量等），以標準化的\
+            \ JSON 格式輸出。\n請遵守以下規則：\n僅輸出符合 JSON 格式的內容，禁止包含多餘的說明、解釋、或格式化符號（例如：json 等）。\n\
+            確保提取的數據準確無誤，並將缺少的數據以 null 表示。\n如果資料中包含多條氣象報告，請將它們分別組織為 JSON 陣列中的多個物件。\n\
+            嚴格按照以下 JSON 結構輸出：\n{\n  \"language\": \"{{#1733021536759.language#}}\"\
+            ,\n  \"reports\": [\n    {\n      \"location\": \"<地點>\",\n      \"date\"\
+            : \"<日期>\",\n      \"time\": \"<時間>\",\n      \"weather_condition\": \"\
+            <天氣狀況>\",\n      \"temperature\": \"<氣溫>\",\n      \"wind_speed\": \"\
+            <風速>\",\n      \"precipitation\": \"<降水量>\",\n      \"other_details\"\
+            : \"<其他相關資訊或 null>\"\n    }\n  ]\n}\n\n"
+        - id: cdb7e37f-bcac-44f0-a475-14c4b70ca5bb
+          role: user
+          text: '輸入參數：
+
+            語言：{{#1733021536759.language#}}
+
+            報告內容：{{#1733021859618.result#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1733022213058'
+      position:
+        x: 989
+        y: 410
+      positionAbsolute:
+        x: 989
+        y: 410
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"https://www.cwa.gov.tw/V8/C/W/index.html","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1733022325215'
+      position:
+        x: 1008.8517263775473
+        y: 553.5067208091924
+      positionAbsolute:
+        x: 1008.8517263775473
+        y: 553.5067208091924
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: -1111.5608979584983
+      y: -24.37644055154624
+      zoom: 0.9230496602371923

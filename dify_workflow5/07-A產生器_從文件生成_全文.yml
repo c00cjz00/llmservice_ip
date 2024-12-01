@@ -167,7 +167,7 @@ workflow:
           required: true
           type: select
           variable: language
-      height: 244
+      height: 167
       id: '1730257085761'
       position:
         x: 31.428571428571445
@@ -179,7 +179,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         is_array_file: false
@@ -189,7 +189,7 @@ workflow:
         variable_selector:
         - '1730257085761'
         - file
-      height: 92
+      height: 93
       id: '1732867786345'
       position:
         x: 333
@@ -201,7 +201,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         author: 國網中心
         desc: ''
@@ -241,13 +241,19 @@ workflow:
       type: custom-note
       width: 240
     - data:
-        code: "def main(input_text: str, question_num: int) -> dict:\n    # Split\
-          \ the input text into lines\n    input_text = '\\n'.join([line.strip().strip('\"\
-          ').strip(',') for line in input_text.split('\\n') if line.strip()])\n\n\
-          \    lines = input_text.strip().split('\\n')\n    \n    # Chunk the lines\
-          \ into groups of five\n    chunked_result = [{\"question\": lines[i:i +\
-          \ question_num]} for i in range(0, len(lines), question_num)]\n   \n   \
-          \ return {\n        \"result\": chunked_result\n    }"
+        code: "import re\n\ndef main(input_text: str, question_num: int) -> dict:\n\
+          \    # 標準化處理：去除多餘的符號、空格等\n    def normalize_input(text):\n        # 去除首尾的中括號與雙引號\n\
+          \        text = text.strip().strip('[]')\n        # 將內嵌的中括號或引號刪除\n     \
+          \   text = re.sub(r'^\\s*\\[|\\]\\s*$', '', text)  # 移除最外層的 []\n       \
+          \ text = re.sub(r'^\"|\"$', '', text)         # 移除最外層的 \"\"\n        # 分隔符處理：將\
+          \ ',' 或 '\\n' 替換成標準換行符\n        text = text.replace(',', '\\n').replace(\"\
+          '\", \"\").strip()\n        # 清除多餘的換行與空白\n        text = '\\n'.join([line.strip()\
+          \ for line in text.split('\\n') if line.strip()])\n        return text\n\
+          \n    # 清理輸入文字\n    cleaned_input = normalize_input(input_text)\n    \n\
+          \    # 分割為問題行列表\n    lines = cleaned_input.split('\\n')\n    \n    # 根據\
+          \ question_num 分塊\n    chunked_result = [{\"question\": lines[i:i + question_num]}\
+          \ for i in range(0, len(lines), question_num)]\n   \n    return {\n    \
+          \    \"result\": chunked_result\n    }"
         code_language: python3
         desc: ''
         outputs:
@@ -266,7 +272,7 @@ workflow:
           - '1730257085761'
           - question_num
           variable: question_num
-      height: 52
+      height: 53
       id: '1732944737719'
       position:
         x: 636
@@ -274,11 +280,11 @@ workflow:
       positionAbsolute:
         x: 636
         y: 407.5
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         error_handle_mode: terminated
@@ -373,7 +379,7 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 96
+      height: 97
       id: '1732945962135'
       parentId: '1732945849073'
       position:
@@ -386,7 +392,7 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
       zIndex: 1002
     - data:
         code: "import json\n\ndef main(output) -> dict:\n    # 初始化空列表來儲存整合的結果\n  \
@@ -409,7 +415,7 @@ workflow:
           - '1732945849073'
           - output
           variable: output
-      height: 52
+      height: 53
       id: '1732948817229'
       position:
         x: 1386
@@ -417,11 +423,11 @@ workflow:
       positionAbsolute:
         x: 1386
         y: 405.5
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         desc: ''
         outputs:
@@ -432,7 +438,7 @@ workflow:
         selected: false
         title: 結束 2
         type: end
-      height: 88
+      height: 89
       id: '1732948971928'
       position:
         x: 1689
@@ -443,8 +449,46 @@ workflow:
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"def
+          main(input_text: str, question_num: int) -> dict:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            # Split the input text into lines","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            input_text=input_text.replace(\"[\", \"\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            input_text=input_text.replace(\"]\", \"\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            input_text = ''\\n''.join([line.strip().strip(''\"'').strip('','') for
+          line in input_text.split(''\\n'') if line.strip()])","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            lines = input_text.strip().split(''\\n'')","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            # Chunk the lines into groups of five","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            chunked_result = [{\"question\": lines[i:i + question_num]} for i in range(0,
+          len(lines), question_num)]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+           ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            return {","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                \"result\": chunked_result","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            }","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1733042385756'
+      position:
+        x: 628.7857142857144
+        y: 571.2857142857143
+      positionAbsolute:
+        x: 628.7857142857144
+        y: 571.2857142857143
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
     viewport:
-      x: -143.1500000000001
-      y: -108.89999999999998
-      zoom: 0.7
+      x: -1200.8466502539536
+      y: -131.07685583367586
+      zoom: 0.8464089730833537
