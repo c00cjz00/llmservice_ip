@@ -1,8 +1,6 @@
 ## singularity pull docker://downloads.unstructured.io/unstructured-io/unstructured:latest
 ## time singularity exec -B /work unstructured_latest.sif bash -c "export PYTHONPATH=/home/notebook-user/.local/lib/python3.11/site-packages:/app; python3 12-unstructured_json.py ./1Q23-EPR-with-Tables-FINAL.pdf"
-## 請先點選工作列 [執行階段]-> 重新啟動工作階段
-## 請先點選工作列 [編輯]-> 清除所有輸出內容
-## 右側RAM/磁碟標記 -> 變更執行階段 -> T4 GPU
+## 輸出 ./1Q23-EPR-with-Tables-FINAL.pdf.json
 # Read PDF
 import sys
 if __name__ == '__main__':
