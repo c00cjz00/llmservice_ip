@@ -16,8 +16,6 @@ from typing import Any
 from pydantic import BaseModel
 from unstructured.partition.pdf import partition_pdf
 #from unstructured.partition.auto import partition
-# 使用 unstructured.io 解析中文文本
-#elements = partition(file=file_io, languages=["chi_sim"])
 
 #1
 raw_pdf_elements = partition_pdf(
@@ -32,7 +30,7 @@ raw_pdf_elements = partition_pdf(
     max_characters=4000,
     new_after_n_chars=3800,
     combine_text_under_n_chars=2000,
-    image_output_dir_path="./im2",
+    image_output_dir_path="./img",
 )
 
 #2
@@ -74,5 +72,5 @@ for element in raw_pdf_elements:
 #print(len(all_elements))
 
 for i, all in enumerate(all_elements):
-    print('cutoff', i, all)
+    print('cutoff', 'Source='+pdf_file, 'No='+str(i), all)
 
