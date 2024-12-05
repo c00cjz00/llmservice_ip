@@ -1,0 +1,984 @@
+app:
+  description: ''
+  icon: u6307
+  icon_background: '#D5D9EB'
+  mode: workflow
+  name: 10-立法院模擬問答 (國科會)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.4
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1730257085761-source-1730257098742-target
+      selected: false
+      source: '1730257085761'
+      sourceHandle: source
+      target: '1730257098742'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1730257098742-source-1730257648212-target
+      selected: false
+      source: '1730257098742'
+      sourceHandle: source
+      target: '1730257648212'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1730257830072start-source-1730257879652-target
+      selected: false
+      source: 1730257830072start
+      sourceHandle: source
+      target: '1730257879652'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1730257830072'
+        sourceType: tool
+        targetType: llm
+      id: 1730257879652-source-1730259235391-target
+      selected: false
+      source: '1730257879652'
+      sourceHandle: source
+      target: '1730259235391'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1732751470716-source-1732751509579-target
+      selected: false
+      source: '1732751470716'
+      sourceHandle: source
+      target: '1732751509579'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: llm
+      id: 1730257830072-source-17333139837460-target
+      selected: false
+      source: '1730257830072'
+      sourceHandle: source
+      target: '17333139837460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 17333139837460-source-1732584513421-target
+      selected: false
+      source: '17333139837460'
+      sourceHandle: source
+      target: '1732584513421'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1730257648212-source-1730257830072-target
+      selected: false
+      source: '1730257648212'
+      sourceHandle: source
+      target: '1730257830072'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: end
+      id: 1732584513421-a52707dc-5fd1-4e44-b938-761b2f13e7e9-1732584586619-target
+      selected: false
+      source: '1732584513421'
+      sourceHandle: a52707dc-5fd1-4e44-b938-761b2f13e7e9
+      target: '1732584586619'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1732652888501-source-1732579748973-target
+      selected: false
+      source: '1732652888501'
+      sourceHandle: source
+      target: '1732579748973'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732584513421-9d4dee31-0af5-4eeb-b6cb-18dc2e58f04c-1732652888501-target
+      selected: false
+      source: '1732584513421'
+      sourceHandle: 9d4dee31-0af5-4eeb-b6cb-18dc2e58f04c
+      target: '1732652888501'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732584513421-c92668dd-88d9-425c-9cbf-b8a1c5214dcb-1732751470716-target
+      selected: false
+      source: '1732584513421'
+      sourceHandle: c92668dd-88d9-425c-9cbf-b8a1c5214dcb
+      target: '1732751470716'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1732584513421-88f12aea-1263-461a-9bb5-0a508df9295e-17333230235980-target
+      source: '1732584513421'
+      sourceHandle: 88f12aea-1263-461a-9bb5-0a508df9295e
+      target: '17333230235980'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 17333230235980-source-1732683749186-target
+      source: '17333230235980'
+      sourceHandle: source
+      target: '1732683749186'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: true
+        title: 1. 開始
+        type: start
+        variables:
+        - label: 問題
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: title
+        - label: 思考語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 輸出語系
+          max_length: 5
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: translate_to
+      height: 141
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 386
+      positionAbsolute:
+        x: 30
+        y: 386
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: e18aef50-3449-4259-9559-c4d17101d533
+          role: system
+          text: '請以台灣國家科學及技術委員會（NSTC）專員的觀點，將使用者輸入的問題，擴展並生成 3-5 個具體且具深度的子問題
+
+
+            規範：
+
+            1. 針對使用者提出的問題，首先進行關鍵字或關鍵短語的提取與分析。
+
+            2. 基於提取出的關鍵字或短語，生成與問題相關的具體搜尋引擎查詢語句。
+
+            3.  確保所有生成的問題保留原始問題的主題和焦點。
+
+            4. 生成能夠細分使用者問題的搜尋引擎查詢，這些查詢應協助深入了解問題的各個面向。
+
+            5. 輸出的內容僅包含搜尋查詢，無需附加任何解釋或描述。
+
+            6. 輸出格式為純文字，使用逗號分隔各查詢項目，避免使用XML標籤或其他格式。
+
+            7. 輸出必須簡潔明瞭，並專注於提供實際可用的搜尋查詢。
+
+            '
+        - id: b0e446f2-b714-41e9-8eb6-292187a97796
+          role: user
+          text: '問題：{{#1730257085761.title#}}
+
+            language：{{#1730257085761.language#}}
+
+            '
+        selected: false
+        title: 2. 問題擴展 (LLM)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730257098742'
+      position:
+        x: 333
+        y: 386
+      positionAbsolute:
+        x: 333
+        y: 386
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(input_str: str) -> dict:\n    if not input_str:\n        return\
+          \ {'result': []}\n    input_str = input_str\n    input_str = input_str.strip().strip('\"\
+          ')\n    items = [item.strip() for item in input_str.split(',')]\n    \n\
+          \    return {'result': items}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: 3. 擴展問題整理 (code)
+        type: code
+        variables:
+        - value_selector:
+          - '1730257098742'
+          - text
+          variable: input_str
+      height: 53
+      id: '1730257648212'
+      position:
+        x: 636
+        y: 386
+      positionAbsolute:
+        x: 636
+        y: 386
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: continue-on-error
+        height: 333
+        is_parallel: true
+        iterator_selector:
+        - '1730257648212'
+        - result
+        output_selector:
+        - '1730259235391'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1730257830072start
+        title: 4. 搜尋問題相關資訊及答案 (Search & LLM))
+        type: iteration
+        width: 913
+      height: 333
+      id: '1730257830072'
+      position:
+        x: 939
+        y: 386
+      positionAbsolute:
+        x: 939
+        y: 386
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 913
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1730257830072start
+      parentId: '1730257830072'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 963
+        y: 454
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: TavilySearch
+        tool_configurations:
+          exclude_domains: null
+          include_answer: null
+          include_domains: null
+          include_images: null
+          include_raw_content: null
+          max_results: 5
+          search_depth: basic
+        tool_label: TavilySearch
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '台灣國家科學及技術委員會 (NSTC): {{#1730257830072.item#}}'
+        type: tool
+      height: 245
+      id: '1730257879652'
+      parentId: '1730257830072'
+      position:
+        x: 128
+        y: 67
+      positionAbsolute:
+        x: 1067
+        y: 453
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - edition_type: basic
+          id: d8e18834-ba12-4acb-b376-15340d30a3e3
+          jinja2_text: '"{research_summary}" Using the above information, answer the
+            following question or topic: "{question}" in a detailed report — The report
+            should focus on the answer to the question, should be well structured,
+            informative, in depth, with facts and numbers if available, a minimum
+            of 1,200 words and with markdown syntax and apa format. Write all source
+            urls at the end of the report in apa format. You should write your report
+            only based on the given information and nothing else.'
+          role: system
+          text: "Your goal is to provide answers based on information from the internet.\
+            \ \nYou must use the provided Tavily search API function to find relevant\
+            \ online information. \nYou should never use your own knowledge to answer\
+            \ questions.\nPlease include relevant url sources in the end of your answers"
+        - id: b23ba544-1b25-4d0a-abdf-34a6c22a2c76
+          role: user
+          text: "language：{{#1730257085761.language#}}\n \"{{#1730257879652.text#}}\"\
+            \ Using the above information, answer the following question or topic:\
+            \ \"{{#1730257830072.item#}} \"\n"
+        selected: false
+        title: 4. 搜尋問題相關資訊及答案 (Search & LLM))
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1730259235391'
+      parentId: '1730257830072'
+      position:
+        x: 416.1699410031715
+        y: 74.62554586921203
+      positionAbsolute:
+        x: 1355.1699410031715
+        y: 460.62554586921203
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732652888501'
+          - text
+          variable: output
+        selected: false
+        title: 8. OUTPUT CHINESE
+        type: end
+      height: 89
+      id: '1732579748973'
+      position:
+        x: 2821
+        y: 518
+      positionAbsolute:
+        x: 2821
+        y: 518
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: a52707dc-5fd1-4e44-b938-761b2f13e7e9
+          conditions:
+          - comparison_operator: contains
+            id: e85cf536-ad22-4509-a7d8-2e72b30a8f01
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          - comparison_operator: contains
+            id: 3b2e5344-97d7-4710-a79f-178587db5d5f
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate_to
+          id: a52707dc-5fd1-4e44-b938-761b2f13e7e9
+          logical_operator: and
+        - case_id: 9d4dee31-0af5-4eeb-b6cb-18dc2e58f04c
+          conditions:
+          - comparison_operator: contains
+            id: 8567ec72-b3a3-49f4-8e4f-d236bb6fdcbe
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          - comparison_operator: contains
+            id: f9520544-0695-4d40-b980-0f4249657886
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate_to
+          id: 9d4dee31-0af5-4eeb-b6cb-18dc2e58f04c
+          logical_operator: and
+        - case_id: 88f12aea-1263-461a-9bb5-0a508df9295e
+          conditions:
+          - comparison_operator: contains
+            id: 6a9aae0a-041d-434c-91cb-c9a7fe82dff2
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          - comparison_operator: contains
+            id: 30f5412f-2389-4e9f-8004-c541f2ceb607
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate_to
+          id: 88f12aea-1263-461a-9bb5-0a508df9295e
+          logical_operator: and
+        - case_id: c92668dd-88d9-425c-9cbf-b8a1c5214dcb
+          conditions:
+          - comparison_operator: contains
+            id: d9c8a63b-23cd-454f-a55b-58eb147f14b2
+            value: Chinese
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - language
+          - comparison_operator: contains
+            id: 625e8a4f-b708-4db8-9a9d-5a2f66ee6eaa
+            value: English
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - translate_to
+          id: c92668dd-88d9-425c-9cbf-b8a1c5214dcb
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 6. 否需要翻譯
+        type: if-else
+      height: 373
+      id: '1732584513421'
+      position:
+        x: 2215
+        y: 386
+      positionAbsolute:
+        x: 2215
+        y: 386
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '17333139837460'
+          - text
+          variable: text
+        selected: false
+        title: 7. OUTPUT ENGLISH
+        type: end
+      height: 89
+      id: '1732584586619'
+      position:
+        x: 2518
+        y: 386
+      positionAbsolute:
+        x: 2518
+        y: 386
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 87d51bbc-908a-4587-9211-e52a1604ab54
+          role: system
+          text: '你是一位精通文件翻譯及潤飾的專家，專門將各種語言內容改寫為符合台灣在地風格的中文 (zh-TW)。請特別注意使用貼近台灣本地文化、語言習慣以及流行用語的表達方式，以使翻譯後的內容更加自然且具親和力。
+
+            翻譯時請務必做到以下幾點：
+
+            1. 用語流暢自然，避免生硬的直譯或外來語痕跡。
+
+            2. 注重台灣本地用語的靈活運用，例如詞彙、語氣和句型。
+
+            3. 內容應適應台灣讀者的閱讀習慣，做到通順且易於理解。
+
+            4. 若參考內容與待翻譯內容風格有所差異，請以台灣在地化為首要目標進行調整，確保結果達到最佳效果。
+
+            '
+        - id: 6a1f56c0-e611-4784-8772-419218800980
+          role: user
+          text: '請將以下文本翻譯為台灣標準中文（zh-TW），並進行語意校正與潤飾，確保用詞符合台灣用語習慣，語句通順流暢。除了翻譯及潤飾外，請勿加入額外的內容或提供任何補充說明。
+
+            文本內容：
+
+            {{#17333139837460.text#}}'
+        selected: false
+        title: 7. 翻譯成中文 (LLM TAIDE)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732652888501'
+      position:
+        x: 2518
+        y: 514
+      positionAbsolute:
+        x: 2518
+        y: 514
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '17333230235980'
+          - text
+          variable: text
+        selected: false
+        title: 8. OUTPUT CHINESE
+        type: end
+      height: 89
+      id: '1732683749186'
+      position:
+        x: 2821
+        y: 652.8571428571428
+      positionAbsolute:
+        x: 2821
+        y: 652.8571428571428
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: ef3d2a57-9b93-45c7-abe0-deebd53cb491
+          role: system
+          text: "You are an expert in document translation and refinement, specializing\
+            \ in adapting content into natural, culturally-appropriate American English.\
+            \ Your focus is on ensuring the translation aligns with American English\
+            \ expressions, cultural nuances, and idiomatic language to make the content\
+            \ engaging and relatable. \n\nWhen translating and refining, please adhere\
+            \ to the following guidelines:  \n1. Ensure the language flows naturally,\
+            \ avoiding stiff literal translations or foreign-sounding phrasing.  \n\
+            2. Skillfully incorporate American English vocabulary, tone, and sentence\
+            \ structures.  \n3. Tailor the content to the reading habits of American\
+            \ English audiences, making it clear, concise, and easy to understand.\
+            \  \n4. When the source content's style differs from the target tone,\
+            \ prioritize localization into American English to achieve the best result.\
+            \  \n"
+        - id: 501614cf-e0ab-44c2-a66e-a016b50985c8
+          role: user
+          text: "Please translate the following text into American English, focusing\
+            \ on semantic accuracy and stylistic refinement to ensure the language\
+            \ is idiomatic and polished. Do not add any additional content or commentary\
+            \ beyond the translation and revision.\n\nText to translate:  \n{{#17333139837460.text#}}"
+        selected: false
+        title: 7. 翻譯成英文 (LLM TAIDE)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732751470716'
+      position:
+        x: 2518
+        y: 778
+      positionAbsolute:
+        x: 2518
+        y: 778
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732751470716'
+          - text
+          variable: text
+        selected: false
+        title: 8. OUTPUT ENGLISH
+        type: end
+      height: 89
+      id: '1732751509579'
+      position:
+        x: 2821
+        y: 782
+      positionAbsolute:
+        x: 2821
+        y: 782
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1730257830072'
+          - output
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 3ef1efde-48b7-4f8d-830b-44e92815950f
+          role: system
+          text: "您是台灣國家科學及技術委員會（NSTC）的專業專員，具備專業的政策分析與執行能力，負責針對立法委員提出的問題提供深入且具權威性的回應。請以國科會的立場，根據委員的問題與提供的背景資訊，撰寫一份以\
+            \ **「{{#1730257085761.title#}}」** 為標題的報告，清楚闡明國科會的政策、立場與解決方案。  \n\n###\
+            \ 報告撰寫指導：  \n\n1. **聚焦議題，結構明確**：  \n   - 緊扣委員提出的核心問題，避免偏離主題或加入無關內容。  \n\
+            \   - 報告需條理清晰，結構合理，涵蓋背景分析、政策闡述與具體解決方案。  \n\n2. **以國科會立場作答**：  \n   - 報告需清楚呈現國科會的政策方針、執行現況與回應計畫，避免以第三方角度對國科會進行建議。\
+            \  \n   - 提供國科會已採取的行動與後續計畫，展現主動解決問題的能力。  \n\n3. **專業性與權威性**：  \n   - 採用專業、精確且禮貌的語言，反映國科會作為專業機構的角色與責任。\
+            \  \n   - 結合技術與政策細節，提供可信且具執行力的解決方案，體現國科會的專業能力。  \n\n4. **權威資料支持**：  \n\
+            \   - 引用經驗證的數據、政策文件或相關研究，確保報告內容具科學性與可驗證性。  \n   - 附上引用來源與參考文獻，確保讀者能進一步核實資料。\
+            \  \n\n### 報告結構：  \n1. ** 為標題**： {{#1730257085761.title#}}\n\n2. **問題陳述**：\
+            \  \n   - 明確說明立法委員提出的核心問題與關注點，簡述其重要性與影響範圍。  \n\n3. **背景分析與現況說明**：  \n\
+            \   - 提供相關背景資訊，解釋問題產生的原因與現有政策的執行情況，結合數據與實例佐證。  \n  \n4. **國科會的回應與解決方案**：\
+            \  \n   - 詳細闡述國科會的政策立場、既有計畫與實際執行的具體步驟。  \n   - 針對問題提供國科會的解決方案，包含近期行動與長期策略。\
+            \  \n\n5. **結論與行動計畫**：  \n   - 總結國科會的回應要點，清楚列出後續行動計畫與執行時間表。  \n   - 確保委員理解國科會對該問題的重視與積極應對的態度。\
+            \  "
+        - id: 04881f0e-1a81-4c5c-813a-5123d62689e8
+          role: user
+          text: "### 資料輸入：  \n- 委員提問：**{{#1730257085761.title#}}**  \n- 語言：**{{#1730257085761.language#}}**\
+            \  \n- 背景資訊：**{{#context#}}**  \n\n1. Provide a comprehensive research\
+            \ report in the specified language, strictly adhering to the given topic\
+            \ and avoiding unnecessary context or small talk.\n2. Ensure the report\
+            \ includes detailed citations and accessible URLs for referenced literature.\n"
+        selected: false
+        title: 5. 問題相關資訊及答案彙整 (Search & LLM))
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '17333139837460'
+      position:
+        x: 1912
+        y: 386
+      positionAbsolute:
+        x: 1912
+        y: 386
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"您是台灣國家科學及技術委員會（NSTC）的專業專員，負責針對與該委員會相關的議題提供權威性的分析與回應。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"請根據委員提出的問題與背景資訊，撰寫一份以
+          \"","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"\"
+          為報告標題的深入且全面的專業報告。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"###
+          指導原則：  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"1.
+          **聚焦核心問題**：  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          嚴格圍繞委員提出的具體問題進行分析與回答，避免多餘或與主題無關的內容。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          報告應結構清晰，直接切入重點，分段闡述，並提供清晰的結論與建議。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"2.
+          **提供可靠參考資料**：  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          報告需包含詳細的引用，並引用學術文章、政府報告、官方數據或其他經驗證的權威性來源。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          明確列出每一項資料的出處，附帶完整參考格式及超連結，確保讀者能方便核實。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"3.
+          **專業語氣與表達**：  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          使用專業、清晰且禮貌的語言進行撰寫，符合政策制定者或相關專業人士的需求。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          報告應體現高度專業性與政策敏感性，適當使用技術術語並避免過度簡化。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"###
+          報告結構：  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          **問題陳述**：簡要說明所要解決的核心問題。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          **背景分析**：基於背景資訊提供必要的數據與分析支持。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          **深入回應**：針對問題進行詳細分析，引用權威資料支持，並提出具體建議或解決方案。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          **結論與建議**：概述報告要點，提出政策層面的建議或後續行動方案。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"###
+          資料輸入：  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          委員問題：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          語言：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          背景資訊：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1733320060611'
+      position:
+        x: 1952.3637695312502
+        y: 576.1494729178293
+      positionAbsolute:
+        x: 1952.3637695312502
+        y: 576.1494729178293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"修改後的
+          Prompt：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"您是台灣國家科學及技術委員會（NSTC）的專業專員，具備專業的政策分析能力，負責針對立法委員提出的問題提供深入且具權威性的回應。請根據委員的問題與提供的背景資訊，撰寫一份以
+          「","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"」
+          為主題的專業報告。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"報告撰寫指導：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"聚焦議題，條理清晰：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"針對委員的具體提問進行分析，避免偏離核心議題或過多冗長敘述。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"報告需條理分明，結構設計合理，涵蓋背景資訊、核心分析及具體建議等要素。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"嚴謹引用與佐證：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"使用學術文章、官方數據、政策文件等經過驗證的權威資料進行佐證。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"清楚註明引用來源，附上參考文獻清單及超連結，確保報告的公信力與核查便利性。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"專業語氣與政策敏感性：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"採用專業、禮貌且精確的語言，適合政策制定者或技術專業人士的需求。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"報告需展現政策敏感度，適當使用技術術語，確保專業性與易讀性的平衡。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"報告結構：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"核心問題概述：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"簡述立法委員提出的核心問題，明確報告需解決的重點。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"背景分析與數據支撐：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"提供與議題相關的背景資訊，列舉重要數據與相關現狀，幫助讀者全面了解問題的脈絡。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"問題深入剖析：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"針對核心問題進行詳細解析，結合權威資料提出洞察，分析其政策影響與技術挑戰。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"政策建議與解決方案：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"提供實際且可行的建議，包括政策層面、技術層面或其他必要行動方案。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"結論與後續建議：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"總結報告要點，提出後續追蹤重點或建議進一步研究的領域。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"資料輸入參考：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"委員提問：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"語言：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"背景資訊：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1733321288471'
+      position:
+        x: 1972.3637695312495
+        y: 743.2923300606864
+      positionAbsolute:
+        x: 1972.3637695312495
+        y: 743.2923300606864
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama3-TAIDE-LX-70B-Chat
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 87d51bbc-908a-4587-9211-e52a1604ab54
+          role: system
+          text: '你是一位精通文件翻譯及潤飾的專家，專門將各種語言內容改寫為符合台灣在地風格的中文 (zh-TW)。請特別注意使用貼近台灣本地文化、語言習慣以及流行用語的表達方式，以使翻譯後的內容更加自然且具親和力。
+
+            翻譯時請務必做到以下幾點：
+
+            1. 用語流暢自然，避免生硬的直譯或外來語痕跡。
+
+            2. 注重台灣本地用語的靈活運用，例如詞彙、語氣和句型。
+
+            3. 內容應適應台灣讀者的閱讀習慣，做到通順且易於理解。
+
+            4. 若參考內容與待翻譯內容風格有所差異，請以台灣在地化為首要目標進行調整，確保結果達到最佳效果。
+
+            '
+        - id: 6a1f56c0-e611-4784-8772-419218800980
+          role: user
+          text: '請將以下文本翻譯為台灣標準中文（zh-TW），並進行語意校正與潤飾，確保用詞符合台灣用語習慣，語句通順流暢。除了翻譯及潤飾外，請勿加入額外的內容或提供任何補充說明。
+
+            文本內容：
+
+            {{#17333139837460.text#}}'
+        selected: false
+        title: 7. 翻譯成中文 (LLM TAIDE) (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '17333230235980'
+      position:
+        x: 2523.792340959821
+        y: 670.4351872035436
+      positionAbsolute:
+        x: 2523.792340959821
+        y: 670.4351872035436
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 79.35000000000036
+      y: -142.29999999999995
+      zoom: 0.7
