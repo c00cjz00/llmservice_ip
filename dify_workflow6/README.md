@@ -1,1 +1,1 @@
-123
+- [HuatuoGPT-o1, Towards Medical Complex Reasoning with LLMs](https://arxiv.org/abs/2412.18925)
