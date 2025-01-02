@@ -1,0 +1,513 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: think2
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.4
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1735818788849-source-1735819229644-target
+      source: '1735818788849'
+      sourceHandle: source
+      target: '1735819229644'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1735819229644-source-1735819335271-target
+      source: '1735819229644'
+      sourceHandle: source
+      target: '1735819335271'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1735819335271-source-1735819393419-target
+      source: '1735819335271'
+      sourceHandle: source
+      target: '1735819393419'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 1735819393419-source-1735819503510-target
+      source: '1735819393419'
+      sourceHandle: source
+      target: '1735819503510'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1735819503510-true-1735819532931-target
+      source: '1735819503510'
+      sourceHandle: 'true'
+      target: '1735819532931'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1735819532931-source-1735819643750-target
+      source: '1735819532931'
+      sourceHandle: source
+      target: '1735819643750'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1735819643750-source-1735819714571-target
+      source: '1735819643750'
+      sourceHandle: source
+      target: '1735819714571'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1735819714571-source-1735819829009-target
+      source: '1735819714571'
+      sourceHandle: source
+      target: '1735819829009'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: question
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: question
+        - label: answer
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: answer
+      height: 114
+      id: '1735818788849'
+      position:
+        x: 30
+        y: 262
+      positionAbsolute:
+        x: 30
+        y: 262
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 4ecf937a-53d4-4f94-b139-51a08b033961
+          role: system
+          text: "請使用「思考鏈 (CoT)」推理方法回答問題 <question>。您的回答應由多個步驟組成，每個步驟包括三種類型的動作：**「內在思考」**、**「最終結論」**\
+            \ 和 **「驗證」**：\n\n- **'內在思考'**：這是進行思考的步驟。請注意，描述徹底推理時需要多個「內在思考」步驟。每個步驟應先生成簡短的標題。\n\
+            - **'最終結論'**：在這一階段，您總結先前「內在思考」步驟中的正確推理並給出最終答案。此處無需標題。\n- **'驗證'**：在這一階段，您驗證「最終結論」步驟中的結論。如果結論正確，則結束過程；如果不正確，則返回「內在思考」進行進一步推理。此處無需標題。\n\
+            \n輸出格式必須嚴格遵循以下 JSON 結構：\n```json\n{\n\t\"CoT\": [\n\t\t{\"action\": \"\
+            內在思考\", \"title\": \"...\", \"content\": \"...\"},\n\t\t...,\n\t\t{\"\
+            action\": \"最終結論\", \"content\": \"...\"},\n\t\t{\"action\": \"驗證\", \"\
+            content\": \"...\"}\n\t]\n}"
+        - id: 1d06e527-afb9-45aa-99b6-24279ff34787
+          role: user
+          text: '<question>
+
+            {{#1735818788849.question#}}
+
+            </question>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1735819229644'
+      position:
+        x: 333
+        y: 262
+      positionAbsolute:
+        x: 333
+        y: 262
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\n\ndef main(json_string: str) -> dict:\n    # 清理掉 ```json\
+          \ 和 ``` 等符號，並移除 \\n\n    cleaned_string = (\n        json_string\n     \
+          \   .replace(\"```json\", \"\")\n        .replace(\"```\", \"\")\n     \
+          \   #.replace(\"\\n\", \"\")\n        .strip()\n    )\n    \n    # 將清理後的\
+          \ JSON 字串解析為字典\n    json_data = json.loads(cleaned_string)\n    \n    #\
+          \ 遍歷 CoT 資料並提取 action 為 \"最終結論\" 的 content\n    result = next(\n       \
+          \ (item[\"content\"] for item in json_data[\"CoT\"] if item[\"action\"]\
+          \ == \"最終結論\"),\n        None  # 預設值為 None，如果沒有找到符合條件的項目\n    )\n    return\
+          \ {\n        \"result\": result,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行
+        type: code
+        variables:
+        - value_selector:
+          - '1735819229644'
+          - text
+          variable: json_string
+      height: 52
+      id: '1735819335271'
+      position:
+        x: 636
+        y: 262
+      positionAbsolute:
+        x: 636
+        y: 262
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 90eedfc3-b8af-4417-8ea1-d9d25a59215d
+          role: system
+          text: 您提供了模型生成的回應 (<model_response>) 和參考答案 (<reference_answer>)。比較model_response和reference_answer，並判斷其正確性。您的任務是簡單地輸出「True」如果回應正確，否則輸出「False」。
+        - id: 8904529f-5a20-4c69-a818-b3d094f137d1
+          role: user
+          text: "<model_response>  \n{{#1735819229644.text#}}\n</model_response> \
+            \ \n\n<reference_answer>  \n{{#1735818788849.answer#}}\n</reference_answer>\
+            \  \n"
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1735819393419'
+      position:
+        x: 939
+        y: 262
+      positionAbsolute:
+        x: 939
+        y: 262
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 5597a3ab-7bde-450b-91df-714ac52b81d7
+            value: 'True'
+            varType: string
+            variable_selector:
+            - '1735819393419'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 124
+      id: '1735819503510'
+      position:
+        x: 1242
+        y: 262
+      positionAbsolute:
+        x: 1242
+        y: 262
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: e426f5da-d77a-46a9-aa3d-d4067f266f08
+          role: system
+          text: "您提供的 <Thought Process> 反映了模型根據 <Question> 進行推理的過程。 你的任務是將 <Thought\
+            \ Process> 重寫，使其更像人類直覺自然的思考過程。新的版本應該： \n1. 首先，內容會以一步一步的推理呈現，每一個想法都會在新的一行開始，並且行與行之間會有間隔。這樣的安排能夠幫助讀者更容易地跟隨邏輯的步驟。\n\
+            2. 我會避免使用結構化的標題或格式化，這樣就能讓內容更加自然流暢，像日常對話一樣。過渡語句會保持隨意而自然，例如「嗯」、「哦」、「還有」、「等等」這類詞語，能讓語氣更為輕鬆和親切。\n\
+            3. 當然，內容會有所擴展，我會加入更多細節和背景，讓推理過程變得更加豐富和有層次感。同時，我會確保邏輯清晰，但語氣仍保持對話感和直觀性，這樣不會讓人感覺生硬或過於學術化。\n\
+            \n直接返回如下所示的修訂後的自然思維(NaturalReasoning) JSON 格式：\n```json\n{\n  \"NaturalReasoning\"\
+            : \"...\"\n}\n```\n"
+        - id: 0ea9529b-7265-42a5-b1f6-ef2a726ecd0f
+          role: user
+          text: "<Thought Process>\n{{#1735819335271.result#}}\n</Thought Process>\
+            \ \n\n<Question> \n{{#1735818788849.question#}}\n</Question> \n"
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1735819532931'
+      position:
+        x: 1545
+        y: 262
+      positionAbsolute:
+        x: 1545
+        y: 262
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: adec8fad-345d-492d-9c0d-ac6c0a05b415
+          role: system
+          text: '您提供的<Internal Thinking> 代表您對 <Question> 的內部思考。基於此，生成一個豐富且高質量的最終回應給用戶。如果有明確的答案，請首先提供。確保您的最終回應緊密貼合
+            <Question>。回應的風格應盡可能模仿 GPT-4 的風格。僅輸出您的最終回應，且不要包含任何額外內容。
+
+            '
+        - id: 2fe793ae-c2a5-4edf-94d9-7418e1e1a387
+          role: user
+          text: '<Internal Thinking>
+
+            {{#1735819532931.text#}}
+
+            </Internal Thinking>
+
+
+            <Question>
+
+            {{#1735818788849.question#}}
+
+            </Question>
+
+            '
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1735819643750'
+      position:
+        x: 1848
+        y: 262
+      positionAbsolute:
+        x: 1848
+        y: 262
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: "1. 問題: \r\n{{ question }}\r\n\r\n2. 正解:\r\n{{ answer }}\r\n\r\n\
+          3. 思路: \r\n{{ cot }}\r\n\r\n4. 最終回答: \r\n{{ response }}\r\n"
+        title: 模板轉換
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1735818788849'
+          - question
+          variable: question
+        - value_selector:
+          - '1735818788849'
+          - answer
+          variable: answer
+        - value_selector:
+          - '1735819532931'
+          - text
+          variable: cot
+        - value_selector:
+          - '1735819643750'
+          - text
+          variable: response
+      height: 52
+      id: '1735819714571'
+      position:
+        x: 2151
+        y: 262
+      positionAbsolute:
+        x: 2151
+        y: 262
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1735819714571'
+          - output
+          variable: output
+        selected: false
+        title: 結束
+        type: end
+      height: 88
+      id: '1735819829009'
+      position:
+        x: 2454
+        y: 262
+      positionAbsolute:
+        x: 2454
+        y: 262
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Q:
+          在細胞週期的哪個階段，細胞對大多數被分類為相位特異性的化療藥物顯示出抗性？","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"A:
+          G0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1735819860183'
+      position:
+        x: 30
+        y: 400.00661577497215
+      positionAbsolute:
+        x: 30
+        y: 400.00661577497215
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: -1399.85
+      y: 68.30000000000001
+      zoom: 0.7

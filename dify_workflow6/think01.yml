@@ -1,0 +1,369 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: think01
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.4
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1735818125639-source-1735818151056-target
+      source: '1735818125639'
+      sourceHandle: source
+      target: '1735818151056'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 1735818151056-source-1735818392610-target
+      source: '1735818151056'
+      sourceHandle: source
+      target: '1735818392610'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: end
+      id: 1735818392610-false-1735818416887-target
+      source: '1735818392610'
+      sourceHandle: 'false'
+      target: '1735818416887'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1735818392610-true-1735818560178-target
+      source: '1735818392610'
+      sourceHandle: 'true'
+      target: '1735818560178'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1735818560178-source-1735818609209-target
+      source: '1735818560178'
+      sourceHandle: source
+      target: '1735818609209'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: question
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: question
+        - label: answer
+          max_length: 512
+          options: []
+          required: true
+          type: paragraph
+          variable: answer
+      height: 114
+      id: '1735818125639'
+      position:
+        x: 79
+        y: 219
+      positionAbsolute:
+        x: 79
+        y: 219
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 93f59a01-4723-42ab-87eb-2e8bc0739e53
+          role: system
+          text: "您是一位專精於篩選和評估多選題以用於高級推理任務的專家。您的工作是評估給定的問題並確定它是否符合以下標準：  \n1. **推理深度**：問題應該需要更深層次的推理。如果問題顯得過於簡單，請將其標記為「Too\
+            \ Simple」。  \n2. **明確的正確答案**：問題必須有唯一且明確的正確答案。如果問題要求「incorrect options」或允許多個正確答案，請將其標記為「Ambiguous\
+            \ Answer」。  \n3. **可改寫為開放式問題的可行性**：問題應適合重新格式化為開放式問題。如果問題無法輕易改寫為開放式問題並具有明確的標準答案，請將其標記為「Not\
+            \ Reformulatable」。  \n\n對於每個問題，提供以下評估之一：  \n- \"iPass\" (The question\
+            \ meets all the criteria.)  \n- \"Too Simple\"  \n- \"Ambiguous Answer\"\
+            \  \n- \"Not Reformulatable\""
+        - id: 31e941b1-328e-41a9-9e75-d904c4ce3277
+          role: user
+          text: "<Multiple-choice Question>  \n{{#1735818125639.question#}}\nCorrect\
+            \ Answer:  {{#1735818125639.answer#}}\n</Multiple-choice Question> \n "
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1735818151056'
+      position:
+        x: 354
+        y: 206
+      positionAbsolute:
+        x: 354
+        y: 206
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"A
+          45-year-old homeless man is brought to the emergency department after he
+          was found unconscious at the park. The patient''s past medical history is
+          unknown; however, he was admitted to the emergency department 2 times over
+          the past year for severe pain treated with hydromorphone and IV fluids.
+          His temperature is 100°F (37.8°C), blood pressure is 97/48 mmHg, pulse is
+          140/min, respirations are 18/min, and oxygen saturation is 99% on room air.
+          The patient smells of alcohol and is covered in emesis. Basic laboratory
+          values are ordered as seen below.\\n\\nHemoglobin: 6 g/dL\\nHematocrit:
+          20%\\nLeukocyte count: 6,500/mm^3 with normal differential\\nPlatelet count:
+          197,000/mm^3\\nReticulocyte count: 0.4%\\n\\nWhich of the following is associated
+          with the most likely diagnosis?","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"\"A\":
+          \"Benign genetic carrier condition\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"\"B\":
+          \"Folate deficiency\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"\"C\":
+          \"Iron deficiency\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"\"D\":
+          \"Parvovirus B19 infection\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"\"E\":
+          \"Vitamin B12 deficiency\"","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1735818179153'
+      position:
+        x: 130.004638671875
+        y: 378.00463104248047
+      positionAbsolute:
+        x: 130.004638671875
+        y: 378.00463104248047
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Parvovirus
+          B19 infection ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1735818191740'
+      position:
+        x: 429.004638671875
+        y: 432.00463104248047
+      positionAbsolute:
+        x: 429.004638671875
+        y: 432.00463104248047
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 91f84173-7a70-4a56-9fe6-e0936aee7fbd
+            value: iPass
+            varType: string
+            variable_selector:
+            - '1735818151056'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 124
+      id: '1735818392610'
+      position:
+        x: 403
+        y: 96
+      positionAbsolute:
+        x: 403
+        y: 96
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1735818125639'
+          - answer
+          variable: answer
+        selected: false
+        title: 結束 2
+        type: end
+      height: 88
+      id: '1735818416887'
+      position:
+        x: 738
+        y: 287
+      positionAbsolute:
+        x: 738
+        y: 287
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - role: system
+          text: "我將提供一個選擇題，您的任務是將其改寫為開放式問題，並提供一個真實答案。要求如下：\n\n1. 問題必須具體，針對原始選擇題中所測試的點。確保問題是開放式的，也就是說不提供選項，但必須有明確的真實答案。\n\
+            2. 根據原始問題的正確答案，提供一個簡明的真實答案。答案應該允許精確匹配，以判斷模型的回答是否正確。\n\n這是需要改寫的選擇題：  \n\
+            <Multiple-choice Question>  \n{{#1735818125639.question#}}\nCorrect Answer:\
+            \ {{#1735818125639.answer#}}\n</Multiple-choice Question>  \n\n請以以下 JSON\
+            \ 格式輸出結果：  \n```json\n{{\n\"Open-ended Verifiable Question\": \"...\"\
+            ,\n\"Ground-True Answer\": \"...\"\n}}\n```"
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1735818560178'
+      position:
+        x: 712
+        y: 128
+      positionAbsolute:
+        x: 712
+        y: 128
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1735818560178'
+          - text
+          variable: text
+        selected: false
+        title: 結束 2
+        type: end
+      height: 88
+      id: '1735818609209'
+      position:
+        x: 1015
+        y: 128
+      positionAbsolute:
+        x: 1015
+        y: 128
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -620.5
+      y: 95.5
+      zoom: 1
