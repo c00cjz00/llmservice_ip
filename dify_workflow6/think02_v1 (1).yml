@@ -1,0 +1,1439 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: think02_v1
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.4
+workflow:
+  conversation_variables:
+  - description: ''
+    id: b5c717ab-20e4-4ca7-86aa-d1b1fa9cc99f
+    name: previous
+    selector:
+    - conversation
+    - previous
+    value: ''
+    value_type: string
+  - description: ''
+    id: 7e4f31ca-5df1-4f5b-aab4-831ec77a5dca
+    name: peter
+    selector:
+    - conversation
+    - peter
+    value: 0
+    value_type: number
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: code
+      id: 1735824375375-source-1735824428759-target
+      selected: false
+      source: '1735824375375'
+      sourceHandle: source
+      target: '1735824428759'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1735824428759-source-1735824442207-target
+      selected: false
+      source: '1735824428759'
+      sourceHandle: source
+      target: '1735824442207'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: llm
+        targetType: code
+      id: 1735825020136-source-1735825116130-target
+      selected: false
+      source: '1735825020136'
+      sourceHandle: source
+      target: '1735825116130'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: code
+        targetType: llm
+      id: 1735825116130-source-1735825160780-target
+      selected: false
+      source: '1735825116130'
+      sourceHandle: source
+      target: '1735825160780'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: llm
+        targetType: if-else
+      id: 1735825160780-source-1735825234329-target
+      selected: false
+      source: '1735825160780'
+      sourceHandle: source
+      target: '1735825234329'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: iteration-start
+        targetType: if-else
+      id: 1735824442207start-source-1735824513560-target
+      selected: false
+      source: 1735824442207start
+      sourceHandle: source
+      target: '1735824513560'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: if-else
+        targetType: llm
+      id: 1735824513560-true-1735825020136-target
+      selected: false
+      source: '1735824513560'
+      sourceHandle: 'true'
+      target: '1735825020136'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: if-else
+        targetType: assigner
+      id: 1735825234329-true-1735824560150-target
+      selected: false
+      source: '1735825234329'
+      sourceHandle: 'true'
+      target: '1735824560150'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: if-else
+        targetType: assigner
+      id: 1735825234329-false-1735826951306-target
+      selected: false
+      source: '1735825234329'
+      sourceHandle: 'false'
+      target: '1735826951306'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: if-else
+        targetType: llm
+      id: 1735824513560-fc1dad4d-561d-42f0-8e3c-d3a2406164cb-1735827141280-target
+      selected: false
+      source: '1735824513560'
+      sourceHandle: fc1dad4d-561d-42f0-8e3c-d3a2406164cb
+      target: '1735827141280'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: code
+        targetType: llm
+      id: 1735827259493-source-1735827283352-target
+      selected: false
+      source: '1735827259493'
+      sourceHandle: source
+      target: '1735827283352'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: llm
+        targetType: if-else
+      id: 1735827283352-source-1735827350364-target
+      selected: false
+      source: '1735827283352'
+      sourceHandle: source
+      target: '1735827350364'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: if-else
+        targetType: assigner
+      id: 1735827350364-true-1735827373706-target
+      selected: false
+      source: '1735827350364'
+      sourceHandle: 'true'
+      target: '1735827373706'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: if-else
+        targetType: assigner
+      id: 1735827350364-false-1735827541079-target
+      selected: false
+      source: '1735827350364'
+      sourceHandle: 'false'
+      target: '1735827541079'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: if-else
+        targetType: template-transform
+      id: 1735824513560-false-1735827879479-target
+      selected: false
+      source: '1735824513560'
+      sourceHandle: 'false'
+      target: '1735827879479'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: llm
+        targetType: code
+      id: 1735827141280-source-1735827259493-target
+      selected: false
+      source: '1735827141280'
+      sourceHandle: source
+      target: '1735827259493'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1735827879479-source-1735827989553-target
+      selected: false
+      source: '1735827879479'
+      sourceHandle: source
+      target: '1735827989553'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1735824442207-source-1735829210474-target
+      selected: false
+      source: '1735824442207'
+      sourceHandle: source
+      target: '1735829210474'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: assigner
+        targetType: template-transform
+      id: 1735826951306-source-1735829832583-target
+      selected: false
+      source: '1735826951306'
+      sourceHandle: source
+      target: '1735829832583'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1735829832583-source-1735827989553-target
+      selected: false
+      source: '1735829832583'
+      sourceHandle: source
+      target: '1735827989553'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: assigner
+        targetType: template-transform
+      id: 1735827541079-source-1735829881430-target
+      selected: false
+      source: '1735827541079'
+      sourceHandle: source
+      target: '1735829881430'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1735829881430-source-1735827989553-target
+      selected: false
+      source: '1735829881430'
+      sourceHandle: source
+      target: '1735827989553'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: assigner
+        targetType: template-transform
+      id: 1735824560150-source-1735830151072-target
+      selected: false
+      source: '1735824560150'
+      sourceHandle: source
+      target: '1735830151072'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: assigner
+        targetType: template-transform
+      id: 1735827373706-source-1735830188900-target
+      selected: false
+      source: '1735827373706'
+      sourceHandle: source
+      target: '1735830188900'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1735830151072-source-1735827989553-target
+      selected: false
+      source: '1735830151072'
+      sourceHandle: source
+      target: '1735827989553'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735824442207'
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1735830188900-source-1735827989553-target
+      selected: false
+      source: '1735830188900'
+      sourceHandle: source
+      target: '1735827989553'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1735829210474-source-1735830828115-target
+      selected: false
+      source: '1735829210474'
+      sourceHandle: source
+      target: '1735830828115'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1735830828115-source-1735830916619-target
+      selected: false
+      source: '1735830828115'
+      sourceHandle: source
+      target: '1735830916619'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1735830916619-source-1735830962922-target
+      selected: false
+      source: '1735830916619'
+      sourceHandle: source
+      target: '1735830962922'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1735830962922-source-1735831023104-target
+      selected: false
+      source: '1735830962922'
+      sourceHandle: source
+      target: '1735831023104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: question
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: question
+        - label: answer
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: answer
+      height: 116
+      id: '1735824375375'
+      position:
+        x: 30
+        y: 513.5
+      positionAbsolute:
+        x: 30
+        y: 513.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main() -> dict:\n    return {\n        \"result\": [\n        \
+          \    \"False\",\n            \"False\"\n        ]\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: 代碼執行
+        type: code
+        variables: []
+      height: 54
+      id: '1735824428759'
+      position:
+        x: 333
+        y: 513.5
+      positionAbsolute:
+        x: 333
+        y: 513.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 627
+        is_parallel: false
+        iterator_selector:
+        - '1735824428759'
+        - result
+        output_selector:
+        - '1735827989553'
+        - output
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1735824442207start
+        title: 迭代
+        type: iteration
+        width: 2419
+      height: 627
+      id: '1735824442207'
+      position:
+        x: 636
+        y: 513.5
+      positionAbsolute:
+        x: 636
+        y: 513.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 2419
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1735824442207start
+      parentId: '1735824442207'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 660
+        y: 581.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '='
+            id: a761d624-01d9-461d-986e-1bf8d031c559
+            value: '0'
+            varType: number
+            variable_selector:
+            - conversation
+            - peter
+          id: 'true'
+          logical_operator: and
+        - case_id: fc1dad4d-561d-42f0-8e3c-d3a2406164cb
+          conditions:
+          - comparison_operator: '='
+            id: 387bf8d9-64cc-4c1e-83cd-1a851e60584e
+            value: '1'
+            varType: number
+            variable_selector:
+            - conversation
+            - peter
+          logical_operator: and
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 174
+      id: '1735824513560'
+      parentId: '1735824442207'
+      position:
+        x: 76.57142857142867
+        y: 183.57142857142867
+      positionAbsolute:
+        x: 712.5714285714287
+        y: 697.0714285714287
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        items:
+        - input_type: constant
+          operation: set
+          value: 2
+          variable_selector:
+          - conversation
+          - peter
+          write_mode: over-write
+        iteration_id: '1735824442207'
+        selected: false
+        title: 變數分配器
+        type: assigner
+        version: '2'
+      height: 88
+      id: '1735824560150'
+      parentId: '1735824442207'
+      position:
+        x: 1517.0114886573901
+        y: 83.57142857142856
+      positionAbsolute:
+        x: 2153.01148865739
+        y: 597.0714285714286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 4cb01722-3e6c-4b37-b0f2-cbf8262c9035
+          role: system
+          text: "請使用「思考鏈 (CoT)」推理方法回答問題 <question>。您的回答應由多個步驟組成，每個步驟包括三種類型的動作：**「內在思考」**、**「最終結論」**\
+            \ 和 **「驗證」**：\n\n- **'內在思考'**：這是進行思考的步驟。請注意，描述徹底推理時需要多個「內在思考」步驟。每個步驟應先生成簡短的標題。\n\
+            - **'最終結論'**：在這一階段，您總結先前「內在思考」步驟中的正確推理並給出最終答案。此處無需標題。\n- **'驗證'**：在這一階段，您驗證「最終結論」步驟中的結論。如果結論正確，則結束過程；如果不正確，則返回「內在思考」進行進一步推理。此處無需標題。\n\
+            \n輸出格式必須嚴格遵循以下 JSON 結構：\n```json\n{\n\t\"CoT\": [\n\t\t{\"action\": \"\
+            內在思考\", \"title\": \"...\", \"content\": \"...\"},\n\t\t...,\n\t\t{\"\
+            action\": \"最終結論\", \"content\": \"...\"},\n\t\t{\"action\": \"驗證\", \"\
+            content\": \"...\"}\n\t]\n}"
+        - id: 03fbb09e-7f0a-48e5-a878-b3e91d23f00a
+          role: user
+          text: '<question>
+
+            {{#1735824375375.question#}}
+
+            </question>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1735825020136'
+      parentId: '1735824442207'
+      position:
+        x: 332.28571428571445
+        y: 67.85714285714289
+      positionAbsolute:
+        x: 968.2857142857144
+        y: 581.3571428571429
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(json_string: str) -> dict:\n    # 清理掉 ```json\
+          \ 和 ``` 等符號，並移除 \\n\n    cleaned_string = (\n        json_string\n     \
+          \   .replace(\"```json\", \"\")\n        .replace(\"```\", \"\")\n     \
+          \   #.replace(\"\\n\", \"\")\n        .strip()\n    )\n    \n    # 將清理後的\
+          \ JSON 字串解析為字典\n    json_data = json.loads(cleaned_string)\n    \n    #\
+          \ 遍歷 CoT 資料並提取 action 為 \"最終結論\" 的 content\n    result = next(\n       \
+          \ (item[\"content\"] for item in json_data[\"CoT\"] if item[\"action\"]\
+          \ == \"最終結論\"),\n        None  # 預設值為 None，如果沒有找到符合條件的項目\n    )\n    return\
+          \ {\n        \"result\": result,\n    }\n"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1735825020136'
+          - text
+          variable: json_string
+      height: 54
+      id: '1735825116130'
+      parentId: '1735824442207'
+      position:
+        x: 668.7254066110565
+        y: 79.60014896574415
+      positionAbsolute:
+        x: 1304.7254066110565
+        y: 593.1001489657442
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 397c17f3-d58f-4e47-844e-88d4fb7331da
+          role: system
+          text: 您提供了模型生成的回應 (<model_response>) 和參考答案 (<reference_answer>)。比較model_response和reference_answer，並判斷其正確性。您的任務是簡單地輸出「True」如果回應正確，否則輸出「False」。
+        - id: 6be76570-7ee0-4cb8-aec3-d7410f601344
+          role: user
+          text: "<model_response>  \n{{#1735825116130.result#}}\n</model_response>\
+            \  \n\n<reference_answer>  \n{{#1735824375375.answer#}}\n</reference_answer>\
+            \  \n"
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1735825160780'
+      parentId: '1735824442207'
+      position:
+        x: 926.1908482142858
+        y: 93.71428571428578
+      positionAbsolute:
+        x: 1562.1908482142858
+        y: 607.2142857142858
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 63e7f9e9-9732-4bea-a5d9-9d5b265db69a
+            value: 'True'
+            varType: string
+            variable_selector:
+            - '1735825160780'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        selected: false
+        title: 條件分支 2
+        type: if-else
+      height: 126
+      id: '1735825234329'
+      parentId: '1735824442207'
+      position:
+        x: 1245.5714285714284
+        y: 65
+      positionAbsolute:
+        x: 1881.5714285714284
+        y: 578.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1735825020136'
+          - text
+          variable_selector:
+          - conversation
+          - previous
+          write_mode: over-write
+        - input_type: constant
+          operation: set
+          value: 1
+          variable_selector:
+          - conversation
+          - peter
+          write_mode: over-write
+        iteration_id: '1735824442207'
+        selected: false
+        title: 變數分配器 4
+        type: assigner
+        version: '2'
+      height: 116
+      id: '1735826951306'
+      parentId: '1735824442207'
+      position:
+        x: 1485.582917228819
+        y: 194.28571428571422
+      positionAbsolute:
+        x: 2121.582917228819
+        y: 707.7857142857142
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - role: system
+          text: "<response requirements>\n您的回答必須包含以下步驟，每個步驟由三種類型的行動組成：**「內在思考」**、**「最終結論」**\
+            \ 和 **「驗證」**：\n1. **內在思考**：將推理過程分解為多個簡明的步驟。每個步驟應以簡短的標題開始，以明確其目的。\n2. **最終結論**：總結所有之前「內在思考」步驟中的正確推理，並提供最終答案。本部分不需要標題。\n\
+            3. **驗證**：驗證「最終結論」的準確性。如果結論正確，結束過程；否則，返回「內在思考」進行進一步改進。\n</response requirements>\n\
+            \n<question> 代表需要回答的問題\n<previous reasoning> 包含您之前的推理。\n\n您的任務是從當前的 \"\
+            Verification\" 步驟繼續。我已經手動審核了\"Inner Thinking\"，並確定 \"Final Conclusion\"\
+            \ 是錯誤的。您的 \"Verification\" 結果必須與我的結果一致。請通過探索解決此問題的新方法來完善\"Inner Thinking\"\
+            ，並構建一個新的\"Final Conclusion\"。\n\n### 輸出格式\n請嚴格遵循以下的 JSON 結構。您不需要重複之前的\"\
+            Inner Thinking\"。直接從下一個 \"Verification\" 階段開始。\n\n```json\n{\"CoT\": [\n\
+            \ {\"action\": \"Verification\", \"content\": \"...\"},\n {\"action\"\
+            : \"Inner Thinking\", \"title\": \"...\", \"content\": \"...\"},\n ...,\n\
+            \ {\"action\": \"Final Conclusion\", \"content\": \"...\"},\n {\"action\"\
+            : \"Verification\", \"content\": \"...\"}\n ]\n}\n"
+        - role: user
+          text: "<question>\n {{#sys.query#}}\n</question>\n\n<previous reasoning>\n\
+            {{#conversation.previous#}}\n</previous reasoning>"
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1735827141280'
+      parentId: '1735824442207'
+      position:
+        x: 348.0000000000002
+        y: 275.7142857142858
+      positionAbsolute:
+        x: 984.0000000000002
+        y: 789.2142857142858
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(json_string: str) -> dict:\n    # 清理掉 ```json\
+          \ 和 ``` 等符號，並移除 \\n\n    cleaned_string = (\n        json_string\n     \
+          \   .replace(\"```json\", \"\")\n        .replace(\"```\", \"\")\n     \
+          \   .replace(\"\\n\", \"\")\n        .strip()\n    )\n    \n    # 將清理後的\
+          \ JSON 字串解析為字典\n    json_data = json.loads(cleaned_string)\n    \n    #\
+          \ 遍歷 CoT 資料並提取 action 為 \"最終結論\" 或 \"Final Conclusion\" 的 content\n    result\
+          \ = next(\n        (item[\"content\"] for item in json_data[\"CoT\"] if\
+          \ item[\"action\"] in [\"最終結論\", \"Final Conclusion\"]),\n        None \
+          \ # 預設值為 None，如果沒有找到符合條件的項目\n    )\n    return {\n        \"result\": result,\n\
+          \    }"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 3
+        type: code
+        variables:
+        - value_selector:
+          - '1735827141280'
+          - text
+          variable: json_string
+      height: 54
+      id: '1735827259493'
+      parentId: '1735824442207'
+      position:
+        x: 915.2857142857147
+        y: 364.28571428571433
+      positionAbsolute:
+        x: 1551.2857142857147
+        y: 877.7857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: b0434a13-07b2-4666-b503-eab7c058b8b9
+          role: system
+          text: 您提供了模型生成的回應 (<model_response>) 和參考答案 (<reference_answer>)。比較model_response和reference_answer，並判斷其正確性。您的任務是簡單地輸出「True」如果回應正確，否則輸出「False」。
+        - id: 58ca50df-6ee6-48d3-bb5b-e3c5f118960a
+          role: user
+          text: "<model_response>  \n{{#1735827259493.result#}}\n</model_response>\
+            \  \n\n<reference_answer>  \n{{#1735824375375.answer#}}\n</reference_answer>\
+            \  \n"
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1735827283352'
+      parentId: '1735824442207'
+      position:
+        x: 969.714285714286
+        y: 224.28571428571433
+      positionAbsolute:
+        x: 1605.714285714286
+        y: 737.7857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: f6a319c0-fa99-4e08-870e-be1a9829faa7
+            value: 'True'
+            varType: string
+            variable_selector:
+            - '1735827283352'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        selected: false
+        title: 條件分支 3
+        type: if-else
+      height: 126
+      id: '1735827350364'
+      parentId: '1735824442207'
+      position:
+        x: 1218.4285714285713
+        y: 280.00000000000006
+      positionAbsolute:
+        x: 1854.4285714285713
+        y: 793.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        items:
+        - input_type: constant
+          operation: set
+          value: 2
+          variable_selector:
+          - conversation
+          - peter
+          write_mode: over-write
+        iteration_id: '1735824442207'
+        selected: false
+        title: 變數分配器 5
+        type: assigner
+        version: '2'
+      height: 88
+      id: '1735827373706'
+      parentId: '1735824442207'
+      position:
+        x: 1520.0000000000005
+        y: 334.28571428571456
+      positionAbsolute:
+        x: 2156.0000000000005
+        y: 847.7857142857146
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        items:
+        - input_type: constant
+          operation: set
+          value: 1
+          variable_selector:
+          - conversation
+          - peter
+          write_mode: over-write
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1735827141280'
+          - text
+          variable_selector:
+          - conversation
+          - previous
+          write_mode: over-write
+        iteration_id: '1735824442207'
+        selected: false
+        title: 變數分配器 6
+        type: assigner
+        version: '2'
+      height: 116
+      id: '1735827541079'
+      parentId: '1735824442207'
+      position:
+        x: 1522.8571428571431
+        y: 447.8571428571431
+      positionAbsolute:
+        x: 2158.857142857143
+        y: 961.3571428571431
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        selected: false
+        template: demo
+        title: 模板轉換
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1735827879479'
+      parentId: '1735824442207'
+      position:
+        x: 348.0000000000002
+        y: 410.7142857142858
+      positionAbsolute:
+        x: 984.0000000000002
+        y: 924.2142857142858
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        output_type: string
+        selected: false
+        title: 變量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1735830188900'
+          - output
+        - - '1735827879479'
+          - output
+        - - '1735830151072'
+          - output
+        - - '1735829832583'
+          - output
+        - - '1735829881430'
+          - output
+      height: 197
+      id: '1735827989553'
+      parentId: '1735824442207'
+      position:
+        x: 2116.142857142857
+        y: 80.7142857142859
+      positionAbsolute:
+        x: 2752.142857142857
+        y: 594.2142857142859
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "def main(array_string) -> dict: \n    # 倒序遍歷 array_string\n    for\
+          \ value in reversed(array_string):\n        if value != \"demo\":\n    \
+          \        return {\"result\": value}  # 當找到第一個不等於 \"demo\" 的元素時返回\n    return\
+          \ {\"result\": None}  # 若所有元素都等於 \"demo\"，則返回 None"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行 4
+        type: code
+        variables:
+        - value_selector:
+          - '1735824442207'
+          - output
+          variable: array_string
+      height: 54
+      id: '1735829210474'
+      position:
+        x: 3115
+        y: 513.5
+      positionAbsolute:
+        x: 3115
+        y: 513.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        selected: false
+        template: demo
+        title: 模板轉換 2
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1735829832583'
+      parentId: '1735824442207'
+      position:
+        x: 1745.7257743716764
+        y: 202.85714285714278
+      positionAbsolute:
+        x: 2381.7257743716764
+        y: 716.3571428571428
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        selected: false
+        template: demo
+        title: 模板轉換 3
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1735829881430'
+      parentId: '1735824442207'
+      position:
+        x: 1825.8571428571431
+        y: 447.8571428571431
+      positionAbsolute:
+        x: 2461.857142857143
+        y: 961.3571428571431
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        selected: false
+        template: '{{ llm }}'
+        title: 模板轉換 4
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1735825020136'
+          - text
+          variable: llm
+      height: 54
+      id: '1735830151072'
+      parentId: '1735824442207'
+      position:
+        x: 1800.0114886573901
+        y: 97.85714285714278
+      positionAbsolute:
+        x: 2436.01148865739
+        y: 611.3571428571428
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735824442207'
+        selected: false
+        template: '{{ llm3 }}'
+        title: 模板轉換 5
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1735827141280'
+          - text
+          variable: llm3
+      height: 54
+      id: '1735830188900'
+      parentId: '1735824442207'
+      position:
+        x: 1774.4285714285716
+        y: 341.4285714285717
+      positionAbsolute:
+        x: 2410.4285714285716
+        y: 854.9285714285717
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: d4ee65d5-9b86-45a2-a951-7f60d78789c8
+          role: system
+          text: "您提供的 <Thought Process> 反映了模型根據 <Question> 進行推理的過程。 你的任務是將 <Thought\
+            \ Process> 重寫，使其更像人類直覺自然的思考過程。新的版本應該： \n1. 首先，內容會以一步一步的推理呈現，每一個想法都會在新的一行開始，並且行與行之間會有間隔。這樣的安排能夠幫助讀者更容易地跟隨邏輯的步驟。\n\
+            2. 我會避免使用結構化的標題或格式化，這樣就能讓內容更加自然流暢，像日常對話一樣。過渡語句會保持隨意而自然，例如「嗯」、「哦」、「還有」、「等等」這類詞語，能讓語氣更為輕鬆和親切。\n\
+            3. 當然，內容會有所擴展，我會加入更多細節和背景，讓推理過程變得更加豐富和有層次感。同時，我會確保邏輯清晰，但語氣仍保持對話感和直觀性，這樣不會讓人感覺生硬或過於學術化。\n\
+            \n直接返回如下所示的修訂後的自然思維(NaturalReasoning) JSON 格式：\n```json\n{\n  \"NaturalReasoning\"\
+            : \"...\"\n}\n```\n"
+        - id: d524285b-45f7-4ece-aa82-ab29e9e39714
+          role: user
+          text: "<Thought Process>\n{{#1735829210474.result#}}\n</Thought Process>\
+            \ \n\n<Question> \n{{#1735824375375.question#}}\n</Question> \n"
+        selected: false
+        title: LLM 5
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1735830828115'
+      position:
+        x: 3583.714285714286
+        y: 654.5
+      positionAbsolute:
+        x: 3583.714285714286
+        y: 654.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-3.3-70B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - role: system
+          text: '您提供的<Internal Thinking> 代表您對 <Question> 的內部思考。基於此，生成一個豐富且高質量的最終回應給用戶。如果有明確的答案，請首先提供。確保您的最終回應緊密貼合
+            <Question>。回應的風格應盡可能模仿 GPT-4 的風格。僅輸出您的最終回應，且不要包含任何額外內容。
+
+            '
+        - role: user
+          text: '<Internal Thinking>
+
+            {{#1735830828115.text#}}
+
+            </Internal Thinking>
+
+
+            <Question>
+
+            {{#1735824375375.question#}}
+
+            </Question>
+
+            '
+        selected: false
+        title: LLM 6
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1735830916619'
+      position:
+        x: 3886.714285714286
+        y: 654.5
+      positionAbsolute:
+        x: 3886.714285714286
+        y: 654.5
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "1. 問題: \r\n{{ question }}\r\n\r\n2. 正解:\r\n{{ answer }}\r\n\r\n\
+          3. 思路: \r\n{{ cot }}\r\n\r\n4. 最終回答: \r\n{{ response }}\r\n"
+        title: 模板轉換 6
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1735824375375'
+          - question
+          variable: question
+        - value_selector:
+          - '1735824375375'
+          - answer
+          variable: answer
+        - value_selector:
+          - '1735830828115'
+          - text
+          variable: cot
+        - value_selector:
+          - '1735830916619'
+          - text
+          variable: response
+      height: 54
+      id: '1735830962922'
+      position:
+        x: 4189.714285714286
+        y: 654.5
+      positionAbsolute:
+        x: 4189.714285714286
+        y: 654.5
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1735830962922.output#}}'
+        desc: ''
+        selected: false
+        title: 直接回覆 2
+        type: answer
+        variables: []
+      height: 103
+      id: '1735831023104'
+      position:
+        x: 4492.714285714286
+        y: 654.5
+      positionAbsolute:
+        x: 4492.714285714286
+        y: 654.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -2629.4500000000003
+      y: -78.62786254882803
+      zoom: 0.7
