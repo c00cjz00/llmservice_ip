@@ -1,0 +1,608 @@
+app:
+  description: ''
+  icon: accept
+  icon_background: '#E0F2FE'
+  mode: workflow
+  name: 07-Llama3.1-8B-NSTC_政府文書格式規範(函)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1733881210274-source-1733748734381-target
+      selected: false
+      source: '1733881210274'
+      sourceHandle: source
+      target: '1733748734381'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: template-transform
+      id: 1730257085761-source-1733884162658-target
+      selected: false
+      source: '1730257085761'
+      sourceHandle: source
+      target: '1733884162658'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: code
+      id: 1733884162658-source-1733796416170-target
+      selected: false
+      source: '1733884162658'
+      sourceHandle: source
+      target: '1733796416170'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1733796416170-source-1733881210274-target
+      selected: false
+      source: '1733796416170'
+      sourceHandle: source
+      target: '1733881210274'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1733748734381-source-1733729487731-target
+      selected: false
+      source: '1733748734381'
+      sourceHandle: source
+      target: '1733729487731'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 1. 開始
+        type: start
+        variables:
+        - label: 公文類別
+          max_length: 48
+          options:
+          - (1) 函
+          required: true
+          type: select
+          variable: office_document
+        - label: 主旨
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: title
+        - label: 說明
+          max_length: 2048
+          options: []
+          required: false
+          type: paragraph
+          variable: content
+        - label: 發文單位 (預設-國家科學及技術委員會)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a01
+        - label: 受文者  (預設-國家高速網路與計算中心)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a02
+        - label: 發文日期  (預設-中華民國○○○年○○月○○日)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a03
+        - label: 發文字號  (預設-科會綜字第○○○○○○○○○○號)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a04
+        - label: 速別 (預設-普通件)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a05
+        - label: 密等 (預設-普通)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a06
+        - label: 附件 (預設-無)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a07
+        - label: 正本 (預設-國家高速網路與計算中心)
+          max_length: 256
+          options: []
+          required: false
+          type: text-input
+          variable: a08
+        - label: 副本 (預設-無)
+          max_length: 256
+          options: []
+          required: false
+          type: text-input
+          variable: a09
+        - label: 地址 (預設-臺北市和平東路二段106號)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a10
+        - label: 聯絡人 (預設-李家宜)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a11
+        - label: 電話 (預設-02-2737-7440)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a12
+        - label: 傳真 (預設-02-2737-7924)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a13
+        - label: Email (預設-li@nstc.gov.tw)
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: a14
+      height: 506
+      id: '1730257085761'
+      position:
+        x: 28.433107222371177
+        y: 452.5
+      positionAbsolute:
+        x: 28.433107222371177
+        y: 452.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1733748734381'
+          - output
+          variable: output
+        selected: false
+        title: 4. 公文輸出
+        type: end
+      height: 90
+      id: '1733729487731'
+      position:
+        x: 1723.9920762210322
+        y: 452.5
+      positionAbsolute:
+        x: 1723.9920762210322
+        y: 452.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: true
+        template: "```!\r\n檔號:\r\n保存年限:\r\n\r\n\t\t\t\t\t\t{{b01}}函\r\n\r\n\t\t\t\t\
+          \t\t\t\t\t\t地址:{{b10}}\r\n\t\t\t\t\t\t\t\t\t\t聯絡人:{{b11}} \r\n\t\t\t\t\t\
+          \t\t\t\t\t電話:{{b12}}\r\n\t\t\t\t\t\t\t\t\t\t傳真:{{b13}} \r\n\t\t\t\t\t\t\t\
+          \t\t\tEmail:{{b14}}\r\n\r\n\r\n\r\n受文者:{{b02}}\r\n\r\n發文日期:{{b03}}\r\n發文字號:{{b04}}\r\
+          \n速別:{{b05}}\r\n密等及解密條件或保密期限:{{b06}}\r\n附件:{{b07}}\r\n\r\n{{ output }}\r\
+          \n\r\n\r\n正本:{{b08}}\r\n副本:{{b09}}\r\n\r\n主任委員 吳誠文\r\n```"
+        title: 3.1 Prompt (函)
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1733881210274'
+          - text
+          variable: output
+        - value_selector:
+          - '1730257085761'
+          - title
+          variable: title
+        - value_selector:
+          - '1730257085761'
+          - content
+          variable: content
+        - value_selector:
+          - '1733796416170'
+          - b01
+          variable: b01
+        - value_selector:
+          - '1733796416170'
+          - b02
+          variable: b02
+        - value_selector:
+          - '1733796416170'
+          - b03
+          variable: b03
+        - value_selector:
+          - '1733796416170'
+          - b04
+          variable: b04
+        - value_selector:
+          - '1733796416170'
+          - b05
+          variable: b05
+        - value_selector:
+          - '1733796416170'
+          - b06
+          variable: b06
+        - value_selector:
+          - '1733796416170'
+          - b07
+          variable: b07
+        - value_selector:
+          - '1733796416170'
+          - b08
+          variable: b08
+        - value_selector:
+          - '1733796416170'
+          - b09
+          variable: b09
+        - value_selector:
+          - '1733796416170'
+          - b10
+          variable: b10
+        - value_selector:
+          - '1733796416170'
+          - b11
+          variable: b11
+        - value_selector:
+          - '1733796416170'
+          - b12
+          variable: b12
+        - value_selector:
+          - '1733796416170'
+          - b13
+          variable: b13
+        - value_selector:
+          - '1733796416170'
+          - b14
+          variable: b14
+      height: 54
+      id: '1733748734381'
+      position:
+        x: 1417.5648081372249
+        y: 452.5
+      positionAbsolute:
+        x: 1417.5648081372249
+        y: 452.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(a01: str, a02: str, a03: str, a04: str, a05: str, a06: str,\
+          \ a07: str, a08: str, a09: str, a10: str, a11: str, a12: str, a13: str,\
+          \ a14: str) -> dict:\n    default_values = {\n        \"a01\": \"國家科學及技術委員會\"\
+          ,\n        \"a02\": \"如正、副本\",\n        \"a03\": \"中華民國○○○年○○月○○日\",\n \
+          \       \"a04\": \"科會綜字第○○○○○○○○○○號\",\n        \"a05\": \"普通件\",\n    \
+          \    \"a06\": \"普通\",\n        \"a07\": \"無\",\n        \"a08\": \"國家高速網路與計算中心\"\
+          ,\n        \"a09\": \"無\",\n        \"a10\": \"臺北市和平東路二段106號\",\n      \
+          \  \"a11\": \"李家宜\",\n        \"a12\": \"02-2737-7440\",\n        \"a13\"\
+          : \"02-2737-7924\",\n        \"a14\": \"li@nstc.gov.tw\"\n    }\n\n    #\
+          \ 使用預設值更新輸入\n    args = locals()\n    result = {\n        key.replace(\"\
+          a\", \"b\"): (\n            args[key] if args[key] not in [None, \"null\"\
+          , \"\"] else default_values[key]\n        )\n        for key in default_values\n\
+          \    }\n\n    return result\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          b01:
+            children: null
+            type: string
+          b02:
+            children: null
+            type: string
+          b03:
+            children: null
+            type: string
+          b04:
+            children: null
+            type: string
+          b05:
+            children: null
+            type: string
+          b06:
+            children: null
+            type: string
+          b07:
+            children: null
+            type: string
+          b08:
+            children: null
+            type: string
+          b09:
+            children: null
+            type: string
+          b10:
+            children: null
+            type: string
+          b11:
+            children: null
+            type: string
+          b12:
+            children: null
+            type: string
+          b13:
+            children: null
+            type: string
+          b14:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行
+        type: code
+        variables:
+        - value_selector:
+          - '1730257085761'
+          - a01
+          variable: a01
+        - value_selector:
+          - '1730257085761'
+          - a02
+          variable: a02
+        - value_selector:
+          - '1730257085761'
+          - a03
+          variable: a03
+        - value_selector:
+          - '1730257085761'
+          - a04
+          variable: a04
+        - value_selector:
+          - '1730257085761'
+          - a05
+          variable: a05
+        - value_selector:
+          - '1730257085761'
+          - a06
+          variable: a06
+        - value_selector:
+          - '1730257085761'
+          - a07
+          variable: a07
+        - value_selector:
+          - '1730257085761'
+          - a08
+          variable: a08
+        - value_selector:
+          - '1730257085761'
+          - a09
+          variable: a09
+        - value_selector:
+          - '1730257085761'
+          - a10
+          variable: a10
+        - value_selector:
+          - '1730257085761'
+          - a11
+          variable: a11
+        - value_selector:
+          - '1730257085761'
+          - a11
+          variable: a12
+        - value_selector:
+          - '1730257085761'
+          - a12
+          variable: a13
+        - value_selector:
+          - '1730257085761'
+          - a13
+          variable: a14
+      height: 54
+      id: '1733796416170'
+      position:
+        x: 640
+        y: 452.5
+      positionAbsolute:
+        x: 640
+        y: 452.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama3.1-8B-NSTC
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 82133aed-bb68-44f3-99fd-bf9527475c8f
+          role: system
+          text: '### 撰寫規範
+
+            1. 詳讀並徹底理解「主旨」及「說明」的內容，確保準確掌握文意。
+
+            2. 修正「主旨」及「說明」中的錯別字及語法錯誤，並確保語句流暢、結構清晰。
+
+            3. 確保語意表達精確，邏輯清楚，避免使用模糊或可能引發歧義的詞語。
+
+            4. 加強「主旨」及「說明」之間的邏輯關聯，確保段落連貫，符合正式公文的語言規範。
+
+            5. 僅提供修訂後的「主旨」及「說明」內容，無需添加多餘的解釋或附註說明。
+
+            6. 不對修訂結果進行任何評價或結論。'
+        - id: bb8c50e7-77c2-48b8-a0e1-8d50124d426c
+          role: user
+          text: "### 要求\n依據「撰寫規範」，生成一份公文「函」，其內容為「{{#1730257085761.title#}}」，內文為「{{#1730257085761.content#}}」。\n\
+            \n### 輸出格式如下：  \n主旨：  \n說明： \n"
+        selected: false
+        title: 2.1 公文撰寫 (函)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1733881210274'
+      position:
+        x: 1007.1137844663542
+        y: 452.5
+      positionAbsolute:
+        x: 1007.1137844663542
+        y: 452.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "（一）文字使用應儘量明白曉暢，詞意清晰，以達到公文程式條例第八條所規定「簡、淺、明、確」之要求，其作業要求：\r\n1、正確：文字敘述和重要事項記述，應避免錯誤和遺漏，內容主題應避免偏差、歪曲。切忌主觀、偏見。\r\
+          \n2、清晰：文義清楚、肯定。\r\n3、簡明：用語簡練，詞句曉暢，分段確實，主題鮮明。\r\n4、迅速：自蒐集資料，整理分析，至提出結論，應在一定時間內完成。\r\
+          \n5、整潔：文稿均應保持整潔，字體力求端正。\r\n6、一致：機關內部各單位撰擬文稿，文字用語、結構格式應力求一致。\r\n7、完整：對於每一文件，應作深入廣泛之研究，從各種角度、立場考慮問題，與相關單位協調聯繫。所提意見或辦法，應力求周詳具體、適切可行，並備齊各種必需之文件，構成完整之幕僚作業，以供上級採擇。\r\
+          \n（二）擬稿注意事項如下：\r\n1、擬稿須條理分明，其措詞以切實、簡明扼要為準，如屬模稜\r\n\r\n空泛之詞、陳腐套語、與公務無關者等，均應避免。\r\
+          \n2、引敘來文或法令條文，以扼要摘敘足供參證為度，如必須提供全文，應以電子文件、抄件或影印附送。\r\n3、敘述事實或引述人名、地名、物名、日期、數字、法規條文及有關解釋等，應詳加核對，避免錯漏。\r\
+          \n4、各種名稱如非習用有素，不宜省文縮寫，如遇譯文且關係重要者，請以括弧加註原文，以資對照。\r\n5、文稿表示意見，應以負責態度，或提出具體意見供受文者抉擇，不得僅作層轉手續，或用「可否照准」、「究應如何辦理」等空言敷衍。\r\
+          \n6、擬稿以一文一事為原則，來文如係一文數事者，得分為數文答復。\r\n7、引敘原文其直接語氣均應改為間接語氣，如「貴」、「鈞」等應改為「○○」、「本」、「該」等。\r\
+          \n8、簽應載明年月日及單位。\r\n9、擬辦復文或轉行之稿件，應敘入來文機關之發文日期及字號，俾便查考。\r\n10、文稿中多個機關名稱同時出現時，按照既定機關順序，由左至右依序排列。\r\
+          \n11、文稿分項或分條撰擬時，應分別冠以數字。上下左右空隙， 力求勻稱，機關全銜、受文者、本文等應採用較大字體， 以資醒目。\r\n12、文稿有2頁以上者應裝訂妥當，並於騎縫處蓋（印）騎縫章或職名章，同時於每頁之下緣加註頁碼（置中對齊）。\r\
+          \n（三）分段要領如下：\r\n1、「主旨」：\r\n（1）為全文精要，以說明行文目的與期望，應力求具體扼要。\r\n\r\n（2）「主旨」不分項，文字緊接段名冒號之右書寫。\r\
+          \n2、「說明」：\r\n（1）當案情必須就事實、來源或理由，作較詳細之敘述，無法於「主旨」內容納時，用本段說明。\r\n（2）如無項次，文字緊接段名冒號之右書寫；如分項標號條列，應另列縮格書寫。\r\
+          \n3、「辦法」：\r\n（1）向受文者提出之具體要求無法在「主旨」內簡述時，用本段列舉。本段段名，可因公文內容改用「建議」、「擬辦」、「公告事項」、「核復事項」等名稱。\r\
+          \n（2）其分項條列內容過於繁雜、或含有表格型態時，應編列為附件。\r\n4、「主旨」、「說明」、「辦法」3段，得靈活運用，可用1 段完成者，不必湊成2段、3段。\r\
+          \n（四）製作公文，應遵守以下全形、半形字形標準之規定：\r\n1、 分項標號：應另列縮格以全形書寫為一、二、三、……，( 一)、(二)、(三)……，1、2、3、……，(1)、(2)、(3)；\
+          \ 但其中“（）”以半形為之（格式如附件3）。\r\n2、 內文：\r\n（1）中文字體及併同於中文中使用之標點符號應以全形為之。\r\n（2）阿拉伯數字、外文字母及併同於外文中使用之標點符號應以半形為之。\r\
+          \n十七、公文結構及作法說明如下：\r\n（一）令：\r\n1、公布法律、發布法規命令、解釋性規定與裁量基準之行政規則：\r\n（1）令文可不分段，敘述時動詞一律在前，例如：\r\
+          \n\r\n甲、訂定「○○○施行細則」。\r\n乙、修正「○○○辦法」第○條條文。丙、廢止「○○○辦法」。\r\n（2）多種法律之制定或廢止，同時公布時，可併入同一令文處理；法規命令之發布，亦同。\r\
+          \n（3）公、發布應刊載於政府公報，並得於其他出版品、機關電子公布欄公布；必要時，並以公文分行各機關。\r\n2、人事命令：\r\n（1）人事命令：任免、遷調、獎懲。\r\
+          \n（2）人事命令格式由人事主管機關訂定。\r\n（二）函：\r\n1、函之結構，採用「主旨」、「說明」、「辦法」3段式。\r\n2、行政規則以函檢發，多種規則同時檢發，可併入同一函內處理；其方式以公文分行或刊（登）載政府公報或機關電子公布欄。但應發布之行政規則，依前款第一目所定法規命令之發布程序辦理。\r\
+          \n（三）公告：\r\n1、公告之結構分為「主旨」、「依據」、「公告事項」（或說明）3段，段名之上不冠數字。\r\n2、公告分段要領：\r\n\
+          （1）「主旨」應扼要敘述，公告之目的及要求，其文字緊接段名冒號之右書寫。公告刊載時，得用較大字體簡明標示公告之目的，不署機關首長職銜、姓名，刊（登）載於政府公報、其他出版品或電子公布欄之公告，免蓋用印信、免署機關首長職銜、姓名。\r\
+          \n（2）「依據」應將公告事件之原由敘明，引據有關法規及條文名稱或機關來函，非必要不敘來文日期、字號。有2項以上「依據」者，每項應冠數字，並分項條列，另列縮\r\
+          \n\r\n格書寫。\r\n（3）「公告事項」（或說明）有2項以上者，每項應冠數字並分項條列，另列縮格書寫，使層次分明，清晰醒目。公告內容僅就「主旨」補充說明事實經過或理由者，改用\r\
+          \n「說明」為段名。公告如另有附件、附表、簡章、簡則等文件時，僅註明參閱「某某文件」，公告事項內不必重複敘述。\r\n3、一般工程招標或標購物品等公告，得用定型化格式處理，免用3段式。\r\
+          \n4、公告得張貼於機關之公布欄、電子公布欄，或其他足以使公眾得知之方式廣為宣布。如需他機關處理者，得另行檢送。\r\n（四）其他公文：\r\n\
+          1、書函之結構及文字用語比照「函」之規定。\r\n2、定型化表單之格式由各機關自行訂定。十八、公文用語規定如下：\r\n（一）期望、目的及准駁用語，得視需要酌用「請」、「希」、「查照」、「鑒核」或「核示」、「備查」、「照辦」、「辦理見復」、「轉行照辦」、「應予照准」、「未便照准」等。\r\
+          \n（二）准駁性、建議性、採擇性、判斷性之公文用語，必須明確肯定。\r\n（三）直接稱謂用語：\r\n1、有隸屬關係之機關：上級對下級稱「貴」；下級對上級稱「鈞」；自稱「本」。\r\
+          \n2、對無隸屬關係之機關：上級稱「大」；平行稱「貴」；自稱\r\n「本」。\r\n3、對機關首長間：上級對下級稱「貴」；自稱「本」；下級對上級稱「鈞長」，自稱「本」。\r\
+          \n4、機關（或首長）對屬員稱「臺端」。\r\n\r\n5、機關對人民稱「先生」、「女士」或通稱「君」、「臺端」； 對團體稱「貴」，自稱「本」。\r\
+          \n6、行文數機關或單位時，如於文內同時提及，可通稱為「貴機關」或「貴單位」。\r\n（四）間接稱謂用語：\r\n1、對機關、團體稱「全銜」或「簡銜」，如一再提及，必要時得稱「該」；對職員稱「職銜」。\r\
+          \n2、對個人一律稱「先生」、「女士」或「君」。十九、簽、稿之撰擬說明如下：\r\n（一）簽稿之一般原則：\r\n1、性質：\r\n（1）簽為處理公務表達意見，以供上級瞭解案情、並作抉擇之依據，分為下列2種：\r\
+          \n甲、機關內部單位簽辦案件：依分層授權規定核決，簽末不必敘明陳某某長官字樣。\r\n乙、下級機關首長對直屬上級機關首長之「簽」，文末得用敬陳○○長官字樣。\r\
+          \n（2）「稿」為公文之草本，依各機關規定程序核判後發出。\r\n2、擬辦方式：\r\n（1） 先簽後稿：\r\n甲、有關政策性或重大興革案件。\
+          \ 乙、牽涉較廣，會商未獲結論案件。丙、擬提決策會議討論案件。\r\n丁、重要人事案件。\r\n戊、其他性質必須先行簽請核定案件。\r\n（2）\
+          \ 簽稿併陳：\r\n甲、文稿內容須另為說明或對以往處理情形須酌加析述之案件。\r\n\r\n乙、依法准駁，但案情特殊須加說明之案件。丙、須限時辦發不及先行請示之案件。\r\
+          \n（3） 以稿代簽為一般案情簡單或例行承轉之案件。\r\n（二）簽之撰擬：\r\n1、款式：\r\n（1）先簽後稿：簽應按「主旨」、「說明」、「擬辦」3段式辦理。\r\
+          \n（2） 簽稿併陳：如案情簡單，可不分段，以條列式簽擬。\r\n（3） 一般存參或案情簡單之文件，得於原件文中空白處簽擬。\r\n2、撰擬要領：\r\
+          \n（1） 「主旨」：扼要敘述，概括「簽」之整個目的與擬辦，不分項，1段完成。\r\n（2）「說明」：對案情之來源、經過與有關法規或前案，以及處理方法之分析等，作簡要之敘述，並視需要分項條列。\r\
+          \n（3）「擬辦」：為「簽」之重點所在，應針對案情，提出具體處理意見，或解決問題之方案。意見較多時分項條列。\r\n（4）「簽」之各段應截然劃分，「說明」段不提擬辦意見，「擬辦」段不重複「說明」。\r\
+          \n3、本手冊所訂「簽」之作法舉例，下級機關首長對直屬上級機關首長行文時應一致採用，至各機關內部單位簽辦案件得參照自行規定。\r\n（三）稿之撰擬：\r\
+          \n1、草擬公文按文別應採之結構撰擬。\r\n2、撰擬要領：\r\n（1）按行文事項之性質選用公文名稱，如「令」、「函」、「書函」、「公告」等。\r\
+          \n（2） 一案須辦數文時，可用同一稿面辦理數稿，請參考下列原則辦理：\r\n\r\n甲、設有幕僚長之機關，分由機關首長及幕僚長署名之發文\r\n\
+          ，分稿擬辦。\r\n乙、一文之受文者有數機關時，內容大同小異者，同稿併敘\r\n，將不同文字列出，並註明某處文字針對某機關；內容小同大異者，用同一稿面分擬，如以電子方式處理者，\
+          \ 可用數稿。\r\n（3）「函」之正文，除按規定結構撰擬外，並請注意下列事項： 甲、訂有辦理或復文期限者，請在「主旨」內敘明。\r\n乙、承轉公文，請摘敘來文要點，不宜在「稿」內書：「照錄原文，敘至某處」字樣，來文過長仍請儘量摘敘，無法摘敘時，可照規定列為附件。\r\
+          \n丙、概括之期望語「請核示」、「請查照」、「請照辦」等\r\n，列入「主旨」，不在「辦法」段內重複；至具體詳細要求有所作為時，請列入「辦法」段內。\r\
+          \n丁、「說明」、「辦法」分項標號條列時，每項表達一意。戊、文末首長簽署、敘稿時，為簡化起見，首長職銜之後可\r\n僅書「姓」，名字則以「○○」表示。\r\
+          \n己、須以副本分行者，請在「副本」項下列明；如要求副本收受者作為時，則請在「說明」段內列明。\r\n庚、如有附件，得在文內敘述附件名稱及份數；正、副本檢附附件不同時，應於文內分別敘述附件名稱及份數。\r\
+          \n"
+        title: 公文製作原則
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1733884162658'
+      position:
+        x: 333
+        y: 452.5
+      positionAbsolute:
+        x: 333
+        y: 452.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -863.6288895408213
+      y: -289.6119108668021
+      zoom: 1.3046534371069194
