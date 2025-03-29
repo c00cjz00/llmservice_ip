@@ -1,0 +1,899 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 防守工作流
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.0.14@8a331ba0572f889222b76d6a26f718264841e74c849b60f9542963483c5dec99
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.11@410445eba2fa0f693d26dea2c3b9ffe51ad0777e021146ff877af6098412efc7
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: 歡迎光臨
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: true
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: true
+    text_to_speech:
+      enabled: true
+      language: zh-Hans
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1743220827222-source-1743221054222-target
+      source: '1743220827222'
+      sourceHandle: source
+      target: '1743221054222'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1743221054222-source-1743221525361-target
+      source: '1743221054222'
+      sourceHandle: source
+      target: '1743221525361'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1743221525361-true-1743221709834-target
+      source: '1743221525361'
+      sourceHandle: 'true'
+      target: '1743221709834'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1743221709834-source-answer-target
+      source: '1743221709834'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1743221525361-31ba8fce-7d19-499d-b7ec-ad5fba096a10-1743221709834-target
+      source: '1743221525361'
+      sourceHandle: 31ba8fce-7d19-499d-b7ec-ad5fba096a10
+      target: '1743221709834'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1743221525361-1b2684e1-fc91-452f-b9b1-382d833413fa-1743221709834-target
+      source: '1743221525361'
+      sourceHandle: 1b2684e1-fc91-452f-b9b1-382d833413fa
+      target: '1743221709834'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1743221525361-7c73be93-8600-422b-bf86-c693c6161fe8-1743222249732-target
+      source: '1743221525361'
+      sourceHandle: 7c73be93-8600-422b-bf86-c693c6161fe8
+      target: '1743222249732'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1743222249732-source-1743222256757-target
+      source: '1743222249732'
+      sourceHandle: source
+      target: '1743222256757'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1743174187866-source-1743222677002-target
+      source: '1743174187866'
+      sourceHandle: source
+      target: '1743222677002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: 1743222677002-source-1743222921107-target
+      source: '1743222677002'
+      sourceHandle: source
+      target: '1743222921107'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1743222921107-true-1743222986088-target
+      source: '1743222921107'
+      sourceHandle: 'true'
+      target: '1743222986088'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1743222921107-false-17432359564630-target
+      source: '1743222921107'
+      sourceHandle: 'false'
+      target: '17432359564630'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: 17432359564630-source-17432359705010-target
+      source: '17432359564630'
+      sourceHandle: source
+      target: '17432359705010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 17432359705010-true-17432360547620-target
+      source: '17432359705010'
+      sourceHandle: 'true'
+      target: '17432360547620'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 17432359705010-false-1743220827222-target
+      source: '17432359705010'
+      sourceHandle: 'false'
+      target: '1743220827222'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables: []
+      height: 53
+      id: '1743174187866'
+      position:
+        x: 30
+        y: 314.5
+      positionAbsolute:
+        x: 30
+        y: 314.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1743221054222.result#}}{{#1743221709834.text#}}
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回覆
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 2766
+        y: 451
+      positionAbsolute:
+        x: 2766
+        y: 451
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Google-Gemma-3-27B
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 31297561-5585-40f1-84f8-7b070db8c790
+          role: system
+          text: "### Job Description\nYou are a text classification engine responsible\
+            \ for analyzing and categorizing input text. Based on the input, you must\
+            \ determine the most appropriate category and extract relevant keywords\
+            \ that support the classification decision.\n\n### Task\nYour task is\
+            \ to:\n1. Assign **exactly one** category from the provided list to the\
+            \ input text.\n2. Extract **key terms** or **keywords** from the input\
+            \ text that are most relevant to the chosen category, which will help\
+            \ justify the classification.\n\n### Input Format\n- `input_text`: A list\
+            \ containing text that needs to be classified.\n- `categories`: A list\
+            \ of available categories, each with:\n  - `category_name`: The name of\
+            \ the category.\n- `classification_instructions`: Optional additional\
+            \ instructions to help improve classification accuracy.\n\n### Output\
+            \ Format\nYour response must be in a **JSON object** with the following\
+            \ structure:\n```json\n{\n    \"keywords\": [<list of extracted keywords>],\n\
+            \    \"category_name\": \"<selected category_name>\"\n}\n``` "
+        - id: c0c15ac8-6e44-42ab-b698-95411b4dd2ab
+          role: user
+          text: "### Input Data\n```json\n{\n    \"input_text\": [\"{{#sys.query#}}\"\
+            ],\n    \"categories\": [\n        {\n            \"category_name\": \"\
+            Customer Service\"\n        },\n        {\n            \"category_name\"\
+            : \"Satisfaction\"\n        },\n        {\n            \"category_name\"\
+            : \"Sales\"\n        },\n        {\n            \"category_name\": \"\
+            Product\"\n        }\n    ],\n    \"classification_instructions\": [\n\
+            \        \"Classify the input text into the most relevant category based\
+            \ on the customer's feedback.\",\n        \"Focus on identifying the primary\
+            \ aspect of the feedback (e.g., service, product, staff, experience) and\
+            \ categorize accordingly.\"\n    ]\n}\n```"
+        selected: false
+        title: 分類
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1743220827222'
+      position:
+        x: 1550
+        y: 451
+      positionAbsolute:
+        x: 1550
+        y: 451
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(text: str) -> dict:\n    # 如果字符串以 \"```json\"\
+          \ 开头并以 \"```\" 结束，去掉这些符号\n    if text.startswith(\"```json\") and text.endswith(\"\
+          ```\"):\n        text = text[8:-3]  # 去掉开始的 \"```json\" 和结束的 \"```\"\n \
+          \   \n    try:\n        # 尝试将 text 转换为 JSON\n        data = json.loads(text)\n\
+          \        # 返回解析后的 category_name\n        return {\n            \"result\"\
+          : data.get(\"category_name\", None),\n        }\n    except json.JSONDecodeError:\n\
+          \        # 如果转换失败，返回错误信息\n        return {\"error\": \"Invalid JSON format\"\
+          }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行
+        type: code
+        variables:
+        - value_selector:
+          - '1743220827222'
+          - text
+          variable: text
+      height: 53
+      id: '1743221054222'
+      position:
+        x: 1854
+        y: 451
+      positionAbsolute:
+        x: 1854
+        y: 451
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 1292d265-5d4a-4424-b6b9-a70912268499
+            value: Customer Service
+            varType: string
+            variable_selector:
+            - '1743221054222'
+            - result
+          id: 'true'
+          logical_operator: and
+        - case_id: 31ba8fce-7d19-499d-b7ec-ad5fba096a10
+          conditions:
+          - comparison_operator: contains
+            id: 263c2692-234d-4239-8c8d-1ada15ee7877
+            value: Satisfaction
+            varType: string
+            variable_selector:
+            - '1743221054222'
+            - result
+          logical_operator: and
+        - case_id: 1b2684e1-fc91-452f-b9b1-382d833413fa
+          conditions:
+          - comparison_operator: contains
+            id: af2c4624-e275-4f8d-a2b5-bf022eaf4959
+            value: Sales
+            varType: string
+            variable_selector:
+            - '1743221054222'
+            - result
+          logical_operator: and
+        - case_id: 7c73be93-8600-422b-bf86-c693c6161fe8
+          conditions:
+          - comparison_operator: contains
+            id: 2ed9c452-882c-4423-a41f-d9e22f7d9e03
+            value: Product
+            varType: string
+            variable_selector:
+            - '1743221054222'
+            - result
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 269
+      id: '1743221525361'
+      position:
+        x: 2158
+        y: 451
+      positionAbsolute:
+        x: 2158
+        y: 451
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Google-Gemma-3-27B
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: fad55a5d-d268-40da-a24d-a0b56435962d
+          role: system
+          text: "您的任務是重新潤飾用戶提出的問題，使其更加清晰、明瞭且更具善意。目標是將用戶問題轉化為一種更專業、更友好的表達方式，以便快速有效地轉交給相關部門處理。請嚴格遵循以下步驟：\n\
+            \n    1. **理解原問題：** 仔細閱讀用戶提出的原始問題，確保完全理解其意圖和需求。\n    2. **禮貌開場：** 在重新潤飾後的表達中，務必以禮貌的稱謂開場，例如“客戶您好”。\n\
+            \    3. **清晰重述：** 用清晰、簡潔的語言重新闡述用戶的問題。避免使用含糊不清或專業術語，確保任何人都容易理解。\n    4.\
+            \ **善意表達：** 在重述問題的過程中，加入善意的表達，例如“根據您的問題”、“我們理解您的需求”等，以展現對用戶的尊重和關懷。\n \
+            \   5. **轉交說明：** 說明問題將會被快速轉交給相關部門處理，讓用戶感受到積極的回應和解決問題的決心。\n    6. **避免XML標籤：**\
+            \ 最終的輸出結果絕對不能包含任何XML標籤或其他程式碼標籤。只提供純文本的潤飾後問題。\n    7. **保持簡潔：** 潤飾後的表達應盡可能簡潔明瞭，避免冗餘信息。\n\
+            \    8. **語氣一致：** 保持專業、友好的語氣，避免使用生硬或冷漠的措辭。\n\n    請注意，您的目標不是改變問題的本質，而是改善其表達方式，使其更易於理解和處理。\n"
+        - id: 3a517cb5-1f4b-4c06-a2f1-8b196d958afd
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1743221709834'
+      position:
+        x: 2462
+        y: 451
+      positionAbsolute:
+        x: 2462
+        y: 451
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 9d62787b-b331-4fb1-8f41-e972476ba64d
+          role: system
+          text: ''
+        - id: d2c64620-6752-45cf-bcfc-5d0d4d98ca47
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1743222249732'
+      position:
+        x: 2462
+        y: 604.5
+      positionAbsolute:
+        x: 2462
+        y: 604.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1743222249732.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回覆 2
+        type: answer
+        variables: []
+      height: 104
+      id: '1743222256757'
+      position:
+        x: 2766
+        y: 614
+      positionAbsolute:
+        x: 2766
+        y: 614
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 222e2460-a653-45b0-9919-209136efa1d8
+          role: system
+          text: "{\n  \"service_conditions\": {\n    \"any_question_is_allowed\":\
+            \ true\n  },\n  \"restriction_conditions\": {\n    \"political_related_questions\"\
+            : false,\n    \"questions_that_harm_good_morals\": false\n  },\n  \"response_logic\"\
+            : {\n    \"yes\": {\n      \"response\": \"I say yes. The conditions are\
+            \ met one or more based on the service details provided.\"\n    },\n \
+            \   \"no\": {\n      \"response\": \"I say no. The question violates one\
+            \ or more of the restriction conditions, or does not meet the service\
+            \ criteria.\"\n    }\n  },\n  \"language_restrictions\": {\n    \"allowed_response_languages\"\
+            : [\"繁體中文\", \"English\"]\n}\n"
+        - id: 1d39df87-ce25-4dd7-8529-3dc0e230ed00
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 安全把關
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1743222677002'
+      position:
+        x: 334
+        y: 314.5
+      positionAbsolute:
+        x: 334
+        y: 314.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 27a8f87e-dd3d-4632-baf1-f09cd560c006
+            value: say no
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: 836c8e6a-b87d-42d4-bfa5-3660f58ea708
+            value: 說否
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: d82ce1e2-1c8a-49d4-b06d-1a414f4b7f04
+            value: 說不
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: 9fcf95b2-570d-4dfe-b857-2ecdac2d7da1
+            value: 抱歉
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: a46807db-122f-4d12-844e-b7e289befedf
+            value: 無法
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: 379aef2d-f9a6-489f-b644-c10be0fac0a7
+            value: 说不
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: f0560ef3-2e82-4a85-ade3-9b44fa8b6537
+            value: 说否
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: 1eea7d64-0182-4da6-a6cb-baef1e6ce637
+            value: 无法
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: 6db82c73-9359-4335-b2cc-117946259bd6
+            value: sorry
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          - comparison_operator: contains
+            id: 6e7777aa-8078-4338-894b-71ea7cb4b3f6
+            value: cannot
+            varType: string
+            variable_selector:
+            - '1743222677002'
+            - text
+          id: 'true'
+          logical_operator: or
+        desc: ''
+        selected: false
+        title: 條件分支 2
+        type: if-else
+      height: 359
+      id: '1743222921107'
+      position:
+        x: 638
+        y: 314.5
+      positionAbsolute:
+        x: 638
+        y: 314.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1743222677002.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回覆 3
+        type: answer
+        variables: []
+      height: 104
+      id: '1743222986088'
+      position:
+        x: 942
+        y: 307
+      positionAbsolute:
+        x: 942
+        y: 307
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 223
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"service_conditions\":
+          {","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"unstructured_document_processing\":
+          true,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"integration_with_embedding_models\":
+          true,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"workflow_creation_in_unstructured_platform\":
+          true,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"rag_implementation\":
+          true,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"connectors_to_various_data_sources\":
+          true,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"超級電腦教學\":
+          true","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  },","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"restriction_conditions\":
+          {","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"political_related_questions\":
+          false,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"questions_that_harm_good_morals\":
+          false","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  },","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"response_logic\":
+          {","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"yes\":
+          {","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"response\":
+          \"I say yes. The conditions are met based on the service details provided.\"","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    },","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    \"no\":
+          {","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"response\":
+          \"I say no. The question violates one or more of the restriction conditions,
+          or does not meet the service criteria.\"","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    }","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  }","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 297
+      height: 223
+      id: '1743233334818'
+      position:
+        x: 596.8652481996193
+        y: 757.3221667191099
+      positionAbsolute:
+        x: 596.8652481996193
+        y: 757.3221667191099
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 297
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 222e2460-a653-45b0-9919-209136efa1d8
+          role: system
+          text: "{\n  \"service_conditions\": {\n    \"any_question_is_allowed\":\
+            \ true\n  },\n  \"restriction_conditions\": {\n    \"political_related_questions\"\
+            : false,\n    \"questions_that_harm_good_morals\": false\n  },\n  \"response_logic\"\
+            : {\n    \"yes\": {\n      \"response\": \"I say yes. The conditions are\
+            \ met one or more based on the service details provided.\"\n    },\n \
+            \   \"no\": {\n      \"response\": \"I say no. The question violates one\
+            \ or more of the restriction conditions, or does not meet the service\
+            \ criteria.\"\n    }\n  },\n  \"language_restrictions\": {\n    \"allowed_response_languages\"\
+            : [\"繁體中文\", \"English\"]\n}\n"
+        - id: 1d39df87-ce25-4dd7-8529-3dc0e230ed00
+          role: user
+          text: '{{#sys.query#}}
+
+            {{#1743222677002.text#}}'
+        selected: false
+        title: 安全把關 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17432359564630'
+      position:
+        x: 942
+        y: 451
+      positionAbsolute:
+        x: 942
+        y: 451
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 27a8f87e-dd3d-4632-baf1-f09cd560c006
+            value: say no
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: 836c8e6a-b87d-42d4-bfa5-3660f58ea708
+            value: 說否
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: d82ce1e2-1c8a-49d4-b06d-1a414f4b7f04
+            value: 說不
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: 9fcf95b2-570d-4dfe-b857-2ecdac2d7da1
+            value: 抱歉
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: a46807db-122f-4d12-844e-b7e289befedf
+            value: 無法
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: 8b978f59-0cc5-4f2d-8906-920f66bd9022
+            value: 说不
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: 935a8466-d4d8-491e-8e66-047eb9f783fd
+            value: 说否
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: 406a4ec4-d942-4816-ac2b-5b52a808f39e
+            value: 无法
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: 54c94c87-30d9-46dd-9437-1f58e3049ae8
+            value: cannot
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          - comparison_operator: contains
+            id: bd07d1a5-cc7f-40bc-a837-3a69b7457790
+            value: sorry
+            varType: string
+            variable_selector:
+            - '17432359564630'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支 2 (1)
+        type: if-else
+      height: 359
+      id: '17432359705010'
+      position:
+        x: 1246
+        y: 451
+      positionAbsolute:
+        x: 1246
+        y: 451
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1743222677002.text#}}
+
+          {{#17432359564630.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回覆 3 (1)
+        type: answer
+        variables: []
+      height: 123
+      id: '17432360547620'
+      position:
+        x: 1550
+        y: 580
+      positionAbsolute:
+        x: 1550
+        y: 580
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -376.8882195126055
+      y: -29.531404133664637
+      zoom: 0.6861224307281991
