@@ -1,0 +1,410 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 'Sentiment Analysis '
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: end
+      id: 1711708651402-1711708653229
+      source: '1711708651402'
+      sourceHandle: source
+      target: '1711708653229'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: start
+        targetType: if-else
+      id: 1711708591503-1711708770787
+      source: '1711708591503'
+      sourceHandle: source
+      target: '1711708770787'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: end
+      id: 1711708925268-1712457684421
+      source: '1711708925268'
+      sourceHandle: source
+      target: '1712457684421'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: llm
+      id: 1711708770787-1711708651402
+      source: '1711708770787'
+      sourceHandle: 'false'
+      target: '1711708651402'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: llm
+      id: 1711708770787-1711708925268
+      source: '1711708770787'
+      sourceHandle: 'true'
+      target: '1711708925268'
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: input_text
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: input_text
+        - label: Multisentiment
+          max_length: 48
+          options:
+          - 'True'
+          - 'False'
+          required: true
+          type: select
+          variable: Multisentiment
+        - label: Categories
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: Categories
+      height: 140
+      id: '1711708591503'
+      position:
+        x: 79.5
+        y: 3033.5
+      positionAbsolute:
+        x: 79.5
+        y: 3033.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: meta/llama-4-maverick-17b-128e-instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: d4fc418e-504e-42e6-b262-c1179c961e1c
+          role: system
+          text: '你是一個文字情感分析模型。分析文字情感、分類，並提取正面和負面關鍵字。如果沒有提供類別，應自動確定類別。指派情感分數（-1.0 到
+            1.0，以 0.1 為增量）。
+
+
+            僅返回 JSON 響應。始終嘗試返回情感分數，沒有例外。為適用於輸入文字的每個類別定義一個情感分數。
+
+
+            不要包含不適用於文字的類別。可以跳過類別。重要提示：將輸出格式化為 JSON。僅返回 JSON 響應，不包含任何其他註釋或文字。如果你返回了除了
+            JSON 以外的任何文字，你將失敗。'
+        - id: cf3d4bd5-61d5-435e-b0f8-e262e7980934
+          role: user
+          text: 'input_text: The Pizza was delicious and staff was friendly , long
+            wait.
+
+            categories: quality, service, price'
+        - id: 760174bb-2bbe-44ab-b34c-b289f5b950b9
+          role: assistant
+          text: "[\n\t\t\"category\": \"quality\",\n\t\t\"positive_keywords\": [\n\
+            \t\t\t\"delicious pizza\"\n\t\t],\n\t\t\"negative_keywords\": [],\n\t\t\
+            \"score\": 0.7,\n\t\t\"sentiment\": \"Positive\"\n\t},\n\t{\n\t\t\"category\"\
+            : \"service\",\n\t\t\"positive_keywords\": [\n\t\t\t\"friendly staff\"\
+            \n\t\t],\n\t\t\"negative_keywords\": [],\n\t\t\"score\": 0.6,\n\t\t\"\
+            sentiment\": \"Positive\"\n\t}\n]"
+        - id: 4b3d6b57-5e8b-48ef-af9d-766c6502bc00
+          role: user
+          text: 'input_text: {{#1711708591503.input_text#}}
+
+
+            categories: {{#1711708591503.Categories#}}'
+        selected: false
+        title: Multisentiment is False
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1711708651402'
+      position:
+        x: 636.40862709903
+        y: 3143.606627356191
+      positionAbsolute:
+        x: 636.40862709903
+        y: 3143.606627356191
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711708651402'
+          - text
+          variable: text
+        selected: false
+        title: End
+        type: end
+      height: 88
+      id: '1711708653229'
+      position:
+        x: 943.6522881682833
+        y: 3143.606627356191
+      positionAbsolute:
+        x: 943.6522881682833
+        y: 3143.606627356191
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: '1711708913752'
+            value: 'True'
+            variable_selector:
+            - '1711708591503'
+            - Multisentiment
+          id: 'true'
+          logical_operator: and
+        conditions:
+        - comparison_operator: is
+          id: '1711708913752'
+          value: 'True'
+          variable_selector:
+          - '1711708591503'
+          - Multisentiment
+        desc: ''
+        logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 124
+      id: '1711708770787'
+      position:
+        x: 362.5
+        y: 3033.5
+      positionAbsolute:
+        x: 362.5
+        y: 3033.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: meta/llama-4-maverick-17b-128e-instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 1e4e0b38-4056-4b6a-b5c7-4b99e47cd66b
+          role: system
+          text: '你是一個文字情感分析模型。分析文字情感、分類，並提取正面和負面關鍵字。如果沒有提供類別，應自動確定類別。指派情感分數（-1.0 到
+            1.0，以 0.1 為增量）。
+
+
+            僅返回 JSON 響應。始終嘗試返回情感分數，沒有例外。為整個文字定義一個單一分數，並識別與該文字相關的類別。
+
+
+            重要提示：將輸出格式化為 JSON。僅返回 JSON 響應，不包含任何其他註釋或文字。如果你返回了除了 JSON 以外的任何文字，你將失敗。'
+        - id: 333f6f58-ca2d-459f-9455-8eeec485bee9
+          role: user
+          text: 'input_text: The Pizza was delicious and staff was friendly , long
+            wait.
+
+            categories: quality, service, price'
+        - id: 85f3e061-7cc0-485b-b66d-c3f7a3cb12b5
+          role: assistant
+          text: "{\n    \"positive_keywords\": [\"delicious\", \"friendly staff\"\
+            ],\n    \"negative_keywords\": [\"long wait\"],\n    \"score\": 0.3,\n\
+            \    \"sentiment\": \"Slightly Positive\",\n    \"categories\": [\"quality\"\
+            , \"service\"]\n}\n"
+        - id: 7d40b4ed-1480-43bf-b56d-3ca2bd4c36af
+          role: user
+          text: 'Input Text: {{#1711708591503.input_text#}}
+
+            categories: {{#1711708591503.Categories#}}'
+        selected: false
+        title: Multisentiment is True
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1711708925268'
+      position:
+        x: 636.40862709903
+        y: 3019.7436097924674
+      positionAbsolute:
+        x: 636.40862709903
+        y: 3019.7436097924674
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711708925268'
+          - text
+          variable: text
+        selected: false
+        title: End 2
+        type: end
+      height: 88
+      id: '1712457684421'
+      position:
+        x: 943.6522881682833
+        y: 3019.7436097924674
+      positionAbsolute:
+        x: 943.6522881682833
+        y: 3019.7436097924674
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: Dify
+        desc: ''
+        height: 111
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          workflow is primarily used to demonstrate how machine learning can utilize
+          LLMs to generate synthetic data and batch label it.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: pink
+        title: ''
+        type: ''
+        width: 341
+      height: 111
+      id: '1718994342982'
+      position:
+        x: -305.4475448252035
+        y: 3049.668299175423
+      positionAbsolute:
+        x: -305.4475448252035
+        y: 3049.668299175423
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 341
+    - data:
+        author: Dify
+        desc: ''
+        height: 224
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"input_text:
+          The text that needs sentiment recognition; ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Multisentiment:
+          Whether the text contains multiple sentiments, Boolean value; ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Categories:
+          Optional to fill in. If filled, it will restrict the LLM to recognize only
+          the content you provided, rather than generating freely.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 465
+      height: 224
+      id: '1718994354498'
+      position:
+        x: 59.720984910376316
+        y: 2775.600513755428
+      positionAbsolute:
+        x: 59.720984910376316
+        y: 2775.600513755428
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 465
+    viewport:
+      x: 327.6416816477669
+      y: -1206.2536993722506
+      zoom: 0.5

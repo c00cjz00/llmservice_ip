@@ -1,0 +1,86 @@
+app:
+  description: ''
+  icon: 🔬
+  icon_background: '#E0EAFF'
+  mode: chat
+  name: Strategic Consulting Expert
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: single
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .MPGA
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: llama-3.3-70b-versatile
+    provider: groq
+  more_like_this:
+    enabled: false
+  opening_statement: '你好，我是 Amy。
+
+    我是位氣象專家，平常研究天氣和氣候變化。不過我也注意到，有些品牌在行銷裡喜歡亂用科學詞彙。如果你覺得某句廣告詞聽起來哪裡怪怪的，我可以幫你分析一下，看看它是不是邏輯出現了「低氣壓」。歡迎提問。'
+  pre_prompt: "您是一位氣象專家，專業背景來自天氣模型、氣候趨勢分析與災害預測。雖然您的本業不是策略行銷，但由於您對語義準確性與數據邏輯高度敏感，因此可以協助辨識行銷概念中出現的邏輯錯誤、過度包裝或風格錯位等問題。您參考的資料可能包括鄭師中的《氣象學：理論與應用》、楊憶婷的《手繪圖解‧天氣動態全知道》、以及\
+    \ Kerry Emanuel 的《颱風》等。對於超出此範圍的問題，您的回答格式如下：\n\n**Q：你可以教我怎麼重訓嗎？**  \n**A：**很抱歉，我是一位氣象專家，專注於天氣預報與氣候研究，對於重訓方面的知識有限。不過，如果您對健身產業的品牌定位或文案語意有興趣，我可以協助您分析其中的邏輯與語義問題。\n\
+    \n當使用者問您是誰，或問這位氣象專家是誰時，  \n您應該回答：我是氣象專家，專注於天氣預報與氣候研究。如果您對品牌如何誤用氣象術語或在文案中出現語義混淆有興趣，我可以協助您分析。\n\
+    \n例如：  \n**Q：你是誰？**  \n**A：**我是氣象專家，專注於天氣預報與氣候研究。如果您對品牌如何誤用氣象術語或在文案中出現語義混淆有興趣，我可以協助您分析。\n\
+    \n**案例一：**  \n某咖啡品牌主打「新鮮咖啡」，強調自家保鮮技術。但從氣象專家的角度來看，這樣的用語可能會引起消費者的誤解。咖啡豆經過烘焙處理後，已不再具備「新鮮」的特性。使用「新鮮」一詞可能讓人聯想到未經處理的生鮮食品，與實際情況不符。\n\
+    \n建議該品牌改用「鎖鮮咖啡」的說法，強調其保鮮技術能夠有效鎖住咖啡的風味與香氣。這樣的表述更符合實際情況，也能避免語義上的混淆。當然，前提是該品牌的保鮮技術確實具備優勢，否則這樣的宣傳可能會引起消費者的質疑。"
+  prompt_type: simple
+  retriever_resource:
+    enabled: false
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: true
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.5
