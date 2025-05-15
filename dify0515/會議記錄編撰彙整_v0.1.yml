@@ -1,0 +1,308 @@
+app:
+  description: ''
+  icon: ok
+  icon_background: '#D1E0FF'
+  mode: workflow
+  name: 會議記錄編撰彙整_v1
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:0.4.1@c027998d893496eedb2e94e98afc993589a587b418cbcc246b9663e4c364cc70
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1747218562259-source-1747218630317-target
+      selected: false
+      source: '1747218562259'
+      sourceHandle: source
+      target: '1747218630317'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1747218630317-source-1747218706621-target
+      selected: false
+      source: '1747218630317'
+      sourceHandle: source
+      target: '1747218706621'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: 1747218706621-source-1747218712059-target
+      selected: false
+      source: '1747218706621'
+      sourceHandle: source
+      target: '1747218712059'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: 會議逐字稿
+          max_length: null
+          options: []
+          required: false
+          type: paragraph
+          variable: note
+      height: 89
+      id: '1747218562259'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 40185361-65c9-4b3a-abee-7b1f5e28e29a
+          role: system
+          text: '**任務說明：**
+
+
+            您需審閱提供的會議紀錄，撰寫一份清晰、結構完整的摘要，具備足夠資訊以供未參與會議者快速掌握會議重點與後續行動。請注意，若會議中涉及多方對談或不同部門的觀點，應妥善整理其立場差異與共識形成過程。
+
+
+            **摘要撰寫須包含以下要素：**
+
+
+            ### 一、會議概要
+
+
+            * 會議時間、地點與與會人員（如有提供）
+
+            * 會議主要目的或議題
+
+
+            ### 二、關鍵討論與決策紀錄
+
+
+            * 列出主要議題與相關對談內容
+
+            * 說明各方立場、意見分歧與共識過程（若有）
+
+            * 清楚標示最終決策、未決事項與後續需補充資料者
+
+
+            ### 三、行動項目（Action Items）
+
+
+            * 條列所有待執行事項，並指明**負責人/單位**、**完成時限**與**執行方式**
+
+            * 對於需協作的項目，說明牽涉部門與分工方式
+
+
+            ### 四、補充說明（視情況）
+
+
+            * 若有重要背景脈絡、風險評估或需記錄的決策依據，請加以說明
+
+            * 若有需追蹤的議題，請註明後續追蹤機制或下次會議檢視安排
+
+
+            **撰寫風格要求：**
+
+
+            * 採用**專業、簡潔、第三人稱**撰寫，避免口語與模糊措辭
+
+            * 使用**標題、子標題、條列符號**輔助閱讀
+
+            * 摘要內容應具備**獨立可讀性**，無需參閱原始會議紀錄亦可理解全貌
+
+            '
+        - role: user
+          text: '## 會議紀錄
+
+            {{#1747218562259.note#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747218630317'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown to DOCX file
+        tool_configurations: {}
+        tool_description: A tool for generating DOCX file from Markdown text
+        tool_label: Markdown to DOCX file
+        tool_name: md_to_docx
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1747218630317.text#}}'
+        type: tool
+      height: 53
+      id: '1747218706621'
+      position:
+        x: 688
+        y: 374.5
+      positionAbsolute:
+        x: 688
+        y: 374.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1747218630317'
+          - text
+          variable: text
+        - value_selector:
+          - '1747218706621'
+          - files
+          variable: files
+        selected: true
+        title: 結束
+        type: end
+      height: 115
+      id: '1747218712059'
+      position:
+        x: 958.5
+        y: 350.5
+      positionAbsolute:
+        x: 958.5
+        y: 350.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -1487
+      y: -347
+      zoom: 2

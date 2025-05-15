@@ -1,0 +1,562 @@
+app:
+  description: ''
+  icon: 📖
+  icon_background: '#D1E9FF'
+  mode: workflow
+  name: 國網通用契約(合約)審查小幫手_v0.1
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:0.4.1@c027998d893496eedb2e94e98afc993589a587b418cbcc246b9663e4c364cc70
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1740449932117-source-1740449990918-target
+      selected: false
+      source: '1740449932117'
+      sourceHandle: source
+      target: '1740449990918'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1740449990918-source-1741836622032-target
+      selected: false
+      source: '1740449990918'
+      sourceHandle: source
+      target: '1741836622032'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1740449748004-source-1743587468289-target
+      selected: false
+      source: '1740449748004'
+      sourceHandle: source
+      target: '1743587468289'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: document-extractor
+      id: 1743587468289-source-1740449932117-target
+      selected: false
+      source: '1743587468289'
+      sourceHandle: source
+      target: '1740449932117'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1741836622032-source-1743686474768-target
+      selected: false
+      source: '1741836622032'
+      sourceHandle: source
+      target: '1743686474768'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: 1743686474768-source-1740550550848-target
+      selected: false
+      source: '1743686474768'
+      sourceHandle: source
+      target: '1740550550848'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: true
+        title: 開始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          label: 請上傳需要審查的文本，如為掃描版，請先進行OCR後再上傳。
+          max_length: 1
+          options: []
+          required: true
+          type: file-list
+          variable: upload
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 請選擇合約審查的主體。(甲方或乙方為最大利益者)
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: Apart
+        - label: 工作領域
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: workfield
+        - label: 合約審查要點
+          max_length: 4096
+          options: []
+          required: true
+          type: paragraph
+          variable: attention
+      height: 166
+      id: '1740449748004'
+      position:
+        x: 31.428571428571445
+        y: 283.5
+      positionAbsolute:
+        x: 31.428571428571445
+        y: 283.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文檔案內容擷取器
+        type: document-extractor
+        variable_selector:
+        - '1740449748004'
+        - upload
+      height: 90
+      id: '1740449932117'
+      position:
+        x: 638
+        y: 283.5
+      positionAbsolute:
+        x: 638
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1740449932117'
+          - text
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 0a0ee45c-1b2c-4703-8f02-d1508755ded5
+          role: system
+          text: 'Role:
+
+            律師（{{#1740449748004.workfield#}}）
+
+            Profile:
+
+            language: 中文
+
+            description: 你是一位律師，以{{#1740449748004.Apart#}}利益最大化為原則，對{{#context#}}進行審查分析，給出評分與改進建議，協助使用者改善與完善契約。
+
+            Goals:
+
+            對輸入的契約文本進行審查分析後，指出契約中存在的問題與風險
+
+            提出改善與完善契約的建議
+
+            根據建議，修改具體條款
+
+            提供專業法律服務
+
+            Constrains:
+
+            必須依據現行適用法律，不得引用已廢止的法條
+
+            契約條款之約定應符合最新的法律法規及相關政策要求
+
+            專用名稱與地點必須準確無誤
+
+            必須結合建築工程產業背景，不能隨意
+
+            必須結合{{#1740449748004.Apart#}}的要求，站在{{#1740449748004.Apart#}}的立場
+
+            條款內容應有利於{{#1740449748004.Apart#}}
+
+            對於不利於{{#1740449748004.Apart#}}的條款，應及時指出
+
+            對於明顯偏向{{#1740449748004.Apart#}}之不公平條款，應與對方充分協商
+
+            Skills:
+
+            熟悉台灣法律，並能熟練引用法律條文
+
+            擁有強大的法律專業能力，熟悉訴訟程序與流程
+
+            經驗豐富，擅長處理各類爭議糾紛
+
+            對建築產業有深入了解
+
+            具備良好的團隊合作能力，能組織團隊為{{#1740449748004.upload#}}提供服務
+
+            精通各類軟體工具，效率極高
+
+            attention
+
+            {{#1740449748004.attention#}}
+
+            example
+
+            該份契約存在的問題：
+
+            -1.
+
+            -2.
+
+            對客戶不利的條款：
+
+            -1. { }；解釋原因：
+
+            -2. { }；解釋原因：
+
+            修改的建議：
+
+            -1.
+
+            -2.
+
+            -3.
+
+            -4.
+
+            N
+
+            修改的具體條款：
+
+            將「xxx條款」修改為「 」
+
+            將「xxx條款」修改為「 」
+
+            將「xxx條款」修改為「 」
+
+            output format：
+
+            該份契約存在的問題：
+
+            -1.
+
+            -2.
+
+            對客戶不利的條款：
+
+            -1. { }；解釋原因：
+
+            -2. { }；解釋原因：
+
+            修改的建議：
+
+            -1.
+
+            -2.
+
+            -3.
+
+            -4.
+
+            N
+
+            修改的具體條款：
+
+            將「xxx條款」修改為「 」
+
+            將「xxx條款」修改為「 」
+
+            將「xxx條款」修改為「 」'
+        - id: db34e3b5-fccc-497a-ae76-fc5162bb113a
+          role: user
+          text: ''
+        selected: false
+        title: 合約審查LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '17404498426540'
+            - last_record
+          enabled: false
+      height: 88
+      id: '1740449990918'
+      position:
+        x: 942
+        y: 283.5
+      positionAbsolute:
+        x: 942
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1740449990918'
+          - text
+          variable: 审查意见
+        - value_selector:
+          - '1741836622032'
+          - files
+          variable: PDF
+        - value_selector:
+          - '1743686474768'
+          - files
+          variable: DOCX
+        selected: false
+        title: 结束
+        type: end
+      height: 140
+      id: '1740550550848'
+      position:
+        x: 1854
+        y: 283.5
+      positionAbsolute:
+        x: 1854
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown轉換PDF文件
+        tool_configurations: {}
+        tool_label: Markdown转PDF文件
+        tool_name: md_to_pdf
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1740449990918.text#}}'
+        type: tool
+      height: 52
+      id: '1741836622032'
+      position:
+        x: 1246
+        y: 283.5
+      positionAbsolute:
+        x: 1246
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 23057863-f112-4828-a650-6eb196856028
+          role: system
+          text: '{{#1740449748004.attention#}}
+
+            將使用者的要求細化為契約審查要點，並輸出為提示詞中的 attention 段落。'
+        selected: false
+        title: 合約審查要點生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: '1743587468289'
+      position:
+        x: 334
+        y: 283.5
+      positionAbsolute:
+        x: 334
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown轉換Docx文件
+        tool_configurations: {}
+        tool_label: Markdown转Docx文件
+        tool_name: md_to_docx
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1740449990918.text#}}'
+        type: tool
+      height: 52
+      id: '1743686474768'
+      position:
+        x: 1550
+        y: 283.5
+      positionAbsolute:
+        x: 1550
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 139.29999999999995
+      y: 69.69999999999995
+      zoom: 0.7

@@ -1,0 +1,679 @@
+app:
+  description: ''
+  icon: u7533
+  icon_background: '#E0EAFF'
+  mode: workflow
+  name: 民眾陳情回覆_v0.2
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tavily:0.0.5@caf7214ca1a237845e991615fd12e04c8db8b703d59773538fe243f3de4044e9
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-true-1733403132182-target
+      selected: false
+      source: '1733402970086'
+      sourceHandle: 'true'
+      target: '1733403132182'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-8ff2e557-7e1c-4949-a75f-170cafc49b1c-1733403213803-target
+      selected: false
+      source: '1733402970086'
+      sourceHandle: 8ff2e557-7e1c-4949-a75f-170cafc49b1c
+      target: '1733403213803'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: template-transform
+      id: 1730257085761-source-1733452505962-target
+      selected: false
+      source: '1730257085761'
+      sourceHandle: source
+      target: '1733452505962'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: if-else
+      id: 1733452505962-source-1733402970086-target
+      selected: false
+      source: '1733452505962'
+      sourceHandle: source
+      target: '1733402970086'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1733403132182-source-17333139837460-target
+      source: '1733403132182'
+      sourceHandle: source
+      target: '17333139837460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1733403213803-source-17340631280550-target
+      source: '1733403213803'
+      sourceHandle: source
+      target: '17340631280550'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17340631280550-source-1733403238861-target
+      source: '17340631280550'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17333139837460-source-1733403238861-target
+      source: '17333139837460'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: tool
+      id: 1733402970086-8ff2e557-7e1c-4949-a75f-170cafc49b1c-1734067930746-target
+      source: '1733402970086'
+      sourceHandle: 8ff2e557-7e1c-4949-a75f-170cafc49b1c
+      target: '1734067930746'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 1734067930746-source-1734068154617-target
+      source: '1734067930746'
+      sourceHandle: source
+      target: '1734068154617'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1734068154617-source-17340631280550-target
+      source: '1734068154617'
+      sourceHandle: source
+      target: '17340631280550'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: end
+      id: 1733403238861-source-1732579748973-target
+      source: '1733403238861'
+      sourceHandle: source
+      target: '1732579748973'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 1. 開始
+        type: start
+        variables:
+        - label: 回覆陳情樣板
+          max_length: 48
+          options:
+          - (1) 樣板一 (快速回應問題)
+          - (2) 樣板二  (相關資訊輔助搜尋)
+          required: true
+          type: select
+          variable: office_document
+        - label: 民眾陳情標題
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: title
+        - label: 民眾陳情內容
+          max_length: 2048
+          options: []
+          required: false
+          type: paragraph
+          variable: content
+        - label: 思考語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+        - label: 輸出語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: translate_to
+      height: 193
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 296.5
+      positionAbsolute:
+        x: 30
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1733403238861'
+          - output
+          variable: output
+        selected: false
+        title: 5. OUTPUT CHINESE
+        type: end
+      height: 89
+      id: '1732579748973'
+      position:
+        x: 2158
+        y: 296.5
+      positionAbsolute:
+        x: 2158
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1733452505962'
+          - output
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 3ef1efde-48b7-4f8d-830b-44e92815950f
+          role: system
+          text: '{{#1733403132182.output#}}
+
+
+            ### 國家科學及技術委員會處理人民陳情案件作業規定
+
+            ```
+
+            {{#context#}}
+
+            ```'
+        - id: 04881f0e-1a81-4c5c-813a-5123d62689e8
+          role: user
+          text: '### 資料輸入：
+
+            - Language：**{{#1730257085761.language#}}**
+
+            - 陳情案件標題：**{{#1730257085761.title#}}**
+
+            - 陳情案件內容：**{{#1730257085761.content#}}**
+
+            - 確保所有文件中出現的“科技部”字樣，無一遺漏地替換為“國科會”。
+
+            - 文末敬語需調整為以下格式，確保格式一致：
+
+            "敬祝您平安如意
+
+            國家科學及技術委員會 敬啟"
+
+            '
+        selected: false
+        title: 5. 撰寫陳情回覆文件 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17333139837460'
+      position:
+        x: 1550
+        y: 679.5
+      positionAbsolute:
+        x: 1550
+        y: 679.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 85f7b3fd-681c-44d5-9389-6ca457fd4101
+            value: (1)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: 'true'
+          logical_operator: and
+        - case_id: 8ff2e557-7e1c-4949-a75f-170cafc49b1c
+          conditions:
+          - comparison_operator: contains
+            id: e3c17fed-8135-4edc-b709-5a726c873020
+            value: (2)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: 8ff2e557-7e1c-4949-a75f-170cafc49b1c
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 3. 陳情樣板
+        type: if-else
+      height: 173
+      id: '1733402970086'
+      position:
+        x: 638
+        y: 296.5
+      positionAbsolute:
+        x: 638
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "### 背景角色：\r\n您是台灣國家科學及技術委員會（NSTC）負責處理民眾陳情案件的專案人員，專精於提供專業、具說服力且精確的回應。您能清楚傳達國科會的立場，並完整、條理分明地回覆民眾陳情案件。\r\
+          \n\r\n請根據《國家科學及技術委員會處理人民陳情案件作業規定》以及陳情案件的標題與內容，撰寫正式的回覆文。回覆內容應完整且結構清晰，並包含以下幾個重點：\r\
+          \n\r\n### **1. 案件權責範疇確認**\r\n- 根據相關法規，詳細說明國科會如何判定該案件是否屬於本會的處理範圍。\r\n- 若該案件不屬於國科會的權責範圍，需清楚說明：\r\
+          \n  - 案件將如何依法移交至其他主管機關或單位處理；\r\n  - 國科會如何以書面或其他適當方式通知民眾該案件轉交的情況，並提供後續的處理負責單位及聯絡方式。\r\
+          \n\r\n### **2. 處理流程與法規依據**\r\n- 若案件屬於國科會的權責範疇，請詳細說明：\r\n  - 國科會處理此類案件的完整流程，包括但不限於初審、調查、決議等各個階段；\r\
+          \n  - 適用的法律或規範依據；\r\n  - 預期的處理時限，若因特殊情況需要延長處理時間，國科會應如何依規定通知民眾並提供後續進度追蹤。\r\
+          \n\r\n### **3. 專責聯絡窗口**\r\n- 提供民眾專責聯絡窗口的聯絡方式（電話及電子郵件），以便民眾查詢案件進度或補充資料。\r\
+          \n\r\n### **4. 後續安排與滿意度調查**\r\n- 說明案件進入下一階段（如深入調查或懲處）後，民眾將如何接收到後續通知。\r\n\
+          - 清楚列明國科會如何進行民眾滿意度調查，並以此作為改進服務與案件處理流程的依據。\r\n\r\n撰寫回覆時，請確保內容結構清晰、符合相關法規，並展示國科會致力於提升民眾滿意度、促進政府公信力的承諾。所有回覆應具備公正、透明的處理態度，且具體回應民眾的訴求。\r\
+          \n\r\n"
+        title: '模板: (1) '
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733403132182'
+      position:
+        x: 1246
+        y: 679.5
+      positionAbsolute:
+        x: 1246
+        y: 679.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "您是國家科學及技術委員會（NSTC）專責民眾陳情處理的專家。請根據提供於 <question1></question1>、<question2></question2>、<question3></question3>\
+          \ 範例問題及其回覆格式，撰寫一份針對民眾陳情案件標題與內容的專業回應。您的回應應具體且詳盡地說明如何解決或回應其問題，並針對實際情況提出相應的解決方案。\r\
+          \n\r\n請注意，您不應直接引用範例中的問題或回覆內容，而應根據民眾陳情的具體情況提供定制化的解答。\r\n\r\n<question1>\r\
+          \n**範例問題 1:**  關於研究單位認定。我過去在資策會工作，當時屬於勞保，負責的工作範疇廣泛，也包括推廣等工作。不久前，學校工作人員聯繫貴會時，將資策會歸為「國內學術研究機構編制」。請問這樣的分類正確嗎？是否有依據？\r\
+          \n範例回覆 1:\r\n○○○君：您好\r\n\r\n感謝您於○○○年○月○○日來函詢問關於「研究單位認定」的問題，以下為我們的回覆：\r\n\
+          一、根據「國家科學及技術委員會補助專題研究計畫作業要點」，本會會將國內學術研究機構編制中的專任人員列為補助對象。\r\n二、經查，資策會的服務對象為勞保，並不屬於國內學術研究機構編制，因此不符合上述規範。\r\
+          \n\r\n祝您一切順利，平安如意。\r\n\r\n國家科學及技術委員會 敬啟\r\n</question1>\r\n\r\n<question2>\r\
+          \n**範例問題 2:**  如果我進行自製火箭的縮小版實驗發射，是否需要向國科會申請許可？\r\n範例回覆 2:\r\n○○○君：您好\r\n\
+          \r\n感謝您於○○○年○月○○日來函詢問有關自製火箭縮小版發射的規範問題，以下為我們的回覆：\r\n一、依照《太空發展法》第7條規定，任何人不得未經許可從事太空活動。您所提及的火箭實驗試射，需遵守該法條規定。\r\
+          \n二、國科會提供「短期科學火箭發射許可」及「個人/教育機構升空載具許可」等相關申請途徑。您可前往本會網站下載所需文件並填寫申請表，以便進行審查。\r\
+          \n\r\n祝您一切順利，平安如意。\r\n\r\n國家科學及技術委員會 敬啟\r\n</question2>\r\n\r\n<question3>\r\
+          \n**範例問題 3:**  國科會是否有針對使用ChatGPT等生成式AI工具制定補助計畫規範？\r\n範例回覆 3:\r\n一、目前本會尚未針對ChatGPT等生成式AI工具專門制定補助計畫規範，但此事正在進行中。\r\
+          \n二、鑑於生成式AI工具可能對學術倫理產生影響，本會將參考國際間的做法，並廣泛徵詢各界意見，期望建立適當的管理機制。\r\n\r\n</question3>\r\
+          \n\r\n"
+        title: '模板: (2) '
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733403213803'
+      position:
+        x: 1246
+        y: 296.5
+      positionAbsolute:
+        x: 1246
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 4. 陳情樣板合聚
+        type: variable-aggregator
+        variables:
+        - - '17340631280550'
+          - text
+        - - '17333139837460'
+          - text
+      height: 130
+      id: '1733403238861'
+      position:
+        x: 1854
+        y: 296.5
+      positionAbsolute:
+        x: 1854
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "國家科學及技術委員會處理人民陳情案件作業規定\r\n111年8月17日科會綜字第1110052978C號函修正\r\n一、國家科學及技術委員會(以下簡稱本會)為加強為民服務，有效處理人民陳情\r\
+          \n案件，特訂定本作業規定。\r\n二、本會各單位（以下簡稱各單位）處理陳情案件應切實遵照行政程序法及行政\r\n院及所屬各機關處理人民陳情案件要點規定辦理。其未規定者，悉依本作業\r\
+          \n規定辦理。\r\n三、本作業規定所稱人民陳情案件，指陳情人以書面（透過主任委員或本會意見\r\n信箱、郵寄、傳真、經由上級或其他機關交（移）辦）或言詞（電話、親至\r\
+          \n本會）直接向本會陳述有關本會行政興革之建議、行政法令之查詢、行政違\r\n失之舉發或行政權益之維護等具體陳情之案件。\r\n四、人民陳情案件，應依下列方式受理及分辦：\r\
+          \n(一)書面陳情案件，由秘書處完成公文掛號程序後，分辦本會業務權責單位\r\n處理。\r\n(二)以電話向本會陳情者，接聽人應儘速將電話轉接本會業務權責單位承辦\r\
+          \n人員，承辦人員應將陳情事項製作本會處理人民陳情案件紀錄表（以下\r\n簡稱紀錄表，格式如附件一）後，送秘書處完成公文掛號程序，分辦業\r\n\
+          務權責單位處理。陳情事項如顯非屬本會權責，應告知陳情人該事項所\r\n涉之相關主管機關；必要時，得提供聯繫方式。若陳情人仍請本會研處，\r\n\
+          應作成紀錄表循前開程序辦理。\r\n(三)人民親至本會陳情者，由業務權責單位安排適當場所接待陳情人，並填\r\n寫紀錄表；必要時，得請政風處或駐衛警察會同處理。\r\
+          \n(四)團體至本會陳情者，處理原則如下：\r\n1. 各單位於事前接獲陳情情資後，應於陳情活動前一日下班前簽陳因應\r\n處置方案後，送政風處辦理。\r\
+          \n2. 經協調同意進入本會陳情之團體，其推派陳情代表以不超過十人為原\r\n則，應由業務權責單位及政風處共同接見。\r\n3. 對於例假日之陳情活動，由業務權責單位及政風處派員至現場瞭解陳\r\
+          \n2\r\n情訴求或接受陳情書。\r\n4. 本會不接受陳情團體指定接見人員或要求立即答復。未獲准接見者，\r\n如有意圖強行進入本會、擅闖辦公區域，或有聚眾脅迫、滋擾抗爭、\r\
+          \n妨礙秩序等行為，由政風處依法令規定處理；必要時，得請相關單位\r\n協助。\r\n5. 業務權責單位接待團體陳情後，應立即將陳情事項及處置情形簽報主\r\
+          \n任委員(副主任委員)。\r\n五、本會受理之人民陳情案件，依下列原則處理：\r\n(一)各單位辦理人民陳情案件應依分層負責規定，逐級陳核後，送秘書處統\r\
+          \n一於本會意見信箱回復陳情人。為瞭解陳情人對本會處理案件之滿意度，\r\n答復陳情人時，應併附本會人民陳情案件處理情形調查表（以下簡稱調\r\n\
+          查表，格式如附件二），請陳情人填寫後送回綜合規劃處。另採書面函復\r\n者，應附調查表及回郵信封，請陳情人填寫後寄還。\r\n(二)陳情人留有聯絡方式者，於回復陳情人前，得先行聯繫溝通意見，以充\r\
+          \n分瞭解陳情人所欲表達之意思。於溝通時，應適時表達本會對其陳情事\r\n項之重視，並得將預備處理作為，先行告知，藉由深度意見溝通，化解\r\n\
+          歧見。\r\n(三)非屬本會權責者，函轉主管機關予以處理，並副知陳情人；函轉時應請\r\n主管機關將處理情形及結果副知本會。未能確定陳情事項之主管機關時，\r\
+          \n得協調相關機關處理。\r\n(四)人民陳情案件有下列情形之一者，應錄案登記並得陳閱後予以存查，以\r\n利查考：\r\n1. 無具體內容或未具真實姓名或聯絡方式。\r\
+          \n2. 同一事由，經予適當處理，並已明確答復後，仍一再陳情。\r\n3. 非陳情事項之主管機關，接獲陳情人以同一事由已分向各主管機關陳\r\n\
+          情。\r\n(五)由上級或其他機關交（移）辦之陳情案件，由本會直接處理函復陳情人，\r\n並副知交（移）辦機關；如屬直接簽存之案件，應敘明理由回復交（移）\r\
+          \n辦機關。\r\n3\r\n(六)人民之陳情有保密必要者，應將該案列為密件，不予公開。\r\n(七)人民對依法應提起訴願或訴訟之事項提出陳情時，應告知陳情人循訴願\r\
+          \n或訴訟規定辦理，或逕移送主管機關並副知陳情人。\r\n六、為提升人民陳情案件處理滿意度，回復時應依下列注意事項辦理：\r\n(一)各單位答復人民陳情案件時，應針對案情內容敘明具體處理意見及法規\r\
+          \n依據，以簡明易懂、肯定、親切、同理心之文字用語答復陳情人。\r\n(二)案件如有部分涉及他機關權責時，宜於文內敘明「為節省台端時間，本\r\n\
+          會主動轉請權責機關(某某單位)逕復」字樣，避免陳情人須重複再洽其\r\n他權責機關處理。\r\n(三)人民對政府政策、行政措施、法令規章等，提出可供採行之具體革新建\r\
+          \n議時，應予研辦參採；請求解釋時，應適切闡釋或明確處理。\r\n七、各單位辦理人民陳情案件，除上級機關來文時已明定辦理時限者外，以一般\r\n\
+          公文普通件處理期限處理；未能依限於六日內辦結者，應依規定申請展期，\r\n並至遲於十五日內辦結。未能於十五日內辦結者，應依分層負責簽請核准，\r\
+          \n並將延長理由告知陳情人；處理期限不得超過三十日。\r\n八、處理人民陳情案件，應以「案」為單位進行管制，由秘書處以公文時效控管\r\n並按月統計。\r\
+          \n年度結束後，由綜合規劃處彙編及研提本會年度人民陳情案件分析報告，\r\n簽報主任委員(副主任委員)核定，並分送各單位參考改進。\r\n九、本會各單位處理人民陳情案件之績效優良人員，得予適時獎勵。\r\
+          \n4\r\n附件一\r\n國家科學及技術委員會處理人民陳情案件紀錄表\r\n填表單位：\r\n陳情人\r\n姓 名 聯絡電話\r\n聯 絡 地\
+          \ 址\r\n傳 真\r\n電子信箱\r\n陳情時間 年 月 日 時 分 陳情地點\r\n陳情方式 □電話 □面談\r\n陳情性質 □行政興革之建議\
+          \ □行政法令之查詢 □行政違失之舉發\r\n□行政權益之維護\r\n陳訴事項\r\n記錄人： 陳情人：\r\n備註 記錄完畢，應向陳情人朗讀或使閱覽，確認陳情內容無誤並簽名。\r\
+          \n\r\n5\r\n附件二\r\n 國家科學及技術委員會人民陳情案件處理情形調查表\r\n1.陳情時間：____年____月____日\r\n\
+          機關收文號：_____________________________________________\r\n陳情事由：_______________________________________________\r\
+          \n2.請問您對於本次陳情案件，本會處理情形是否滿意？\r\n□(1)非常滿意 □(2)滿意 □(3)尚可 □(4)不滿意\r\n□(5)非常不滿意\r\
+          \n3.(前點勾選 1、2、3 者跳答)請問您不滿意的理由？（可複選）\r\n□處理時間太慢 □承辦人員處理態度不佳\r\n□答復內容沒有具體明確\
+          \ □答復內容為制式例稿，欠缺誠意\r\n□答復內容與實際處理情形不符 □曲解法令或引用法令錯誤\r\n□處理結果沒有考量民眾需求\r\n□相關單位推諉責任（如：\
+          \ ）\r\n□其他(請說明 )\r\n\r\n本表填妥後，務請以下列聯絡方式擲回 國家科學及技術委員會綜合規劃\r\n處，謝謝！\r\n郵寄住址：106\
+          \ 臺北市和平東路二段 106 號 18 樓\r\n國家科學及技術委員會傳真：02-27377566\r\n國家科學及技術委員會意見信箱：nstc@nstc.gov.tw"
+        title: 2. 指引
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733452505962'
+      position:
+        x: 334
+        y: 296.5
+      positionAbsolute:
+        x: 334
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 3ef1efde-48b7-4f8d-830b-44e92815950f
+          role: system
+          text: '{{#1733403213803.output#}}
+
+            '
+        - id: 04881f0e-1a81-4c5c-813a-5123d62689e8
+          role: user
+          text: '### 輸入資料：
+
+            - **語言：** {{#1730257085761.language#}}
+
+            - **陳情案件標題：** {{#1730257085761.title#}}
+
+            - **陳情案件內容：** {{#1730257085761.content#}}
+
+            - **參考資料**：{{#1734068154617.text#}}
+
+            - ** 注意事項** ：Ensure the report includes detailed citations with clear
+            and accessible URLs for all referenced literature. Each reference should
+            include a direct, clickable hyperlink to the source material.
+
+            - 確保所有文件中出現的“科技部”字樣，無一遺漏地替換為“國科會”。
+
+            - 文末敬語需調整為以下格式，確保格式一致：
+
+            "敬祝您平安如意
+
+            國家科學及技術委員會 敬啟"
+
+
+            ### 回應內容：
+
+            '
+        selected: false
+        title: 5. 撰寫陳情回覆文件 (2)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17340631280550'
+      position:
+        x: 1550
+        y: 296.5
+      positionAbsolute:
+        x: 1550
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: Tavily Search
+        tool_configurations:
+          days: 3
+          exclude_domains: null
+          include_answer: 0
+          include_domains: null
+          include_image_descriptions: 0
+          include_images: 0
+          include_raw_content: 0
+          max_results: 5
+          search_depth: basic
+          topic: general
+        tool_label: Tavily Search
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: 台灣國家科學及技術委員會 (NSTC):{{#1730257085761.title#}}
+        type: tool
+      height: 323
+      id: '1734067930746'
+      position:
+        x: 942
+        y: 488
+      positionAbsolute:
+        x: 942
+        y: 488
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 9f29ab5f-ff44-4267-825d-dc0b9cfadac5
+          role: system
+          text: "1. Your role is to deliver responses solely based on internet-sourced\
+            \ information.  \n2. You must exclusively utilize the Tavily search API\
+            \ function to retrieve accurate and relevant data.  \n3. Avoid using prior\
+            \ knowledge or providing any information not directly supported by search\
+            \ results.  \n4. Ensure all responses are substantiated with relevant\
+            \ URL sources included at the conclusion.  \n"
+        - id: b592e164-c47f-411a-a49f-62981292efe8
+          role: user
+          text: "**Language**: {{#1730257085761.language#}} \n**Query**: \"{{#1734067930746.text#}}\"\
+            \  \n\nUsing the query provided above, deliver a response to the following\
+            \ question or topic:  \n**Topic**: \"{{#1730257085761.title#}}\" "
+        selected: false
+        title: 4. 搜尋
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1734068154617'
+      position:
+        x: 1246
+        y: 466
+      positionAbsolute:
+        x: 1246
+        y: 466
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -24.826935598263447
+      y: 82.47963669202728
+      zoom: 0.710427907345774

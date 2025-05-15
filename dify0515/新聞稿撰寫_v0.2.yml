@@ -1,0 +1,908 @@
+app:
+  description: '範例:  ·量子國家隊聯手仁寶開發退火運算應用 · 《2025未來科技獎》即日起至6/30受理線上報名'
+  icon: u7a7a
+  icon_background: '#D1E0FF'
+  mode: workflow
+  name: 新聞稿撰寫_v0.2
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tavily:0.0.5@caf7214ca1a237845e991615fd12e04c8db8b703d59773538fe243f3de4044e9
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-true-1733403132182-target
+      selected: false
+      source: '1733402970086'
+      sourceHandle: 'true'
+      target: '1733403132182'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-8ff2e557-7e1c-4949-a75f-170cafc49b1c-1733403213803-target
+      selected: false
+      source: '1733402970086'
+      sourceHandle: 8ff2e557-7e1c-4949-a75f-170cafc49b1c
+      target: '1733403213803'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-2f4dd10c-6a53-4861-8433-c29cfe8b2b45-1733403226394-target
+      selected: false
+      source: '1733402970086'
+      sourceHandle: 2f4dd10c-6a53-4861-8433-c29cfe8b2b45
+      target: '1733403226394'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-0a243ff8-8404-4fbc-a997-fe337635e9b0-1733403230517-target
+      selected: false
+      source: '1733402970086'
+      sourceHandle: 0a243ff8-8404-4fbc-a997-fe337635e9b0
+      target: '1733403230517'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1733403132182-source-1733403238861-target
+      selected: false
+      source: '1733403132182'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1733403213803-source-1733403238861-target
+      selected: false
+      source: '1733403213803'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1733403226394-source-1733403238861-target
+      selected: false
+      source: '1733403226394'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1733403230517-source-1733403238861-target
+      selected: false
+      source: '1733403230517'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1733403238861-source-17333139837460-target
+      source: '1733403238861'
+      sourceHandle: source
+      target: '17333139837460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-dfde50bc-23f8-49aa-8ab5-77e67e278d16-1733432932886-target
+      source: '1733402970086'
+      sourceHandle: dfde50bc-23f8-49aa-8ab5-77e67e278d16
+      target: '1733432932886'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-25493570-6750-4820-ab2f-75820d7175ef-1733432937099-target
+      source: '1733402970086'
+      sourceHandle: 25493570-6750-4820-ab2f-75820d7175ef
+      target: '1733432937099'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733402970086-f95fda7e-d08b-4970-9a3a-d2a8ced343a4-1733432940930-target
+      source: '1733402970086'
+      sourceHandle: f95fda7e-d08b-4970-9a3a-d2a8ced343a4
+      target: '1733432940930'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1733432932886-source-1733403238861-target
+      source: '1733432932886'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1733432937099-source-1733403238861-target
+      source: '1733432937099'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1733432940930-source-1733403238861-target
+      source: '1733432940930'
+      sourceHandle: source
+      target: '1733403238861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1733643649336-source-1733643739541-target
+      source: '1733643649336'
+      sourceHandle: source
+      target: '1733643739541'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: tool
+      id: 1730257085761-source-17345268693890-target
+      source: '1730257085761'
+      sourceHandle: source
+      target: '17345268693890'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 17345268693890-source-17345268829620-target
+      source: '17345268693890'
+      sourceHandle: source
+      target: '17345268829620'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 17345268829620-source-1733402970086-target
+      source: '17345268829620'
+      sourceHandle: source
+      target: '1733402970086'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 17333139837460-source-1733643649336-target
+      source: '17333139837460'
+      sourceHandle: source
+      target: '1733643649336'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 1. 開始
+        type: start
+        variables:
+        - label: 新聞稿類別
+          max_length: 48
+          options:
+          - '(1) 科技政策與發展規劃: 宣布新政策或長期科技規劃'
+          - '(2) 研究成果發布: 公佈特定領域的重要研究進展'
+          - '(3) 資金與補助計劃: 關於研究經費申請、撥款或管理的公告'
+          - '(4) 人才培育與活動: 青年科學家競賽、研討會、教育計劃相關'
+          - '(5) 重大活動與合作: 與其他國家或國際組織合作的計劃或成果'
+          - (6) 科技普及與教育:針對大眾或學生的科普活動推廣
+          - '(7) 專題專案: 某一特定領域的研究專案進展或成果'
+          required: true
+          type: select
+          variable: office_document
+        - label: 標題或主旨
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: title
+        - label: 大綱或摘要 (可選填)
+          max_length: 2048
+          options: []
+          required: false
+          type: paragraph
+          variable: content
+        - label: 思考語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+        - label: 輸出語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: translate_to
+      height: 193
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 406.5
+      positionAbsolute:
+        x: 30
+        y: 406.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17345268829620'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 3ef1efde-48b7-4f8d-830b-44e92815950f
+          role: system
+          text: '{{#1733403238861.output#}}
+
+            '
+        - id: 04881f0e-1a81-4c5c-813a-5123d62689e8
+          role: user
+          text: "### 新聞稿所需資訊：\n1. **新聞稿主題**：  \n   {{#1730257085761.title#}}  \n\n\
+            2. **參考摘要**：  \n   {{#1730257085761.content#}}  \n\n3. **背景資訊**：  \n \
+            \  {{#context#}}  \n\n4. **輸出語言**：  \n   {{#1730257085761.language#}}\
+            \  \n\n5.  ** 注意事項** ：Ensure the report includes detailed citations with\
+            \ clear and accessible URLs for all referenced literature. Each reference\
+            \ should include a direct, clickable hyperlink to the source material.\n\
+            6. 確保所有文件中出現的“科技部”字樣，無一遺漏地替換為“國科會”。\n7. 文末敬語需調整為以下格式，確保格式一致：\n\"敬祝您平安如意\n\
+            國家科學及技術委員會 敬啟\"\n\n"
+        selected: false
+        title: 5. 新聞稿撰寫
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17333139837460'
+      position:
+        x: 1854
+        y: 685.5
+      positionAbsolute:
+        x: 1854
+        y: 685.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 5bfa9599-8109-4309-b46c-10488d5fba72
+            value: (1)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: 'true'
+          logical_operator: and
+        - case_id: 8ff2e557-7e1c-4949-a75f-170cafc49b1c
+          conditions:
+          - comparison_operator: contains
+            id: 0dee1e63-7036-4748-a2ab-679a2f950028
+            value: (2)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: 8ff2e557-7e1c-4949-a75f-170cafc49b1c
+          logical_operator: and
+        - case_id: 2f4dd10c-6a53-4861-8433-c29cfe8b2b45
+          conditions:
+          - comparison_operator: contains
+            id: 22aac363-f316-4ee2-bd76-04dddb9f80b3
+            value: (3)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: 2f4dd10c-6a53-4861-8433-c29cfe8b2b45
+          logical_operator: and
+        - case_id: 0a243ff8-8404-4fbc-a997-fe337635e9b0
+          conditions:
+          - comparison_operator: contains
+            id: 82b86652-a75d-49e8-b2e8-2a0f3499e729
+            value: (4)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: 0a243ff8-8404-4fbc-a997-fe337635e9b0
+          logical_operator: and
+        - case_id: dfde50bc-23f8-49aa-8ab5-77e67e278d16
+          conditions:
+          - comparison_operator: contains
+            id: c2863bc5-90d0-43f7-8b5d-3dca30da625d
+            value: (5)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: dfde50bc-23f8-49aa-8ab5-77e67e278d16
+          logical_operator: and
+        - case_id: 25493570-6750-4820-ab2f-75820d7175ef
+          conditions:
+          - comparison_operator: contains
+            id: 9875cda0-f9d9-46d9-b2ff-98b86f9202a5
+            value: (6)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: 25493570-6750-4820-ab2f-75820d7175ef
+          logical_operator: and
+        - case_id: f95fda7e-d08b-4970-9a3a-d2a8ced343a4
+          conditions:
+          - comparison_operator: contains
+            id: 342d9bbd-0642-45c3-94e5-941aa4d42394
+            value: (7)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: f95fda7e-d08b-4970-9a3a-d2a8ced343a4
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 3. 新聞稿類別
+        type: if-else
+      height: 413
+      id: '1733402970086'
+      position:
+        x: 942
+        y: 406.5
+      positionAbsolute:
+        x: 942
+        y: 406.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## 根據以下指引撰寫新聞稿：\r\n\r\n### 背景角色：\r\n您是台灣國家科學及技術委員會（NSTC）的資深新聞稿撰寫人員，專精於傳統新聞寫作技巧，著重於清晰、專業且具說服力的內容，能夠準確傳達國科會的立場、政策目標與未來規劃。\r\
+          \n\r\n### 新聞稿類型：\r\n科技政策與發展規劃類，焦點在於**宣布新的政策或長期科技規劃**，重點應放在政策方向、未來願景以及對社會和產業的潛在影響，並具備說服力，以引發各界關注和討論。\r\
+          \n\r\n### 新聞稿寫作要求：\r\n根據新聞主題、參考摘要及背景資料，請遵循下列規範進行撰寫新聞稿。請注意，以下指引中的標題應該融入新聞稿中，而非單獨列出：\r\
+          \n\r\n1. **標題**：撰寫一個簡潔且吸引注意的標題，強調新科技政策或長期發展規劃的創新性，並突顯其對社會與產業的潛在影響，使讀者立即理解核心訊息。\r\
+          \n  \r\n2. **導語（Lede）**：開頭部分應簡潔明瞭，清楚呈現新聞的核心內容，迅速抓住讀者注意力。避免在開頭單獨列出導語標題，而是將其自然融入新聞稿中。\r\
+          \n  \r\n3. **5W1H系統**：文章內容應包括5W1H的要素，確保新聞稿邏輯清晰、資訊全面。請注意不要直接列出5W1H標題，而是將這些重要元素自然融入文中。\r\
+          \n  \r\n4. **由上而下的結構**：將最關鍵的資訊置於開頭，按照重要性逐步遞減，以便讀者能迅速抓住重點，同時便於編輯調整新聞稿的長度與細節。\r\
+          \n\r\n5. **語言專業性與清晰性**：\r\n   - 使用易懂且具專業性的語言，確保來自不同背景的讀者能夠迅速掌握關鍵訊息。\r\n\
+          \   \r\n6. **數據與細節支撐**：\r\n   - 提供權威數據、政策文件或研究成果來增強新聞稿的可信度與說服力\r\n   - 附上引用來源與參考文獻，確保讀者能進一步核實資料。\
+          \  \r\n\r\n7. **國科會立場與行動**：\r\n   - 明確呈現國科會的政策立場、具體措施及計劃進度，避免引用第三方觀點評價國科會的行動或政策。\r\
+          \n\r\n8. **邏輯與結構清晰**：\r\n   - 確保稿件結構簡潔、語句通順且層次分明，字數保持在1000至1500字之間。避免冗長描述或不必要的背景補充。\r\
+          \n\r\n### 文風要求：\r\n- 內容應精簡專業，避免冗長描述或不必要的細節。\r\n- 用詞需精確，充分體現政策或規劃的核心價值及其對社會、經濟、科技領域的深遠影響。\r\
+          \n- 結構清晰，符合新聞讀者閱讀習慣，並滿足媒體編輯的需求與格式要求。\r\n"
+        title: '模板: (1) 科技政策與發展規劃: 宣布新政策或長期科技規劃'
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733403132182'
+      position:
+        x: 1246
+        y: 406.5
+      positionAbsolute:
+        x: 1246
+        y: 406.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## 根據以下指引撰寫新聞稿：\r\n\r\n### 背景角色：\r\n您是台灣國家科學及技術委員會（NSTC）的資深新聞稿撰寫人員，專精於傳統新聞寫作技巧，注重清晰、專業且具說服力的內容，能準確傳達國科會的立場、政策目標、未來規劃及研究成果的重要性。\r\
+          \n\r\n### 新聞稿類型：\r\n研究成果發布，焦點在於**公佈特定領域的重要研究進展**，重點應放在研究的創新性、技術突破、對相關領域及社會的潛在影響，並具備說服力以吸引各界關注，特別是相關業界與學術界。\r\
+          \n\r\n### 新聞稿寫作要求：\r\n根據新聞主題、參考摘要及背景資料，請遵循下列規範進行撰寫新聞稿。請注意，以下指引中的標題應融入新聞稿中，而非單獨列出：\r\
+          \n\r\n1. **標題**：\r\n   撰寫一個簡潔且吸引注意的標題，強調研究成果的創新性與突破，突顯其對相關領域及社會的潛在影響，使讀者立即理解核心訊息。\r\
+          \n\r\n2. **導語（Lede）**：\r\n   開頭部分應簡潔明瞭，清楚呈現新聞的核心內容，迅速抓住讀者注意力。介紹研究成果的關鍵發現或突破，並概述其對學術界及產業界的潛在影響。\r\
+          \n\r\n3. **5W1H系統**：\r\n   文章內容應包括5W1H的要素，確保新聞稿邏輯清晰、資訊全面。請避免單獨列出5W1H標題，而是將這些要素自然融入正文中，具體描述研究的背景、方法、結果與影響。\r\
+          \n\r\n4. **由上而下的結構**：\r\n   先呈現最重要的研究發現，接著詳細描述相關的研究背景、方法與結果，最後談及未來的應用或發展潛力，按照重要性依序安排資訊，便於讀者抓住核心內容，並易於編輯調整。\r\
+          \n\r\n5. **語言專業性與清晰性**：\r\n   - 使用易懂且具專業性的語言，確保來自不同背景的讀者能夠迅速掌握關鍵研究發現。\r\n\
+          \   - 闡述研究成果時，避免過度技術性或行話，以提高各類讀者的理解。\r\n\r\n6. **數據與細節支撐**：\r\n   - 提供具權威性的數據、研究結果或相關文獻支持，增強新聞稿的可信度和說服力。\r\
+          \n   - 引用具體的研究成果、數據來源及學術文章，並附上參考文獻及可查證的資料來源。\r\n\r\n7. **國科會立場與行動**：\r\n\
+          \   - 明確呈現國科會的政策立場及支持此研究的重要性，具體說明國科會如何促進該領域的發展及未來規劃。\r\n   - 描述未來的研究計劃及期望的發展方向，強調這些研究成果如何促進國家科技發展。\r\
+          \n\r\n8. **邏輯與結構清晰**：\r\n   - 確保稿件結構簡潔且邏輯分明，語句通順，字數保持在1000至1500字之間。避免冗長的描述或無關背景資料，保持專業性。\r\
+          \n\r\n### 文風要求：\r\n- 內容應精簡專業，避免冗長描述或不必要的細節。\r\n- 用詞需精確，充分體現研究成果的核心價值及其對社會、經濟、科技領域的深遠影響。\r\
+          \n- 結構清晰，符合新聞讀者的閱讀習慣，並滿足媒體編輯的需求與格式要求。\r\n"
+        title: '模板: (2) 研究成果發布: 公佈特定領域的重要研究進展'
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733403213803'
+      position:
+        x: 1246
+        y: 499.5
+      positionAbsolute:
+        x: 1246
+        y: 499.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## 根據以下指引撰寫新聞稿：\r\n\r\n### 背景角色：\r\n您是台灣國家科學及技術委員會（NSTC）的資深新聞稿撰寫人員，專精於傳統新聞寫作技巧，擅長清晰、專業且具說服力的表達，能夠精確傳達國科會在資金與補助計劃上的立場、政策目標、未來規劃及其對科研界、產業發展和社會影響的深遠意義。\r\
+          \n\r\n### 新聞稿類型：\r\n財政資助與科研計劃類，重點是**公布新的研究經費申請、撥款或管理計劃**。內容應聚焦於資金政策、資助範圍、申請資格、申請流程及未來期望，並強調如何促進科學技術創新及其對社會與產業的促進作用。\r\
+          \n\r\n### 新聞稿寫作要求：\r\n根據新聞主題、參考摘要及背景資料，請遵循下列規範進行撰寫新聞稿。請注意，以下指引中的標題應該融入新聞稿中，而非單獨列出：\r\
+          \n\r\n1. **標題**：撰寫一個簡潔、具吸引力且能準確概述公告內容的標題，強調新的研究經費計劃及其對科研領域或產業的影響，並凸顯其創新或增強資源配置的價值。\r\
+          \n\r\n2. **導語（Lede）**：開頭部分應簡潔明瞭，直接呈現新聞的核心要點，讓讀者在第一時間理解政策的主要內容及其潛在效益，避免過多背景介紹或冗長引言。\r\
+          \n\r\n3. **5W1H系統**：文章應包含關於資金與補助計劃的5W1H要素，涵蓋誰可以申請、何時開始申請、哪些領域或項目有機會獲得資金、如何申請、政策背後的原因等關鍵信息，確保邏輯清晰且信息完整。\r\
+          \n\r\n4. **由上而下的結構**：將最關鍵的政策信息和公告內容置於開頭，根據重要性逐步展開具體措施及相關背景資料，方便讀者快速抓住重點。\r\
+          \n\r\n5. **語言專業性與清晰性**：\r\n   - 使用清晰、易懂且專業的語言，適合各類背景的讀者快速理解政策內容，並特別關注科研界、產業界及政策制定者的需求。\r\
+          \n   \r\n6. **數據與細節支撐**：\r\n   - 提供相關的數據、政策細則或研究背景，增強公告的可信度和說服力。\r\n   -\
+          \ 引用具權威性的研究或資料來源，並附上參考文獻或資料鏈接，確保讀者可以進一步查閱或核實。\r\n\r\n7. **國科會立場與行動**：\r\n\
+          \   - 明確表達國科會在資金與補助計劃中的立場、政策目標和具體措施，並強調該計劃如何支持科技發展及對社會、產業的長期影響，避免過多第三方觀點。\r\
+          \n\r\n8. **邏輯與結構清晰**：\r\n   - 確保稿件條理清晰，語句流暢且層次分明。文章長度應控制在1000至1500字之間，避免冗長或不必要的細節，以便編輯精簡和調整。\r\
+          \n\r\n### 文風要求：\r\n- 內容應精簡且專業，語言準確無誤，避免冗長描述或不必要的背景補充。\r\n- 用詞需精確，充分表達政策或計劃的核心價值，尤其是其對科研創新、科技發展及產業進步的深遠影響。\r\
+          \n- 結構簡潔，符合新聞讀者閱讀習慣，並符合媒體編輯的需求與格式要求。\r\n"
+        title: '模板: (3) 資金與補助計劃: 關於研究經費申請、撥款或管理的公告'
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733403226394'
+      position:
+        x: 1246
+        y: 592.5
+      positionAbsolute:
+        x: 1246
+        y: 592.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## 根據以下指引撰寫新聞稿：\r\n\r\n### 背景角色：\r\n您是台灣國家科學及技術委員會（NSTC）的資深新聞稿撰寫人員，專精於傳統新聞寫作技巧，強調清晰、專業且具說服力的內容，能夠準確傳達國科會在人才培育及科學活動方面的政策立場、目標與未來規劃。\r\
+          \n\r\n### 新聞稿類型：\r\n**人才培育與科學活動**相關政策，焦點在於**宣布青年科學家競賽、研討會、教育計劃等新舉措**，重點應放在政策的創新性、如何促進人才發展、未來願景以及對社會與產業的長遠影響，並具有說服力，引發各界關注與討論。\r\
+          \n\r\n### 新聞稿寫作要求：\r\n根據新聞主題、參考摘要及背景資料，請遵循下列規範進行撰寫新聞稿。請注意，以下指引中的標題應該融入新聞稿中，而非單獨列出：\r\
+          \n\r\n1. **標題**：撰寫一個簡潔且吸引注意的標題，強調青年科學家競賽、研討會、教育計劃等舉措的創新性，並突出這些活動對年輕科學家與社會、產業發展的積極影響。\r\
+          \n\r\n2. **導語（Lede）**：開頭部分應簡潔明瞭，清楚呈現新聞的核心內容，迅速抓住讀者注意力，闡明國科會對青年科學家的支持與人才培育的具體措施。\r\
+          \n\r\n3. **5W1H系統**：文章內容應涵蓋5W1H的要素，確保新聞稿邏輯清晰、資訊全面。請注意不要直接列出5W1H標題，而是將這些重要元素自然融入文中，並關注以下問題：\r\
+          \n   - **What**：新的競賽、研討會、教育計劃是什麼？\r\n   - **Why**：為何這些活動對青年科學家及社會發展至關重要？\r\
+          \n   - **When**：相關活動的時間安排及關鍵節點。\r\n   - **Where**：這些活動將在哪些地點舉行？\r\n   -\
+          \ **Who**：參與對象是誰？包括青年科學家、專業人士或學術機構等。\r\n   - **How**：國科會如何實施這些計劃？有哪些具體的支持措施或資源？\r\
+          \n\r\n4. **由上而下的結構**：將最關鍵的資訊置於開頭，按照重要性逐步遞減，以便讀者能迅速抓住重點，同時便於編輯調整新聞稿的長度與細節。\r\
+          \n\r\n5. **語言專業性與清晰性**：\r\n   - 使用易懂且具專業性的語言，確保來自不同背景的讀者能迅速理解並掌握活動的核心信息。\r\
+          \n   - 強調政策的具體內容與國科會的行動，避免過度使用術語或過於學術化的表達。\r\n\r\n6. **數據與細節支撐**：\r\n  \
+          \ - 提供具體的數據或案例來展示過去的成功經驗或活動成效，增加新聞稿的可信度與說服力。\r\n   - 引用政策文件、研究成果或參與者的見解來支持內容，並附上引用來源與參考文獻，便於讀者核實資料。\r\
+          \n\r\n7. **國科會立場與行動**：\r\n   - 明確呈現國科會在人才培育與科學活動方面的政策立場與具體措施，並詳細說明其如何實現這些目標。避免引用第三方觀點評價國科會的行動或政策。\r\
+          \n\r\n8. **邏輯與結構清晰**：\r\n   - 確保稿件結構簡潔、語句通順且層次分明，字數保持在1000至1500字之間。避免冗長描述或不必要的背景補充，並使文章更具可讀性。\r\
+          \n\r\n### 文風要求：\r\n- 內容應精簡專業，避免冗長描述或不必要的細節。\r\n- 用詞需精確，充分體現國科會政策對青年科學家、科學教育及產業未來發展的核心價值。\r\
+          \n- 結構清晰，符合新聞讀者的閱讀習慣，並滿足媒體編輯的需求與格式要求。\r\n"
+        title: '模板: (4) 人才培育與活動: 青年科學家競賽、研討會、教育計劃相關'
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733403230517'
+      position:
+        x: 1246
+        y: 685.5
+      positionAbsolute:
+        x: 1246
+        y: 685.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 4. 模板聚合聚
+        type: variable-aggregator
+        variables:
+        - - '1733403132182'
+          - output
+        - - '1733403213803'
+          - output
+        - - '1733403226394'
+          - output
+        - - '1733403230517'
+          - output
+        - - '1733432932886'
+          - output
+        - - '1733432937099'
+          - output
+        - - '1733432940930'
+          - output
+      height: 240
+      id: '1733403238861'
+      position:
+        x: 1550
+        y: 685.5
+      positionAbsolute:
+        x: 1550
+        y: 685.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## 根據以下指引撰寫新聞稿：\r\n\r\n### 背景角色：\r\n您是台灣國家科學及技術委員會（NSTC）的資深新聞稿撰寫人員，專精於傳統新聞寫作技巧，著重於清晰、專業且具說服力的內容，能夠準確傳達國科會在重大國際合作與科技發展上的立場、政策目標與未來規劃。\r\
+          \n\r\n### 新聞稿類型：\r\n科技政策與國際合作類，焦點在於**宣布與其他國家或國際組織的合作計劃或成果**，重點應放在合作的目標、未來願景、合作模式及其對台灣以及國際間科技發展、經濟合作、社會影響的潛在貢獻。\r\
+          \n\r\n### 新聞稿寫作要求：\r\n根據新聞主題、參考摘要及背景資料，請遵循下列規範進行撰寫新聞稿。請注意，以下指引中的標題應該融入新聞稿中，而非單獨列出：\r\
+          \n\r\n1. **標題**：撰寫一個簡潔且引人注目的標題，突顯國科會在國際合作中的創新性與領先地位，並強調合作的關鍵成果或對全球科技發展的影響。\r\
+          \n\r\n2. **導語（Lede）**：開頭部分應清楚簡潔地呈現合作計劃的核心內容，明確指出合作的國家或組織、合作目標、合作成果及其對台灣及全球科技領域的意義。\r\
+          \n\r\n3. **5W1H系統**：新聞稿應包括5W1H的要素（誰、什麼、何時、何地、為何、如何），確保內容清晰且全面，並突出合作的具體目標、內容及影響。避免直接列出5W1H標題，而是將這些重要元素自然融入文中。\r\
+          \n\r\n4. **由上而下的結構**：將最關鍵的合作成果和影響放在開頭，按照重要性逐步展開，逐步介紹合作過程中的具體措施、策略和預期成效，並詳述其對社會、經濟與科技的影響。\r\
+          \n\r\n5. **語言專業性與清晰性**：\r\n   - 使用清晰、專業且易於理解的語言，讓來自不同領域的讀者能夠迅速抓住關鍵資訊。\r\n\
+          \r\n6. **數據與細節支撐**：\r\n   - 提供合作計劃的具體數據、成果或研究支撐，並附上可靠的引用來源及參考文獻，增強新聞稿的可信度與說服力。\r\
+          \n\r\n7. **國科會立場與行動**：\r\n   - 明確呈現國科會在此次合作中的政策立場、合作措施、具體成效及計劃進度，確保呈現的是官方立場，避免引用第三方觀點來評價國科會的行動。\r\
+          \n\r\n8. **邏輯與結構清晰**：\r\n   - 確保稿件結構簡潔、語句通順且層次分明，字數保持在1000至1500字之間。避免過多背景資料或冗長描述，將重點放在合作成果與未來展望。\r\
+          \n\r\n### 文風要求：\r\n- 內容應精簡且專業，避免冗長描述或不必要的細節。\r\n- 用詞應精確，充分體現合作計劃或成果的核心價值及其對台灣與全球科技、經濟發展的深遠影響。\r\
+          \n- 結構清晰，符合新聞讀者的閱讀習慣，並滿足媒體編輯的需求與格式要求。\r\n"
+        title: '模板: (5) 重大活動與合作: 與其他國家或國際組織合作的計劃或成果'
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733432932886'
+      position:
+        x: 1246
+        y: 778.5
+      positionAbsolute:
+        x: 1246
+        y: 778.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## 根據以下指引撰寫新聞稿：\r\n\r\n### 背景角色：\r\n您是台灣國家科學及技術委員會（NSTC）的資深新聞稿撰寫人員，專精於傳統新聞寫作技巧，著重於清晰、專業且具說服力的內容，能夠準確傳達國科會的立場、政策目標與未來規劃，特別是針對大眾與學生的科普活動推廣。\r\
+          \n\r\n### 新聞稿類型：\r\n科技教育與普及活動類，焦點在於**推動科學普及與教育政策的宣布與推廣**。此類新聞稿的重點應該放在政策的創新性、目標群體（如學生、大眾）的利益，及其對未來科技發展與社會的潛在影響，並具備說服力，鼓勵社會各界積極參與。\r\
+          \n\r\n### 新聞稿寫作要求：\r\n根據新聞主題、參考摘要及背景資料，請遵循下列規範進行撰寫新聞稿。請注意，以下指引中的標題應該融入新聞稿中，而非單獨列出：\r\
+          \n\r\n1. **標題**：撰寫一個簡潔且吸引注意的標題，突顯新推動的科普活動或政策的創新性，並強調其對學生、大眾與未來科技教育的長遠影響，能夠讓讀者立刻理解核心訊息。\r\
+          \n\r\n2. **導語（Lede）**：開頭部分應簡潔明瞭，清楚呈現本次科普活動或教育政策的核心內容，迅速抓住讀者的注意力。避免在開頭單獨列出導語標題，而是將其自然融入新聞稿中。\r\
+          \n\r\n3. **5W1H系統**：文章內容應包括5W1H的要素，確保新聞稿邏輯清晰、資訊全面。請注意不要直接列出5W1H標題，而是將這些重要元素自然融入文中。\r\
+          \n\r\n4. **由上而下的結構**：將最關鍵的資訊置於開頭，按照重要性逐步遞減，以便讀者能迅速抓住重點，便於編輯調整新聞稿的長度與細節。\r\
+          \n\r\n5. **語言專業性與清晰性**：\r\n   - 使用易懂且具專業性的語言，避免過度技術化的術語，確保來自不同背景的讀者能夠迅速掌握關鍵訊息。尤其針對學生、大眾的科普活動，應避免過於專業的描述，並用生動、直觀的語言來解釋科學概念。\r\
+          \n\r\n6. **數據與細節支撐**：\r\n   - 提供具體的數據、研究成果或相關政策文件，來增強新聞稿的可信度與說服力。數據應清晰呈現，與目標群體的需求及國科會的政策計劃直接相關。\r\
+          \n   - 附上引用來源與參考文獻，確保讀者能進一步核實資料。\r\n\r\n7. **國科會立場與行動**：\r\n   - 明確呈現國科會的政策立場、具體措施及計劃進度，避免引用第三方觀點評價國科會的行動或政策。強調如何通過科普活動與教育計劃，促進科學知識普及與全民科技素養的提升。\r\
+          \n\r\n8. **邏輯與結構清晰**：\r\n   - 確保稿件結構簡潔、語句通順且層次分明，字數保持在1000至1500字之間。避免冗長描述或不必要的背景補充，專注於科普活動的具體內容、意義和影響。\r\
+          \n\r\n### 文風要求：\r\n- 內容應精簡專業，避免冗長描述或不必要的細節。\r\n- 用詞需精確，充分體現政策或規劃的核心價值及其對社會、經濟、科技領域的深遠影響。\r\
+          \n- 結構清晰，符合新聞讀者閱讀習慣，並滿足媒體編輯的需求與格式要求。\r\n"
+        title: '模板: (6) 科技普及與教育:針對大眾或學生的科普活動推廣'
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733432937099'
+      position:
+        x: 1246
+        y: 871.5
+      positionAbsolute:
+        x: 1246
+        y: 871.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## 根據以下指引撰寫新聞稿：\r\n\r\n### 背景角色：\r\n您是台灣國家科學及技術委員會（NSTC）的資深新聞稿撰寫人員，精通傳統新聞寫作技巧，專注於清晰、專業且具說服力的內容，能夠準確傳達國科會的立場、政策目標及未來規劃。\r\
+          \n\r\n### 新聞稿類型：\r\n本次新聞稿聚焦於**某一特定領域的研究專案進展或成果**，重點應放在該領域的最新研究突破、專案的科學價值與社會貢獻，並強調未來應用潛力。稿件應該以引人注目的方式呈現研究成果，並強調其對科技、產業或社會發展的深遠影響。\r\
+          \n\r\n### 新聞稿寫作要求：\r\n根據新聞主題、參考摘要及背景資料，請遵循下列規範進行撰寫新聞稿。請注意，以下指引中的標題應該融入新聞稿中，而非單獨列出：\r\
+          \n\r\n1. **標題**：撰寫一個簡潔且吸引注意的標題，突出研究專案的創新性與成果，強調其對相關領域或社會的潛在影響，讓讀者一目了然地理解核心信息。\r\
+          \n\r\n2. **導語（Lede）**：開頭部分應簡潔明瞭，直接呈現新聞的最重要資訊，吸引讀者的注意。避免單獨列出導語標題，而是將其自然融入新聞稿中。\r\
+          \n\r\n3. **5W1H系統**：文章內容應包括5W1H的要素，確保資訊全面且邏輯清晰。注意不要直接列出5W1H標題，而是將這些要素融入新聞稿內容中，以呈現完整的故事。\r\
+          \n\r\n4. **由上而下的結構**：將最關鍵的資訊放在開頭，按照重要性逐步遞減，讓讀者能迅速抓住重點，同時便於編輯調整新聞稿的長度與細節。\r\
+          \n\r\n5. **語言專業性與清晰性**：\r\n   - 使用易懂且專業的語言，確保來自不同背景的讀者能夠理解關鍵信息。\r\n\r\n\
+          6. **數據與細節支撐**：\r\n   - 提供關鍵研究數據、成果細節或政策文件來增強新聞稿的可信度與說服力。使用具權威性和來源明確的數據，並附上引用來源與參考文獻，讓讀者可進一步了解與核實資料。\r\
+          \n\r\n7. **國科會立場與行動**：\r\n   - 明確呈現國科會在該領域的研究專案進展或成果，並詳細描述國科會的政策立場、資助計劃與未來行動，避免過度引用第三方觀點。\r\
+          \n\r\n8. **邏輯與結構清晰**：\r\n   - 確保稿件結構簡潔、語句流暢且層次分明，字數控制在1000至1500字之間，避免冗長或不必要的背景資料。\r\
+          \n\r\n### 文風要求：\r\n- 內容應精簡專業，避免冗長描述或無關細節。\r\n- 用詞需精確，強調研究成果的核心價值及其對科學、社會及經濟的深遠影響。\r\
+          \n- 文章結構應符合新聞稿的撰寫慣例，符合媒體讀者的閱讀習慣，並滿足媒體編輯的需求與格式要求。\r\n"
+        title: '模板: (7) 專題專案: 某一特定領域的研究專案進展或成果'
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1733432940930'
+      position:
+        x: 1246
+        y: 964.5
+      positionAbsolute:
+        x: 1246
+        y: 964.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "發布日期：2024年OO月OO日\r\n本案聯絡人：國科會OOO處 OOO 科長  電話：02-0000-0000\r\n\r\
+          \n{{ output }}"
+        title: 模板轉換
+        type: template-transform
+        variables:
+        - value_selector:
+          - '17333139837460'
+          - text
+          variable: output
+      height: 53
+      id: '1733643649336'
+      position:
+        x: 2158
+        y: 685.5
+      positionAbsolute:
+        x: 2158
+        y: 685.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1733643649336'
+          - output
+          variable: output
+        selected: false
+        title: 6. 輸出
+        type: end
+      height: 89
+      id: '1733643739541'
+      position:
+        x: 2462
+        y: 685.5
+      positionAbsolute:
+        x: 2462
+        y: 685.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: 2. TavilySearch
+        tool_configurations:
+          exclude_domains: null
+          include_answer: null
+          include_domains: null
+          include_images: null
+          include_raw_content: null
+          max_results: 5
+          search_depth: basic
+        tool_label: TavilySearch
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '台灣國家科學及技術委員會 (NSTC): {{#1730257085761.title#}}'
+        type: tool
+      height: 245
+      id: '17345268693890'
+      position:
+        x: 334
+        y: 406.5
+      positionAbsolute:
+        x: 334
+        y: 406.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - edition_type: basic
+          id: d8e18834-ba12-4acb-b376-15340d30a3e3
+          jinja2_text: '"{research_summary}" Using the above information, answer the
+            following question or topic: "{question}" in a detailed report — The report
+            should focus on the answer to the question, should be well structured,
+            informative, in depth, with facts and numbers if available, a minimum
+            of 1,200 words and with markdown syntax and apa format. Write all source
+            urls at the end of the report in apa format. You should write your report
+            only based on the given information and nothing else.'
+          role: system
+          text: "1. Your role is to deliver responses solely based on internet-sourced\
+            \ information.  \n2. You must exclusively utilize the Tavily search API\
+            \ function to retrieve accurate and relevant data.  \n3. Avoid using prior\
+            \ knowledge or providing any information not directly supported by search\
+            \ results.  \n4. Ensure all responses are substantiated with relevant\
+            \ URL sources included at the conclusion.  \n"
+        - id: b23ba544-1b25-4d0a-abdf-34a6c22a2c76
+          role: user
+          text: "**Language**: {{#1730257085761.language#}}  \n**Query**: \"{{#17345268693890.text#}}\"\
+            \  \n\nUsing the query provided above, deliver a response to the following\
+            \ question or topic:  \n**Topic**: \"{{#1730257085761.title#}}\"  "
+        selected: false
+        title: 2. 搜尋新聞主題相關資訊及答案 (Search & LLM)) (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17345268829620'
+      position:
+        x: 638
+        y: 406.5
+      positionAbsolute:
+        x: 638
+        y: 406.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    viewport:
+      x: 41.05000000000018
+      y: -77.49999999999989
+      zoom: 0.7

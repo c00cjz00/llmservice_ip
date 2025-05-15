@@ -1,0 +1,1318 @@
+app:
+  description: ''
+  icon: u5408
+  icon_background: '#D1E0FF'
+  mode: workflow
+  name: 法院判決書撰稿_v0.2
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: end
+      id: 1734753065180-false-1734751186884-target
+      selected: false
+      source: '1734753065180'
+      sourceHandle: 'false'
+      target: '1734751186884'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1734753065180-true-1734753100531-target
+      selected: false
+      source: '1734753065180'
+      sourceHandle: 'true'
+      target: '1734753100531'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1734753100531-source-1734753170329-target
+      selected: false
+      source: '1734753100531'
+      sourceHandle: source
+      target: '1734753170329'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: if-else
+      id: 1734757158933-source-1734759513178-target
+      selected: false
+      source: '1734757158933'
+      sourceHandle: source
+      target: '1734759513178'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1734751075909-source-1734763363349-target
+      selected: false
+      source: '1734751075909'
+      sourceHandle: source
+      target: '1734763363349'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1734763363349-true-1734763393866-target
+      selected: false
+      source: '1734763363349'
+      sourceHandle: 'true'
+      target: '1734763393866'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: variable-aggregator
+      id: 1734763363349-false-1734763402371-target
+      selected: false
+      source: '1734763363349'
+      sourceHandle: 'false'
+      target: '1734763402371'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1734763393866-source-1734763402371-target
+      selected: false
+      source: '1734763393866'
+      sourceHandle: source
+      target: '1734763402371'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: http-request
+      id: 1734763402371-source-1734751077999-target
+      selected: false
+      source: '1734763402371'
+      sourceHandle: source
+      target: '1734751077999'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1734759513178-true-1734764431607-target
+      selected: false
+      source: '1734759513178'
+      sourceHandle: 'true'
+      target: '1734764431607'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1734764431607-source-1734759389210-target
+      selected: false
+      source: '1734764431607'
+      sourceHandle: source
+      target: '1734759389210'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1734772518769-source-1734782296394-target
+      selected: false
+      source: '1734772518769'
+      sourceHandle: source
+      target: '1734782296394'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1734772518769-source-17347827551480-target
+      selected: false
+      source: '1734772518769'
+      sourceHandle: source
+      target: '17347827551480'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1734782296394-source-1734783183075-target
+      selected: false
+      source: '1734782296394'
+      sourceHandle: source
+      target: '1734783183075'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1734751077999-source-1734757158933-target
+      selected: false
+      source: '1734751077999'
+      sourceHandle: source
+      target: '1734757158933'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1734759513178-false-1734772518769-target
+      selected: false
+      source: '1734759513178'
+      sourceHandle: 'false'
+      target: '1734772518769'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 17347827551480-source-17347844580080-target
+      selected: false
+      source: '17347827551480'
+      sourceHandle: source
+      target: '17347844580080'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 17347844580080-source-1734783183075-target
+      selected: false
+      source: '17347844580080'
+      sourceHandle: source
+      target: '1734783183075'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1734783183075-source-1734920833325-target
+      source: '1734783183075'
+      sourceHandle: source
+      target: '1734920833325'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1734920833325-source-17349256112030-target
+      source: '1734920833325'
+      sourceHandle: source
+      target: '17349256112030'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: if-else
+      id: 17349256112030-source-1734753065180-target
+      source: '17349256112030'
+      sourceHandle: source
+      target: '1734753065180'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 1. 法律問題輸入
+        type: start
+        variables:
+        - label: 案件標題或內容
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: title
+        - label: 強化 (案件標題或內容)
+          max_length: 48
+          options:
+          - 'NO'
+          - 'YES'
+          required: true
+          type: select
+          variable: double_q
+        - label: 是否翻譯為英文
+          max_length: 48
+          options:
+          - 'No'
+          - 'Yes'
+          required: true
+          type: select
+          variable: language
+      height: 142
+      id: '1734751075909'
+      position:
+        x: 30
+        y: 271
+      positionAbsolute:
+        x: 30
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - type: text
+            value: ''
+          type: none
+        desc: ''
+        headers: ''
+        method: get
+        params: query:{{#1734763402371.output#}}
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 4. 介接范耀中老師法律統API
+        type: http-request
+        url: http://140.120.13.248:11304/search
+        variables: []
+      height: 140
+      id: '1734751077999'
+      position:
+        x: 1246
+        y: 271
+      positionAbsolute:
+        x: 1246
+        y: 271
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '17349256112030'
+          - output
+          variable: output
+        selected: false
+        title: 12. 無需翻譯直接輸出
+        type: end
+      height: 90
+      id: '1734751186884'
+      position:
+        x: 4286
+        y: 365
+      positionAbsolute:
+        x: 4286
+        y: 365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 43ce173f-a003-4ccf-8447-80d6746e7171
+            value: 'Yes'
+            varType: string
+            variable_selector:
+            - '1734751075909'
+            - language
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 11. 確認是否需要翻譯
+        type: if-else
+      height: 126
+      id: '1734753065180'
+      position:
+        x: 3982
+        y: 365
+      positionAbsolute:
+        x: 3982
+        y: 365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 28ce1265-b421-46f1-9f08-d519e61426ae
+          role: system
+          text: "You are an expert in document translation and refinement, specializing\
+            \ in adapting content into natural, culturally-appropriate American English.\
+            \ Your focus is on ensuring the translation aligns with American English\
+            \ expressions, cultural nuances, and idiomatic language to make the content\
+            \ engaging and relatable.  \n\nWhen translating and refining, please adhere\
+            \ to the following guidelines:  \n1. Ensure the language flows naturally,\
+            \ avoiding stiff literal translations or foreign-sounding phrasing.  \n\
+            2. Skillfully incorporate American English vocabulary, tone, and sentence\
+            \ structures.  \n3. Tailor the content to the reading habits of American\
+            \ English audiences, making it clear, concise, and easy to understand.\
+            \  \n4. When the source content's style differs from the target tone,\
+            \ prioritize localization into American English to achieve the best result.\
+            \  \n5. **Retain all URLs and ensure they are preserved exactly as in\
+            \ the source content, without modification or removal.**  \n"
+        - id: a3969a33-7263-49ad-bf2e-e6fd68033979
+          role: user
+          text: "Please translate the following text into American English, focusing\
+            \ on semantic accuracy and stylistic refinement to ensure the language\
+            \ is idiomatic and polished. Do not add any additional content or commentary\
+            \ beyond the translation and revision.  \n\nText to translate:  \n{{#17349256112030.output#}}\n"
+        selected: false
+        title: 12. 英譯
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1734753100531'
+      position:
+        x: 4286
+        y: 495
+      positionAbsolute:
+        x: 4286
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1734753100531'
+          - text
+          variable: output
+        selected: false
+        title: 13. 英譯完成後輸出
+        type: end
+      height: 90
+      id: '1734753170329'
+      position:
+        x: 4590
+        y: 495
+      positionAbsolute:
+        x: 4590
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mystring: str) -> dict:\n    try:\n       \
+          \ # 直接將字符串轉換為字典\n        data = json.loads(mystring)\n\n        # 提取 \"\
+          enhanced_articles\" 並檢查是否為空\n        enhanced_articles = data.get(\"enhanced_articles\"\
+          , [])\n\n        # 返回結果\n        return {\n            \"result\": \"yes\"\
+          \ if enhanced_articles else \"no\"\n        }\n\n    except json.JSONDecodeError:\n\
+          \        return {\n            \"result\": \"Invalid input\"\n        }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 5. 代碼執行, 確認是否以查詢到相關資料
+        type: code
+        variables:
+        - value_selector:
+          - '1734751077999'
+          - body
+          variable: mystring
+      height: 54
+      id: '1734757158933'
+      position:
+        x: 1550
+        y: 271
+      positionAbsolute:
+        x: 1550
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1734764431607'
+          - output
+          variable: output
+        selected: false
+        title: 8. 回覆沒有找到相關資料
+        type: end
+      height: 90
+      id: '1734759389210'
+      position:
+        x: 2462
+        y: 271
+      positionAbsolute:
+        x: 2462
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: aa8c7897-54b0-4ef6-b22f-5e7a526283e8
+            value: 'no'
+            varType: string
+            variable_selector:
+            - '1734757158933'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 6. 條件分支
+        type: if-else
+      height: 126
+      id: '1734759513178'
+      position:
+        x: 1854
+        y: 271
+      positionAbsolute:
+        x: 1854
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: f522509c-253e-4fbe-a33f-90a67d3ec020
+            value: 'YES'
+            varType: string
+            variable_selector:
+            - '1734751075909'
+            - double_q
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 2. 是否進行問題重新詮釋
+        type: if-else
+      height: 126
+      id: '1734763363349'
+      position:
+        x: 334
+        y: 271
+      positionAbsolute:
+        x: 334
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 901d4d1a-da71-4012-9727-fb1ef8685dd4
+          role: system
+          text: '作為一位熟悉台灣法律的專家，請根據輸入的問題進行專業化詮釋，將其轉換為精準且符合法律專業術語的表述，使其包含更多細節，適合查詢相關法律條文、司法判例及實務案例。若問題中未提及特定法律條款，請勿主動加入相關條款的資訊。僅需提供修改後的問題表述，無需附加說明或建議。
+
+            '
+        - id: 73f078fd-2914-4f32-a1ff-cd44a3f1aefc
+          role: user
+          text: '問題: {{#1734751075909.title#}}
+
+            '
+        selected: false
+        title: 3. 執行問題重新詮釋
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1734763393866'
+      position:
+        x: 608
+        y: 190.5
+      positionAbsolute:
+        x: 608
+        y: 190.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 變量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1734763393866'
+          - text
+        - - '1734751075909'
+          - title
+      height: 130
+      id: '1734763402371'
+      position:
+        x: 942
+        y: 271
+      positionAbsolute:
+        x: 942
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "真是抱歉, 依據您輸入的內容, 無法找到前案案例, \r\n請參考以下的解決方案\r\n\r\n1. 請嘗試重新輸入您\"較為詳細問題說明\"\
+          \ \r\n2. 或打開\"顯示/隱藏 其他欄位\", 將選單設定為 \"進行問題重新詮釋\"\r\n\r\n希望能幫助到您, 祝您順心"
+        title: 7. 查無資料回應
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1734764431607'
+      position:
+        x: 2158
+        y: 271
+      positionAbsolute:
+        x: 2158
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"你是一位專精於解析
+          JSON 檔案格式的專家。請解析使用者輸入的內容，整理後依照原始內容進行輸出。你可以調整呈現的格式或方式，但必須保留內容的完整性，且不得對內容進行任何修改或刪減。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1734765388011'
+      position:
+        x: 2181.526579509942
+        y: 725.0627338345456
+      positionAbsolute:
+        x: 2181.526579509942
+        y: 725.0627338345456
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        code: "import json\n\ndef main(input_string: str) -> dict:\n    try:\n   \
+          \     # 將 input_string 解析為 JSON\n        data = json.loads(input_string)\n\
+          \n        # 確保 enhanced_articles 是個列表\n        enhanced_articles = data.get(\"\
+          enhanced_articles\", [])\n        if not isinstance(enhanced_articles, list):\n\
+          \            raise ValueError(\"enhanced_articles 必須是列表\")\n\n        #\
+          \ 處理 enhanced_articles，只保留 \"no\" 和 \"judgement\" 欄位\n        result_articles\
+          \ = []\n        for article in enhanced_articles:\n            if not isinstance(article,\
+          \ dict):\n                continue  # 跳過非字典類型的條目\n            result_articles.append({\n\
+          \                \"no\": article.get(\"no\"),\n                \"judgement\"\
+          : article.get(\"judgement\")\n            })\n\n        # 提取其他欄位\n     \
+          \   crime_name = data.get(\"crime_name\", \"\")\n        no_list = data.get(\"\
+          no_list\", [])\n        issues = data.get(\"issues\", [])\n        if not\
+          \ isinstance(no_list, list):\n            raise ValueError(\"no_list 必須是列表\"\
+          )\n        if not isinstance(issues, list):\n            raise ValueError(\"\
+          issues 必須是列表\")\n\n        # 將所有字段轉換為 JSON 字串格式\n        return {\n    \
+          \        \"result\": json.dumps(result_articles, ensure_ascii=False),\n\
+          \            \"crime_name\": str(crime_name),\n            \"no_list\":\
+          \ json.dumps(no_list, ensure_ascii=False),\n            \"issues\": json.dumps(issues,\
+          \ ensure_ascii=False)\n        }\n    except json.JSONDecodeError:\n   \
+          \     return {\"error\": \"無法解析輸入的 JSON\"}\n    except Exception as e:\n\
+          \        return {\"error\": str(e)}"
+        code_language: python3
+        desc: ''
+        outputs:
+          crime_name:
+            children: null
+            type: string
+          issues:
+            children: null
+            type: string
+          no_list:
+            children: null
+            type: string
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 7. 資料處理
+        type: code
+        variables:
+        - value_selector:
+          - '1734751077999'
+          - body
+          variable: input_string
+      height: 54
+      id: '1734772518769'
+      position:
+        x: 2158
+        y: 365
+      positionAbsolute:
+        x: 2158
+        y: 365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"import
+          json","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"def
+          main(input_string: str) -> dict:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            try:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                # 將 input_string 解析為 JSON","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                data = json.loads(input_string)","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                # 確保 enhanced_articles 是個列表","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                enhanced_articles = data.get(\"enhanced_articles\", [])","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                if not isinstance(enhanced_articles, list):","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    raise ValueError(\"enhanced_articles 必須是列表\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                # 處理 enhanced_articles，只保留 \"no\" 和 \"judgement\" 欄位","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                result_articles = []","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                for article in enhanced_articles:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    if not isinstance(article, dict):","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                        continue  # 跳過非字典類型的條目","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    result_articles.append({","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                        \"no\": article.get(\"no\"),","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                        \"judgement\": article.get(\"judgement\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    })","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                return {","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    \"result\": result_articles","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                }","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            except json.JSONDecodeError:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                return {\"error\": \"無法解析輸入的 JSON\"}","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            except Exception as e:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                return {\"error\": str(e)}","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1734781216206'
+      position:
+        x: 1325.3811512039188
+        y: 698.5224157223881
+      positionAbsolute:
+        x: 1325.3811512039188
+        y: 698.5224157223881
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 08ccbf82-6866-4610-985d-2f60bf268067
+          role: system
+          text: '請將輸入的json內容 參考下格式整理輸出
+
+            ## 相關法律
+
+            - 中華民國刑法第321條（加重竊盜罪）
+
+            - 中華民國刑法第47條（累犯加重本刑）
+
+            - 刑事訴訟法第273條之1（簡式審判程序）
+
+            - 刑事訴訟法第299條（科刑判決）
+
+            - 刑事訴訟法第310條之2（適用簡式審判程序之有罪判決書）
+
+            - 刑事訴訟法第454條（簡易判決）
+
+            '
+        - id: 248d97a5-d02f-479d-b1d7-22c0e859f25e
+          role: user
+          text: '## 輸入的json內容
+
+            {{#1734772518769.issues#}}'
+        selected: false
+        title: 8. 相關法條整理
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1734782296394'
+      position:
+        x: 2766
+        y: 365
+      positionAbsolute:
+        x: 2766
+        y: 365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"import
+          json","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"def
+          main(input_string: str) -> dict:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            try:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                # 將 input_string 解析為 JSON","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                data = json.loads(input_string)","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                # 確保 enhanced_articles 是個列表","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                enhanced_articles = data.get(\"enhanced_articles\", [])","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                if not isinstance(enhanced_articles, list):","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    raise ValueError(\"enhanced_articles 必須是列表\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                # 處理 enhanced_articles，只保留 \"no\" 和 \"judgement\" 欄位","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                result_articles = []","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                for article in enhanced_articles:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    if not isinstance(article, dict):","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                        continue  # 跳過非字典類型的條目","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    result_articles.append({","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                        \"no\": article.get(\"no\"),","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                        \"judgement\": article.get(\"judgement\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    })","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                # 提取其他欄位","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                crime_name = data.get(\"crime_name\", \"\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                no_list = data.get(\"no_list\", [])","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                issues = data.get(\"issues\", [])","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                if not isinstance(no_list, list):","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    raise ValueError(\"no_list 必須是列表\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                if not isinstance(issues, list):","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    raise ValueError(\"issues 必須是列表\")","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                return {","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    \"result\": result_articles,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    \"crime_name\": crime_name,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    \"no_list\": no_list,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                    \"issues\": issues","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                }","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            except json.JSONDecodeError:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                return {\"error\": \"無法解析輸入的 JSON\"}","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+            except Exception as e:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":" 
+                return {\"error\": str(e)}","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1734782471986'
+      position:
+        x: 1296.7988910317129
+        y: 592.1607597759352
+      positionAbsolute:
+        x: 1296.7988910317129
+        y: 592.1607597759352
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 08ccbf82-6866-4610-985d-2f60bf268067
+          role: system
+          text: '請將輸入的json內容 參考下格式整理輸出
+
+
+            ### 判決書一
+
+            - 案件編號：○○○年度○○字第○○號
+
+            - 公訴人：○○○
+
+            - 被告：○○○
+
+            判決日期：中華民國○○○年○○○月○○日
+
+            判決主文：○○○
+
+
+            #### 事實
+
+            ○○○
+
+
+            #### 理由
+
+            ○○○
+
+
+
+            ### 判決書二
+
+            - 案件編號：○○○年度○○字第○○號
+
+            - 公訴人：○○○
+
+            - 被告：○○○
+
+            判決日期：中華民國○○○年○○○月○○日
+
+            判決主文：○○○
+
+
+            #### 事實
+
+            ○○○
+
+
+            #### 理由
+
+            ○○○
+
+            '
+        - id: 248d97a5-d02f-479d-b1d7-22c0e859f25e
+          role: user
+          text: '### 輸入的json內容
+
+            {{#1734772518769.result#}}
+
+
+            '
+        selected: false
+        title: 8. 相關判決書文件整理
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17347827551480'
+      position:
+        x: 2462
+        y: 495
+      positionAbsolute:
+        x: 2462
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "### 案件主旨： \r\n{{title1}}\r\n\r\n### 相關前案引用之法律條文：\r\n{{ text2 }}\r\
+          \n\r\n### 相關前案判例的核心特徵：\r\n{{ text }}"
+        title: 10. 模板製作
+        type: template-transform
+        variables:
+        - value_selector:
+          - '17347827551480'
+          - text
+          variable: text1
+        - value_selector:
+          - '1734782296394'
+          - text
+          variable: text2
+        - value_selector:
+          - '1734763402371'
+          - output
+          variable: title2
+        - value_selector:
+          - '1734751075909'
+          - title
+          variable: title1
+        - value_selector:
+          - '17347844580080'
+          - text
+          variable: text
+      height: 54
+      id: '1734783183075'
+      position:
+        x: 3070
+        y: 365
+      positionAbsolute:
+        x: 3070
+        y: 365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 08ccbf82-6866-4610-985d-2f60bf268067
+          role: system
+          text: "請根據以下的判決書案例，分析並提供這些判例的共通點，具體說明以下細節：\n\n1. **判例事實背景**  \n   - 案件中的主要事實與情節是否存在相似性？\
+            \  \n   - 涉及的爭議焦點或核心問題是否一致？  \n\n2. **法律適用**  \n   - 判例中引用的法律條文或法規是否相同？\
+            \  \n   - 法官對於法律的解釋或運用是否存在共通之處？  \n\n3. **裁判理由**  \n   - 判決理由是否基於相似的法律原則或邏輯推理？\
+            \  \n   - 是否有一致的司法價值觀，例如公平、正義或比例原則？  \n\n4. **裁決結果**  \n   - 判例的結果（如勝訴方或敗訴方）是否具有一致性？\
+            \  \n   - 判決金額或相關處分的範圍是否相似？  \n\n5. **影響層面**  \n   - 判例是否針對類似的社會現象或問題作出回應？\
+            \  \n   - 是否具備參考性或指導性，適用於類似案件？  \n\n6. **其他共通特徵**  \n   - 判決書的格式、用詞或引述的案例是否有一致的特徵？\
+            \  \n   - 是否涉及同一法院或同一法官的裁判？  \n\n請依據上述各點，對判例進行比較分析並整理出共通點，以便更清晰地理解這些案例的核心特徵。\n"
+        - id: 248d97a5-d02f-479d-b1d7-22c0e859f25e
+          role: user
+          text: '### 判決書案例
+
+            {{#17347827551480.text#}}'
+        selected: false
+        title: 9. 案例的核心特徵
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17347844580080'
+      position:
+        x: 2766
+        y: 495
+      positionAbsolute:
+        x: 2766
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"請根據輸入的問題進行重新詮釋，將其轉化為法律專業術語，使其更加具體且適合查詢相關的法律前例與案例。只需輸出經過修改的問題，不需要提供其他說明或建議。
+          ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1734850488197'
+      position:
+        x: 658.8684997558591
+        y: 338.0113405500139
+      positionAbsolute:
+        x: 658.8684997558591
+        y: 338.0113405500139
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"你是一位熟悉台灣法律的專家，請根據輸入的問題進行重新詮釋，將其轉化為精確的法律專業術語，使其更具細節性並適合查詢相關法律條文、前例與實務案例。僅需輸出修改後的問題，無需提供額外的解釋或建議。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1734850995711'
+      position:
+        x: 691.725642613002
+        y: 530.8684834071569
+      positionAbsolute:
+        x: 691.725642613002
+        y: 530.8684834071569
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"###
+          指南：  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"1.
+          **數據遮蔽規則：** 回應中如涉及任何個人或敏感資訊（例如姓名、日期、案件編號、判決主文中的具體資訊、身高、體重、年齡或公司名稱），請一律以「○○○」代替，避免直接暴露該類資訊。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"2.
+          **範例規範：**  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          姓名替換為「○○○」。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          日期替換為「○○○年○○月○○日」。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -
+          其他具體細節（如案件編號）應以「○○○」處理。  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"3.
+          **輸出重點：** 僅提供經遮蔽後的內容，確保隱私安全。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1734853946935'
+      position:
+        x: 1988.8684997558596
+        y: 555.1541976928712
+      positionAbsolute:
+        x: 1988.8684997558596
+        y: 555.1541976928712
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: f927959e-d811-43e1-9743-94c32213097e
+          role: system
+          text: '請根據以下案件的主旨、引用之法律條文、以及相關前案的核心判例特徵，撰寫一份詳盡的判決書。在撰寫過程中，請明確列出並引用相關的法律條文、具體判例及其裁判要旨，同時分析案件的事實背景並根據這些資料做出具體的判決結論。
+
+            '
+        - id: 968cd8fb-c29c-4aa2-ad23-c4a8464d1d5b
+          role: user
+          text: '{{#1734783183075.output#}}'
+        selected: false
+        title: LLM 6
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1734920833325'
+      position:
+        x: 3374
+        y: 365
+      positionAbsolute:
+        x: 3374
+        y: 365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## 案件主旨： \r\n- 原始輸入主旨: {{title1}}\r\n- 重新詮釋主旨: {{title2}}\r\n\r\
+          \n---\r\n\r\n\r\n## 本案判決書撰寫範例\r\n\r\n{{ text3 }}\r\n\r\n---\r\n\r\n## 相關前案判例\r\
+          \n\r\n{{ text1 }}\r\n\r\n---\r\n\r\n## 相關前案引用之法律條文：\r\n\r\n{{ text2 }}\r\
+          \n\r\n---\r\n\r\n## 相關前案判例的核心特徵：\r\n\r\n{{ text }}\r\n"
+        title: 10. 模板製作 (1)
+        type: template-transform
+        variables:
+        - value_selector:
+          - '17347827551480'
+          - text
+          variable: text1
+        - value_selector:
+          - '1734782296394'
+          - text
+          variable: text2
+        - value_selector:
+          - '1734763402371'
+          - output
+          variable: title2
+        - value_selector:
+          - '1734751075909'
+          - title
+          variable: title1
+        - value_selector:
+          - '17347844580080'
+          - text
+          variable: text
+        - value_selector:
+          - '1734920833325'
+          - text
+          variable: text3
+      height: 54
+      id: '17349256112030'
+      position:
+        x: 3678
+        y: 365
+      positionAbsolute:
+        x: 3678
+        y: 365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -4091.462348826928
+      y: 160.53367445121586
+      zoom: 1.1486983549970344

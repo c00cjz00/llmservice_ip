@@ -1,0 +1,369 @@
+app:
+  description: ''
+  icon: ideograph_advantage
+  icon_background: '#D1E0FF'
+  mode: workflow
+  name: 履歷篩選_v0.1
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:0.4.1@c027998d893496eedb2e94e98afc993589a587b418cbcc246b9663e4c364cc70
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1742643330552-source-1742648746427-target
+      source: '1742643330552'
+      sourceHandle: source
+      target: '1742648746427'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1742648746427-source-1742643470741-target
+      source: '1742648746427'
+      sourceHandle: source
+      target: '1742643470741'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1742643470741-source-1747139595140-target
+      source: '1742643470741'
+      sourceHandle: source
+      target: '1747139595140'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: 1747139595140-source-1742648769469-target
+      source: '1747139595140'
+      sourceHandle: source
+      target: '1742648769469'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: true
+        title: 開始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 履歷
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: jianli
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 召聘條件
+          max_length: 2000
+          options: []
+          required: true
+          type: paragraph
+          variable: zhaopinyaoqiu
+      height: 114
+      id: '1742643330552'
+      position:
+        x: -280.6221041014545
+        y: 122.69077331436097
+      positionAbsolute:
+        x: -280.6221041014545
+        y: 122.69077331436097
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 177b31d6-d14e-4745-82ac-e997fca8a1f9
+          role: system
+          text: '你是一位專業的招募分析師，請根據候選人履歷資料 `{{#1742648746427.text#}}`，並結合部門提供的職缺條件說明
+            `{{#1742643330552.zhaopinyaoqiu#}}`，進行客觀的履歷評分。評分分為 **HR 評分** 與 **部門評分**
+            兩個部分，請依照以下標準進行判斷：
+
+
+            ---
+
+
+            ### 🔹 HR 評分標準（總分：100 分）
+
+
+            | 評分項目       | 規則               | 分數調整                        |
+
+            | ---------- | ---------------- | --------------------------- |
+
+            | **工作空窗期**  | 若有任一段超過 1～3 個月空窗 | 扣 5 分                       |
+
+            | **工作地點不符** | 履歷中工作地點與部門需求不符   | 扣 25 分                      |
+
+            | **學歷匹配度**  | 若學歷低於需求          | 扣 25 分                      |
+
+            |            | 若學歷高於需求          | 每高一級加 5 分                   |
+
+            | **薪資匹配度**  | 若期望薪資高於部門設定      | 高出 10% 扣 5 分，每再增加 5% 再扣 5 分 |
+
+            |            | 若期望薪資低於部門設定      | 不扣分                         |
+
+            | **是否受訓**   | 有明確受訓紀錄          | 加 5 分                       |
+
+            | **是否持有證照** | 有相關專業證照          | 加 5 分                       |
+
+            | **工作穩定度**  | 任一段工作經歷低於 6 個月   | 扣 10 分                      |
+
+
+            ---
+
+
+            ### 🔹 部門評分標準（總分：100 分）
+
+
+            | 評分項目         | 規則          | 分數調整   |
+
+            | ------------ | ----------- | ------ |
+
+            | **是否符合職缺條件** | 履歷內容與任職條件不符 | 扣 25 分 |
+
+            | **其他內容**     | 無需扣分        | -      |
+
+
+            ---
+
+
+            ### ✅ 輸出格式要求（請以 Markdown 格式輸出）
+
+
+            請**僅輸出以下欄位**，並以**表格格式**置於最前方：
+
+
+            | 員工姓名 | 手機號碼 | 學歷 | 電子信箱 | HR 評分 | 部門評分 |
+
+            | ---- | ---- | -- | ---- | ----- | ---- |
+
+
+            表格下方請輸出：
+
+
+            1. **分析說明內容**：請簡要說明 HR 評分與部門評分之依據。
+
+            2. **部門職缺需求內容**：請完整列出 `{{#1742643330552.zhaopinyaoqiu#}}` 的職缺條件說明，以供比對參考。
+
+            '
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: '1742643470741'
+      position:
+        x: 324.0460161808295
+        y: 122.69077331436097
+      positionAbsolute:
+        x: 324.0460161808295
+        y: 122.69077331436097
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文檔擷取履歷
+        type: document-extractor
+        variable_selector:
+        - '1742643330552'
+        - jianli
+      height: 90
+      id: '1742648746427'
+      position:
+        x: 57.78351620936104
+        y: 122.69077331436097
+      positionAbsolute:
+        x: 57.78351620936104
+        y: 122.69077331436097
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1742643470741'
+          - text
+          variable: http
+        - value_selector:
+          - '1747139595140'
+          - files
+          variable: files
+        selected: false
+        title: 结束
+        type: end
+      height: 114
+      id: '1742648769469'
+      position:
+        x: 922.3998785184965
+        y: 114.3492078233131
+      positionAbsolute:
+        x: 922.3998785184965
+        y: 114.3492078233131
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown to PDF file
+        tool_configurations: {}
+        tool_description: A tool for generating PDF file from Markdown text
+        tool_label: Markdown to PDF file
+        tool_name: md_to_pdf
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1742643470741.text#}}'
+        type: tool
+      height: 52
+      id: '1747139595140'
+      position:
+        x: 627.0460161808295
+        y: 122.69077331436097
+      positionAbsolute:
+        x: 627.0460161808295
+        y: 122.69077331436097
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -105.54083656361081
+      y: 117.34838294428693
+      zoom: 1.1155675563602212

@@ -1,0 +1,503 @@
+app:
+  description: ''
+  icon: u6307
+  icon_background: '#D5D9EB'
+  mode: workflow
+  name: 立法院模擬問答_v0.2
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tavily:0.0.5@caf7214ca1a237845e991615fd12e04c8db8b703d59773538fe243f3de4044e9
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1733466262329-true-17333139837460-target
+      source: '1733466262329'
+      sourceHandle: 'true'
+      target: '17333139837460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1733466262329-false-1733466286999-target
+      source: '1733466262329'
+      sourceHandle: 'false'
+      target: '1733466286999'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1733466286999-source-1733466332547-target
+      source: '1733466286999'
+      sourceHandle: source
+      target: '1733466332547'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17333139837460-source-1733466332547-target
+      source: '17333139837460'
+      sourceHandle: source
+      target: '1733466332547'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: tool
+      id: 1730257085761-source-17345273737980-target
+      source: '1730257085761'
+      sourceHandle: source
+      target: '17345273737980'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 17345273737980-source-17345274752510-target
+      source: '17345273737980'
+      sourceHandle: source
+      target: '17345274752510'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 17345274752510-source-1733466262329-target
+      source: '17345274752510'
+      sourceHandle: source
+      target: '1733466262329'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: end
+      id: 1733466332547-source-1734527629309-target
+      source: '1733466332547'
+      sourceHandle: source
+      target: '1734527629309'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 1. 開始
+        type: start
+        variables:
+        - label: 回答模式
+          max_length: 48
+          options:
+          - (1) 重點回覆
+          - (2) 書面報告
+          required: true
+          type: select
+          variable: office_document
+        - label: 問題
+          max_length: 1024
+          options: []
+          required: true
+          type: paragraph
+          variable: title
+        - label: 相關內容
+          max_length: 2048
+          options: []
+          required: false
+          type: paragraph
+          variable: content
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 思考語系
+          max_length: 5
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: language
+        - label: 輸出語系
+          max_length: 48
+          options:
+          - English
+          - Chinese (zh-TW)
+          required: true
+          type: select
+          variable: translate_to
+      height: 193
+      id: '1730257085761'
+      position:
+        x: 30
+        y: 322.5
+      positionAbsolute:
+        x: 30
+        y: 322.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17345274752510'
+          - text
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 3ef1efde-48b7-4f8d-830b-44e92815950f
+          role: system
+          text: "您是台灣國家科學及技術委員會（NSTC）的專業專員，精通政策分析與執行，負責針對立法委員提出的特定問題提供深入且權威的書面回應。請依據提供的委員問題、參考摘要與背景資訊，以國科會的立場撰寫一份報告，並嚴格使用指定的語言\
+            \ **「{{#1730257085761.language#}}」**。  \n\n報告標題為 **「{{#1730257085761.title#}}」**，須清晰表達國科會的政策立場、行動計劃及解決方案。\
+            \  \n\n請嚴格依循以下撰寫原則，並將報告的邏輯結構自然融入內容呈現，而非僅列出框架：\n\n---\n\n### 撰寫原則：\n\n\
+            1. **聚焦與條理性**：  \n   - 報告內容須緊扣立法委員的核心問題，避免偏離或引入與問題無關的資訊。  \n   - 應具備清晰的層次，涵蓋背景分析、政策陳述與解決方案，協助委員迅速掌握重點。\
+            \  \n\n2. **國科會專屬立場**：  \n   - 報告應完整展現國科會的政策方針與實際行動，而非以第三方的觀點建議對策。  \n\
+            \   - 應突出國科會現有努力、執行進展及後續措施，體現對問題的重視與回應能力。  \n\n3. **專業與權威語氣**：  \n   -\
+            \ 使用專業、準確且具有說服力的語言，展現國科會的專業責任與能力。  \n   - 結合政策細節與技術方案，提出具體且具有可行性的解決方案，彰顯國科會的專業權威。\
+            \  \n\n4. **資料支持與引用**：  \n   - 引用可靠的數據、政策文件或研究結果，確保內容的科學性與可信度。  \n   -\
+            \ 提供具體資料來源與參考文獻，並包含相關的 **URL 參考連結**，讓報告內容具可檢驗性。  \n\n5. **語言要求**：  \n\
+            \   - 報告必須全程使用指定語言 **「{{#1730257085761.language#}}」**，包括專有名詞、數據與政策說明的表述。\
+            \  \n   - 無論參考資料的語言為何，報告的所有內容均需轉換為指定語言表達。  \n\n---\n\n### 報告結構指導：\n\n\
+            1. **標題**：  \n   - {{#1730257085761.title#}}  \n\n2. **問題陳述**：  \n   -\
+            \ 簡明扼要地描述立法委員關心的核心問題，並說明該問題的影響層面（如對社會、經濟、科技的影響）。  \n\n3. **背景與現況分析**：\
+            \  \n   - 提供問題的背景資訊，說明成因及當前狀況。  \n   - 透過數據或實例闡明目前政策的執行情況及其成效或挑戰。  \n\n\
+            4. **國科會的立場與應對策略**：  \n   - 詳述國科會的政策方向、既有的應對措施及執行進展。  \n   - 提出具體解決方案，包括近期行動計劃及長期戰略，強調可實現的效果。\
+            \  \n\n5. **結論與未來行動計劃**：  \n   - 總結報告內容，重點強調國科會對問題的解決意志。  \n   - 明確列出後續行動計劃、時間表與預期成果，突顯國科會對此問題的全力投入。\
+            \  \n\n---\n"
+        - id: 04881f0e-1a81-4c5c-813a-5123d62689e8
+          role: user
+          text: "### 報告所需資訊：\n1. **委員的問題**：  \n   {{#1730257085761.title#}}  \n\n\
+            2. **參考摘要**：  \n   {{#1730257085761.content#}}  \n\n3. **背景資訊**：  \n \
+            \  {{#context#}}  \n\n4. **輸出語言**：  \n   {{#1730257085761.language#}}\
+            \  \n\n5.  ** 注意事項** ：Ensure the report includes detailed citations with\
+            \ clear and accessible URLs for all referenced literature. Each reference\
+            \ should include a direct, clickable hyperlink to the source material.\n\
+            \n6. 確保所有文件中出現的“科技部”字樣，無一遺漏地替換為“國科會”。\n\n7. 文末敬語需調整為以下格式，確保格式一致：\n\"敬祝您平安如意\n\
+            國家科學及技術委員會 敬啟\"\n"
+        selected: false
+        title: 5. 問題相關資訊及答案彙整 (書面報告)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17333139837460'
+      position:
+        x: 1246
+        y: 459.5
+      positionAbsolute:
+        x: 1246
+        y: 459.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 586a53bc-3c3f-4763-8f39-0673265bde72
+            value: (2)
+            varType: string
+            variable_selector:
+            - '1730257085761'
+            - office_document
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 4. 條件分支 (精簡或書面回覆)
+        type: if-else
+      height: 125
+      id: '1733466262329'
+      position:
+        x: 942
+        y: 322.5
+      positionAbsolute:
+        x: 942
+        y: 322.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17345274752510'
+          - text
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 8a3cd74e-68f0-434c-a6a4-4a44c8f61364
+          role: system
+          text: "您是台灣國家科學及技術委員會（NSTC）的專業專員，負責根據立法委員提出的問題，提供快速、簡潔且精確的回應。請根據委員的問題及相關背景資料，以國科會的立場，使用指定語言\
+            \ **「{{#1730257085761.language#}}」**，並提供具體且明確的回應。\n\n### 撰寫原則：\n\n1. **精簡且聚焦**：\n\
+            \   - 僅針對委員的核心問題進行回應，避免過多的背景說明或無關內容。\n   - 回應應條理清晰，直接呈現問題背景、政策重點及解決方案。\n\
+            \n2. **引用與查證**：\n   - 回應中必須提供具體的引用來源或參考文獻。\n   - 提供可查證的URL或相關資料鏈接，確保回應內容具備可靠性與可追溯性。\n\
+            \n### 回應結構指導：\n\n1. **問題陳述**：  \n   - 簡要描述立法委員提出的核心問題，並指出該問題可能帶來的社會、經濟或科技影響。\n\
+            \n2. **回應內容**：  \n   回應範本：\n   ``` \n   立委問題：{{#1730257085761.title#}}\n\
+            \n   國家科學及技術委員會說明：\n   一、問題背景：\n   - 概述問題的起因及影響。\n   - 闡述相關政策背景或科學原則。\n\
+            \    ... (視情況可增加項次，聚焦於核心問題的背景)\n\n   二、問題回應：\n   - 直接回答立委的問題，並提出具體政策建議。\n\
+            \   - 提供實際可行的解決方案及未來發展方向。\n   ... (根據情況增加必要的解釋)\n\n   三、相關資料來源：\n   -\
+            \ 提供具體參考文獻或資料鏈接，便於查證。\n\n   四、綜上所述，為免影響 ... ... ...，懇請委員支持本預算。\n \n  \
+            \ ```\n"
+        - id: a1f100ab-b277-4bb7-943f-fa14bee44184
+          role: user
+          text: "### 資料輸入：\n- **委員的問題**：{{#1730257085761.title#}}  \n\n- **參考摘要**：{{#1730257085761.content#}}\
+            \  \n\n- **背景資訊**：{{#context#}}  **\n\n- ** 注意事項** ：Ensure the report\
+            \ includes detailed citations with clear and accessible URLs for all referenced\
+            \ literature. Each reference should include a direct, clickable hyperlink\
+            \ to the source material.\n- 確保所有文件中出現的“科技部”字樣，無一遺漏地替換為“國科會”。\n- 文末敬語需調整為以下格式，確保格式一致：\n\
+            \"敬祝您平安如意\n國家科學及技術委員會 敬啟\""
+        selected: false
+        title: 5. 問題相關資訊及答案彙整 (精簡回答)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1733466286999'
+      position:
+        x: 1246
+        y: 322.5
+      positionAbsolute:
+        x: 1246
+        y: 322.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 變量聚合器
+        type: variable-aggregator
+        variables:
+        - - '17333139837460'
+          - text
+        - - '1733466286999'
+          - text
+      height: 130
+      id: '1733466332547'
+      position:
+        x: 1550
+        y: 322.5
+      positionAbsolute:
+        x: 1550
+        y: 322.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: 2. TavilySearch
+        tool_configurations:
+          exclude_domains: null
+          include_answer: null
+          include_domains: null
+          include_images: null
+          include_raw_content: null
+          max_results: 5
+          search_depth: basic
+        tool_label: TavilySearch
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '台灣國家科學及技術委員會 (NSTC): {{#1730257085761.title#}}'
+        type: tool
+      height: 245
+      id: '17345273737980'
+      position:
+        x: 334
+        y: 322.5
+      positionAbsolute:
+        x: 334
+        y: 322.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1730257830072'
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - edition_type: basic
+          id: d8e18834-ba12-4acb-b376-15340d30a3e3
+          jinja2_text: '"{research_summary}" Using the above information, answer the
+            following question or topic: "{question}" in a detailed report — The report
+            should focus on the answer to the question, should be well structured,
+            informative, in depth, with facts and numbers if available, a minimum
+            of 1,200 words and with markdown syntax and apa format. Write all source
+            urls at the end of the report in apa format. You should write your report
+            only based on the given information and nothing else.'
+          role: system
+          text: "1. Your role is to deliver responses solely based on internet-sourced\
+            \ information.  \n2. You must exclusively utilize the Tavily search API\
+            \ function to retrieve accurate and relevant data.  \n3. Avoid using prior\
+            \ knowledge or providing any information not directly supported by search\
+            \ results.  \n4. Ensure all responses are substantiated with relevant\
+            \ URL sources included at the conclusion.  \n"
+        - id: b23ba544-1b25-4d0a-abdf-34a6c22a2c76
+          role: user
+          text: "**Language**: {{#1730257085761.language#}}  \n**Query**: \"{{#17345273737980.text#}}\"\
+            \  \n\nUsing the query provided above, deliver a response to the following\
+            \ question or topic:  \n**Topic**: \"{{#1730257085761.title#}}\"  "
+        selected: false
+        title: 3. 搜尋問題相關資訊及答案 (Search & LLM)) (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17345274752510'
+      position:
+        x: 638
+        y: 322.5
+      positionAbsolute:
+        x: 638
+        y: 322.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1733466332547'
+          - output
+          variable: output
+        selected: true
+        title: 6. 結束
+        type: end
+      height: 89
+      id: '1734527629309'
+      position:
+        x: 1854
+        y: 322.5
+      positionAbsolute:
+        x: 1854
+        y: 322.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -227
+      y: 21
+      zoom: 0.7
