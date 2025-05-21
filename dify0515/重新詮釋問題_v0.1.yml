@@ -1,0 +1,217 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 重新詮釋問題_v0.1
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1747837194421-llm
+      source: '1747837194421'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1747837325776-target
+      source: llm
+      sourceHandle: source
+      target: '1747837325776'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1747837325776-source-answer-target
+      source: '1747837325776'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables: []
+      height: 52
+      id: '1747837194421'
+      position:
+        x: -81
+        y: 259
+      positionAbsolute:
+        x: -81
+        y: 259
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: meta/llama-4-maverick-17b-128e-instruct
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 106a493a-0674-4b27-9275-ba246d5e13ba
+          role: system
+          text: 請根據以下使用者的提問，重新詮釋並重寫成更清楚、具體且容易回答的版本。只輸出精煉後的問題本身，不要包含其他說明或格式。
+        - id: 7e2ba5a1-a385-4342-bd30-8d7592812a7d
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 精煉問題
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 211
+        y: 259
+      positionAbsolute:
+        x: 211
+        y: 259
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1747837325776.text#}}'
+        desc: ''
+        selected: false
+        title: 問題回覆
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 872
+        y: 235
+      positionAbsolute:
+        x: 872
+        y: 235
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: meta/llama-4-maverick-17b-128e-instruct
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 52f048bc-5040-4632-af01-941d678cbd35
+          role: system
+          text: ''
+        - role: user
+          text: '{{#llm.text#}}'
+        selected: false
+        title: 回答問題
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: '1747837325776'
+      position:
+        x: 560
+        y: 252
+      positionAbsolute:
+        x: 560
+        y: 252
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 134.5
+      y: 24.5
+      zoom: 1
