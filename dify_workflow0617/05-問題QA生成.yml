@@ -1,0 +1,103 @@
+app:
+  description: "根據以下文本，擷取其中的重點內容，並生成 {{question_number}} 組問答對，格式請使用 JSON。每個問答對應包含：\n\
+    * `question`: 問題（與內容密切相關，語句通順）\n* `answer`: 根據文本的完整回答（準確、具體）\n\n請直接輸出以下 JSON 格式：\n\
+    ```json\n[\n  {\n    \"question\": \"這裡是問題1？\",\n    \"answer\": \"這裡是對問題1的回答。\"\
+    \n  },\n  {\n    \"question\": \"這裡是問題2？\",\n    \"answer\": \"這裡是對問題2的回答。\"\n\
+    \  }\n]\n```\n\n**以下為文本：**\n{{context}}\n**結束。**\n"
+  icon: ideograph_advantage
+  icon_background: '#FFEAD5'
+  mode: completion
+  name: 05-問題QA生成
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: Llama-4-Maverick-17B-128E-Instruct-FP8
+    provider: langgenius/openai_api_compatible/openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: null
+  pre_prompt: "根據以下文本，擷取其中的重點內容，並生成 {{question_number}} 組問答對，格式請使用 JSON。每個問答對應包含：\n\
+    * `question`: 問題（與內容密切相關，語句通順）\n* `answer`: 根據文本的完整回答（準確、具體）\n\n請直接輸出以下 JSON 格式：\n\
+    ```json\n[\n  {\n    \"question\": \"這裡是問題1？\",\n    \"answer\": \"這裡是對問題1的回答。\"\
+    \n  },\n  {\n    \"question\": \"這裡是問題2？\",\n    \"answer\": \"這裡是對問題2的回答。\"\n\
+    \  }\n]\n```\n\n**以下為文本：**\n{{context}}\n**結束。**\n"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - number:
+      default: ''
+      label: 生成問題數量
+      required: true
+      variable: question_number
+  - paragraph:
+      default: ''
+      label: 文本內容
+      max_length: null
+      required: true
+      variable: context
+version: 0.3.0

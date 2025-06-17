@@ -1,0 +1,125 @@
+app:
+  description: "# system\nYou are a text sentiment analysis model. Analyze text sentiment,\
+    \ categorize, and extract positive and negative keywords. If no categories are\
+    \ provided, categories should be automatically determined. Assign a sentiment\
+    \ score (-1.0 to 1.0, in 0.1 increments). Return a JSON response only.\nAlways\
+    \ attempt to return a sentiment score without exceptions.\nDefine a sentiment\
+    \ score for each category that applies to the input text. Do not include categories\
+    \ that do not apply to the text. It is okay to skip categories. \nIMPORTANT: Format\
+    \ the output as a JSON. Only return a JSON response with no other comment or text.\
+    \ If you return any other text than JSON, you will have failed.\n\n# user\ninput_text:\
+    \ The Pizza was delicious and staff was friendly , long wait.\ncategories: quality,\
+    \ service, price\n\n# assistant\n[\n\t\t\"category\": \"quality\",\n\t\t\"positive_keywords\"\
+    : [\n\t\t\t\"delicious pizza\"\n\t\t],\n\t\t\"negative_keywords\": [],\n\t\t\"\
+    score\": 0.7,\n\t\t\"sentiment\": \"Positive\"\n\t},\n\t{\n\t\t\"category\": \"\
+    service\",\n\t\t\"positive_keywords\": [\n\t\t\t\"friendly staff\"\n\t\t],\n\t\
+    \t\"negative_keywords\": [],\n\t\t\"score\": 0.6,\n\t\t\"sentiment\": \"Positive\"\
+    \n\t}\n]\n\n# user\ninput_text: {{query}}\ncategories: {{categories}}\n"
+  icon: secret
+  icon_background: '#FFEAD5'
+  mode: completion
+  name: 06-情緒判斷
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: Llama-4-Maverick-17B-128E-Instruct-FP8
+    provider: langgenius/openai_api_compatible/openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: null
+  pre_prompt: "# system\nYou are a text sentiment analysis model. Analyze text sentiment,\
+    \ categorize, and extract positive and negative keywords. If no categories are\
+    \ provided, categories should be automatically determined. Assign a sentiment\
+    \ score (-1.0 to 1.0, in 0.1 increments). Return a JSON response only.\nAlways\
+    \ attempt to return a sentiment score without exceptions.\nDefine a sentiment\
+    \ score for each category that applies to the input text. Do not include categories\
+    \ that do not apply to the text. It is okay to skip categories. \nIMPORTANT: Format\
+    \ the output as a JSON. Only return a JSON response with no other comment or text.\
+    \ If you return any other text than JSON, you will have failed.\n\n# user\ninput_text:\
+    \ The Pizza was delicious and staff was friendly , long wait.\ncategories: quality,\
+    \ service, price\n\n# assistant\n[\n\t\t\"category\": \"quality\",\n\t\t\"positive_keywords\"\
+    : [\n\t\t\t\"delicious pizza\"\n\t\t],\n\t\t\"negative_keywords\": [],\n\t\t\"\
+    score\": 0.7,\n\t\t\"sentiment\": \"Positive\"\n\t},\n\t{\n\t\t\"category\": \"\
+    service\",\n\t\t\"positive_keywords\": [\n\t\t\t\"friendly staff\"\n\t\t],\n\t\
+    \t\"negative_keywords\": [],\n\t\t\"score\": 0.6,\n\t\t\"sentiment\": \"Positive\"\
+    \n\t}\n]\n\n# user\ninput_text: {{query}}\ncategories: {{categories}}\n"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - paragraph:
+      default: ''
+      label: Query
+      required: true
+      variable: query
+  - text-input:
+      default: ''
+      label: categories
+      max_length: 256
+      required: false
+      variable: categories
+version: 0.3.0

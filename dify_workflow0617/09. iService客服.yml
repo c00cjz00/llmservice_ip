@@ -1,0 +1,96 @@
+app:
+  description: ''
+  icon: male_mage
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 09. iService客服
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets:
+      - dataset:
+          enabled: true
+          id: 6e1d82d6-a198-4c24-960c-f8088e59dd5b
+    reranking_enable: false
+    reranking_mode: reranking_model
+    reranking_model:
+      reranking_model_name: BGE-Reranker-V2-M3
+      reranking_provider_name: langgenius/openai_api_compatible/openai_api_compatible
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: Llama-4-Maverick-17B-128E-Instruct-FP8
+    provider: langgenius/openai_api_compatible/openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: 您好，我是 iService 助理，專門解答關於國網計算資源的相關問題。無論您是對我們的服務計價、系統使用、計畫申請、帳務處理，或是軟體資源有任何疑問，我都竭誠為您提供協助。
+  pre_prompt: ''
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 「請問國網中心提供哪些類型的計算資源服務？它們的計費方式是怎樣的呢？」
+  - 「我想要申請一個新的研究計畫來使用國網的計算資源，請問我需要準備哪些資料？申請流程又是如何進行的呢？」
+  - 「我在使用國網計算資源時，遇到了一些系統操作上的問題，例如如何查詢我的主機帳號或是如何備份資料，請問我可以從哪裡獲得相關的技術支援呢？」
+  - 「請問如果我需要使用特定的軟體來進行研究，國網中心有提供哪些軟體資源？申請和使用這些軟體的流程是怎樣的呢？」
+  - 「如果我在使用國網計算資源時，遇到技術上的問題，例如系統連線、資料傳輸，或是軟體操作等，請問國網中心有提供哪些管道可以獲得技術支援呢？」
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.3.0

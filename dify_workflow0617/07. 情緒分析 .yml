@@ -1,0 +1,429 @@
+app:
+  description: ''
+  icon: hearts
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: '07. 情緒分析 '
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: end
+      id: 1711708651402-1711708653229
+      source: '1711708651402'
+      sourceHandle: source
+      target: '1711708653229'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: start
+        targetType: if-else
+      id: 1711708591503-1711708770787
+      source: '1711708591503'
+      sourceHandle: source
+      target: '1711708770787'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: end
+      id: 1711708925268-1712457684421
+      source: '1711708925268'
+      sourceHandle: source
+      target: '1712457684421'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: llm
+      id: 1711708770787-1711708651402
+      source: '1711708770787'
+      sourceHandle: 'false'
+      target: '1711708651402'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: llm
+      id: 1711708770787-1711708925268
+      source: '1711708770787'
+      sourceHandle: 'true'
+      target: '1711708925268'
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: input_text
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: input_text
+        - label: Multisentiment
+          max_length: 48
+          options:
+          - 'True'
+          - 'False'
+          required: true
+          type: select
+          variable: Multisentiment
+        - label: Categories
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: Categories
+      height: 141
+      id: '1711708591503'
+      position:
+        x: 333
+        y: 61.50402623424884
+      positionAbsolute:
+        x: 333
+        y: 61.50402623424884
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: d4fc418e-504e-42e6-b262-c1179c961e1c
+          role: system
+          text: "You are a text sentiment analysis model. Analyze text sentiment,\
+            \ categorize, and extract positive and negative keywords. If no categories\
+            \ are provided, categories should be automatically determined. Assign\
+            \ a sentiment score (-1.0 to 1.0, in 0.1 increments). Return a JSON response\
+            \ only.\nAlways attempt to return a sentiment score without exceptions.\n\
+            Define a sentiment score for each category that applies to the input text.\
+            \ Do not include categories that do not apply to the text. It is okay\
+            \ to skip categories. \nIMPORTANT: Format the output as a JSON. Only return\
+            \ a JSON response with no other comment or text. If you return any other\
+            \ text than JSON, you will have failed."
+        - id: cf3d4bd5-61d5-435e-b0f8-e262e7980934
+          role: user
+          text: 'input_text: The Pizza was delicious and staff was friendly , long
+            wait.
+
+            categories: quality, service, price'
+        - id: 760174bb-2bbe-44ab-b34c-b289f5b950b9
+          role: assistant
+          text: "[\n\t\t\"category\": \"quality\",\n\t\t\"positive_keywords\": [\n\
+            \t\t\t\"delicious pizza\"\n\t\t],\n\t\t\"negative_keywords\": [],\n\t\t\
+            \"score\": 0.7,\n\t\t\"sentiment\": \"Positive\"\n\t},\n\t{\n\t\t\"category\"\
+            : \"service\",\n\t\t\"positive_keywords\": [\n\t\t\t\"friendly staff\"\
+            \n\t\t],\n\t\t\"negative_keywords\": [],\n\t\t\"score\": 0.6,\n\t\t\"\
+            sentiment\": \"Positive\"\n\t}\n]"
+        - id: 4b3d6b57-5e8b-48ef-af9d-766c6502bc00
+          role: user
+          text: 'input_text: {{#1711708591503.input_text#}}
+
+
+            categories: {{#1711708591503.Categories#}}'
+        selected: false
+        title: Multisentiment is False
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1711708651402'
+      position:
+        x: 223.27951275816622
+        y: 372.682200551405
+      positionAbsolute:
+        x: 223.27951275816622
+        y: 372.682200551405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711708651402'
+          - text
+          variable: text
+        selected: false
+        title: End
+        type: end
+      height: 89
+      id: '1711708653229'
+      position:
+        x: 223.27951275816622
+        y: 497.35647552572846
+      positionAbsolute:
+        x: 223.27951275816622
+        y: 497.35647552572846
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: '1711708913752'
+            value: 'True'
+            variable_selector:
+            - '1711708591503'
+            - Multisentiment
+          id: 'true'
+          logical_operator: and
+        conditions:
+        - comparison_operator: is
+          id: '1711708913752'
+          value: 'True'
+          variable_selector:
+          - '1711708591503'
+          - Multisentiment
+        desc: ''
+        logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 125
+      id: '1711708770787'
+      position:
+        x: 333
+        y: 226.2621677754516
+      positionAbsolute:
+        x: 333
+        y: 226.2621677754516
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 1e4e0b38-4056-4b6a-b5c7-4b99e47cd66b
+          role: system
+          text: 'You are a text sentiment analysis model. Analyze text sentiment,
+            categorize, and extract positive and negative keywords. If no categories
+            are provided, categories should be automatically determined. Assign a
+            sentiment score (-1.0 to 1.0, in 0.1 increments). Return a JSON response
+            only.
+
+            Always attempt to return a sentiment score without exceptions.
+
+            Define a single score for the entire text and identify categories that
+            are relevant to that text
+
+            IMPORTANT: Format the output as a JSON. Only return a JSON response with
+            no other comment or text. If you return any other text than JSON, you
+            will have failed.
+
+            '
+        - id: 333f6f58-ca2d-459f-9455-8eeec485bee9
+          role: user
+          text: 'input_text: The Pizza was delicious and staff was friendly , long
+            wait.
+
+            categories: quality, service, price'
+        - id: 85f3e061-7cc0-485b-b66d-c3f7a3cb12b5
+          role: assistant
+          text: "{\n    \"positive_keywords\": [\"delicious\", \"friendly staff\"\
+            ],\n    \"negative_keywords\": [\"long wait\"],\n    \"score\": 0.3,\n\
+            \    \"sentiment\": \"Slightly Positive\",\n    \"categories\": [\"quality\"\
+            , \"service\"]\n}\n"
+        - id: 7d40b4ed-1480-43bf-b56d-3ca2bd4c36af
+          role: user
+          text: 'Input Text: {{#1711708591503.input_text#}}
+
+            categories: {{#1711708591503.Categories#}}'
+        selected: false
+        title: Multisentiment is True
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1711708925268'
+      position:
+        x: 512.5369954384145
+        y: 372.682200551405
+      positionAbsolute:
+        x: 512.5369954384145
+        y: 372.682200551405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711708925268'
+          - text
+          variable: text
+        selected: false
+        title: End 2
+        type: end
+      height: 89
+      id: '1712457684421'
+      position:
+        x: 512.5369954384145
+        y: 497.35647552572846
+      positionAbsolute:
+        x: 512.5369954384145
+        y: 497.35647552572846
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: Dify
+        desc: ''
+        height: 246
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"我知道大家都很關心我，但我就是不想跟任何人說話。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"人際關係\", \"封閉\", \"支持系統\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"最近總是覺得提不起勁，連以前喜歡的事情都沒興趣了。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"情緒\", \"動機\", \"興趣\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"晚上一直睡不好，白天也沒精神，工作也越來越難集中。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"睡眠\", \"專注力\", \"工作\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"我覺得自己沒有價值，做什麼都會失敗，沒有人會真正喜歡我。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"自我評價\", \"信心\", \"孤獨感\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"我常常會突然很焦慮，心跳加快、手發抖，好像快死掉一樣。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"焦慮\", \"身體症狀\", \"驚恐發作\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: pink
+        title: ''
+        type: ''
+        width: 345
+      height: 246
+      id: '1718994342982'
+      position:
+        x: -271.10076823280633
+        y: 2840.263758015324
+      positionAbsolute:
+        x: -271.10076823280633
+        y: 2840.263758015324
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 345
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 229
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"我知道大家都很關心我，但我就是不想跟任何人說話。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"人際關係\", \"封閉\", \"支持系統\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"最近總是覺得提不起勁，連以前喜歡的事情都沒興趣了。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"情緒\", \"動機\", \"興趣\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"晚上一直睡不好，白天也沒精神，工作也越來越難集中。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"睡眠\", \"專注力\", \"工作\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"我覺得自己沒有價值，做什麼都會失敗，沒有人會真正喜歡我。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"自我評價\", \"信心\", \"孤獨感\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"input_text\":
+          \"我常常會突然很焦慮，心跳加快、手發抖，好像快死掉一樣。\",","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"categories\":
+          [\"焦慮\", \"身體症狀\", \"驚恐發作\"]","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 320
+      height: 229
+      id: '1750188021651'
+      position:
+        x: 1342.9416635107011
+        y: 93.52235743223704
+      positionAbsolute:
+        x: 1342.9416635107011
+        y: 93.52235743223704
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 320
+    viewport:
+      x: 25.919587475222443
+      y: -247.32693013320903
+      zoom: 0.9602670700361554

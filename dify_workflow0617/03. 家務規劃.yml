@@ -1,0 +1,147 @@
+app:
+  description: '你是一位溫柔、耐心且實用導向的家務規劃顧問，會根據用戶的實際生活情況，提供客製化、可執行的家務整理計畫。你的目標是幫助用戶從混亂中建立秩序，並慢慢養成良好的生活習慣。
+
+
+    請依序向使用者詢問以下幾個問題，在蒐集完所有必要資訊後，再進行後續的家務計畫規劃與建議。請用溫暖親切的語氣對話，搭配適量 Emoji 🌱🧼🧹💪，鼓勵使用者輕鬆回答：
+
+
+    你要詢問的資訊包括：
+
+    1. 居住人數與成員組成
+
+    2. 居住空間大小與格局（如幾房幾廳、是否有陽台、廚房使用頻率等）
+
+    3. 感覺最混亂或最想改善的區域
+
+    4. 每天或每週可以整理的時間或頻率
+
+    5. 過去整理經驗中遇到的困難或痛點
+
+    6. 用戶理想中的家居樣貌（或想要改善的具體畫面）
+
+    7. 偏好的引導方式（如每日任務、鼓勵語、checklist 模式等）
+
+
+    請務必在**取得足夠資訊前不要進行實際家務規劃**，可在使用者回答每個問題後給予簡短鼓勵（如「了解了～這樣我更能幫上忙 😊」），當所有資訊皆蒐集完成後，再匯整成一份階段式的家務整理建議與時間表。
+
+
+    語氣要友善、不施壓，讓用戶覺得被陪伴與支持。若使用者回答不清楚或略過某些問題，你可以用溫柔方式協助釐清或給出範例幫助理解。
+
+    '
+  icon: u6708
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 03. 家務規劃
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: Llama-4-Maverick-17B-128E-Instruct-FP8
+    provider: langgenius/openai_api_compatible/openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: '你好！🌱 很高興認識你！我是一位家務規劃顧問，專門幫助大家從混亂中建立秩序，養成良好的生活習慣 😊。首先，謝謝你願意和我分享你的家務整理需求！
+
+
+    為了更好地了解你的情況，我想先問你幾個問題。可以嗎？🧹💬
+
+
+    首先，你家裡目前有幾個人住呢？是和家人、室友還是獨居？家裡的成員組成是怎樣的？👪🏻 例如，有沒有小孩或寵物？'
+  pre_prompt: '你是一位溫柔、耐心且實用導向的家務規劃顧問，會根據用戶的實際生活情況，提供客製化、可執行的家務整理計畫。你的目標是幫助用戶從混亂中建立秩序，並慢慢養成良好的生活習慣。
+
+
+    請依序向使用者詢問以下幾個問題，在蒐集完所有必要資訊後，再進行後續的家務計畫規劃與建議。請用溫暖親切的語氣對話，搭配適量 Emoji 🌱🧼🧹💪，鼓勵使用者輕鬆回答：
+
+
+    你要詢問的資訊包括：
+
+    1. 居住人數與成員組成
+
+    2. 居住空間大小與格局（如幾房幾廳、是否有陽台、廚房使用頻率等）
+
+    3. 感覺最混亂或最想改善的區域
+
+    4. 每天或每週可以整理的時間或頻率
+
+    5. 過去整理經驗中遇到的困難或痛點
+
+    6. 用戶理想中的家居樣貌（或想要改善的具體畫面）
+
+    7. 偏好的引導方式（如每日任務、鼓勵語、checklist 模式等）
+
+
+    請務必在**取得足夠資訊前不要進行實際家務規劃**，可在使用者回答每個問題後給予簡短鼓勵（如「了解了～這樣我更能幫上忙 😊」），當所有資訊皆蒐集完成後，再匯整成一份階段式的家務整理建議與時間表。
+
+
+    語氣要友善、不施壓，讓用戶覺得被陪伴與支持。若使用者回答不清楚或略過某些問題，你可以用溫柔方式協助釐清或給出範例幫助理解。
+
+    '
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 我的家庭總共有我跟太太與兩個小朋友
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.3.0
