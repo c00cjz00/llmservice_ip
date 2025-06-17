@@ -1,0 +1,832 @@
+app:
+  description: ''
+  icon: 📒
+  icon_background: '#FEF7C3'
+  mode: advanced-chat
+  name: 10. 播客PODCAST.yml
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/podcast_generator:0.0.3@49a334beb64974f9883aae18e6d77f48999363e219f09a638c6081c9f7079afd
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: '👉 上傳檔案後，點擊 (click me) 開始產生 Podcast，
+
+      並選擇對應的 Podcast 長度、語調、語言，以及主持人的名稱。'
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - click me！
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      autoPlay: enabled
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1727578865729-source-1727580169317-target
+      selected: false
+      source: '1727578865729'
+      sourceHandle: source
+      target: '1727580169317'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1727580169317-source-1727591428555-target
+      selected: false
+      source: '1727580169317'
+      sourceHandle: source
+      target: '1727591428555'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727591428555-source-1727675554894-target
+      selected: false
+      source: '1727591428555'
+      sourceHandle: source
+      target: '1727675554894'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1729055989670-source-1731967558262-target
+      source: '1729055989670'
+      sourceHandle: source
+      target: '1731967558262'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1727675911704-source-1729055989670-target
+      source: '1727675911704'
+      sourceHandle: source
+      target: '1729055989670'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1727675554894-source-1727675911704-target
+      source: '1727675554894'
+      sourceHandle: source
+      target: '1727675911704'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1729056119524-source-1729056149073-target
+      source: '1729056119524'
+      sourceHandle: source
+      target: '1729056149073'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1731967558262-source-1731978279238-target
+      source: '1731967558262'
+      sourceHandle: source
+      target: '1731978279238'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: code
+      id: 1731978279238-source-1731967739433-target
+      source: '1731978279238'
+      sourceHandle: source
+      target: '1731967739433'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 1731967739433-source-1729056119524-target
+      source: '1731967739433'
+      sourceHandle: source
+      target: '1729056119524'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 檔案上傳 (PDF, DOC)
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+        - label: 語調
+          max_length: 48
+          options:
+          - 'CASUAL = "TONE: The tone of the podcast should be casual and conversational"'
+          - 'FORMAL = "TONE: The tone of the podcast should be formal and professional"'
+          - 'HUMOROUS = "TONE: The tone of the podcast should be humorous and light-hearted"'
+          - 'SERIOUS = "TONE: The tone of the podcast should be serious and informative"'
+          - 'EDUCATIONAL = "TONE: The tone of the podcast should be educational and
+            instructive"'
+          - 'INSPIRATIONAL = "TONE: The tone of the podcast should be inspirational
+            and motivational"'
+          - 'CONTROVERSIAL = "TONE: The tone of the podcast should be controversial
+            and thought-provoking"'
+          - 'STORYTELLING = "TONE: The tone of the podcast should be narrative and
+            storytelling"'
+          - ' INVESTIGATIVE = "TONE: The tone of the podcast should be investigative
+            and analytical"'
+          - ' DEBATE = "TONE: The tone of the podcast should be debate-style and argumentative"'
+          required: true
+          type: select
+          variable: tone
+        - label: 主持人名稱
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: host_name
+        - label: 來賓暱稱
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: guest_name
+        - label: 語系
+          max_length: 48
+          options:
+          - 繁體中文
+          - English
+          - 日本語
+          required: true
+          type: select
+          variable: language
+      height: 193
+      id: '1727578865729'
+      position:
+        x: 30
+        y: 296.5
+      positionAbsolute:
+        x: 30
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1727578865729'
+        - file
+      height: 91
+      id: '1727580169317'
+      position:
+        x: 333
+        y: 296.5
+      positionAbsolute:
+        x: 333
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: e77d2b26-44a2-47d6-a64a-37c0d0e4d7b2
+          role: system
+          text: "You are a world-class podcast producer.\nYour task is to transform\
+            \ the provided input text into an engaging and informative podcast script.\n\
+            You will receive as input a text that may be unstructured or messy, sourced\
+            \ from places like PDFs or web pages. Ignore irrelevant information or\
+            \ formatting issues. \nYour focus is on extracting the most interesting\
+            \ and insightful content for a podcast discussion."
+        - id: cafd9e23-9b91-415d-a9a6-b5be7d6c5621
+          role: user
+          text: "context：{{#1727580169317.text#}}\n\n# Steps to Follow:\n\n1. **Analyze\
+            \ the Input:**\n   Carefully examine the text, identifying key topics,\
+            \ points, and interesting facts or anecdotes that could drive an engaging\
+            \ podcast conversation. Disregard irrelevant information or formatting\
+            \ issues.\n\n2. **Brainstorm Ideas:**\n   In the `<scratchpad>`, creatively\
+            \ brainstorm ways to present the key points engagingly. Consider:\n  \
+            \ - Analogies, storytelling techniques, or hypothetical scenarios to make\
+            \ content relatable\n   - Ways to make complex topics accessible to a\
+            \ general audience\n   - Thought-provoking questions to explore during\
+            \ the podcast\n   - Creative approaches to fill any gaps in the information\n\
+            \n"
+        selected: false
+        title: Analyze the Input
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: false
+      height: 89
+      id: '1727591428555'
+      position:
+        x: 638.1653094215226
+        y: 296.5
+      positionAbsolute:
+        x: 638.1653094215226
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1727580169317'
+          - text
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 1a516c46-2987-48dc-b8b2-b328cce43e31
+          role: system
+          text: "You are a world-class podcast producer.\nYour task is to transform\
+            \ the provided input text into an engaging and informative podcast script.\n\
+            You will receive as input a text that may be unstructured or messy, sourced\
+            \ from places like PDFs or web pages. Ignore irrelevant information or\
+            \ formatting issues. \nYour focus is on extracting the most interesting\
+            \ and insightful content for a podcast discussion.Aim for a natural, conversational\
+            \ flow between the {{#1727578865729.host_name#}} and {{#1727578865729.guest_name#}}\n\
+            Roles and Dynamics: The instructions define the roles of the host and\
+            \ expert, ensuring they complement each other. The host highlights intriguing\
+            \ points with enthusiasm while the expert provides analysis, context,\
+            \ and a broader perspective\n- Deep Dive: The instructions emphasise going\
+            \ beyond surface-level information to uncover key insights and \"golden\
+            \ nuggets of knowledge\" that leave listeners feeling like they've learned\
+            \ something new\n- Target Audience: The system prompt outlines the ideal\
+            \ listener, characterized by valuing efficiency, appreciating memorable\
+            \ details, and seeking an engaging learning experience .\n- Structure\
+            \ and Delivery: The system prompt stresses the importance of clear structure\
+            \ and engaging delivery, using signposts to guide listeners and avoiding\
+            \ a monotone, robotic tone\n   - Use the best ideas from {{#1727591428555.text#}}\
+            \    Memorable Examples: Real-world examples and relatable    anecdotes\
+            \ are crucial for making information stick. The system prompt emphasizes\
+            \ bringing information to life, fostering engagement, and ensuring the\
+            \ learning extends beyond the episode\n   - Ensure complex topics are\
+            \ explained clearly and simply.\n   - Focus on maintaining an engaging\
+            \ and {{#1727578865729.tone#}}that would captivate listeners.\n   - Rules:\n\
+            \        > The host ALWAYS goes first and is interviewing the guest. The\
+            \ guest is the one who explains the topic.\n        > The host should\
+            \ ask the guest questions.\n        > The host should summarize the key\
+            \ insights at the end.\n        > Include common verbal fillers like \"\
+            uhms\" and \"errs\" in the host and guests response. This is so the script\
+            \ is realistic.\n        > The host and guest can interrupt each other.\n\
+            \        > The guest must NOT include marketing or self-promotional content.\n\
+            \        > The guest must NOT include any material NOT substantiated within\
+            \ the input text.\n        > This is to be a PG conversation.\n      \
+            \  > When the output is nearing its conclusion, there is no need to provide\
+            \ a closing in the script; the closing part will be given in another script.\n"
+        - id: 66bdff46-8857-4c3e-83f4-98d572e24dec
+          role: user
+          text: "Now, develop the podcast dialogue.\nPlease use the designated language\
+            \ for the podcast \n- context：{{#context#}}\n- language：{{#1727578865729.language#}}\n\
+            - host：{{#1727578865729.host_name#}}\n- guest：{{#1727578865729.guest_name#}}\n\
+            - tone：{{#1727578865729.tone#}}\n- The names of the host and guest are\
+            \ not constrained by language.\n- Script Format and Content\n-- Begin\
+            \ the script with the host speaking\n-- Alternate dialogue between the\
+            \ host and guest, one line at a time\n-- Omitspeaker names at the beginning\
+            \ of each line\n-- Include a self-introduction for both host and guest,\
+            \ using provided names\n-- Address each other by first names to create\
+            \ a friendly atmosphere\n-- Focus on creating engaging, back-and-forth\
+            \ conversation\n\n- Output Requirements\n **Script Format**: The script\
+            \ should begin with the host speaking. The dialogue should alternate between\
+            \ the host and the guest, with each speaking one line at a time. Do not\
+            \ include the speaker's name at the beginning of each line.\n**Output\
+            \ Requirements**: The final script should only contain the dialogue content.\
+            \ Avoid including any XML tags or additional formatting in the output.\n\
+            \nBy following these instructions, you will create a high-quality podcast\
+            \ script that is both informative and engaging \n\n"
+        selected: false
+        title: Craft the Dialogue
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: false
+      height: 89
+      id: '1727675554894'
+      position:
+        x: 939
+        y: 296.5
+      positionAbsolute:
+        x: 939
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1727675554894'
+          - text
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 4db75ca9-eb9b-4885-b710-a4d860d0c58d
+          role: system
+          text: "At the end of the dialogue, the host and guest should naturally summarize\
+            \ the key insights. This should feel like a casual conversation, rather\
+            \ than a formal recap, reinforcing the main points one last time before\
+            \ signing off.And a natural transition.\n **Summarize Key Insights:**\n\
+            \   Naturally weave a summary of key points into the closing part of the\
+            \ dialogue. This should feel like a casual conversation rather than a\
+            \ formal recap, reinforcing the main takeaways before signing off.\n\n\
+            \   - Include brief \"breather\" moments for listeners to absorb complex\
+            \ information\n   - End on a high note, perhaps with a thought-provoking\
+            \ question or a call-to-action for listeners\n\n"
+        - id: 766cc983-8714-4a2f-866a-3a4d82cc0f9b
+          role: user
+          text: "Context：{{#context#}}\nhost：{{#1727578865729.host_name#}}\nguest：{{#1727578865729.guest_name#}}\n\
+            language{{#1727578865729.language#}}\nThe names of the host and guest\
+            \ are not constrained by language.\nYou need to draw conclusions based\
+            \ on the context, maintaining the same format as the context.Avoid introductions\
+            \ and repetitive content that is consistent with the context.\n\n **Script\
+            \ Format**: The script should begin with the host speaking. The dialogue\
+            \ should alternate between the host and the guest, with each speaking\
+            \ one line at a time. Do not include the speaker's name at the beginning\
+            \ of each line.\n\n**Output Requirements**: The final script should only\
+            \ contain the dialogue content. Avoid including any XML tags or additional\
+            \ formatting in the output.\n\n\n\n\n"
+        selected: false
+        title: conclusion
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: false
+      height: 89
+      id: '1727675911704'
+      position:
+        x: 1242
+        y: 296.5
+      positionAbsolute:
+        x: 1242
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: true
+        template: '{{ arg1 }}'
+        title: Template conversion
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1727675554894'
+          - text
+          variable: arg1
+        - value_selector:
+          - '1727675911704'
+          - text
+          variable: arg2
+      height: 53
+      id: '1729055989670'
+      position:
+        x: 1545
+        y: 296.5
+      positionAbsolute:
+        x: 1545
+        y: 296.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        provider_id: podcast_generator
+        provider_name: podcast_generator
+        provider_type: builtin
+        selected: false
+        title: Podcast audio generator
+        tool_configurations:
+          host1_voice: alloy
+          host2_voice: nova
+        tool_label: 播客音频生成器
+        tool_name: podcast_audio_generator
+        tool_parameters:
+          script:
+            type: mixed
+            value: '{{#1731967739433.result#}}'
+        type: tool
+      height: 115
+      id: '1729056119524'
+      position:
+        x: 2961.0129854905026
+        y: 286.08031426215814
+      positionAbsolute:
+        x: 2961.0129854905026
+        y: 286.08031426215814
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1729056119524.text#}}
+
+
+          {{#1729056119524.files#}}'
+        desc: ''
+        selected: false
+        title: podcast
+        type: answer
+        variables: []
+      height: 122
+      id: '1729056149073'
+      position:
+        x: 3363
+        y: 296.5
+      positionAbsolute:
+        x: 3363
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 98fa221b-d6d8-48e5-b263-f0f9ac7212f9
+          role: system
+          text: "**Content Description:**  \nA podcast episode content is placed within\
+            \ `<podcast></podcast>` XML tags. The host is {{#1727578865729.host_name#}},\
+            \ and the guest is {{#1727578865729.guest_name#}}.  \nThe content is presented\
+            \ in dialogue form, with each dialogue segment separated by `\\n`. Please\
+            \ note that improper line breaks in the text might cause confusion about\
+            \ which character's dialogue is which.  \n\n**Task Requirements:**  \n\
+            1. Based on the context, accurately determine which dialogue belongs to\
+            \ which character ({{#1727578865729.host_name#}} or {{#1727578865729.guest_name#}}).\
+            \  \n2. Ensure the dialogue order is clear and correct any errors caused\
+            \ by improper line breaks.  \n3. Rearrange the cleaned-up dialogue content\
+            \ for better readability while retaining the original meaning.  \n4. If\
+            \ any character’s name appears in the script but does not align with the\
+            \ defined roles, the name can be removed.\n5. Do not include any additional\
+            \ explanations or suggestions.\n6. Output the dialogue in JSON format\
+            \ as shown below, specifying the character names.  \n{\n  \"dialogue\"\
+            : [\n    {\n      \"character\": \"host\",\n      \"line\": \"...\"\n\
+            \    },\n    {\n      \"character\": \"guest\",\n      \"line\": \"...\"\
+            \n    },\n    {\n      \"character\": \"host\",\n      \"line\": \"...\"\
+            \n    },\n    {\n      \"character\": \"guest\",\n      \"line\": \"...\"\
+            \n    },\n...\n}"
+        - id: 261b9493-e59a-4cb0-b8a0-84ed4452c4ff
+          role: user
+          text: '<podcast>
+
+            {{#1729055989670.output#}}
+
+            </podcast>'
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1731967558262'
+      position:
+        x: 1849.3024607172301
+        y: 296.5
+      positionAbsolute:
+        x: 1849.3024607172301
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\n\ndef clean_json_string(s: str) -> str:\n    \"\"\"\n\
+          \    去除開頭與結尾的 Markdown 標記，例如 ```json 與 ```\n    \"\"\"\n    s = s.strip()\n\
+          \    if s.startswith(\"```json\"):\n        s = s[len(\"```json\"):].strip()\n\
+          \    if s.endswith(\"```\"):\n        s = s[:-3].strip()\n    return s\n\
+          \ndef main(arg1: str) -> dict:\n    # 如果 arg1 是字符串，先將其轉換為字典\n    if isinstance(arg1,\
+          \ str):\n        arg1 = clean_json_string(arg1)\n        arg1 = json.loads(arg1)\n\
+          \    \n    dialogue_data = arg1[\"dialogue\"]\n    \n    result = \"\"\n\
+          \    previous_character = \"\"\n    \n    for entry in dialogue_data:\n\
+          \        character = entry[\"character\"]\n        line = entry[\"line\"\
+          ]\n        \n        if character == previous_character:\n            result\
+          \ += line\n        else:\n            if previous_character != \"\":\n \
+          \               result += \"\\n\\n\"\n            result += line\n     \
+          \   \n        previous_character = character\n    \n    return {\"result\"\
+          : result}\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代碼執行
+        type: code
+        variables:
+        - value_selector:
+          - '1731967558262'
+          - text
+          variable: arg1
+      height: 53
+      id: '1731967739433'
+      position:
+        x: 2452.69753928277
+        y: 296.5
+      positionAbsolute:
+        x: 2452.69753928277
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1731967558262.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回覆 2
+        type: answer
+        variables: []
+      height: 103
+      id: '1731978279238'
+      position:
+        x: 2151
+        y: 296.5
+      positionAbsolute:
+        x: 2151
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"你是一名世界級的播客製作人。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"你的任務是將提供的輸入文本轉化為引人入勝且資訊豐富的播客腳本。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"你將接收到的輸入文本可能是非結構化或混亂的，來源可能包括
+          PDF 或網頁等。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"請忽略無關的信息或格式問題，專注於提取最有趣且富有洞見的內容，用於播客討論。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"情境：{{#1727580169317.text#}}","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"步驟指南：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"分析輸入內容：","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"仔細審視文本，識別關鍵主題、要點，以及能引發有趣對話的事實或軼事。忽略無關信息或格式問題。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"構思創意：","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"在
+          ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"<scratchpad>","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          中創意性地構思呈現關鍵內容的方法，考慮：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"使用類比、故事講述技巧或假設情境，使內容更易理解並引起共鳴","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"讓複雜主題變得易於接受的方法","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"可以在播客中探討的發人深省的問題","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"創新方式來補充信息缺口","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":4}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"number","start":1,"tag":"ol"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1742282271774'
+      position:
+        x: 547.2577697046164
+        y: 416.839687084031
+      positionAbsolute:
+        x: 547.2577697046164
+        y: 416.839687084031
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"你是一名世界級的播客製作人。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"你的任務是將提供的輸入文本轉化為一個引人入勝且資訊豐富的播客腳本。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"你將接收到的輸入文本可能是非結構化或混亂的，來源可能包括
+          PDF 或網頁等。請忽略無關的信息或格式問題，專注於提取最有趣且富有洞見的內容，以打造一場有深度的播客對話。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"角色與動態","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"主持人（{{#1727578865729.host_name#}}）","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"：充滿熱情地強調有趣的觀點，引導話題發展。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"專家來賓（{{#1727578865729.guest_name#}}）","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"：提供深入分析、背景資訊，以及更廣闊的視角，確保內容具有價值和啟發性。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"播客設計要點","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"深度剖析：","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          超越表面資訊，挖掘關鍵見解與「黃金知識點」，確保聽眾有所收穫。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"目標受眾：","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          理想的聽眾重視效率，喜愛令人印象深刻的細節，並尋求有趣的學習體驗。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"結構與呈現：","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          強調清晰的結構與吸引人的表達方式，透過明確的引導詞幫助聽眾理解，避免單調乏味的機械語氣。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"生動例子：","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          使用現實世界的案例和貼近生活的軼事，使資訊更具吸引力，確保學習體驗超越本集播客。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"簡單清晰的解釋：","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          確保複雜的主題能夠被清楚、簡單地講解，讓各種層次的聽眾都能理解。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"吸引人的語氣：","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          維持{{#1727578865729.tone#}}的風格，以吸引並留住聽眾。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":6}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"播客腳本規則","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"✅
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"主持人
+          ALWAYS 先說話，並以訪談形式進行對話。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"✅
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"主持人提問，來賓負責解釋主題。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"✅
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"主持人在最後總結關鍵見解。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"✅
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"加入自然的口語填充詞，如「嗯」、「呃」，讓對話更具真實感。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"✅
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"主持人和來賓可以適時打斷對方，以模擬真實對話的節奏。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"❌
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"來賓不得包含任何行銷或自我推廣內容。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"❌
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"來賓不得使用未經證實的資訊，所有內容必須基於輸入文本。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"❌
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"對話內容需保持
+          PG（適合普遍觀眾）。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"❌
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"當腳本接近結尾時，不需提供完整的結尾部分，因為它將在另一個腳本中補充。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"此外，請從
+          ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"{{#1727591428555.text#}}","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          中選取最好的想法，以確保內容更具啟發性和可記憶性。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1742282381570'
+      position:
+        x: 955.4185956616232
+        y: 472.055077332857
+      positionAbsolute:
+        x: 955.4185956616232
+        y: 472.055077332857
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"在對話的最後，主持人和來賓應該自然地總結關鍵見解，讓這部分感覺像是一次輕鬆的對話，而非正式的總結。同時，透過對話的方式再次強調主要收穫，為節目畫下自然的句點。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"關鍵總結的自然融入方式：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"輕鬆對話式總結","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"：讓主持人和來賓在交流中自然地回顧關鍵要點，而不是生硬地羅列資訊。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"給聽眾一些「喘息」的空間","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"：在探討複雜資訊後，適時留出短暫的停頓，幫助聽眾消化內容。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"以亮點結尾","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"：可以是一個引人深思的問題、一個有趣的觀點，或是一個鼓勵聽眾思考與行動的話題。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"自然的過渡","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"：讓最後的對話過渡到節目結束，而不是突然切斷，確保整體流暢且富有節奏感。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1742282490393'
+      position:
+        x: 1242
+        y: 492.6255168373215
+      positionAbsolute:
+        x: 1242
+        y: 492.6255168373215
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: c00cjz00
+        desc: ''
+        height: 289
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"文件:
+          內容說明:","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"一個播客節目內容被放置在
+          ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"<podcast></podcast>","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          XML 標籤內。主持人為 {{#1727578865729.host_name#}}，嘉賓為 {{#1727578865729.guest_name#}}。","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"內容以對話形式呈現，每個對話片段由
+          ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"\\n","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          分隔。請注意，文本中的不當換行可能會導致對話角色的混淆。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"任務要求:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"根據上下文，準確判斷每句對話屬於哪個角色（{{#1727578865729.host_name#}}
+          或 {{#1727578865729.guest_name#}}）。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"確保對話順序清晰，並修正因不當換行導致的錯誤。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"調整整理後的對話內容，使其更具可讀性，同時保持原意。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"如果劇本中出現的角色名稱與已定義的角色不符，則可移除該名稱。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"不要包含任何額外的解釋或建議。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"以
+          JSON 格式輸出對話內容，如下所示，並標明角色名稱：","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":6}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"number","start":1,"tag":"ol"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"{","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"dialogue\":
+          [","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"    {","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"character\":
+          \"host\",","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"line\":
+          \"...\"","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"    },","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"    {","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"character\":
+          \"guest\",","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"line\":
+          \"...\"","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"    },","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"    {","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"character\":
+          \"host\",","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"line\":
+          \"...\"","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"    },","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"    {","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"character\":
+          \"guest\",","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"      \"line\":
+          \"...\"","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"    }","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"  ]","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"}","type":"text","version":1},{"type":"linebreak","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 452
+      height: 289
+      id: '1742282838674'
+      position:
+        x: 1785.8147588155339
+        y: 460.1458755144829
+      positionAbsolute:
+        x: 1785.8147588155339
+        y: 460.1458755144829
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 452
+    viewport:
+      x: -343.9890922641523
+      y: 392.5903884838799
+      zoom: 0.36655294346606
