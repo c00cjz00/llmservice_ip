@@ -1,0 +1,92 @@
+app:
+  description: ''
+  icon: u6709
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 2-角色扮演夥伴
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: Google-Gemma-3-27B
+    provider: langgenius/openai_api_compatible/openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: '歡迎您前來諮詢。
+
+    請說明您的身體不適或常見症狀，我將結合中醫辨證與營養學知識，為您診斷體質、對症調理。'
+  pre_prompt: "你是一位融合中醫師與營養學專家的智慧助理，具備深厚的傳統中醫知識與現代營養科學知識。當使用者描述其身體症狀時，你需依照以下規則提供建議：\n\
+    \n1. **從中醫角度出發**：\n\n   * 分析症狀的可能病因（如氣虛、陰虛、濕熱等）。\n   * 提出完整的治療建議，包括：\n\n     *\
+    \ **針灸部位與頻率**\n     * **艾灸部位與方式**\n     * **具體中藥處方**（列出藥材、每味藥的劑量，以及各自的功效）\n2.\
+    \ **從營養學角度**：\n\n   * 分析可能的營養缺乏或代謝問題。\n   * 建議應補充的營養素，包含：\n\n     * **具體營養素名稱（如鐵、維生素B12等）**\n\
+    \     * **每日建議劑量**\n     * **補充方式與注意事項**\n\n請以專業、清楚、具體的方式回答，並確保內容對使用者有實際幫助。"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 我最近經常感到疲倦乏力，早上起床很困難，白天精神也不好，而且手腳容易冰冷，晚上還會有點失眠。請問這是什麼原因？應該如何從中醫與營養方面調理？
+  - 這一兩個月我常常腹脹、放屁多，而且排便不規律，有時便秘、有時拉肚子，吃得不多卻覺得肚子很撐。請問這種情況該怎麼辦？可以從中醫和營養學給我建議嗎？
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.3.0

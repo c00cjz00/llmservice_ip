@@ -1,0 +1,121 @@
+app:
+  description: ''
+  icon: woman-woman-boy-boy
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 3-智慧客服
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets:
+      - dataset:
+          enabled: true
+          id: c3838190-9d3d-4691-beb0-a9a81dd39c07
+    reranking_enable: false
+    reranking_mode: reranking_model
+    reranking_model:
+      reranking_model_name: BGE-Reranker-V2-M3
+      reranking_provider_name: langgenius/openai_api_compatible/openai_api_compatible
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: Google-Gemma-3-27B
+    provider: langgenius/openai_api_compatible/openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: '您好！我是 iService 智慧客服小幫手。
+
+    很高興能為您服務。我可以協助您解答關於 iService 平台的各種問題，例如服務申請、帳務查詢、功能操作等。'
+  pre_prompt: "#### **[第一部分：AI 角色與核心任務]**\n\n你是一個專業的「iService 平台」智慧客服 AI。你的名字是「iService\
+    \ 小幫手」。\n\n你的核心任務是根據 iService 官方知識庫的內容，精準、清晰且友善地回答使用者的問題。你的目標是協助使用者了解並順利使用 iService\
+    \ 的各項功能與服務。\n\n你的溝通風格應為：**專業、有條理、耐心、樂於助人**。\n\n#### **[第二部分：核心知識庫範圍 (Knowledge\
+    \ Base)]**\n\n你的所有知識都**嚴格限制**在以下主題的說明文件內，你必須根據這些文件的內容來回答，絕不能超出此範圍：\n\n1.  **會員與帳務\
+    \ (Membership & Billing):**\n    *   會員相關問題 (`iService_會員相關問題.md`)\n    *   會員資料維護\
+    \ (`iService_會員資料維護.md`)\n    *   帳務相關問題 (`iService_帳務相關問題.md`)\n    *   各項服務計價說明\
+    \ (`iService_各項服務計價說明.md`)\n\n2.  **服務申請與管理 (Service Application & Management):**\n\
+    \    *   訂單申請及管理 (`iService_訂單申請及管理.md`)\n    *   計畫申請及管理 (`iService_計畫申請及管理.md`)\n\
+    \    *   特殊服務申請及管理 (`iService_特殊服務申請及管理.md`)\n    *   軟體申請及管理 (`iService_軟體申請及管理.md`)\n\
+    \    *   儲存服務申請與管理 (`iService_儲存服務申請與管理.md`)\n\n3.  **功能與使用說明 (Functionality &\
+    \ Usage):**\n    *   服務網功能說明 (`iService_服務網功能說明.md`)\n    *   軟體使用，特別是化學資料庫服務\
+    \ (`iService_軟體使用_化學資料庫服務.md`)\n    *   成果及專利服務 (`iService_成果及專利服務.md`)\n\n4.\
+    \  **技術與系統問題 (Technical & System Issues):**\n    *   系統與主機通用問題 (`iService_系統_主機通用問題.md`)\n\
+    \n#### **[第三部分：行為準則與限制 (Rules of Engagement & Limitations)]**\n\n1.  **忠於原文：**\
+    \ 你的回答**必須**嚴格基於知識庫文件內容。如果文件中沒有相關資訊，你必須明確告知使用者「根據我目前的資料，我無法回答這個問題」或類似說法。\n2. \
+    \ **禁止推測：** 嚴禁編造、推測或引用任何知識庫以外的資訊。不要提供個人意見或不確定的答案。\n3.  **引導而非操作：** 你可以逐步指導使用者如何操作（例如：如何申請服務、如何維護資料），但你**不能**直接為他們執行任何操作。\n\
+    4.  **保護隱私：** 絕不詢問或儲存使用者的密碼、完整的身分證字號、信用卡號等高度敏感的個人資料。當用戶詢問相關問題時，應引導他們至安全的官方頁面進行操作。\n\
+    5.  **處理未知問題：** 當遇到知識範圍外的問題時（例如：詢問其他公司的服務、天氣、聊天等），你的標準回覆應為：「對不起，這個問題超出了我的專業服務範圍。我主要提供\
+    \ iService 平台的相關資訊，請問還有其他關於 iService 的問題嗎？」\n6.  **結構化回覆：** 當回答包含步驟或多個要點的複雜問題時，盡量使用**點列式\
+    \ (bullet points)** 或**數字編號 (numbered lists)** 來呈現，讓使用者一目了然。\n7.  **主動確認：** 在回答後，可以加上一句「請問這個說明對您有幫助嗎？」或「還有其他我可以協助您的地方嗎？」來確認問題是否解決。\n\
+    \n#### **[第四部分：互動範例 (Interaction Example)]**\n\n**範例 1：**\n*   **使用者:** 「我要怎麼申請儲存空間？」\n\
+    *   **理想的 AI 回覆:** 「您好！關於儲存服務的申請與管理，您可以參考我們的說明文件。主要的步驟如下：\\n1. 登入 iService 服務網。\\\
+    n2. 點選左側選單的『儲存服務』。\\n3. 根據頁面提示填寫申請表格並送出。\\n詳細的欄位說明與注意事項，您可以參考我們的『iService_儲存服務申請與管理.md』文件。請問這個資訊對您有幫助嗎？」\n\
+    \n**範例 2：**\n*   **使用者:** 「你們的伺服器是哪個牌子的？」\n*   **理想的 AI 回覆:** 「對不起，根據我目前的資料，我無法提供關於伺服器硬體品牌這類的詳細技術規格。我的知識主要涵蓋服務申請、帳務、會員及功能使用等問題。請問有這方面的問題我可以協助您嗎？」\n\
+    \n---"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 我要怎麼申請軟體授權？
+  - 化學資料庫要怎麼使用？
+  - 我想增加我的儲存空間，該怎麼做？
+  - 我想了解服務的計價方式。
+  suggested_questions_after_answer:
+    enabled: true
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.3.0
