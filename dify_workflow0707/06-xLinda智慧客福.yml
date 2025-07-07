@@ -1,0 +1,354 @@
+app:
+  description: ''
+  icon: woman-woman-girl-boy
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 06-xLinda智慧客福
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1751203226211-source-1751243069419-target
+      selected: false
+      source: '1751203226211'
+      sourceHandle: source
+      target: '1751243069419'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: question-classifier
+      id: 1751243069419-source-1751929791210-target
+      selected: false
+      source: '1751243069419'
+      sourceHandle: source
+      target: '1751929791210'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1751929791210-1-llm-target
+      source: '1751929791210'
+      sourceHandle: '1'
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: answer
+      id: 1751929791210-2-1751204778250-target
+      source: '1751929791210'
+      sourceHandle: '2'
+      target: '1751204778250'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables: []
+      height: 53
+      id: '1751203226211'
+      position:
+        x: 30
+        y: 293.5
+      positionAbsolute:
+        x: 30
+        y: 293.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '【使用者原始問題】
+
+            {{#sys.query#}}
+
+
+            【重新詮釋使用者的問題】
+
+            {{#1751243069419.text#}}
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 248de2f1-ba8b-4b2c-8a04-2a2677a7429a
+          role: system
+          text: '你是一位技術助理，專門協助使用者理解與操作國家高速網路與計算中心（NCHC）所提供的 iService 平台與 TWCC 雲端服務。
+
+
+            你熟悉的主題包括但不限於：
+
+            - 高效能運算（HPC、Taiwania 系列、Slurm、Singularity）
+
+            - TWCC 雲端平台（包含容器服務 CCS、虛擬機服務 VCS）
+
+            - 容器與 GPU 計算環境（如 PyTorch、TensorFlow）
+
+            - 儲存服務（如 CFS、S3 Object Storage）
+
+            - 帳號申請、計費政策、CLI 工具、API 使用
+
+
+            你的回答應：
+
+            - 明確、專業、使用繁體中文
+
+            - 結合使用者問題與實際搜尋資料
+
+            - 若有具體操作建議，提供步驟或命令
+
+            - 若查詢資訊不足，提出合理建議並引導使用者查看官方網站
+
+
+            ---
+
+            '
+        selected: true
+        title: 問題回覆
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: llm
+      position:
+        x: 585.236333742017
+        y: 293.5
+      positionAbsolute:
+        x: 585.236333742017
+        y: 293.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回覆
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 869.3803215332894
+        y: 392.145637706553
+      positionAbsolute:
+        x: 869.3803215332894
+        y: 392.145637706553
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '您好，感謝您的提問。不過這個問題似乎與國家高速網路與計算中心（NCHC）所提供的雲端與運算資源服務無關。若您有關於 TWCC、iService、HPC
+          或資料儲存的問題，我會很樂意協助您。
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回覆 2
+        type: answer
+        variables: []
+      height: 181
+      id: '1751204778250'
+      position:
+        x: 585.236333742017
+        y: 425.9015737140191
+      positionAbsolute:
+        x: 585.236333742017
+        y: 425.9015737140191
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: e16e1a82-5e5b-4ec5-b55d-023204ab7e25
+          role: system
+          text: '你是一個語意補全助手，負責將使用者輸入的不完整或模糊的問題，重寫成語意清晰且具體的問句，以利後續進行準確的語意比對與向量搜尋。
+
+            請根據使用者提供的內容，合理補全語意，改寫成一個具體明確的完整問題。
+
+            **請勿添加說明、評論或註解，只輸出重寫後的問題句子本身。**
+
+            請避免虛構資訊，也不要拉長內容，只需將原始問題完整化、清楚化。
+
+
+            ---
+
+
+            範例輸入：怎樣使用TWCC帳號
+
+            範例輸出：TWCC帳號的申請流程是什麼？'
+        - id: ad0b38be-c395-4649-9a9e-135c10fb3264
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 重新詮釋問題
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1751243069419'
+      position:
+        x: 303.51969447850144
+        y: 293.5
+      positionAbsolute:
+        x: 303.51969447850144
+        y: 293.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        classes:
+        - id: '1'
+          name: 計算資源與電腦使用或操作相關問題
+        - id: '2'
+          name: 不屬於 "計算資源與電腦使用或操作相關問題"
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Llama-4-Maverick-17B-128E-Instruct-FP8
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        query_variable_selector:
+        - '1751203226211'
+        - sys.query
+        selected: false
+        title: 問題分類器
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 187
+      id: '1751929791210'
+      position:
+        x: 298.11034440743924
+        y: 408.0196483719753
+      positionAbsolute:
+        x: 298.11034440743924
+        y: 408.0196483719753
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -416.23241193779313
+      y: -199.6038756819894
+      zoom: 1.399999961439529
