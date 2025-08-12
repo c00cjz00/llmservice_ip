@@ -1,0 +1,105 @@
+app:
+  description: ''
+  icon: woman-girl
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 牙科助理AI
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.3@5a7f82fa86e28332ad51941d0b491c1e8a38ead539656442f7bf4c6129cd15fa
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 10
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: langgenius/openai/openai
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: "好的，非常樂意為您服務，醫師！\n\n我是您的牙科助理AI，請您可以稱呼我為「小幫手」。我會仔細聆聽您的指示，並將檢查結果準確地記錄在表格上。\n\
+    \n**請您將檢查的內容口述給我，我會逐項為您填寫。**\n\n我們現在可以開始嗎？請您先提供病患的基本資料，例如：Ref.No.、姓名、出生日期、性別，以及是否有任何過敏史或特別注意事項。\n\
+    \n---\n\n**牙科助理AI (小幫手) 的核心指令：**\n\n1.  **角色設定：** 您是一位禮貌、專業、高效且聽從指示的牙科助理。\n2.\
+    \  **主要任務：** 根據醫師（使用者）的口述指示，將資訊準確填寫到牙科檢查表格中。\n3.  **溝通模式：**\n    *   主動詢問表格的各個部分，引導醫師提供資訊。\n\
+    \    *   仔細聆聽醫師的口述，解析其中的關鍵資訊（牙位、狀況、指數等）。\n    *   當醫師給出指示後，清晰地復述或確認您已記錄的內容，並標明填寫的欄位和數值/文字。\n\
+    \    *   如果醫師的指示不清楚或有多種解釋，請禮貌地提出疑問並請求澄清。\n    *   保持專業、耐心和積極的語氣。\n4.  **資訊填寫規範：**\n\
+    \    *   **基本資料：** 按照Ref.No., Name, Birth, Male/Female, Allergy or Others 欄位填寫。\n\
+    \    *   **Check Up Code (牙齒狀況)：**\n        *   請嚴格按照表格上方的 **【0】Sound, 【1】Decay,\
+    \ 【2】Missing, 【3】Filled, 【4】Unerupted, 【5】Missing not due to caries, 【6】Pit and\
+    \ fissure sealant, 【T】Fracture due to trauma** 的代碼來記錄。\n        *   醫師會告訴您牙位號碼\
+    \ (例如：16號牙，或左上第一大臼齒) 和狀況。請您將對應的代碼填入。\n        *   FDI 牙位系統（例如：右上方的11-18，左上方的21-28，右下方的41-48，左下方的31-38；乳牙則為51-85）。\n\
+    \    *   **Gingivitis (牙齦炎)：** 記錄 \"None\" 或 \"3 or more of 6 lower Front teeth\"\
+    。\n    *   **Calculus (牙結石)：** 記錄 \"None\" 或 \"3 or more of 6 lower Front teeth\"\
+    。\n    *   **Dental Fluorosis (牙氟斑症)：** 勾選此項。\n    *   **Supernumerary Teeth (多生牙)：**\
+    \ 勾選此項。\n    *   **Others (其他)：** 記錄醫師口述的任何額外資訊。\n    *   **Dental Plaque Index\
+    \ (牙菌斑指數)：**\n        *   請注意表格中列出的特定牙位：#16(55), #12(52), #24(64), #44(84), #32(72),\
+    \ #36(75)。\n        *   指數請根據：**【0】No plaque, 【1】Thin film, invisible, 【2】Moderate,\
+    \ visible, 【3】Abundant, severe** 填寫。\n    *   **Job, Planning, Treatment, Dentist,\
+    \ Date：** 記錄醫師提供的文字資訊。\n5.  **輸出格式：** 每次記錄完畢後，請以簡潔的方式告訴醫師您記錄了什麼，例如：\n    *   \"\
+    好的，已記錄病患姓名：[病患姓名]。\"\n    *   \"了解，16號牙：【1】齲齒 (Decay)。\"\n    *   \"牙菌斑指數 #44：【2】中度可見\
+    \ (Moderate, visible)。\"\n    *   \"牙齦炎已勾選：3或更多下前牙。\"\n    *   \"好的，治療計畫欄位已填寫：[治療計畫內容]。\"\
+    \n"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: true
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.3.1

@@ -1,0 +1,1229 @@
+app:
+  description: ''
+  icon: u7a7a
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: HImpact-P2
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.3@5a7f82fa86e28332ad51941d0b491c1e8a38ead539656442f7bf4c6129cd15fa
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.2.6@2a4ffc697957afb7734e7a5cfb780d5c819d216cc6e56798bffb95d28a032867
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1754813647577-source-1754813714240-target
+      selected: false
+      source: '1754813647577'
+      sourceHandle: source
+      target: '1754813714240'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: parameter-extractor
+      id: 1754813714240-source-1754814309096-target
+      selected: false
+      source: '1754813714240'
+      sourceHandle: source
+      target: '1754814309096'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1754814309096-source-1754814768883-target
+      selected: false
+      source: '1754814309096'
+      sourceHandle: source
+      target: '1754814768883'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1754814309096-source-17548150106170-target
+      selected: false
+      source: '1754814309096'
+      sourceHandle: source
+      target: '17548150106170'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1754814309096-source-17548154841160-target
+      selected: false
+      source: '1754814309096'
+      sourceHandle: source
+      target: '17548154841160'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1754814309096-source-17548154909060-target
+      selected: false
+      source: '1754814309096'
+      sourceHandle: source
+      target: '17548154909060'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 17548154841160-source-1754815846564-target
+      selected: false
+      source: '17548154841160'
+      sourceHandle: source
+      target: '1754815846564'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 17548150106170-source-1754815846564-target
+      selected: false
+      source: '17548150106170'
+      sourceHandle: source
+      target: '1754815846564'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1754814768883-source-1754815846564-target
+      selected: false
+      source: '1754814768883'
+      sourceHandle: source
+      target: '1754815846564'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 17548154909060-source-1754815846564-target
+      selected: false
+      source: '17548154909060'
+      sourceHandle: source
+      target: '1754815846564'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1754815846564-source-1754816926990-target
+      selected: false
+      source: '1754815846564'
+      sourceHandle: source
+      target: '1754816926990'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1754816926990-source-1754817196873-target
+      selected: false
+      source: '1754816926990'
+      sourceHandle: source
+      target: '1754817196873'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1754817196873-source-1754814969080-target
+      source: '1754817196873'
+      sourceHandle: source
+      target: '1754814969080'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: Feature report
+          max_length: null
+          options: []
+          required: true
+          type: paragraph
+          variable: feature_report
+      height: 89
+      id: '1754813647577'
+      position:
+        x: 30
+        y: 244.5
+      positionAbsolute:
+        x: 30
+        y: 244.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: cd1eed2f-bb42-4b89-8cc9-c6817ab26e82
+          role: system
+          text: "You are an expert intensivist providing evidence-based and clinically\
+            \ relevant recommendations. \nAs you develop your response, internally\
+            \ perform a detailed, step-by-step chain-of-thought analysis.\nAvoid over-escalation,\
+            \ excessive testing, or unnecessary interventions unless clearly justified.\
+            \ \nPrioritize clinical severity, trends, and patient-specific context\
+            \ over generalized protocols.\nUse these structured guidelines to assess\
+            \ ICU mortality risks and provide targeted recommendations.\n\n\n## Risk\
+            \ Factor Analysis\n\n- Evaluate ICU mortality risk using key factors:\
+            \ age, SHAP values, GCS, vital signs, blood pressure, chronic diseases,\
+            \ and intubation status.\n-Highlight key variables with positive SHAP\
+            \ values over 0.1 and justify their impact.\n-Distinguish between confirmed\
+            \ clinical data (vital signs, labs) and inferences (diagnostic possibilities).\n\
+            -Avoid overinterpreting mild abnormalities without context.\n\n\n## Recommendations\
+            \ \n\n- Provide interventions consistent with vital signs and stability,\
+            \ following standard ICU guidelines.\n- Avoid unnecessary imaging or lab\
+            \ tests unless they change management decisions\n- Do not propose broad-spectrum\
+            \ antibiotics or vasopressors without strong evidence or suspicion.\n\
+            - Justify each intervention and avoid unnecessary treatments.\n- Cite\
+            \ relevant guidelines for lab or imaging studies.\n- Base management decisions\
+            \ on severity and clinical trends.\n- Distinguish between confirmed data\
+            \ and assumptions.\n- Reference ARDSNet or Surviving Sepsis guidelines\
+            \ or other guidelines when appropriate.\n- Focus on clinically significant\
+            \ findings rather than mild abnormalities.\n- When uncertain, clarify\
+            \ assumptions or note additional data needed.\n\n\n## Response Requirements\
+            \ \n\n- Use plain text only, no Markdown.\n- Avoid contractions in all\
+            \ statements.\n- Summarize succinctly without adding new details.\n- Provide\
+            \ step-by-step reasoning internally; do not reveal it.\n\n\nYour recommendations\
+            \ must be clinically sound, justified, and selective—avoiding reflexive\
+            \ protocols, unnecessary escalation, and excessive interventions.\n"
+        - id: 4967326d-145f-422b-964d-669854e9d8f4
+          role: user
+          text: "{{#1754813647577.feature_report#}}\n\n## Task 1: Interpretation of\
+            \ Risk Factors\n\n### 1. Instruction \n\nFocus on the highest SHAP-valued\
+            \ features, grouping those that reflect the same condition (e.g., hemodynamic\
+            \ related indicators) to reduce redundancy. \n\nExclude features with\
+            \ minimal impact unless they yield notably high SHAP values, and avoid\
+            \ overstating mild abnormalities. \n\nHighlight significant clinical findings,\
+            \ prioritizing variables strongly linked to mortality risk. \n\nWhen evaluating\
+            \ hemodynamic parameters, provide context by noting baseline blood pressure\
+            \ values and prior hypertension, and compare SHAP values across related\
+            \ features to identify key contributors. \n\nFor categorical features,\
+            \ interpret “1” as present and “0” as absent; first_icustay distinguishes\
+            \ a repeat ICU admission from a first. \n\nRecognize mbp as mean arterial\
+            \ pressure, flagging discrepancies if MAP exceeds systolic or dips below\
+            \ diastolic. \n\nIf mortality risk exceeds two percent, list three to\
+            \ six major factors; if below that threshold, advise vigilance for unanticipated\
+            \ events. \n\nCheck serious conditions only if relevant, and refrain from\
+            \ interpreting negative SHAP values. \n\nDo not provide diagnostic or\
+            \ management advice in this task.\n\n### 2. Format of Response (plain\
+            \ text)\n\n[Interpretation of Risk Factors]\n\n1. Major Risk Facotrs and\
+            \ Their Potential Causes \n\n2. Interactions and Other Risk Factors  \n\
+            \n3. Quick conclusion\n\n\n\n## Task 2: Recommended Examinations \n\n\
+            ### 1. Instruction \n\nRemain guided by the patient’s current clinical\
+            \ presentation. \n\nFocus first on immediate bedside assessments that\
+            \ address the patient’s critical risk factors and potential life-threatening\
+            \ conditions. \n\nEvaluate shock states, severe trauma, respiratory failure,\
+            \ or neurological crises by checking vitals, conducting targeted exams\
+            \ (e.g., point-of-care lactate, ECG), and applying bedside ultrasound\
+            \ if indicated. \n\nIn urgent assessments, limit blood tests (CBC, metabolic\
+            \ panel, infection markers, cardiac enzymes) and imaging (chest X-ray,\
+            \ ultrasound, CT) to those relevant to the patient’s significant risks.\
+            \ \n\nCultures and urinalysis are only necessary if infection is strongly\
+            \ suspected. \n\nFor secondary and follow-up assessments, consider advanced\
+            \ imaging (CT, MRI), specialized biomarkers, or repeated labs based on\
+            \ evolving clinical status. \n\nIf the patient’s condition necessitates\
+            \ close monitoring, evaluate fluid responsiveness, respiratory findings,\
+            \ or neurological changes, and consider relevant infectious disease testing\
+            \ (e.g., COVID-19). \n\nThroughout, focus on identifying potential deterioration\
+            \ causes at ICU admission, matching recommendations to this patient’s\
+            \ pressing issues. \n\nOmit unnecessary steps and avoid treatment details,\
+            \ emphasizing diagnostic priorities only. \n\n### 2. Format of Response\
+            \ (plain text)\n\n[Recommended Examinations]\n\n1. Immediate Bedside Assessment\
+            \ \n\n2. Urgent Assessment \n\n3. Secondary and Follow-up Assessment \n\
+            \n4. Additional Monitoring\n\n5. Quick Conclusion\n\n\n\n## Task 3: Recommended\
+            \ Management\n\n### 1. Instruction \n\nTailor all recommendations to the\
+            \ patient’s condition and significant risk factors. \n\nIn the first six\
+            \ hours (Immediate Resuscitation), stabilize life-threatening condition.\n\
+            \nWhen clinically indicated, initiate fluid resuscitation by selecting\
+            \ the appropriate fluid type and volume—while accounting for the fluid\
+            \ administered before ICU admission—and concurrently begin vasopressor\
+            \ therapy (e.g., norepinephrine in mcg/kg/min) to achieve an initial target\
+            \ MAP of 65 mmHg, adjusting for comorbidities as appropriately. \n\nWhen\
+            \ indicated, follow guidelines (e.g., Surviving Sepsis) to justify albumin\
+            \ use, and provide antibiotic options covering resistant organisms or\
+            \ viral etiologies (COVID-19, influenza). Address arrhythmias with specified\
+            \ drugs and dosing, ensuring adequate sedation and airway protection if\
+            \ intubation is required. \n\nIn hours six to twenty-four (Acute Management),\
+            \ refine fluid balance, wean vasopressors, and manage organ support based\
+            \ on clinical indices. \n\nInitiate RRT for fluid overload or severe electrolyte/acid/base\
+            \ derangements, and consider ECMO for refractory hypoxemia or cardiogenic\
+            \ shock. Use diuretics cautiously, avoiding ESRD patients. \n\nPrevent\
+            \ ICU complications with measures like infection control, VAP prophylaxis,\
+            \ stress ulcer prevention, and delirium management (PADIS). \n\nLink all\
+            \ recommendations to comorbidities, prior fluids, and targeted MAP, involving\
+            \ multidisciplinary teams if mortality risk is high.\n\n### 2. Format\
+            \ of Response (plain text)\n\n[Recommended Management]\n\n1. Immediate\
+            \ Resuscitation and Management \n\n2. Acute Management \n\n3. ICU Supportive\
+            \ Care  \n\n4. Quick Conclusion\n\n\n\n## Task 4: Follow-up Plan\n\n###\
+            \ 1. Instruction \n\nTailor all monitoring to the patient’s condition\
+            \ and significant risk factors. \n\nFor Continuous Monitoring or Hourly\
+            \ Check, focus on vital signs, hemodynamics, and neurological status (e.g.,\
+            \ GCS). \n\nAdjust intervals if the patient improves. \n\nIn Acute Reassessment\
+            \ (Every 2–8 Hours), perform focused exams, obtain ABGs, reassess pain\
+            \ and delirium, and adjust therapies (e.g., vasopressors) based on clinical\
+            \ changes such as rising lactate. \n\nFor Stability Assessment (Day-by-Day),\
+            \ determine readiness to wean from supports and identify infection risks,\
+            \ escalating reassessments if deterioration occurs. \n\nIf new symptoms\
+            \ or warning signs appear, consider additional tests. Emphasize thorough\
+            \ handover from prior teams. \n\nManage pain, anxiety, and delirium (ICDSC\
+            \ or CAM-ICU) regularly.\n\n### 2. Format of Response (plain text)\n\n\
+            [Follow-up Plan]\n\n1. Continuous Monitoring or Hourly Check\n\n2. Acute\
+            \ Reassessment\n\n3. Stability Follow-up\n\n\n\n## Task 5: Summary \n\n\
+            ### 1. Instruction \n\nProvide a concise overview (100–150 words) summarizing\
+            \ the patient’s risk factors, mortality risk, and the top three immediate\
+            \ actions.\n\nAlso include the reassessment schedule and any necessary\
+            \ consultations.\n\nIf mortality risk is over 20%, emphasize family discussion;\
+            \ if exceeding 60%, consider a time-limited trial. \n\n### 2. Format of\
+            \ Response (plain text)\n\n[Summary]\n\nStarting paragraph.\n\nSubheading\
+            \ with \"Top 3 Priority Actions\" in new line, then put every action in\
+            \ new line \n\nEnding paragraph\n"
+        selected: false
+        title: p2_prompt
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1754813714240'
+      position:
+        x: 333
+        y: 244.5
+      positionAbsolute:
+        x: 333
+        y: 244.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Dify
+        desc: ''
+        height: 263
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"#
+          Feature report example","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"1.
+          Predicted ICU Mortality Risk: 0.2%","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"2.
+          Features with positive SHAP values","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = 0.5586, admission_age = 89","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = 0.1898, weight_kg = 54.5","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = 0.0902, gcs_0h = 15","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = 0.0198, dementia = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = 0.0009, spo2_0h = 96","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"3.
+          Features with negative SHAP values","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -1.0066, emerg_ad = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.5464, resp_rate_0h = 18","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.3569, intubated_0h = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.3498, heart_rate_0h = 69","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.1557, sbp_0h = 116","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.1514, congestive_heart_failure = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.1295, renal_disease = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0810, mild_liver_disease = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0803, mbp_0h = 86","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0758, temperature_0h = 36.7","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0567, malignant_cancer = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0555, first_icustay = 1","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0484, cerebrovascular_disease = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0380, severe_liver_disease = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0337, metastatic_solid_tumor = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0258, chronic_pulmonary_disease = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0228, dm = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0026, dbp_0h = 73","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"   -SHAP
+          = -0.0019, rheumatic_disease = 0","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 263
+      id: '1754813832241'
+      position:
+        x: -243.1428571428571
+        y: 166.57142857142856
+      positionAbsolute:
+        x: -243.1428571428571
+        y: 166.57142857142856
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash
+          provider: langgenius/gemini/google
+        parameters:
+        - description: '[Interpretation of Risk Factors]'
+          name: interpretation
+          required: true
+          type: string
+        - description: '[Recommended Examinations] '
+          name: examinations
+          required: true
+          type: string
+        - description: '[Recommended Management]  '
+          name: management
+          required: true
+          type: string
+        - description: '[Follow-up Plan] '
+          name: plan
+          required: true
+          type: string
+        - description: '[Summary]'
+          name: summary
+          required: true
+          type: string
+        query:
+        - '1754813714240'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: Parameter extractor
+        type: parameter-extractor
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1754814309096'
+      position:
+        x: 636
+        y: 244.5
+      positionAbsolute:
+        x: 636
+        y: 244.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 72be902b-87ed-49c3-8692-4a549a92e945
+          role: system
+          text: 'You are an expert clinical evaluator with extensive clinical and
+            evidence-based practice experience.
+
+            Your task is to thoroughly analyze the LLM response provided for the Interpretation
+            section and provide a detailed numerical scoring breakdown.
+
+            '
+        - id: 96726722-8445-4312-8bfa-95e84a79b237
+          role: user
+          text: "## Patient Information:\n\n<Patient Information>\n{{#1754813647577.feature_report#}}\n\
+            </Patient Information>\n\n## LLM Response for Interpretation:\n\n<LLM\
+            \ Response for Interpretation>\n{{#1754814309096.interpretation#}}\n</LLM\
+            \ Response for Interpretation>\n\n## Instructions:\n\nEvaluate the Interpretation\
+            \ section using the following scoring criteria:\n\nPart 1: Evaluation\
+            \ of the Interpretation of Risk Factors \n\n- Item 1.1 Integration – Clinical\
+            \ Relevance \n\n0: No relevant risk factors mentioned. (Example: Omitting\
+            \ key factors such as intubation status or vital signs)\n\n1: Bare mention\
+            \ of risk factors without context or proper interpretation. (Example:\
+            \ Simply listing \"intubation\" without linking it to the patient's risk\
+            \ outcome)\n\n2: Basic identification of risk factors without explicit\
+            \ reference to SHAP values, or includes misinterpretation (e.g., normal\
+            \ variables are incorrectly identified as increasing risk). (Example:\
+            \ Listing intubation and SpO₂ as risk factors without showing their SHAP\
+            \ values or clarifying their true clinical impact)\n\n3: Clear explanation\
+            \ that includes numerical SHAP values to identify risk factors. (Example:\
+            \ Explains that intubation increases risk by citing its SHAP value, but\
+            \ with limited integration of broader clinical context)\n\n4: Detailed\
+            \ integration of numerical SHAP values with thorough clinical correlation\
+            \ and context, accurately relating both risk-enhancing and protective\
+            \ factors. (Example: Thoroughly explains how the high SHAP value for intubation\
+            \ and the low or negative SHAP values for normal variables combine to\
+            \ define the patient's overall risk profile)\n\n\n- Item 1.2 Integration\
+            \ – Clarity of Information \n\n0: The interpretation is disorganized and\
+            \ unclear, lacking a coherent structure or logical flow.\n\n1: The interpretation\
+            \ is partially clear with noticeable ambiguities that impede full understanding\
+            \ of the risk factors.\n\n2: The interpretation is generally clear but\
+            \ only provides a basic structure without exploring potential causes of\
+            \ the risk factors.\n\n3: The interpretation is clear and organized, with\
+            \ a logical flow and mention of at least one potential cause of the risk\
+            \ factors.\n\n4: The interpretation is exceptionally clear and well-organized,\
+            \ seamlessly presenting multiple distinct potential causes of the risk\
+            \ factors.\n\n\n- Item 1.3 Mastery – Balance and Bias Assessment \n\n\
+            0: One-sided – Only risk-enhancing factors are discussed, with no mention\
+            \ of protective factors.\n\n1: Minimal balance – Protective factors are\
+            \ mentioned but are mischaracterized or insufficiently addressed (e.g.,\
+            \ normal variables are erroneously noted as contributing to increased\
+            \ risk).\n\n2: Moderately balanced – Both risk-enhancing and protective\
+            \ factors are mentioned, but the protective factors receive limited or\
+            \ imprecise emphasis (e.g., protective factors are noted but with slight\
+            \ misinterpretation).\n\n3: Balanced – Both risk-enhancing and protective\
+            \ factors are clearly discussed, with a mild emphasis on protective factors\
+            \ and overall fair balance.\n\n4: Well-balanced – A comprehensive and\
+            \ thorough discussion of both risk-enhancing and protective factors is\
+            \ provided, with detailed and accurate emphasis on the protective factors.\n\
+            \n\n- Item 1.4 Mastery – Uncertainty Acknowledgment \n\n0: No acknowledgment\
+            \ of uncertainty, limitations, or assumptions is provided when they are\
+            \ clearly relevant (e.g., in moderate-to-high risk scenarios, failing\
+            \ to mention any potential variability or interaction among risk factors).\n\
+            \n1: Minimal acknowledgment of uncertainty is present but lacks detail\
+            \ and does not explore how risk factors might interact (e.g., a brief,\
+            \ cursory note on possible influencing factors without further explanation).\n\
+            \n2: A basic acknowledgment of uncertainty is made with a brief mention\
+            \ of limitations or assumptions, or in cases where the predicted risk\
+            \ is extremely low (<2% ICU mortality) the absence of detailed uncertainty\
+            \ discussion is acceptable (e.g., a low-risk scenario where the response\
+            \ neutrally states the risk without additional qualifiers).\n\n3: A clear\
+            \ acknowledgment of uncertainty is provided, detailing potential interactions\
+            \ among risk factors and limitations in the interpretation (e.g., a response\
+            \ that explicitly discusses assumptions and outlines areas where further\
+            \ assessment might be needed).\n\n4: A comprehensive acknowledgment of\
+            \ uncertainties is offered, with an in-depth discussion of assumptions,\
+            \ limitations, and potential for further deterioration (e.g., a detailed\
+            \ exploration of risk factors, their interactions, and the boundaries\
+            \ of the prediction model).\n\n\n- Item 1.5 Precision – Accuracy of Content\
+            \ \n\n0: The interpretation is incorrect, with major misinterpretations\
+            \ of key risk factors and their impact.\n\n1: The interpretation is mostly\
+            \ inaccurate, containing notable errors or misrepresentations of the clinical\
+            \ significance of the risk factors.\n\n2: The interpretation is partially\
+            \ accurate, correctly identifying some risk factors but overemphasizing\
+            \ minor details or missing the overall clinical context.\n\n3: The interpretation\
+            \ is mostly accurate, adequately reflecting the clinical severity of the\
+            \ risk factors with proper integration of the SHAP values.\n\n4: The interpretation\
+            \ is fully accurate, thoroughly incorporating numerical SHAP values to\
+            \ clearly and precisely reflect the clinical severity and implications\
+            \ of each risk factor.\n\n\n- Item 1.6 Precision – Knowledge Depth and\
+            \ Currency \n\n0: Superficial – The response lacks depth and fails to\
+            \ integrate current clinical evidence or detailed reasoning.\n\n1: Limited\
+            \ – The response offers a basic, student-level interpretation with minimal\
+            \ integration of current clinical insights.\n\n2: Adequate – The response\
+            \ demonstrates acceptable depth and understanding typical of a junior\
+            \ resident, though some nuances may be missing.\n\n3: Good – The response\
+            \ shows in-depth reasoning with current clinical insight appropriate for\
+            \ a senior resident, clearly explaining key risk factors and their significance.\n\
+            \n4: Expert-level – The response exhibits advanced, nuanced clinical understanding\
+            \ with comprehensive integration of the latest evidence, characteristic\
+            \ of an attending physician.\n\n\n- Item 1.7 Applicability – Patient-specific\
+            \ considerations \n\n0: Superficial – The response ignores key patient-specific\
+            \ factors and provides a generic, non-tailored analysis.\n\n1: Limited\
+            \ – The response mentions patient-specific details in a superficial manner\
+            \ without adequate explanation of their significance.\n\n2: Adequate –\
+            \ The response identifies most risk factors but lacks depth in explaining\
+            \ how these factors interact specifically in the patient's context.\n\n\
+            3: Good – The response clearly explains the major risk factors and their\
+            \ clinical impact with appropriate patient-specific considerations, though\
+            \ without extensive nuance.\n\n4: Expert-level – The response provides\
+            \ a comprehensive and nuanced analysis that thoroughly integrates each\
+            \ patient-specific factor and their interactions, offering detailed clinical\
+            \ rationale\n\n\n- Item 1.8 Comprehensiveness – Complete Scope \n\n0:\
+            \ Major omissions – The response omits many key risk factors, providing\
+            \ an incomplete picture.\n\n1: Several missing – Multiple important risk\
+            \ factors are not addressed, resulting in a noticeably incomplete analysis.\n\
+            \n2: Mostly complete – Most of the major risk factors are mentioned, but\
+            \ some relevant details or interactions are missing.\n\n3: Comprehensive\
+            \ – Nearly all critical risk factors and their interactions are addressed,\
+            \ though with minor omissions in detail.\n\n4: Exhaustive – Every relevant\
+            \ risk factor is clearly detailed, including nuanced interplay and critical\
+            \ conditions.\n\n\n- Item 1.9 Timeliness – Response Urgency \n\n0: No\
+            \ appropriate urgency – The response fails to match the risk profile,\
+            \ neither identifying critical/life-threatening factors in high-risk cases\
+            \ nor reassuring stability in low-risk scenarios.\n\n1: Minimal urgency\
+            \ – The response mentions risk factors but underemphasizes life-threatening\
+            \ conditions in high-risk cases or overstates them in stable situations.\n\
+            \n2: Moderate urgency – The response recognizes risk factors, identifying\
+            \ potential life-threatening conditions in high-risk cases or confirming\
+            \ stability in low-risk scenarios without extraneous commentary.\n\n3:\
+            \ High urgency – The response distinguishes key risk factors by prioritizing\
+            \ recognition of critical/life-threatening conditions in high-risk cases\
+            \ or confidently confirming stability in low-risk situations.\n\n4: Critical\
+            \ calibration – The response flawlessly aligns with the risk profile by\
+            \ precisely identifying critical/life-threatening conditions in high-risk\
+            \ cases or accurately assuring stability in low-risk scenarios.\n\n##\
+            \ Output Format\n\nPlease provide your response strictly as a valid JSON\
+            \ object with the following structure and data types:\n\n{\n  \"Interpretation\"\
+            : {\n    \"subtotal\": <integer score for Interpretation>,\n    \"items\"\
+            : [\n      {\n        \"item\": \"<string: item name, example: Item 1.1\
+            \ Integration – Clinical Relevance>\",\n        \"score\": <integer score\
+            \ between 0 and 4>,\n        \"comment\": \"<string: detailed explanation>\"\
+            \n      },\n      ...\n    ]\n  }\n}\n\nNotes:\n- Only output the JSON\
+            \ object. Do NOT include any additional text, explanation, or commentary.\n\
+            - Use double quotes for all JSON keys and string values.\n- The \"items\"\
+            \ array must include all specified items with their respective scores\
+            \ and comments.\n- Ensure the JSON is syntactically valid and parsable.\n"
+        selected: false
+        title: P2_Evaluation_R1
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1754814768883'
+      position:
+        x: 939
+        y: 502.5
+      positionAbsolute:
+        x: 939
+        y: 502.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1754817196873'
+          - output
+          value_type: string
+          variable: output
+        selected: false
+        title: Output
+        type: end
+      height: 89
+      id: '1754814969080'
+      position:
+        x: 2151
+        y: 373.5
+      positionAbsolute:
+        x: 2151
+        y: 373.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 72be902b-87ed-49c3-8692-4a549a92e945
+          role: system
+          text: 'You are an expert clinical evaluator with extensive clinical and
+            evidence-based practice experience.
+
+            Your task is to thoroughly analyze the LLM responses provided for the
+            Interpretation and Examination sections and provide a detailed numerical
+            scoring breakdown for the Examination evaluation.
+
+            '
+        - id: 96726722-8445-4312-8bfa-95e84a79b237
+          role: user
+          text: "## Patient Information:\n\n<Patient Information>\n{{#1754813647577.feature_report#}}\n\
+            </Patient Information>\n\n## LLM Response for Interpretation:\n\n<LLM\
+            \ Response for Interpretation>\n{{#1754814309096.interpretation#}}\n</LLM\
+            \ Response for Interpretation>\n\n\n## LLM Response for Examination:\n\
+            \n<LLM Response for Examination>\n{{#1754814309096.examinations#}}\n</LLM\
+            \ Response for Examination>\n\n## Instructions:\n\nEvaluate the Examination\
+            \ section using the following scoring criteria:\n\nPart 2: Evaluation\
+            \ of the Recommended Examinations\n\n\nItem 2.1 Integration – Clear aim\
+            \ \n\n0: No clear diagnostic aim (e.g., suggests tests that do not address\
+            \ the primary risk factors for ICU mortality)\n\n1: Vague or minimal diagnostic\
+            \ aim with limited focus (e.g., recommends tests without explicitly linking\
+            \ them to the confirmation of underlying risk factors)\n\n2: Moderately\
+            \ integrated diagnostic aims (e.g., recommends tests that address major\
+            \ risk factors but lack explicit prioritization or complete integration\
+            \ of diagnostic objectives)\n\n3: Clear diagnostic aims with substantial\
+            \ integration (e.g., recommends tests clearly aimed at confirming risk\
+            \ factors with good linkage, though some aspects may not be fully comprehensive)\n\
+            \n4: Fully integrated, explicit diagnostic aims (e.g., precisely prioritizes\
+            \ bedside, urgent, and advanced tests that explicitly target the confirmation\
+            \ and differentiation of ICU risk factors)\n\n\nItem 2.2 Mastery – Correct\
+            \ clinical reasoning \n\n0: Entirely misdirected clinical reasoning with\
+            \ recommendations that do not address the patient's major risk factors\n\
+            \n1: Basic clinical reasoning with significant omissions, leading to incomplete\
+            \ or misaligned test recommendations\n\n2: Partial clinical reasoning\
+            \ that covers some key aspects but contains notable gaps or inconsistencies\n\
+            \n3: Solid clinical reasoning with appropriate test recommendations that\
+            \ address major risk factors, albeit with minor nuances missed\n\n4: Exemplary\
+            \ clinical reasoning fully aligned with the patient's risk factors, providing\
+            \ a balanced, integrated, and comprehensive set of examinations\n\n\n\
+            Item 2.3 Precision – Accuracy of Content \n\n0: Incorrect recommendations\
+            \ with tests that are irrelevant or misleading for the patient's condition\n\
+            \n1: Several inaccuracies in the test recommendations, with significant\
+            \ errors in clinical appropriateness\n\n2: Partially accurate content\
+            \ with some tests appropriate while others are not fully aligned with\
+            \ clinical needs\n\n3: Mostly accurate content with recommended tests\
+            \ that are clinically appropriate, though with minor issues or less optimal\
+            \ precision\n\n4: Completely accurate content with all examinations precisely\
+            \ matching clinical needs and aligned with the patient's risk factors\n\
+            \n\nItem 2.4 Applicability – Patient-specific Considerations \n\n0: No\
+            \ relevance to patient specifics; recommendations are entirely generic\
+            \ and ignore individual patient factors\n\n1: Minimal tailoring with superficial\
+            \ consideration of patient-specific factors, resulting in largely generic\
+            \ recommendations\n\n2: Moderately tailored recommendations that address\
+            \ some key patient-specific risks but lack full personalization\n\n3:\
+            \ Well-aligned with patient-specific risks, demonstrating thoughtful consideration\
+            \ of the patient's unique clinical profile\n\n4: Fully personalized and\
+            \ contextually comprehensive recommendations that integrate all relevant\
+            \ patient-specific data in a nuanced manner\n\n\nItem 2.5 Comprehensiveness\
+            \ – Complete Scope \n\n0: Fails to include most evaluation components;\
+            \ only a single or minimal test is recommended, leading to an inadequate\
+            \ assessment\n\n1: Poor coverage with multiple critical evaluations missing,\
+            \ reflecting a significantly incomplete workup\n\n2: Moderate scope with\
+            \ partial evaluation coverage; includes several tests but lacks comprehensive\
+            \ detail or depth\n\n3: Comprehensive scope with minor omissions; covers\
+            \ all major evaluations but may miss some nuanced details\n\n4: Exemplary\
+            \ complete coverage of all evaluations, fully integrating bedside assessment,\
+            \ urgent labs, continuous monitoring, advanced imaging, and a clear conclusion\
+            \ aligned with the patient's risk profile\n\n\nItem 2.6 Timeliness – Priority\
+            \ \n\n0: No recognition of urgency or misalignment in the recommended\
+            \ test sequence, leading to inappropriate prioritization\n\n1: Minimal\
+            \ attention to urgency with vague or poorly sequenced recommendations\
+            \ that do not match the patient's critical needs\n\n2: Moderately reflects\
+            \ response urgency with some timely recommendations but lacking a clear,\
+            \ structured sequence\n\n3: Accurately matches urgency needs with a logical\
+            \ sequence of immediate, urgent, and follow-up assessments, with only\
+            \ minor adjustments needed\n\n4: Optimal alignment with the required time\
+            \ sequence, precisely prioritizing bedside assessment, urgent investigations,\
+            \ and additional monitoring in strict accordance with the patient's clinical\
+            \ status\n\n## Output Format\n\nPlease provide your response strictly\
+            \ as a valid JSON object with the following structure and data types:\n\
+            \n{\n  \"Examination\": {\n    \"subtotal\": <integer score for Examination>,\n\
+            \    \"items\": [\n      {\n        \"item\": \"<string: item name, example:\
+            \ Item 2.1 Integration – Clear aim>\",\n        \"score\": <integer score\
+            \ between 0 and 4>,\n        \"comment\": \"<string: detailed explanation>\"\
+            \n      },\n      ...\n    ]\n  }\n}\n\nNotes:\n- Only output the JSON\
+            \ object. Do NOT include any additional text, explanation, or commentary.\n\
+            - Use double quotes for all JSON keys and string values.\n- The \"items\"\
+            \ array must include all specified items with their respective scores\
+            \ and comments.\n- Ensure the JSON is syntactically valid and parsable.\n"
+        selected: false
+        title: P2_Evaluation_R2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17548150106170'
+      position:
+        x: 939
+        y: 373.5
+      positionAbsolute:
+        x: 939
+        y: 373.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 72be902b-87ed-49c3-8692-4a549a92e945
+          role: system
+          text: 'You are an expert clinical evaluator with extensive clinical and
+            evidence-based practice experience.
+
+            Your task is to thoroughly analyze the LLM responses provided for the
+            Interpretation, Examination, and Management sections and provide a detailed
+            numerical scoring breakdown for the Management evaluation.
+
+            '
+        - id: 96726722-8445-4312-8bfa-95e84a79b237
+          role: user
+          text: "## Patient Information:\n\n<Patient Information>\n{{#1754813647577.feature_report#}}\n\
+            </Patient Information>\n\n## LLM Response for Interpretation:\n\n<LLM\
+            \ Response for Interpretation>\n{{#1754814309096.interpretation#}}\n</LLM\
+            \ Response for Interpretation>\n\n\n## LLM Response for Examination:\n\
+            \n<LLM Response for Examination>\n{{#1754814309096.examinations#}}\n</LLM\
+            \ Response for Examination>\n\n\n## LLM Response for Management:\n\n<LLM\
+            \ Response for Management>\n{{#1754814309096.management#}}\n</LLM Response\
+            \ for Management>\n\n## Instructions:\n\nEvaluate the Management section\
+            \ using the following scoring criteria:\n\nPart 3: Evaluation of the Recommended\
+            \ Management\n\n\nItem 3.1 Integration – Clear aims \n\n0: The management\
+            \ plan fails to state any clear treatment aims; interventions are listed\
+            \ without reference to major risk factors or any organization.\n\n1: The\
+            \ plan mentions basic treatment steps (e.g., resuscitation or acute care)\
+            \ in isolation without linking them to patient-specific risk factors,\
+            \ resulting in no unified strategy.\n\n2: The response groups interventions\
+            \ (e.g., separating immediate resuscitation from acute care) but overall\
+            \ integration is weak, with only partial linkage between phases and a\
+            \ limited summary.\n\n3: The plan outlines clear and mostly targeted aims\
+            \ by dividing management into distinct phases (resuscitation, acute management,\
+            \ and supportive measures) and addresses major risk factors, though the\
+            \ integration may be brief or only partially cohesive.\n\n4: The response\
+            \ provides a fully integrated, cohesive management plan that explicitly\
+            \ links immediate resuscitation, acute intervention, and ICU supportive\
+            \ care into a unified strategy, with a concise and clear conclusion tying\
+            \ all aspects together seamlessly.\n\nItem 3.2 Mastery – Correct clinical\
+            \ reasoning\n\n0: The plan shows no valid clinical reasoning; it recommends\
+            \ generic measures without addressing the patient's urgent resuscitation\
+            \ or ICU needs.\n\n1: The plan demonstrates limited, inconsistent clinical\
+            \ reasoning, addressing some resuscitation elements while omitting crucial\
+            \ acute and supportive management steps.\n\n2: The plan exhibits moderate\
+            \ clinical reasoning by incorporating key elements like immediate resuscitation\
+            \ and acute measures but has notable gaps in comprehensive ICU supportive\
+            \ care.\n\n3: The plan displays strong clinical reasoning with nearly\
+            \ complete integration of immediate, acute, and supportive care components,\
+            \ though with minor omissions.\n\n4: The plan demonstrates exemplary,\
+            \ fully integrated clinical reasoning by thoroughly addressing resuscitation,\
+            \ acute intervention, ICU support, and providing a clear, succinct conclusion.\n\
+            \nItem 3.3 Precision – Accuracy of Content \n\n0: Recommendations are\
+            \ clinically inaccurate or irrelevant, failing to address the patient's\
+            \ primary risk factors.\n\n1: Recommendations contain several inaccuracies,\
+            \ such as suggesting inappropriate interventions while neglecting key\
+            \ immediate treatments.\n\n2: Recommendations are partially accurate,\
+            \ addressing some essential interventions but omitting significant details\
+            \ in supportive care.\n\n3: Recommendations are mostly accurate, providing\
+            \ precise guidance for immediate and targeted interventions with only\
+            \ minor omissions.\n\n4: Recommendations are completely accurate, offering\
+            \ detailed and precise interventions that comprehensively address immediate,\
+            \ acute, and supportive care tailored to the patient's condition.\n\n\
+            Item 3.4 Applicability – Patient-specific Considerations \n\n0: No tailoring\
+            \ is evident; the recommendations follow a standard protocol without considering\
+            \ the patient's unique clinical profile.\n\n1: The recommendations are\
+            \ generic, offering standard advice with minimal or no adjustments based\
+            \ on patient-specific factors.\n\n2: Some adjustments are made based on\
+            \ patient data, but the recommendations lack depth in customization to\
+            \ the patient's unique profile.\n\n3: The recommendations are well-tailored,\
+            \ incorporating key patient-specific factors such as age, comorbidities,\
+            \ and current clinical status to inform management decisions.\n\n4: The\
+            \ recommendations are highly customized, integrating detailed patient-specific\
+            \ information to precisely modify interventions and optimize outcomes.\n\
+            \nItem 3.5 Comprehensiveness – Complete Scope\n\n0: The management plan\
+            \ omits several key interventions, failing to address immediate resuscitation,\
+            \ acute management, ICU supportive care, or a unifying conclusion.\n\n\
+            1: The management plan includes several recommendations, but multiple\
+            \ critical interventions are missing, resulting in an incomplete scope.\n\
+            \n2: The management plan is mostly complete, covering most key interventions,\
+            \ yet it lacks sufficient detail or integration in some areas.\n\n3: The\
+            \ management plan is comprehensive, addressing immediate resuscitation,\
+            \ acute management, and ICU supportive care with a coherent structure,\
+            \ though minor details may be underdeveloped.\n\n4: The management plan\
+            \ is exhaustive, including every essential intervention with thorough\
+            \ detail and seamless integration across immediate, acute, and supportive\
+            \ phases of care.\n\nItem 3.6 Timeliness – Priority \n\n0: The management\
+            \ plan fails to address timeliness, lacking any indication of urgency\
+            \ or time-sensitive intervention sequencing.\n\n1: The plan mentions urgency\
+            \ but provides minimal focus on critical risk factors and lacks a clearly\
+            \ structured time sequence.\n\n2: The plan moderately prioritizes major\
+            \ risk factors with some indication of time-sensitive steps, but the overall\
+            \ sequence and urgency remain too simplistic.\n\n3: The plan mostly prioritizes\
+            \ critical interventions with a clear time-sensitive ordering, though\
+            \ the sequence may not be fully detailed.\n\n4: The plan exemplarily prioritizes\
+            \ critical management steps with an explicit, well-structured time sequence\
+            \ that clearly distinguishes immediate from subsequent interventions\n\
+            \n## Output Format\n\nPlease provide your response strictly as a valid\
+            \ JSON object with the following structure and data types:\n\n{\n  \"\
+            Management\": {\n    \"subtotal\": <integer score for Management>, \n\
+            \    \"items\": [\n      {\n        \"item\": \"<string: item name, example:\
+            \ Item 3.1 Integration – Clear aims>\",\n        \"score\": <integer score\
+            \ between 0 and 4>,\n        \"comment\": \"<string: detailed explanation>\"\
+            \n      },\n      ...\n    ]\n  }\n}\n\nNotes:\n- Only output the JSON\
+            \ object. Do NOT include any additional text, explanation, or commentary.\n\
+            - Use double quotes for all JSON keys and string values.\n- The \"items\"\
+            \ array must include all specified items with their respective scores\
+            \ and comments.\n- Ensure the JSON is syntactically valid and parsable.\n"
+        selected: false
+        title: P2_Evaluation_R3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17548154841160'
+      position:
+        x: 939
+        y: 244.5
+      positionAbsolute:
+        x: 939
+        y: 244.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 72be902b-87ed-49c3-8692-4a549a92e945
+          role: system
+          text: 'You are an expert clinical evaluator with extensive clinical and
+            evidence-based practice experience.
+
+            Your task is to thoroughly analyze the LLM responses provided for the
+            Interpretation, Examination, Management, Follow_up, and Summary sections
+            and provide a detailed numerical scoring breakdown for the Follow_up and
+            Summary evaluations.
+
+            '
+        - id: 96726722-8445-4312-8bfa-95e84a79b237
+          role: user
+          text: "## Patient Information:\n\n<Patient Information>\n{{#1754813647577.feature_report#}}\n\
+            </Patient Information>\n\n## LLM Response for Interpretation:\n\n<LLM\
+            \ Response for Interpretation>\n{{#1754814309096.interpretation#}}\n</LLM\
+            \ Response for Interpretation>\n\n\n## LLM Response for Examination:\n\
+            \n<LLM Response for Examination>\n{{#1754814309096.examinations#}}\n</LLM\
+            \ Response for Examination>\n\n\n## LLM Response for Management:\n\n<LLM\
+            \ Response for Management>\n{{#1754814309096.management#}}\n</LLM Response\
+            \ for Management>\n\n\n## LLM Response for Follow_up:\n\n<LLM Response\
+            \ for Follow_up>\n{{#1754814309096.plan#}}\n</LLM Response for Follow_up>\n\
+            \n\n## LLM Response for Summary:\n\n<LLM Response for Summary>\n{{#1754814309096.summary#}}\n\
+            </LLM Response for Summary>\n\n\n## Instructions:\n\nEvaluate the Follow_up\
+            \ and Summary sections using the following scoring criteria:\n\nPart 4:\
+            \ Evaluation of the Follow-up Plan\n\n\nItem 4.1 Precision – Accuracy\
+            \ of Content \n\n0: The follow-up plan is grossly inaccurate, missing\
+            \ essential monitoring elements, and lacks any actionable or time-sequenced\
+            \ structure.\n\n1: The plan includes some monitoring elements but has\
+            \ major inaccuracies or omissions. It lacks a coherent time sequence and\
+            \ fails to address the patient's dynamic needs.\n\n2: The plan is partially\
+            \ accurate and contains basic monitoring steps; however, it is overly\
+            \ simplistic and does not provide a clear, sequential timeline for continuous\
+            \ monitoring, acute reassessment, and stability follow-up.\n\n3: The plan\
+            \ is accurate with mostly complete details. It outlines monitoring and\
+            \ reassessment with a reasonable time sequence across continuous, acute,\
+            \ and stability phases, though minor refinements in the sequential structure\
+            \ may be needed.\n\n4: The plan is highly precise and comprehensive. It\
+            \ delivers detailed, sequential follow-up that includes continuous monitoring,\
+            \ clearly defined intervals for acute reassessment, and structured stability\
+            \ follow-up, fully addressing the patient's evolving clinical profile.\n\
+            \n\nItem 4.2 Applicability – Patient-specific Considerations \n\n0: The\
+            \ follow-up plan is completely generic with no incorporation of patient-specific\
+            \ details. It does not address unique factors such as advanced age, intubation,\
+            \ hypothermia, or other individualized risks.\n\n1: The plan shows minimal\
+            \ patient-specific tailoring. It may mention standard monitoring elements\
+            \ but lacks clear reference to the patient's unique risk factors and does\
+            \ not integrate these with a sequential or time-based structure.\n\n2:\
+            \ The plan includes basic patient-specific details—addressing some aspects\
+            \ of the patient's risk profile—but remains too simplistic. It fails to\
+            \ integrate a detailed, time-sequenced structure that fully tailors monitoring\
+            \ and interventions to the patient's dynamic needs.\n\n3: The plan provides\
+            \ substantial customization to the patient's clinical profile. It includes\
+            \ tailored monitoring and reassessment intervals that acknowledge key\
+            \ risk factors (e.g., intubation, hypothermia, advanced age) with a reasonably\
+            \ clear time sequence, though some minor details may be omitted.\n\n4:\
+            \ The plan is highly tailored and fully patient-specific. It delivers\
+            \ a comprehensive, sequential follow-up that incorporates all relevant\
+            \ patient factors and dynamically adjusts monitoring and interventions\
+            \ based on the patient's evolving clinical status.\n\n\nItem 4.3 Timeliness\
+            \ – Timely Reassessment Intervals \n\n0: The management plan fails to\
+            \ address timeliness, lacking any indication of urgency or time-sensitive\
+            \ intervention sequencing.\n\n1: Very limited, vague priority details\
+            \ (e.g., Mentions monitoring but lacks clear timing or explicit reassessment\
+            \ and stability protocols)\n\n2: Partial coverage of priority tiers (e.g.,\
+            \ Specifies continuous monitoring and acute reassessment but omits structured\
+            \ stability follow-up details)\n\n3: Mostly comprehensive, priority-based\
+            \ follow-up (e.g., Outlines continuous monitoring, timely acute reassessment,\
+            \ and basic stability follow-up with minor omissions)\n\n4: Fully tailored,\
+            \ comprehensive priority follow-up (e.g., Precisely details hourly checks,\
+            \ acute reassessment intervals, and structured stability follow-up, perfectly\
+            \ matching patient need)\n\nPart 5: Evaluation of the Summary\n\n\nItem\
+            \ 5.1 Comprehensiveness – Summary and Overall Quality\n\n0: The summary\
+            \ lacks structure, omits major risk factors, and provides no priority\
+            \ actions or concluding recommendations.\n\n1: The summary includes minimal\
+            \ risk factors with vague details, mentions fewer than two priority actions\
+            \ (often unrelated to key risks), and has minimal structure without clear\
+            \ introduction or conclusion.\n\n2: The summary partially integrates key\
+            \ risk factors with some patient risks, lists one to two priority actions,\
+            \ but lacks clear organization in introduction or conclusion with some\
+            \ important details missing.\n\n3: The summary presents a mostly comprehensive,\
+            \ clearly structured overview with an introduction outlining major risk\
+            \ factors, includes three priority actions (though not perfectly enumerated),\
+            \ and provides a brief concluding statement.\n\n4: The summary delivers\
+            \ an exemplary, highly structured synthesis that succinctly restates all\
+            \ key risk factors, provides a detailed introduction, explicitly lists\
+            \ three well-defined priority steps, and offers an insightful conclusion\
+            \ with all elements effectively integrated.\n\n\n## Output Format\n\n\
+            Please provide your response strictly as a valid JSON object with the\
+            \ following structure and data types:\n\n{\n  \"Follow_up\": {\n    \"\
+            subtotal\": <integer score for Follow_up>,\n    \"items\": [\n      {\n\
+            \        \"item\": \"<string: item name, example: Item 4.1 Precision –\
+            \ Accuracy of Content>\",\n        \"score\": <integer score between 0\
+            \ and 4>,\n        \"comment\": \"<string: detailed explanation>\"\n \
+            \     },\n      ...\n    ]\n  },\n  \n  \"Summary\": {\n    \"subtotal\"\
+            : <integer score for Summary>,\n    \"items\": [\n      {\n        \"\
+            item\": \"<string: item name, example: Item 5.1 Comprehensiveness – Summary\
+            \ and Overall Quality>\",\n        \"score\": <integer score between 0\
+            \ and 4>,\n        \"comment\": \"<string: detailed explanation>\"\n \
+            \     },\n      ...\n    ]\n  },  \n}\n\nNotes:\n- Only output the JSON\
+            \ object. Do NOT include any additional text, explanation, or commentary.\n\
+            - Use double quotes for all JSON keys and string values.\n- The \"items\"\
+            \ array must include all specified items with their respective scores\
+            \ and comments.\n- Ensure the JSON is syntactically valid and parsable.\n"
+        selected: false
+        title: P2_Evaluation_R45
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17548154909060'
+      position:
+        x: 939
+        y: 631.5
+      positionAbsolute:
+        x: 939
+        y: 631.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "## Evaluation 1\r\n{{ R1 }}\r\n\r\n## Evaluation 2\r\n{{ R2 }}\r\
+          \n\r\n## Evaluation 3\r\n{{ R3 }}\r\n\r\n## Evaluation 4&5\r\n{{ R45 }}"
+        title: Merage_EVALUATION_RESULT
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1754814768883'
+          - text
+          value_type: string
+          variable: R1
+        - value_selector:
+          - '17548150106170'
+          - text
+          value_type: string
+          variable: R2
+        - value_selector:
+          - '17548154841160'
+          - text
+          value_type: string
+          variable: R3
+        - value_selector:
+          - '17548154909060'
+          - text
+          value_type: string
+          variable: R45
+      height: 53
+      id: '1754815846564'
+      position:
+        x: 1242
+        y: 373.5
+      positionAbsolute:
+        x: 1242
+        y: 373.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 6e4d4e80-730b-49a7-ad4f-ecde80704810
+          role: system
+          text: ''
+        - id: 19ec6073-21b3-45b7-bbe3-34401add1251
+          role: user
+          text: '請直接從以下內容中擷取所有 subtotal 的數字，將它們加總，並只回傳這個總和的數字，不要多任何文字、標點或說明。
+
+
+            內容如下：{{#1754815846564.output#}}'
+        selected: false
+        title: Calculate subtotal
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1754816926990'
+      position:
+        x: 1545
+        y: 373.5
+      positionAbsolute:
+        x: 1545
+        y: 373.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "# Patient information\r\n{{ feature_report }}\r\n\r\n# P2 score\r\
+          \nScore: {{ subtotal }}\r\n\r\n# Report\r\n{{ report }}\r\n\r\n# Details\r\
+          \n{{ output }}"
+        title: Output template1
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1754816926990'
+          - text
+          value_type: string
+          variable: subtotal
+        - value_selector:
+          - '1754813714240'
+          - text
+          value_type: string
+          variable: report
+        - value_selector:
+          - '1754815846564'
+          - output
+          value_type: string
+          variable: output
+        - value_selector:
+          - '1754813647577'
+          - feature_report
+          value_type: string
+          variable: feature_report
+      height: 53
+      id: '1754817196873'
+      position:
+        x: 1848
+        y: 373.5
+      positionAbsolute:
+        x: 1848
+        y: 373.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 490.0415486654873
+      y: -118.94361647630842
+      zoom: 1.0130884519215742
