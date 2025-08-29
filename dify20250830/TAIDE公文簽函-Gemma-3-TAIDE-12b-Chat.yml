@@ -1,0 +1,1138 @@
+app:
+  description: ''
+  icon: u6709
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: TAIDE公文簽函-Gemma-3-TAIDE-12b-Chat
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.3@5a7f82fa86e28332ad51941d0b491c1e8a38ead539656442f7bf4c6129cd15fa
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.21@f46f21a207621f8ec5e5ef250e118a23d479c7a6ae2fe690823bae9d49d015fa
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables:
+  - description: ''
+    id: e26528d0-e384-4a4b-a1d4-abddcfed12ee
+    name: doctype
+    selector:
+    - conversation
+    - doctype
+    value: none
+    value_type: string
+  environment_variables:
+  - description: ''
+    id: 3f7e2b86-23f1-411b-9ed2-6a599c368dbf
+    name: org
+    selector:
+    - env
+    - org
+    value: '{
+
+      "中華民國中央政府": {
+
+      "總統府": {
+
+      "機關名稱": "總統府",
+
+      "層級": "國家元首機關",
+
+      "首長": \["總統", "副總統"],
+
+      "主要職掌": "綜理國家大政，統帥全國陸海空軍，對外代表中華民國。",
+
+      "直屬機關": \[
+
+      {"機關名稱": "中央研究院", "上級機關": "總統府", "性質": "全國最高學術研究機關"},
+
+      {"機關名稱": "國史館", "上級機關": "總統府", "性質": "掌理國史、總統副總統文物之纂修與管理"}
+
+      ],
+
+      "幕僚單位": \[
+
+      {"機關名稱": "國家安全會議", "上級機關": "總統府", "性質": "總統決定國家安全大政方針之諮詢機關"}
+
+      ]
+
+      },
+
+      "五院": {
+
+      "行政院": {
+
+      "機關名稱": "行政院",
+
+      "層級": "第一級",
+
+      "性質": "國家最高行政機關",
+
+      "內部單位": \["處", "室", "會"],
+
+      "部會與委員會 (第二級)": {
+
+      "部": \[
+
+      {"機關名稱": "內政部", "上級機關": "行政院"},
+
+      {"機關名稱": "外交部", "上級機關": "行政院"},
+
+      {"機關名稱": "國防部", "上級機關": "行政院"},
+
+      {"機關名稱": "財政部", "上級機關": "行政院"},
+
+      {"機關名稱": "教育部", "上級機關": "行政院"},
+
+      {"機關名稱": "法務部", "上級機關": "行政院"},
+
+      {"機關名稱": "經濟部", "上級機關": "行政院"},
+
+      {"機關名稱": "交通部", "上級機關": "行政院"},
+
+      {"機關名稱": "勞動部", "上級機關": "行政院"},
+
+      {"機關名稱": "衛生福利部", "上級機關": "行政院"},
+
+      {"機關名稱": "文化部", "上級機關": "行政院"},
+
+      {"機關名稱": "數位發展部", "上級機關": "行政院"},
+
+      {"機關名稱": "農業部", "上級機關": "行政院"},
+
+      {"機關名稱": "環境部", "上級機關": "行政院"}
+
+      ],
+
+      "委員會": \[
+
+      {"機關名稱": "國家發展委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "金融監督管理委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "僑務委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "國軍退除役官兵輔導委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "原住民族委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "客家委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "海洋委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "大陸委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "國家科學及技術委員會", "上級機關": "行政院"}
+
+      ],
+
+      "幕僚機關": \[
+
+      {"機關名稱": "行政院主計總處", "上級機關": "行政院"},
+
+      {"機關名稱": "行政院人事行政總處", "上級機關": "行政院"}
+
+      ],
+
+      "附屬機構": \[
+
+      {"機關名稱": "中央銀行", "上級機關": "行政院"},
+
+      {"機關名稱": "國立故宮博物院", "上級機關": "行政院"}
+
+      ]
+
+      },
+
+      "獨立機關與直轄三級機關 (第三級)": {
+
+      "獨立機關": \[
+
+      {"機關名稱": "中央選舉委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "公平交易委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "國家通訊傳播委員會", "上級機關": "行政院"}
+
+      ],
+
+      "行政院直轄三級機關": \[
+
+      {"機關名稱": "國家運輸安全調查委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "核能安全委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "不當黨產處理委員會", "上級機關": "行政院"},
+
+      {"機關名稱": "個人資料保護委員會", "上級機關": "行政院", "備註": "組織法已通過，目前為籌備處運作階段"}
+
+      ]
+
+      }
+
+      },
+
+      "立法院": {"機關名稱": "立法院", "層級": "第一級", "上級機關": "中華民國中央政府"},
+
+      "司法院": {"機關名稱": "司法院", "層級": "第一級", "上級機關": "中華民國中央政府"},
+
+      "考試院": {"機關名稱": "考試院", "層級": "第一級", "上級機關": "中華民國中央政府"},
+
+      "監察院": {"機關名稱": "監察院", "層級": "第一級", "上級機關": "中華民國中央政府"}
+
+      }
+
+      },
+
+      "政府捐助財團法人": \[
+
+      {"機關名稱": "財團法人國防工業發展基金會", "上級機關": "國防部"},
+
+      {"機關名稱": "財團法人國防安全研究院", "上級機關": "國防部"},
+
+      {"機關名稱": "財團法人社教文化基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人私立學校興學基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人高等教育評鑑中心基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人高等教育國際合作基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人臺灣省中小學校教職員福利文教基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人中華幼兒教育發展基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人大學入學考試中心基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人臺灣省童軍文教基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人教育部接受捐助獎學基金會", "上級機關": "教育部"},
+
+      {"機關名稱": "財團法人國家同步輻射研究中心", "上級機關": "國家科學及技術委員會"},
+
+      {"機關名稱": "財團法人國家實驗研究院", "上級機關": "國家科學及技術委員會", "下屬中心單位": \[
+
+      {"機關名稱": "國家高速網路與計算中心", "上級機關": "財團法人國家實驗研究院"},
+
+      {"機關名稱": "國家實驗動物中心", "上級機關": "財團法人國家實驗研究院"},
+
+      {"機關名稱": "國家地震工程研究中心", "上級機關": "財團法人國家實驗研究院"},
+
+      {"機關名稱": "台灣半導體研究中心", "上級機關": "財團法人國家實驗研究院"},
+
+      {"機關名稱": "台灣儀器科技研究中心", "上級機關": "財團法人國家實驗研究院"},
+
+      {"機關名稱": "科技政策研究與資訊中心", "上級機關": "財團法人國家實驗研究院"},
+
+      {"機關名稱": "台灣海洋科技研究中心", "上級機關": "財團法人國家實驗研究院"}
+
+      ]},
+
+      {"機關名稱": "財團法人台灣網路資訊中心", "上級機關": "數位發展部"},
+
+      {"機關名稱": "財團法人電信技術中心", "上級機關": "數位發展部"}
+
+      ],
+
+      "學校法人 (範例)": \[
+
+      {"機關名稱": "輔仁大學學校財團法人", "所屬學校": \["輔仁大學", "輔大聖心高級中學"]}
+
+      ]
+
+      }
+
+      '
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: '發文單位名稱={{a}}
+
+      受文機關名稱={{b}}
+
+      '
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - 請先判斷發文單位與機關單位之間屬於哪種文體(上下平行文)
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1756474868563-source-1756476815639-target
+      source: '1756474868563'
+      sourceHandle: source
+      target: '1756476815639'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1756476815639-true-1756476962841-target
+      source: '1756476815639'
+      sourceHandle: 'true'
+      target: '1756476962841'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: 1756476962841-source-1756478634230-target
+      source: '1756476962841'
+      sourceHandle: source
+      target: '1756478634230'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1756478812089-source-1756476975776-target
+      source: '1756478812089'
+      sourceHandle: source
+      target: '1756476975776'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1756478634230-true-1756478979244-target
+      source: '1756478634230'
+      sourceHandle: 'true'
+      target: '1756478979244'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1756478634230-ae24da89-eee4-4e90-8729-0e21d8f2d31c-17564790432910-target
+      source: '1756478634230'
+      sourceHandle: ae24da89-eee4-4e90-8729-0e21d8f2d31c
+      target: '17564790432910'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1756478634230-144b1b18-35d3-48ae-b597-33c60777f245-17564790391980-target
+      source: '1756478634230'
+      sourceHandle: 144b1b18-35d3-48ae-b597-33c60777f245
+      target: '17564790391980'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1756478634230-false-17564790951760-target
+      source: '1756478634230'
+      sourceHandle: 'false'
+      target: '17564790951760'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1756478979244-source-1756479139949-target
+      source: '1756478979244'
+      sourceHandle: source
+      target: '1756479139949'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 17564790432910-source-1756479139949-target
+      source: '17564790432910'
+      sourceHandle: source
+      target: '1756479139949'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 17564790391980-source-1756479139949-target
+      source: '17564790391980'
+      sourceHandle: source
+      target: '1756479139949'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 17564790951760-source-1756479139949-target
+      source: '17564790951760'
+      sourceHandle: source
+      target: '1756479139949'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: assigner
+      id: 1756479139949-source-1756478812089-target
+      source: '1756479139949'
+      sourceHandle: source
+      target: '1756478812089'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1756476815639-false-1756481206605-target
+      source: '1756476815639'
+      sourceHandle: 'false'
+      target: '1756481206605'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1756481206605-true-1756481599084-target
+      source: '1756481206605'
+      sourceHandle: 'true'
+      target: '1756481599084'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1756481206605-1e28be47-8686-44a1-9aa9-a7b7619a9d04-17564816826420-target
+      source: '1756481206605'
+      sourceHandle: 1e28be47-8686-44a1-9aa9-a7b7619a9d04
+      target: '17564816826420'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1756481206605-1276e10e-44e8-45dd-8fb7-408fcab989c3-17564817064810-target
+      source: '1756481206605'
+      sourceHandle: 1276e10e-44e8-45dd-8fb7-408fcab989c3
+      target: '17564817064810'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1756481599084-source-answer-target
+      source: '1756481599084'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17564816826420-source-1756481851203-target
+      source: '17564816826420'
+      sourceHandle: source
+      target: '1756481851203'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17564817064810-source-1756481853748-target
+      source: '17564817064810'
+      sourceHandle: source
+      target: '1756481853748'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1756481206605-false-1756481599084-target
+      source: '1756481206605'
+      sourceHandle: 'false'
+      target: '1756481599084'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: 發文單位名稱
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: a
+        - label: 受文機關名稱
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: b
+      height: 114
+      id: '1756474868563'
+      position:
+        x: 30
+        y: 938
+      positionAbsolute:
+        x: 30
+        y: 938
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1756481599084.text#}}'
+        desc: ''
+        selected: false
+        title: 上行文回覆
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 1877
+        y: 708
+      positionAbsolute:
+        x: 1877
+        y: 708
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '='
+            id: e45103e7-817d-46c3-8610-da0acc662db2
+            value: '0'
+            varType: number
+            variable_selector:
+            - sys
+            - dialogue_count
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件分支
+        type: if-else
+      height: 124
+      id: '1756476815639'
+      position:
+        x: 363
+        y: 938
+      positionAbsolute:
+        x: 363
+        y: 938
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 7ba5278a-e8d4-46ba-930f-ea80f3300b5e
+          role: system
+          text: "你是一個台灣公文判斷助理。  \n使用者會提供「發文單位」與「機關名稱」。  \n請依照以下規則判斷這是一份【上行文、平行文、下行文】：\
+            \  \n\n### 判斷規則\n- 上行文：發文單位 → 上級機關  \n- 平行文：發文單位 → 平行機關  \n- 下行文：發文單位\
+            \ → 下級機關  \n\n### 機關層級對照表 (json)\n```\n{{#env.org#}}\n```\n \n\n請根據以上層級對照，判斷發文單位與受文機關之間的關係。\
+            \  \n\n---\n\n### Few-shot 範例\n\n#### 範例 1（上行文）\n\n使用者輸入：\n\n```\n發文單位=台中市政府\
+            \  \n機關名稱=行政院\n```\n\n模型輸出：\n\n```\n<result>上行文</result>\n```\n\n---\n\
+            \n#### 範例 2（平行文）\n\n使用者輸入：\n\n```\n發文單位=高雄市政府  \n機關名稱=台北市政府\n```\n\n模型輸出：\n\
+            \n```\n<result>平行文</result>\n```\n\n---\n\n#### 範例 3（下行文）\n\n使用者輸入：\n\n\
+            ```\n發文單位=教育部  \n機關名稱=國立台灣師範大學\n```\n\n模型輸出：\n\n```\n<result>下行文</result>\n\
+            ```\n\n---\n\n#### 範例 4（平行文，同一層級內局處）\n\n使用者輸入：\n\n```\n發文單位=新北市政府民政局 \
+            \ \n機關名稱=新北市政府教育局\n```\n\n模型輸出：\n\n```\n<result>平行文</result>\n```\n\n\
+            ---\n\n#### 範例 5（下行文，市政府 → 區公所）\n\n使用者輸入：\n\n```\n發文單位=台北市政府  \n機關名稱=台北市大安區公所\n\
+            ```\n\n模型輸出：\n\n```\n<result>下行文</result>\n```"
+        - id: abfb41b8-f391-405a-a413-b94e27a5f66b
+          role: user
+          text: '發文單位={{#1756474868563.a#}}
+
+            機關名稱={{#1756474868563.b#}}'
+        selected: false
+        title: 上下平行文認定
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: '1756476962841'
+      position:
+        x: 787
+        y: 310
+      positionAbsolute:
+        x: 787
+        y: 310
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '感謝您的提供，依據機關層級判斷，這份公文屬於「{{#conversation.doctype#}}」，因為{{#1756474868563.a#}}對{{#1756474868563.b#}}屬於{{#conversation.doctype#}}關係。
+
+
+          **現在你可以開始提供撰寫公文函簽的主旨及內文：**
+
+
+          **公文內文範例：**
+
+
+          **主旨：**
+
+
+          > 函報貴○○，說明本○○「○○計畫」之執行情形，請查照。
+
+
+          **說明：**
+
+
+          > 一、依據○○院○○部函文（文號）辦理。
+
+          > 二、本○○自○○年○○月起推動「○○計畫」，截至目前執行情形如下：
+
+          >
+
+          > 1. 項目一：○○情況。
+
+          > 2. 項目二：○○情況。'
+        desc: ''
+        selected: false
+        title: 第一輪回答
+        type: answer
+        variables: []
+      height: 304
+      id: '1756476975776'
+      position:
+        x: 3542
+        y: 402
+      positionAbsolute:
+        x: 3542
+        y: 402
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: a0615f2e-b2b9-4002-94c6-56cdaa4c2d4e
+            value: 上行文
+            varType: string
+            variable_selector:
+            - '1756476962841'
+            - text
+          id: 'true'
+          logical_operator: and
+        - case_id: ae24da89-eee4-4e90-8729-0e21d8f2d31c
+          conditions:
+          - comparison_operator: contains
+            id: 942849fd-4474-4301-8179-5caeed22269a
+            value: 平行文
+            varType: string
+            variable_selector:
+            - '1756476962841'
+            - text
+          logical_operator: and
+        - case_id: 144b1b18-35d3-48ae-b597-33c60777f245
+          conditions:
+          - comparison_operator: contains
+            id: 6deee840-f432-4a48-a4ba-80e3ec5b24d1
+            value: 下行文
+            varType: string
+            variable_selector:
+            - '1756476962841'
+            - text
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 條件-上下平行文認定
+        type: if-else
+      height: 220
+      id: '1756478634230'
+      position:
+        x: 1120
+        y: 310
+      positionAbsolute:
+        x: 1120
+        y: 310
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1756479139949'
+          - output
+          variable_selector:
+          - conversation
+          - doctype
+          write_mode: over-write
+        selected: false
+        title: 變數分配器
+        type: assigner
+        version: '2'
+      height: 84
+      id: '1756478812089'
+      position:
+        x: 3209
+        y: 402
+      positionAbsolute:
+        x: 3209
+        y: 402
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: 上行文
+        title: 模板轉換-上行文
+        type: template-transform
+        variables: []
+      height: 52
+      id: '1756478979244'
+      position:
+        x: 2543
+        y: 310
+      positionAbsolute:
+        x: 2543
+        y: 310
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: 下行文
+        title: 模板轉換-下行文
+        type: template-transform
+        variables: []
+      height: 52
+      id: '17564790391980'
+      position:
+        x: 2543
+        y: 494
+      positionAbsolute:
+        x: 2543
+        y: 494
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: 平行文
+        title: 模板轉換-平行文
+        type: template-transform
+        variables: []
+      height: 52
+      id: '17564790432910'
+      position:
+        x: 2543
+        y: 402
+      positionAbsolute:
+        x: 2543
+        y: 402
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: none
+        title: 模板轉換-none
+        type: template-transform
+        variables: []
+      height: 52
+      id: '17564790951760'
+      position:
+        x: 2543
+        y: 586
+      positionAbsolute:
+        x: 2543
+        y: 586
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 變量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1756478979244'
+          - output
+        - - '17564790391980'
+          - output
+        - - '17564790432910'
+          - output
+        - - '17564790951760'
+          - output
+      height: 188
+      id: '1756479139949'
+      position:
+        x: 2876
+        y: 402
+      positionAbsolute:
+        x: 2876
+        y: 402
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 27a55227-2701-4382-ac07-16730e5fb21a
+            value: 上行文
+            varType: string
+            variable_selector:
+            - conversation
+            - doctype
+          id: 'true'
+          logical_operator: and
+        - case_id: 1e28be47-8686-44a1-9aa9-a7b7619a9d04
+          conditions:
+          - comparison_operator: contains
+            id: 6f5bb609-db3c-44b0-b658-d2c3d793e419
+            value: 平行文
+            varType: string
+            variable_selector:
+            - conversation
+            - doctype
+          logical_operator: and
+        - case_id: 1276e10e-44e8-45dd-8fb7-408fcab989c3
+          conditions:
+          - comparison_operator: contains
+            id: 22a760ee-3240-4711-8fd6-28c64a415e5b
+            value: 下行文
+            varType: string
+            variable_selector:
+            - conversation
+            - doctype
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 上下平行文判定
+        type: if-else
+      height: 220
+      id: '1756481206605'
+      position:
+        x: 1120
+        y: 958
+      positionAbsolute:
+        x: 1120
+        y: 958
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Gemma-3-TAIDE-12b-Chat
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 50bbe0f7-1f82-4f53-8152-8f2b41acf980
+          role: system
+          text: '[TASK: 公文撰寫]
+
+            你是一個台灣公文撰寫助理，請幫我以{{#1756474868563.a#}}名義撰寫一份函給上級機關{{#1756474868563.b#}}'
+        selected: false
+        title: 上行文
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: '1756481599084'
+      position:
+        x: 1544
+        y: 708
+      positionAbsolute:
+        x: 1544
+        y: 708
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Gemma-3-TAIDE-12b-Chat
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 50bbe0f7-1f82-4f53-8152-8f2b41acf980
+          role: system
+          text: '[TASK: 公文撰寫]
+
+            你是一個台灣公文撰寫助理，請幫我以{{#1756474868563.a#}}名義撰寫一份函給平級機關{{#1756474868563.b#}}'
+        selected: false
+        title: 平行文
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: '17564816826420'
+      position:
+        x: 1877
+        y: 852
+      positionAbsolute:
+        x: 1877
+        y: 852
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Gemma-3-TAIDE-12b-Chat
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 50bbe0f7-1f82-4f53-8152-8f2b41acf980
+          role: system
+          text: '[TASK: 公文撰寫]
+
+            你是一個台灣公文撰寫助理，請幫我以{{#1756474868563.a#}}名義撰寫一份函給下級機關{{#1756474868563.b#}}'
+        selected: false
+        title: 下行文
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: '17564817064810'
+      position:
+        x: 2210
+        y: 1006
+      positionAbsolute:
+        x: 2210
+        y: 1006
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#17564816826420.text#}}'
+        desc: ''
+        selected: false
+        title: 平行文回覆
+        type: answer
+        variables: []
+      height: 104
+      id: '1756481851203'
+      position:
+        x: 2210
+        y: 844
+      positionAbsolute:
+        x: 2210
+        y: 844
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#17564817064810.text#}}'
+        desc: ''
+        selected: false
+        title: 下行文回覆
+        type: answer
+        variables: []
+      height: 104
+      id: '1756481853748'
+      position:
+        x: 2543
+        y: 972
+      positionAbsolute:
+        x: 2543
+        y: 972
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -603.9925348928502
+      y: 30.824726537289735
+      zoom: 0.44165211816373695
